@@ -78,3 +78,7 @@ curl -s https://raw.githubusercontent.com/aikdna/kdna-assets/main/assets.json
 ```
 
 The index lists all released assets with their latest version, tag, SHA256, and release date.
+
+## Verification
+
+All assets in this repository pass `kdna validate` with `overall_valid: true` before release. Each release includes a SHA256 checksum file for independent verification. The `assets.json` index at the repo root is the machine-readable source of truth — the README table is generated from it.
