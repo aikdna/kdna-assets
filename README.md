@@ -78,3 +78,7 @@ curl -s https://raw.githubusercontent.com/aikdna/kdna-assets/main/assets.json
 ```
 
 The index lists all released assets with their latest version, tag, SHA256, and release date.
+
+---
+
+Branch protection is enforced on `main`: pull request review required before merge.
