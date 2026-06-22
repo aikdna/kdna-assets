@@ -62,3 +62,17 @@ Community asset submission is coming soon. See [policy/submission-guidelines.md]
 - [KDNA Studio CLI](https://github.com/aikdna/kdna-studio-cli) — create assets via `npm install -g @aikdna/kdna-studio-cli`
 - [KDNA Core](https://github.com/aikdna/kdna) — protocol specification and core library
 - [KDNA Website](https://aikdna.com) — documentation and asset gallery
+
+## All releases
+
+See the [Releases page](https://github.com/aikdna/kdna-assets/releases) for the full list of available assets with download links, checksums, and release cards.
+
+## Machine-readable index
+
+An `assets.json` index is maintained at the repo root for programmatic discovery:
+
+```bash
+curl -s https://raw.githubusercontent.com/aikdna/kdna-assets/main/assets.json
+```
+
+The index lists all released assets with their latest version, tag, SHA256, and release date.

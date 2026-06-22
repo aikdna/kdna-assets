@@ -1,0 +1,43 @@
+{
+  "updated": "2026-06-22T08:00:00Z",
+  "assets": [
+    {
+      "name": "Viral Topic Selection",
+      "file": "viral-topic-selection.kdna",
+      "latest_version": "1.1.0",
+      "tag": "viral-topic-selection-v1.1.0",
+      "sha256": "8cc71e23e54fe93ac0b1404881b15553f6708e8b75d784241c96666fbbdd03d1",
+      "release_date": "2026-06-22",
+      "description": "Helps AI evaluate content topics for viral potential — checking tension, curiosity gap, emotional resonance, and social currency.",
+      "profiles": ["index", "compact", "scenario", "full"],
+      "contains": {
+        "axioms": 4,
+        "boundaries": 3,
+        "self_checks": 6,
+        "failure_modes": 3,
+        "scenarios": 2,
+        "cases": 2,
+        "patterns": 3
+      }
+    },
+    {
+      "name": "Title Attraction",
+      "file": "title-attraction.kdna",
+      "latest_version": "1.0.0",
+      "tag": "title-attraction-v1.0.0",
+      "sha256": "c39ce0de0b46f71efbb1cbdee9f3c2b62a69c87200d6f65496c7d61ace27cb8a",
+      "release_date": "2026-06-22",
+      "description": "Helps AI evaluate whether a title is genuinely attractive — checking audience clarity, information gap, specific benefit, credibility, and promise-content alignment.",
+      "profiles": ["index", "compact", "scenario", "full"],
+      "contains": {
+        "axioms": 4,
+        "boundaries": 3,
+        "self_checks": 7,
+        "failure_modes": 3,
+        "scenarios": 2,
+        "cases": 2,
+        "patterns": 3
+      }
+    }
+  ]
+}
