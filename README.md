@@ -32,9 +32,9 @@ kdna load ./<asset>.kdna --profile=compact --as=prompt
 
 | Asset | Version | SHA256 | Description |
 |---|---|---|---|
-| [viral-topic-selection.kdna](https://github.com/aikdna/kdna-assets/releases/tag/viral-topic-selection-v1.1.0) | 1.1.0 | `8cc71e23...` | Helps AI evaluate content topics for viral potential — boundaries, scenarios, cases included |
-| [title-attraction.kdna](https://github.com/aikdna/kdna-assets/releases/tag/title-attraction-v1.0.0) | 1.0.0 | `c39ce0de...` | Helps AI evaluate title attraction — audience clarity, information gap, credibility |
-| [short-video-script.kdna](https://github.com/aikdna/kdna-assets/releases/tag/short-video-script-v1.0.0) | 1.0.0 | `12242462...` | Helps AI evaluate short video scripts — hook, pacing, promise delivery, earned endings |
+| [viral-topic-selection.kdna](https://github.com/aikdna/kdna-assets/releases/tag/viral-topic-selection-v1.1.0) | 1.1.0 | `0b10ecc4...` | 爆款选题判断 — 4 axioms, 5 scenarios, 5 cases, full 6-JSON source |
+| [title-attraction.kdna](https://github.com/aikdna/kdna-assets/releases/tag/title-attraction-v1.0.0) | 1.0.0 | `c39ce0de...` | 标题吸引力判断 — 4 axioms, 5 scenarios, 4 cases, full 6-JSON source |
+| [short-video-script.kdna](https://github.com/aikdna/kdna-assets/releases/tag/short-video-script-v1.0.0) | 1.0.0 | `12242462...` | 短视频前三秒判断 — 4 axioms, 5 scenarios, 4 cases, full 6-JSON source |
 
 See [aikdna.com/en/assets](https://aikdna.com/en/assets) for the full gallery.
 

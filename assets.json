@@ -1,77 +1,74 @@
 {
-  "updated": "2026-06-22T09:00:00Z",
+  "updated": "2026-06-23T08:00:00Z",
   "assets": [
     {
       "name": "Viral Topic Selection",
+      "name_zh": "爆款选题判断",
       "file": "viral-topic-selection.kdna",
       "latest_version": "1.1.0",
       "tag": "viral-topic-selection-v1.1.0",
-      "sha256": "8cc71e23e54fe93ac0b1404881b15553f6708e8b75d784241c96666fbbdd03d1",
-      "release_date": "2026-06-22",
-      "description": "Helps AI evaluate content topics for viral potential \u2014 checking tension, curiosity gap, emotional resonance, and social currency.",
-      "profiles": [
-        "index",
-        "compact",
-        "scenario",
-        "full"
-      ],
+      "sha256": "0b10ecc4eae5431712c2ff1a95f0b68eee24e3f774962777d0ac3f73fa3a6ebd",
+      "release_date": "2026-06-23",
+      "description": "Helps AI evaluate content topics for viral potential — checking tension, curiosity gap, emotional resonance, and social currency.",
+      "description_zh": "帮助 AI 判断内容选题的传播潜力——检查冲突张力、好奇心缺口、情绪共鸣和社交货币。",
+      "profiles": ["index", "compact", "scenario", "full"],
       "contains": {
         "axioms": 4,
         "boundaries": 3,
         "self_checks": 6,
         "failure_modes": 3,
-        "scenarios": 2,
-        "cases": 2,
-        "patterns": 3
-      }
+        "scenarios": 5,
+        "cases": 5,
+        "reasoning_chains": 4,
+        "anti_patterns": 2
+      },
+      "source_files": 6
     },
     {
       "name": "Title Attraction",
+      "name_zh": "标题吸引力判断",
       "file": "title-attraction.kdna",
       "latest_version": "1.0.0",
       "tag": "title-attraction-v1.0.0",
       "sha256": "c39ce0de0b46f71efbb1cbdee9f3c2b62a69c87200d6f65496c7d61ace27cb8a",
-      "release_date": "2026-06-22",
-      "description": "Helps AI evaluate whether a title is genuinely attractive \u2014 checking audience clarity, information gap, specific benefit, credibility, and promise-content alignment.",
-      "profiles": [
-        "index",
-        "compact",
-        "scenario",
-        "full"
-      ],
+      "release_date": "2026-06-23",
+      "description": "Helps AI evaluate title attraction — checking audience clarity, information gap, specific benefit, credibility, and promise-content alignment.",
+      "description_zh": "帮助 AI 判断标题吸引力——检查受众明确度、信息缺口、具体利益、可信度和承诺匹配度。",
+      "profiles": ["index", "compact", "scenario", "full"],
       "contains": {
         "axioms": 4,
         "boundaries": 3,
         "self_checks": 7,
         "failure_modes": 3,
-        "scenarios": 2,
-        "cases": 2,
-        "patterns": 3
-      }
+        "scenarios": 5,
+        "cases": 4,
+        "reasoning_chains": 3,
+        "anti_patterns": 3
+      },
+      "source_files": 6
     },
     {
-      "name": "Short Video Script",
+      "name": "Short Video Hook Judgment",
+      "name_zh": "短视频前三秒判断",
       "file": "short-video-script.kdna",
       "latest_version": "1.0.0",
       "tag": "short-video-script-v1.0.0",
       "sha256": "12242462e89a53c847bef114d0d3f35cf7e2b25ed84852df7806c1fe76d67f42",
-      "release_date": "2026-06-22",
-      "description": "Helps AI evaluate short video scripts by checking opening strength, segment value delivery, emotional pacing, and earned endings.",
-      "profiles": [
-        "index",
-        "compact",
-        "scenario",
-        "full"
-      ],
+      "release_date": "2026-06-23",
+      "description": "Helps AI evaluate short video opening hooks — checking first-3-second gap, scene conflict, speakability, and audience retention signals.",
+      "description_zh": "帮助 AI 判断短视频开头前三秒的钩子效果——检查信息缺口、场景冲突、口播顺口度和留存信号。",
+      "profiles": ["index", "compact", "scenario", "full"],
       "contains": {
         "axioms": 4,
         "boundaries": 3,
-        "self_checks": 9,
-        "failure_modes": 3,
-        "scenarios": 2,
-        "cases": 2,
-        "patterns": 3
-      }
+        "self_checks": 8,
+        "failure_modes": 5,
+        "scenarios": 5,
+        "cases": 4,
+        "reasoning_chains": 3,
+        "anti_patterns": 4
+      },
+      "source_files": 6
     }
   ]
 }
