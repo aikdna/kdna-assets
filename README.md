@@ -35,6 +35,7 @@ kdna load ./<asset>.kdna --profile=compact --as=prompt
 | [viral-topic-selection.kdna](https://github.com/aikdna/kdna-assets/releases/tag/viral-topic-selection-v1.1.0) | 1.1.0 | `0b10ecc4...` | 爆款选题判断 — 4 axioms, 5 scenarios, 5 cases |
 | [title-attraction.kdna](https://github.com/aikdna/kdna-assets/releases/tag/title-attraction-v1.0.0) | 1.0.0 | `c39ce0de...` | 标题吸引力判断 — 4 axioms, 5 scenarios, 4 cases |
 | [short-video-script.kdna](https://github.com/aikdna/kdna-assets/releases/tag/short-video-script-v1.0.0) | 1.0.0 | `12242462...` | 短视频前三秒判断 — 4 axioms, 5 scenarios, 4 cases |
+| [agent-project-context.kdna](https://github.com/aikdna/kdna-assets/releases/tag/v0.1.0-agent-project-context) | 0.1.0 | `521ad68e...` | Project context judgment — 5 axioms, 6 self-checks, 5 cases |
 
 See [aikdna.com/en/assets](https://aikdna.com/en/assets) for the full gallery.
 
@@ -51,12 +52,6 @@ A release repository for downloadable `.kdna` files — verified for format, saf
 ## Content neutrality
 
 KDNA is content-neutral. Assets listed here have passed file format, safety, and loadability checks. This does not mean AIKDNA endorses the judgment content, guarantees its correctness, or recommends it for all contexts. Content quality and applicability are determined by the asset creator and the user.
-
-See [policy/content-neutrality.md](policy/content-neutrality.md) for details.
-
-## Submission
-
-Community asset submission is coming soon. See [policy/submission-guidelines.md](policy/submission-guidelines.md).
 
 ## Related
 

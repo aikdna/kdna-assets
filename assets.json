@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T08:00:00Z",
+  "updated": "2026-06-24T00:00:00Z",
   "assets": [
     {
       "name": "Viral Topic Selection",
@@ -80,6 +80,33 @@
         "cases": 4,
         "reasoning_chains": 3,
         "anti_patterns": 4
+      }
+    },
+    {
+      "name": "Project Context Judgment",
+      "name_zh": "项目上下文判断",
+      "file": "agent-project-context.kdna",
+      "latest_version": "0.1.0",
+      "tag": "v0.1.0-agent-project-context",
+      "sha256": "521ad68e8902b1083587e3bc642b9546462baacd9ff3336aafdd9902db93dae0",
+      "release_date": "2026-06-24",
+      "description": "Judges what belongs in an Agent-facing project document (AGENTS.md / CLAUDE.md / .cursorrules) — classifying each candidate line into CARRY / RELOCATE / DROP / CONVERT.",
+      "description_zh": "判断 AGENTS.md / CLAUDE.md / .cursorrules 等项目文档的每一行内容——将候选行归类为 CARRY / RELOCATE / DROP / CONVERT。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "boundaries": 0,
+        "self_checks": 6,
+        "failure_modes": 5,
+        "scenarios": 0,
+        "cases": 5,
+        "reasoning_chains": 4,
+        "anti_patterns": 6
       }
     }
   ]
