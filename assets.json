@@ -108,6 +108,33 @@
         "reasoning_chains": 4,
         "anti_patterns": 6
       }
+    },
+    {
+      "name": "Completion Adjudication",
+      "name_zh": "完成判断",
+      "file": "agent-completion-adjudication.kdna",
+      "latest_version": "0.1.0",
+      "tag": "v0.1.0-agent-completion-adjudication",
+      "sha256": "76a97828955490a72a5ac83bd74205c5a30ffc87468878158d0517b1669a3696",
+      "release_date": "2026-06-24",
+      "description": "Judges whether an AI Agent's 'I'm done' claim is actually done — forcing a four-cell ruling (DONE CLAIM / OBSERVABLE PROOF / USER INTENT MATCH / UNRESOLVED RISK) before completion is accepted.",
+      "description_zh": "判断 AI Agent 的「我完成了」声明是否真的完成——强制要求四格裁决（DONE CLAIM / OBSERVABLE PROOF / USER INTENT MATCH / UNRESOLVED RISK）。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "boundaries": 0,
+        "self_checks": 6,
+        "failure_modes": 5,
+        "scenarios": 0,
+        "cases": 5,
+        "reasoning_chains": 5,
+        "anti_patterns": 6
+      }
     }
   ]
 }

@@ -69,6 +69,7 @@ before/after.
 | [title-attraction.kdna](https://github.com/aikdna/kdna-assets/releases/tag/title-attraction-v1.0.0) | 1.0.0 | `c39ce0de...` | 标题吸引力判断 — 4 axioms, 5 scenarios, 4 cases |
 | [short-video-script.kdna](https://github.com/aikdna/kdna-assets/releases/tag/short-video-script-v1.0.0) | 1.0.0 | `12242462...` | 短视频前三秒判断 — 4 axioms, 5 scenarios, 4 cases |
 | [agent-project-context.kdna](https://github.com/aikdna/kdna-assets/releases/tag/v0.1.0-agent-project-context) | 0.1.0 | `521ad68e...` | Project context judgment — 5 axioms, 6 self-checks, 5 cases |
+| [agent-completion-adjudication.kdna](https://github.com/aikdna/kdna-assets/releases/tag/v0.1.0-agent-completion-adjudication) | 0.1.0 | `76a97828...` | Completion adjudication — 5 axioms, 6 self-checks, 5 cases |
 
 See [aikdna.com/en/assets](https://aikdna.com/en/assets) for the full gallery.
 
