@@ -28,11 +28,15 @@ kdna plan-load ./<asset>.kdna
 kdna load ./<asset>.kdna --profile=compact --as=prompt
 ```
 
-## Quick start: `agent:project_context` v0.1.0
+## Quick start: flagship assets
 
-The flagship release is `agent:project_context` — a judgment asset
-that teaches an AI Agent to evaluate every line of `AGENTS.md` /
-`CLAUDE.md` / `.cursorrules` before adding it.
+The two flagship A-layer assets are `agent:project_context` and
+`agent:completion_adjudication`. They are independent — load one
+or both, depending on what you need.
+
+**Requirements:** `kdna-cli ≥ 0.27` (v1 Core runtime).
+
+### `agent:project_context` v0.1.0
 
 ```bash
 # 1. Install kdna-cli (one-time)
@@ -58,8 +62,25 @@ kdna load ./agent-project-context.kdna --profile=compact --as=prompt
 ```
 
 See [`showcase/agent-project-context.md`](showcase/agent-project-context.md)
-for what the asset judges, when to load it, and a worked
-before/after.
+for what the asset judges, when to load it, and a worked before/after.
+
+### `agent:completion_adjudication` v0.1.0
+
+```bash
+# Download the asset and its checksum
+curl -L -o agent-completion-adjudication.kdna \
+  https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.0/agent-completion-adjudication.kdna
+curl -L -o agent-completion-adjudication.kdna.sha256 \
+  https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.0/agent-completion-adjudication.kdna.sha256
+
+# Verify (expected SHA: 76a97828…3696)
+shasum -a 256 -c agent-completion-adjudication.kdna.sha256
+
+# Validate, plan, load
+kdna validate ./agent-completion-adjudication.kdna
+kdna plan-load ./agent-completion-adjudication.kdna
+kdna load ./agent-completion-adjudication.kdna --profile=compact --as=prompt
+```
 
 ## Available assets
 
@@ -68,8 +89,8 @@ before/after.
 | [viral-topic-selection.kdna](https://github.com/aikdna/kdna-assets/releases/tag/viral-topic-selection-v1.1.0) | 1.1.0 | `0b10ecc4...` | 爆款选题判断 — 4 axioms, 5 scenarios, 5 cases |
 | [title-attraction.kdna](https://github.com/aikdna/kdna-assets/releases/tag/title-attraction-v1.0.0) | 1.0.0 | `c39ce0de...` | 标题吸引力判断 — 4 axioms, 5 scenarios, 4 cases |
 | [short-video-script.kdna](https://github.com/aikdna/kdna-assets/releases/tag/short-video-script-v1.0.0) | 1.0.0 | `12242462...` | 短视频前三秒判断 — 4 axioms, 5 scenarios, 4 cases |
-| [agent-project-context.kdna](https://github.com/aikdna/kdna-assets/releases/tag/v0.1.0-agent-project-context) | 0.1.0 | `521ad68e...` | Project context judgment — 5 axioms, 6 self-checks, 5 cases |
-| [agent-completion-adjudication.kdna](https://github.com/aikdna/kdna-assets/releases/tag/v0.1.0-agent-completion-adjudication) | 0.1.0 | `76a97828...` | Completion adjudication — 5 axioms, 6 self-checks, 5 cases |
+| [agent-project-context.kdna](https://github.com/aikdna/kdna-assets/releases/tag/agent-project-context-v0.1.0) | 0.1.0 | `521ad68e...` | Project context judgment — 5 axioms, 6 self-checks, 5 cases |
+| [agent-completion-adjudication.kdna](https://github.com/aikdna/kdna-assets/releases/tag/agent-completion-adjudication-v0.1.0) | 0.1.0 | `76a97828...` | Completion adjudication — 5 axioms, 6 self-checks, 5 cases |
 
 See [aikdna.com/en/assets](https://aikdna.com/en/assets) for the full gallery.
 

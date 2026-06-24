@@ -7,7 +7,7 @@
       "file": "viral-topic-selection.kdna",
       "latest_version": "1.1.0",
       "tag": "viral-topic-selection-v1.1.0",
-      "sha256": "0b10ecc4eae5431712c2ff1a95f0b68eee24e3f774962777d0ac3f73fa3a6ebd",
+      "sha256": "8cc71e23e54fe93ac0b1404881b15553f6708e8b75d784241c96666fbbdd03d1",
       "release_date": "2026-06-23",
       "description": "Helps AI evaluate content topics for viral potential — checking tension, curiosity gap, emotional resonance, and social currency.",
       "description_zh": "帮助 AI 判断内容选题的传播潜力——检查冲突张力、好奇心缺口、情绪共鸣和社交货币。",
@@ -23,9 +23,7 @@
         "self_checks": 6,
         "failure_modes": 3,
         "scenarios": 5,
-        "cases": 5,
-        "reasoning_chains": 4,
-        "anti_patterns": 2
+        "cases": 5
       }
     },
     {
@@ -50,9 +48,7 @@
         "self_checks": 7,
         "failure_modes": 3,
         "scenarios": 5,
-        "cases": 4,
-        "reasoning_chains": 3,
-        "anti_patterns": 3
+        "cases": 4
       }
     },
     {
@@ -77,9 +73,7 @@
         "self_checks": 8,
         "failure_modes": 5,
         "scenarios": 5,
-        "cases": 4,
-        "reasoning_chains": 3,
-        "anti_patterns": 4
+        "cases": 4
       }
     },
     {
@@ -87,7 +81,7 @@
       "name_zh": "项目上下文判断",
       "file": "agent-project-context.kdna",
       "latest_version": "0.1.0",
-      "tag": "v0.1.0-agent-project-context",
+      "tag": "agent-project-context-v0.1.0",
       "sha256": "521ad68e8902b1083587e3bc642b9546462baacd9ff3336aafdd9902db93dae0",
       "release_date": "2026-06-24",
       "description": "Judges what belongs in an Agent-facing project document (AGENTS.md / CLAUDE.md / .cursorrules) — classifying each candidate line into CARRY / RELOCATE / DROP / CONVERT.",
@@ -102,11 +96,9 @@
         "axioms": 5,
         "boundaries": 0,
         "self_checks": 6,
-        "failure_modes": 5,
+        "failure_modes": 6,
         "scenarios": 0,
-        "cases": 5,
-        "reasoning_chains": 4,
-        "anti_patterns": 6
+        "cases": 5
       }
     },
     {
@@ -114,7 +106,7 @@
       "name_zh": "完成判断",
       "file": "agent-completion-adjudication.kdna",
       "latest_version": "0.1.0",
-      "tag": "v0.1.0-agent-completion-adjudication",
+      "tag": "agent-completion-adjudication-v0.1.0",
       "sha256": "76a97828955490a72a5ac83bd74205c5a30ffc87468878158d0517b1669a3696",
       "release_date": "2026-06-24",
       "description": "Judges whether an AI Agent's 'I'm done' claim is actually done — forcing a four-cell ruling (DONE CLAIM / OBSERVABLE PROOF / USER INTENT MATCH / UNRESOLVED RISK) before completion is accepted.",
@@ -129,11 +121,9 @@
         "axioms": 5,
         "boundaries": 0,
         "self_checks": 6,
-        "failure_modes": 5,
+        "failure_modes": 6,
         "scenarios": 0,
-        "cases": 5,
-        "reasoning_chains": 5,
-        "anti_patterns": 6
+        "cases": 5
       }
     }
   ]
