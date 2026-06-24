@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T08:00:00Z",
+  "updated": "2026-06-25T00:00:00Z",
   "assets": [
     {
       "name": "Viral Topic Selection",
@@ -7,7 +7,7 @@
       "file": "viral-topic-selection.kdna",
       "latest_version": "1.1.0",
       "tag": "viral-topic-selection-v1.1.0",
-      "sha256": "0b10ecc4eae5431712c2ff1a95f0b68eee24e3f774962777d0ac3f73fa3a6ebd",
+      "sha256": "8cc71e23e54fe93ac0b1404881b15553f6708e8b75d784241c96666fbbdd03d1",
       "release_date": "2026-06-23",
       "description": "Helps AI evaluate content topics for viral potential — checking tension, curiosity gap, emotional resonance, and social currency.",
       "description_zh": "帮助 AI 判断内容选题的传播潜力——检查冲突张力、好奇心缺口、情绪共鸣和社交货币。",
@@ -15,14 +15,12 @@
       "contains": {
         "axioms": 4,
         "boundaries": 3,
+        "stances": 3,
         "self_checks": 6,
         "failure_modes": 3,
-        "scenarios": 5,
-        "cases": 5,
-        "reasoning_chains": 4,
-        "anti_patterns": 2
-      },
-      "source_files": 6
+        "scenarios": 2,
+        "cases": 2
+      }
     },
     {
       "name": "Title Attraction",
@@ -38,14 +36,12 @@
       "contains": {
         "axioms": 4,
         "boundaries": 3,
+        "stances": 3,
         "self_checks": 7,
         "failure_modes": 3,
-        "scenarios": 5,
-        "cases": 4,
-        "reasoning_chains": 3,
-        "anti_patterns": 3
-      },
-      "source_files": 6
+        "scenarios": 2,
+        "cases": 2
+      }
     },
     {
       "name": "Short Video Hook Judgment",
@@ -61,14 +57,86 @@
       "contains": {
         "axioms": 4,
         "boundaries": 3,
-        "self_checks": 8,
+        "stances": 3,
+        "self_checks": 9,
+        "failure_modes": 3,
+        "scenarios": 2,
+        "cases": 2
+      }
+    },
+    {
+      "name": "Project Context Judgment",
+      "name_zh": "项目上下文判断",
+      "file": "agent-project-context-v0.1.1.kdna",
+      "latest_version": "0.1.1",
+      "tag": "agent-project-context-v0.1.1",
+      "sha256": "17ece15171ca2ec94641a9467dff2fa51268bbedb1e695886dee58caead00fb2",
+      "release_date": "2026-06-25",
+      "description": "Judges what belongs in an Agent-facing project document (AGENTS.md / CLAUDE.md / .cursorrules) — classifying each candidate line into CARRY / RELOCATE / DROP / CONVERT.",
+      "description_zh": "判断 AGENTS.md / CLAUDE.md / .cursorrules 等项目文档的每一行内容——将候选行归类为 CARRY / RELOCATE / DROP / CONVERT。",
+      "profiles": ["index", "compact", "scenario", "full"],
+      "contains": {
+        "axioms": 5,
+        "boundaries": 0,
+        "stances": 0,
+        "self_checks": 6,
         "failure_modes": 5,
         "scenarios": 5,
-        "cases": 4,
-        "reasoning_chains": 3,
-        "anti_patterns": 4
+        "cases": 5
       },
-      "source_files": 6
+      "source_payload_parity": {
+        "source_misunderstandings": 6,
+        "payload_patterns": 6,
+        "source_self_check": 6,
+        "payload_self_checks": 6,
+        "source_scenes": 5,
+        "payload_scenarios": 5,
+        "source_cases": 5,
+        "payload_cases": 5,
+        "source_axioms": 5,
+        "payload_core_axioms": 5,
+        "reasoning_chains_note": "build derives failure_modes from axioms (1 axiom = 1 chain); source's 4 reasoning_chains are imported as reasoning cards but consumed by a different mechanism"
+      },
+      "previous_version_status": "v0.1.0 (agent-project-context-v0.1.0.kdna, sha256 521ad68e8902b1083587e3bc642b9546462baacd9ff3336aafdd9902db93dae0) is preserved on GitHub Releases as a historical preview but is NOT in this index. v0.1.0 was classified as compiled-preview / released-preview because its source used field names that kdna-studio-cli migrate does not read; 6 self_checks, 6 misunderstandings, and 5 scenarios were in source but did not enter the compact-profile payload. v0.1.1 fixes the field-name gap and passes the 10-gate publish standard (see kdna-x/_strategy/10-gate-publish-standard.md)."
+    },
+    {
+      "name": "Completion Adjudication",
+      "name_zh": "完成度裁定",
+      "file": "agent-completion-adjudication-v0.1.1.kdna",
+      "latest_version": "0.1.1",
+      "tag": "agent-completion-adjudication-v0.1.1",
+      "sha256": "2f46bccc47a9be987eb74262af60b7344850178dfa478a078df00ab178f107e4",
+      "release_date": "2026-06-25",
+      "description": "Judges whether an AI Agent's 'I'm done' claim is actually done. Forces four cells before the 'done' word: DONE CLAIM / OBSERVABLE PROOF / USER INTENT MATCH / UNRESOLVED RISK.",
+      "description_zh": "判断 Agent 的「我做完了」声明是否真的完成。要求四格：完成声明 / 可观察证据 / 用户意图匹配 / 未解决风险，缺一格不可说「完成」。",
+      "profiles": ["index", "compact", "scenario", "full"],
+      "contains": {
+        "axioms": 5,
+        "boundaries": 0,
+        "stances": 0,
+        "self_checks": 6,
+        "failure_modes": 5,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "source_payload_parity": {
+        "source_misunderstandings": 6,
+        "payload_misconceptions_plus_patterns": 6,
+        "source_self_check": 6,
+        "payload_self_checks": 6,
+        "source_terminology_banned_terms": 18,
+        "payload_banned_terms": 18,
+        "source_scenes": 5,
+        "payload_scenarios": 5,
+        "source_cases": 5,
+        "payload_cases": 5,
+        "source_axioms": 5,
+        "payload_core_axioms": 5,
+        "source_reasoning_chains": 5,
+        "payload_failure_modes": 5,
+        "reasoning_chains_note": "build derives failure_modes from axioms (1 axiom = 1 chain); the 5 source reasoning_chains are imported as reasoning cards. For completion_adjudication the counts match by design (5 axioms, 5 chains)."
+      },
+      "previous_version_status": "v0.1.0 (agent-completion-adjudication-v0.1.0.kdna, sha256 76a97828955490a72a5ac83bd74205c5a30ffc87468878158d0517b1669a3696) is preserved on GitHub Releases as a historical preview but is NOT in this index. v0.1.0 was classified as compiled-preview / released-preview because its source used field names that kdna-studio-cli migrate does not read; 6 self_checks, 6 misunderstandings, 18 banned_terms, and 5 scenes were in source but did not enter the compact-profile payload. v0.1.1 fixes the field-name gap and passes the 10-gate publish standard (see kdna-x/_strategy/10-gate-publish-standard.md)."
     }
   ]
 }
