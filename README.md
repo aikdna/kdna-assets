@@ -4,29 +4,75 @@ Public release repository for official KDNA judgment asset files.
 
 Each asset is distributed through a **GitHub Release** containing:
 
-- The `.kdna` file
-- A SHA256 checksum file
+- The `.kdna` runtime file
+- A `.sha256` checksum file (same basename + `.sha256`)
 - A release card with purpose, usage, and limitations
 
-## Download and use
+## License
+
+This repository is released under **CC-BY-4.0** (see the
+`LICENSE` file at the repo root). Asset creators retain
+copyright on the judgment content; users are free to use,
+modify, and redistribute with attribution to the source.
+
+## Quick start
+
+> Requires `kdna-cli ≥ 0.27.4` and a Linux / macOS shell.
+> `kdna-cli` is the runtime for `.kdna` v1 files; it is
+> separate from `kdna-studio-cli` (which authors assets).
+
+### Install kdna-cli
 
 ```bash
-# 1. Download
-curl -LO https://github.com/aikdna/kdna-assets/releases/download/<tag>/<asset>.kdna
-curl -LO https://github.com/aikdna/kdna-assets/releases/download/<tag>/<asset>.sha256
-
-# 2. Verify checksum
-shasum -a 256 -c <asset>.sha256
-
-# 3. Validate
-kdna validate ./<asset>.kdna
-
-# 4. Generate LoadPlan
-kdna plan-load ./<asset>.kdna
-
-# 5. Load into an AI agent
-kdna load ./<asset>.kdna --profile=compact --as=prompt
+npm install -g @aikdna/kdna-cli@0.27.4
+kdna --version   # should print 0.27.4
 ```
+
+### Use an asset — the two A-layer flagship assets
+
+```bash
+# 1. Download agent:project_context v0.1.2
+curl -L -O \
+  https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna
+curl -L -O \
+  https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna.sha256
+
+# 2. Verify the SHA256 (fails loudly if anything is wrong)
+shasum -a 256 -c agent-project-context-v0.1.2.kdna.sha256
+
+# 3. Validate the v1 container (format / schema / payload / checksums)
+kdna validate agent-project-context-v0.1.2.kdna
+
+# 4. Probe load-readiness
+kdna plan-load agent-project-context-v0.1.2.kdna
+
+# 5. Load the compact-profile prompt into your AI agent
+kdna load agent-project-context-v0.1.2.kdna --profile=compact --as=prompt
+```
+
+```bash
+# Same 5 steps for agent:completion_adjudication v0.1.1
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna.sha256
+shasum -a 256 -c agent-completion-adjudication-v0.1.1.kdna.sha256
+kdna validate agent-completion-adjudication-v0.1.1.kdna
+kdna plan-load agent-completion-adjudication-v0.1.1.kdna
+kdna load agent-completion-adjudication-v0.1.1.kdna --profile=compact --as=prompt
+```
+
+### What the asset does (one-liners)
+
+- **`agent:project_context`** — judges every candidate line
+  in an Agent-facing project document (AGENTS.md / CLAUDE.md
+  / codex.md / .cursorrules) as CARRY / RELOCATE / DROP /
+  CONVERT. Read the
+  [showcase](showcase/agent-project-context.md) for the
+  full before/after.
+- **`agent:completion_adjudication`** — forces the Agent to
+  surface four cells (DONE CLAIM / OBSERVABLE PROOF / USER
+  INTENT MATCH / UNRESOLVED RISK) before any "I'm done"
+  claim. Read the
+  [showcase](showcase/agent-completion-adjudication.md).
 
 ## Available assets
 
@@ -40,47 +86,122 @@ kdna load ./<asset>.kdna --profile=compact --as=prompt
 
 See [aikdna.com/en/assets](https://aikdna.com/en/assets) for the full gallery.
 
+## Per-asset download / verify (working commands)
+
+The download / verify commands above are copy-paste-runnable
+for the 2 flagship assets. The 3 legacy content-domain
+assets (viral-topic-selection, title-attraction,
+short-video-script) follow a different file-naming
+convention from the flagships (legacy uses `<name>.kdna`
+without the version suffix, the sidecar is `<name>.sha256`
+without `.kdna`). Use these commands for the legacy 3:
+
+```bash
+# viral-topic-selection v1.1.0
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/viral-topic-selection-v1.1.0/viral-topic-selection.kdna
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/viral-topic-selection-v1.1.0/viral-topic-selection.sha256
+shasum -a 256 -c viral-topic-selection.sha256
+kdna validate viral-topic-selection.kdna
+kdna plan-load viral-topic-selection.kdna
+kdna load viral-topic-selection.kdna --profile=compact --as=prompt
+```
+
+```bash
+# title-attraction v1.0.0
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/title-attraction-v1.0.0/title-attraction.kdna
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/title-attraction-v1.0.0/title-attraction.sha256
+shasum -a 256 -c title-attraction.sha256
+kdna validate title-attraction.kdna
+kdna plan-load title-attraction.kdna
+kdna load title-attraction.kdna --profile=compact --as=prompt
+```
+
+```bash
+# short-video-script v1.0.0
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/short-video-script-v1.0.0/short-video-script.kdna
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/short-video-script-v1.0.0/short-video-script.sha256
+shasum -a 256 -c short-video-script.sha256
+kdna validate short-video-script.kdna
+kdna plan-load short-video-script.kdna
+kdna load short-video-script.kdna --profile=compact --as=prompt
+```
+
+The naming-convention split (flagships vs legacy) is a
+known artifact of pre-pipeline releases. A future PR will
+unify on `<name>-<version>.kdna` + `<name>-<version>.kdna.sha256`
+for all 5 assets.
+
 ## What this is
 
-A release repository for downloadable `.kdna` files — verified for format, safety, and loadability.
+A release repository for downloadable `.kdna` files —
+verified for format, safety, and loadability.
 
 ## What this is not
 
-- **Not a registry** — no `kdna install`, no automatic indexing, no remote resolution
-- **Not a marketplace** — no transactions, no rankings, no recommendations
-- **Not an endorsement** — listing means format verification passed; it does not mean AIKDNA endorses the judgment content within
+- **Not a registry** — no `kdna install`, no automatic
+  indexing, no remote resolution
+- **Not a marketplace** — no transactions, no rankings,
+  no recommendations
+- **Not an endorsement** — listing means format
+  verification passed; it does not mean AIKDNA endorses
+  the judgment content within
 
 ## Content neutrality
 
-KDNA is content-neutral. Assets listed here have passed file format, safety, and loadability checks. This does not mean AIKDNA endorses the judgment content, guarantees its correctness, or recommends it for all contexts. Content quality and applicability are determined by the asset creator and the user.
-
-See [policy/content-neutrality.md](policy/content-neutrality.md) for details.
-
-## Submission
-
-Community asset submission is coming soon. See [policy/submission-guidelines.md](policy/submission-guidelines.md).
+KDNA is content-neutral. Assets listed here have passed
+file format, safety, and loadability checks. This does
+not mean AIKDNA endorses the judgment content, guarantees
+its correctness, or recommends it for all contexts.
+Content quality and applicability are determined by the
+asset creator and the user.
 
 ## Related
 
-- [KDNA CLI](https://github.com/aikdna/kdna-cli) — install via `npm install -g @aikdna/kdna-cli`
-- [KDNA Studio CLI](https://github.com/aikdna/kdna-studio-cli) — create assets via `npm install -g @aikdna/kdna-studio-cli`
-- [KDNA Core](https://github.com/aikdna/kdna) — protocol specification and core library
-- [KDNA Website](https://aikdna.com) — documentation and asset gallery
+- [KDNA CLI](https://github.com/aikdna/kdna-cli) —
+  install via `npm install -g @aikdna/kdna-cli@0.27.4`
+- [KDNA Studio CLI](https://github.com/aikdna/kdna-studio-cli)
+  — create assets via `npm install -g @aikdna/kdna-studio-cli`
+- [KDNA Core](https://github.com/aikdna/kdna) — protocol
+  specification and core library
+- [KDNA Website](https://aikdna.com) — documentation and
+  asset gallery
 
 ## All releases
 
-See the [Releases page](https://github.com/aikdna/kdna-assets/releases) for the full list of available assets with download links, checksums, and release cards.
+See the [Releases page](https://github.com/aikdna/kdna-assets/releases)
+for the full list of available assets with download links,
+checksums, and release cards.
 
 ## Machine-readable index
 
-An `assets.json` index is maintained at the repo root for programmatic discovery:
+An `assets.json` index is maintained at the repo root for
+programmatic discovery:
 
 ```bash
 curl -s https://raw.githubusercontent.com/aikdna/kdna-assets/main/assets.json
 ```
 
-The index lists all released assets with their latest version, tag, SHA256, and release date.
+The index lists all released assets with their latest
+version, tag, SHA256, and release date. The two A-layer
+flagship assets include a `source_payload_parity` block
+documenting the source-to-payload field mapping (verified
+against the actual `payload.kdnab` contents).
+
+## Showcases
+
+The two A-layer flagship assets have dedicated showcase
+docs that explain the failure mode they target and walk
+through a real before/after:
+
+- [showcase/agent-project-context.md](showcase/agent-project-context.md)
+- [showcase/agent-completion-adjudication.md](showcase/agent-completion-adjudication.md)
+
+The legacy 3 content-domain assets do not have showcase
+docs (they are released-as-is from before the showcase
+format existed; see the
+[legacy assets audit plan](https://github.com/aikdna/kdna-x/blob/main/_strategy/legacy-assets-audit-plan.md)).
 
 ---
 
-Branch protection is enforced on `main`: pull request review required before merge.
+Branch protection is enforced on `main`: pull request
+review required before merge.

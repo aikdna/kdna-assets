@@ -93,12 +93,17 @@
         "payload_scenarios": 5,
         "source_cases": 5,
         "payload_cases": 5,
-        "source_stages": 4,
-        "payload_evolution_stages": 4,
         "source_axioms": 5,
         "payload_core_axioms": 5,
+        "source_evolution_stages": 4,
+        "payload_evolution_stages_of_type_evolution_stage": 4,
+        "source_terminology_banned_terms": 12,
+        "payload_evolution_stages_of_type_banned_term": 12,
+        "source_terminology_standard_terms": 0,
+        "payload_evolution_stages_of_type_term": 0,
         "reasoning_chains_note": "build derives failure_modes from axioms (1 axiom = 1 chain); source's 4 reasoning_chains are imported as reasoning cards but consumed by a different mechanism"
       },
+      "build_coverage_notes": "Source fields that DO NOT enter the structured payload as a named field (they enter via a different mechanism or are documentation-only): (a) KDNA_Patterns.json.terminology.{standard_terms,banned_terms} — kdna-studio-core/src/compile/index.js:165-166 hardcodes these to empty arrays in the structured payload, BUT compileEvolution generates one stage per locked term/banned_term card, so the content reaches the payload as evolution.stages entries (not as a structured field). (b) KDNA_Evolution.json.stages — compileEvolution ignores source.stages and regenerates from card.audit_log; the source's 4 evolution stages appear as 4 of the 48 total payload.evolution.stages entries (the other 44 are derived from axiom / scenario / self_check / case / reasoning cards). (c) reasoning_chains → failure_modes is a DIFFERENT-MECHANISM derivation (1 axiom = 1 chain). These are the known build-coverage limitations of kdna-studio-core v0.6.4. They do not block release; they are documented here for honesty.",
       "previous_version_status": "v0.1.0 (agent-project-context-v0.1.0.kdna, sha256 521ad68e8902b1083587e3bc642b9546462baacd9ff3336aafdd9902db93dae0) and v0.1.1 (agent-project-context-v0.1.1.kdna, sha256 17ece15171ca2ec94641a9467dff2fa51268bbedb1e695886dee58caead00fb2) are preserved on GitHub Releases as historical previews but are NOT in this index. Both were classified as compiled-preview / released-preview. v0.1.0 had 5 source-schema gaps (misjudgments / self_checks / banned_phrases / chains / trigger_signals / growth_stages / cases shape). v0.1.1 fixed 3 of those but still had 2 gaps (cases input/classification shape, growth_stages field). v0.1.2 fixes the last 2 gaps and is the first version to pass the 10-gate release standard (see kdna-x/scripts/release-gate.mjs)."
     },
     {
@@ -123,11 +128,9 @@
       },
       "source_payload_parity": {
         "source_misunderstandings": 6,
-        "payload_misconceptions_plus_patterns": 6,
+        "payload_patterns": 6,
         "source_self_check": 6,
         "payload_self_checks": 6,
-        "source_terminology_banned_terms": 18,
-        "payload_banned_terms": 18,
         "source_scenes": 5,
         "payload_scenarios": 5,
         "source_cases": 5,
@@ -136,8 +139,15 @@
         "payload_core_axioms": 5,
         "source_reasoning_chains": 5,
         "payload_failure_modes": 5,
+        "source_evolution_stages": 4,
+        "payload_evolution_stages_of_type_evolution_stage": 4,
+        "source_terminology_banned_terms": 18,
+        "payload_evolution_stages_of_type_banned_term": 18,
+        "source_terminology_standard_terms": 3,
+        "payload_evolution_stages_of_type_term": 3,
         "reasoning_chains_note": "build derives failure_modes from axioms (1 axiom = 1 chain); the 5 source reasoning_chains are imported as reasoning cards. For completion_adjudication the counts match by design (5 axioms, 5 chains)."
       },
+      "build_coverage_notes": "Source fields that DO NOT enter the structured payload as a named field (they enter via a different mechanism or are documentation-only): (a) KDNA_Patterns.json.terminology.{standard_terms,banned_terms} — kdna-studio-core/src/compile/index.js:165-166 hardcodes these to empty arrays in the structured payload, BUT compileEvolution generates one stage per locked term/banned_term card, so the content reaches the payload as evolution.stages entries (not as a structured field). For this asset: 3 standard_terms → 3 term stages; 18 banned_terms → 18 banned_term stages. (b) KDNA_Evolution.json.stages — compileEvolution ignores source.stages and regenerates from card.audit_log; the source's 4 evolution stages appear as 4 of the 58 total payload.evolution.stages entries (the other 54 are derived from axiom / scenario / self_check / case / reasoning / banned_term / term / framework cards). (c) reasoning_chains → failure_modes is a DIFFERENT-MECHANISM derivation (1 axiom = 1 chain). These are the known build-coverage limitations of kdna-studio-core v0.6.4. They do not block release; they are documented here for honesty.",
       "previous_version_status": "v0.1.0 (agent-completion-adjudication-v0.1.0.kdna, sha256 76a97828955490a72a5ac83bd74205c5a30ffc87468878158d0517b1669a3696) is preserved on GitHub Releases as a historical preview but is NOT in this index. v0.1.0 was classified as compiled-preview / released-preview because its source used field names that kdna-studio-cli migrate does not read; 6 self_checks, 6 misunderstandings, 18 banned_terms, and 5 scenes were in source but did not enter the compact-profile payload. v0.1.1 fixes the field-name gap and passes the 10-gate publish standard (see kdna-x/_strategy/10-gate-publish-standard.md)."
     }
   ]
