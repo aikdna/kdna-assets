@@ -86,13 +86,23 @@ kdna load ./agent-completion-adjudication.kdna --profile=compact --as=prompt
 
 | Asset | Version | SHA256 | Description |
 |---|---|---|---|
-| [viral-topic-selection.kdna](https://github.com/aikdna/kdna-assets/releases/tag/viral-topic-selection-v1.1.0) | 1.1.0 | `0b10ecc4...` | 爆款选题判断 — 4 axioms, 5 scenarios, 5 cases |
-| [title-attraction.kdna](https://github.com/aikdna/kdna-assets/releases/tag/title-attraction-v1.0.0) | 1.0.0 | `c39ce0de...` | 标题吸引力判断 — 4 axioms, 5 scenarios, 4 cases |
-| [short-video-script.kdna](https://github.com/aikdna/kdna-assets/releases/tag/short-video-script-v1.0.0) | 1.0.0 | `12242462...` | 短视频前三秒判断 — 4 axioms, 5 scenarios, 4 cases |
-| [agent-project-context.kdna](https://github.com/aikdna/kdna-assets/releases/tag/agent-project-context-v0.1.0) | 0.1.0 | `521ad68e...` | Project context judgment — 5 axioms, 6 self-checks, 5 cases |
-| [agent-completion-adjudication.kdna](https://github.com/aikdna/kdna-assets/releases/tag/agent-completion-adjudication-v0.1.0) | 0.1.0 | `76a97828...` | Completion adjudication — 5 axioms, 6 self-checks, 5 cases |
+| [viral-topic-selection.kdna](https://github.com/aikdna/kdna-assets/releases/tag/viral-topic-selection-v1.1.0) | 1.1.0 | `8cc71e23...` | 爆款选题判断 — 4 axioms, 6 self-checks, 2 cases |
+| [title-attraction.kdna](https://github.com/aikdna/kdna-assets/releases/tag/title-attraction-v1.0.0) | 1.0.0 | `c39ce0de...` | 标题吸引力判断 — 4 axioms, 7 self-checks, 2 cases |
+| [short-video-script.kdna](https://github.com/aikdna/kdna-assets/releases/tag/short-video-script-v1.0.0) | 1.0.0 | `12242462...` | 短视频前三秒判断 — 4 axioms, 9 self-checks, 2 cases |
+| [agent-project-context.kdna](https://github.com/aikdna/kdna-assets/releases/tag/agent-project-context-v0.1.0) | 0.1.0 | `521ad68e...` | Project context judgment — 5 axioms, 5 failure-modes, 5 cases |
+| [agent-completion-adjudication.kdna](https://github.com/aikdna/kdna-assets/releases/tag/agent-completion-adjudication-v0.1.0) | 0.1.0 | `76a97828...` | Completion adjudication — 5 axioms, 5 failure-modes, 5 cases |
 
 See [aikdna.com/en/assets](https://aikdna.com/en/assets) for the full gallery.
+
+The "axioms / self-checks / failure-modes / cases" counts in the
+description column reflect what is actually in each `.kdna` payload
+(extracted from the runtime `payload.kdnab`), not the source tree
+counts. The source trees define richer content (more
+self-checks, more failure-modes, more banned phrases) than the
+compact-profile payload currently surfaces; the team's open
+follow-up is to align the source format with what the runtime
+compact profile carries. See each asset's showcase
+"Source vs payload gap" section for the specifics.
 
 ## What this is
 

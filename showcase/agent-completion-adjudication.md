@@ -21,7 +21,7 @@ A four-cell completion ruling that every "done" claim must surface before the Ag
 | `USER INTENT MATCH` | Does the proof address the user's actual intent, or only the literal words they used? |
 | `UNRESOLVED RISK` | What could still go wrong despite the proof? A claim with non-empty risk is "done pending X", not "done". |
 
-The asset ships 5 axioms, 6 misjudgment patterns, 6 self-check rules, 18 banned phrases, 5 worked cases, and 5 principle-to-action reasoning chains.
+The asset ships 5 axioms, 5 failure-modes, and 5 worked cases in the runtime payload. The source tree in `kdna-x/A-agent-meta/completion-adjudication/` additionally defines 6 misjudgment patterns, 6 self-check rules, 18 banned phrases, and 5 principle-to-action reasoning chains; the kdna-studio build does not currently surface all of those in the compact profile, see [the team's known gap list](#source-vs-payload-gap) for the open follow-up.
 
 ---
 
@@ -99,3 +99,17 @@ Requires `kdna-cli ≥ 0.27`. No external dependencies. Works with any AI agent 
 ## License
 
 CC-BY-4.0.
+
+## Source vs payload gap
+
+The source tree in `kdna-x/A-agent-meta/completion-adjudication/KDNA_*.json`
+defines a richer judgment content than the runtime `.kdna` payload
+currently carries. The 6 misjudgment patterns, 6 self-check rules,
+18 banned phrases, and 5 principle-to-action reasoning chains in
+the source tree are not in the compact-profile payload that
+`kdna load` renders. The compact payload has 5 axioms, 5
+failure-modes (in `reasoning.failure_modes`), and 5 cases. The
+full profile may surface more; the team's follow-up is to either
+(a) update `KDNA_*.json` to use field names that kdna-studio
+surfaces in compact, or (b) extend the kdna-studio migrate path
+to map the source fields into the payload.

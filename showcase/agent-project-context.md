@@ -22,7 +22,7 @@ classified into one of four cells before being added:
 | `DROP` | Pollutes judgment: vague, opinionated, redundant, or true everywhere | Delete |
 | `CONVERT` | A real rule that is unenforceable as prose | Rewrite as a runnable command, linter rule, or schema check |
 
-The asset ships 5 axioms, 6 misjudgment patterns, 6 self-check rules, 5 worked cases, and 4 principle-to-action reasoning chains.
+The asset ships 5 axioms, 5 failure-modes, and 5 worked cases in the runtime payload. The source tree in `kdna-x/A-agent-meta/project-context/` additionally defines 6 misjudgment patterns, 6 self-check rules, and 4 principle-to-action reasoning chains; the kdna-studio build does not currently surface all of those in the compact profile, see [the team's known gap list](#source-vs-payload-gap) for the open follow-up.
 
 ---
 
@@ -95,3 +95,17 @@ Requires `kdna-cli ≥ 0.27`. No external dependencies. Works with any AI agent 
 ## License
 
 CC-BY-4.0.
+
+## Source vs payload gap
+
+The source tree in `kdna-x/A-agent-meta/project-context/KDNA_*.json`
+defines a richer judgment content than the runtime `.kdna` payload
+currently carries. The 6 misjudgment patterns, 6 self-check rules,
+12 banned phrases, and 4 principle-to-action reasoning chains in
+the source tree are not in the compact-profile payload that
+`kdna load` renders. The compact payload has 5 axioms, 5
+failure-modes (in `reasoning.failure_modes`), and 5 cases. The
+full profile may surface more; the team's follow-up is to either
+(a) update `KDNA_*.json` to use field names that kdna-studio
+surfaces in compact, or (b) extend the kdna-studio migrate path
+to map the source fields into the payload.

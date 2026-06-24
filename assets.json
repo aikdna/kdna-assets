@@ -20,10 +20,11 @@
       "contains": {
         "axioms": 4,
         "boundaries": 3,
+        "stances": 3,
         "self_checks": 6,
         "failure_modes": 3,
-        "scenarios": 5,
-        "cases": 5
+        "scenarios": 2,
+        "cases": 2
       }
     },
     {
@@ -45,10 +46,11 @@
       "contains": {
         "axioms": 4,
         "boundaries": 3,
+        "stances": 3,
         "self_checks": 7,
         "failure_modes": 3,
-        "scenarios": 5,
-        "cases": 4
+        "scenarios": 2,
+        "cases": 2
       }
     },
     {
@@ -70,10 +72,11 @@
       "contains": {
         "axioms": 4,
         "boundaries": 3,
-        "self_checks": 8,
-        "failure_modes": 5,
-        "scenarios": 5,
-        "cases": 4
+        "stances": 3,
+        "self_checks": 9,
+        "failure_modes": 3,
+        "scenarios": 2,
+        "cases": 2
       }
     },
     {
@@ -95,8 +98,9 @@
       "contains": {
         "axioms": 5,
         "boundaries": 0,
-        "self_checks": 6,
-        "failure_modes": 6,
+        "stances": 0,
+        "self_checks": 0,
+        "failure_modes": 5,
         "scenarios": 0,
         "cases": 5
       }
@@ -120,8 +124,9 @@
       "contains": {
         "axioms": 5,
         "boundaries": 0,
-        "self_checks": 6,
-        "failure_modes": 6,
+        "stances": 0,
+        "self_checks": 0,
+        "failure_modes": 5,
         "scenarios": 0,
         "cases": 5
       }
