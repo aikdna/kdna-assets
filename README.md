@@ -28,6 +28,39 @@ kdna plan-load ./<asset>.kdna
 kdna load ./<asset>.kdna --profile=compact --as=prompt
 ```
 
+## Quick start: `agent:project_context` v0.1.0
+
+The flagship release is `agent:project_context` — a judgment asset
+that teaches an AI Agent to evaluate every line of `AGENTS.md` /
+`CLAUDE.md` / `.cursorrules` before adding it.
+
+```bash
+# 1. Install kdna-cli (one-time)
+npm install -g @aikdna/kdna-cli
+
+# 2. Download the asset and its checksum
+curl -L -o agent-project-context.kdna \
+  https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.0/agent-project-context.kdna
+curl -L -o agent-project-context.kdna.sha256 \
+  https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.0/agent-project-context.kdna.sha256
+
+# 3. Verify (expected SHA: 521ad68e…dae0)
+shasum -a 256 -c agent-project-context.kdna.sha256
+
+# 4. Validate
+kdna validate ./agent-project-context.kdna
+
+# 5. Plan the load
+kdna plan-load ./agent-project-context.kdna
+
+# 6. Load into your AI agent
+kdna load ./agent-project-context.kdna --profile=compact --as=prompt
+```
+
+See [`showcase/agent-project-context.md`](showcase/agent-project-context.md)
+for what the asset judges, when to load it, and a worked
+before/after.
+
 ## Available assets
 
 | Asset | Version | SHA256 | Description |
