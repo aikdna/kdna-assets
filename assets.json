@@ -67,10 +67,10 @@
     {
       "name": "Project Context Judgment",
       "name_zh": "项目上下文判断",
-      "file": "agent-project-context-v0.1.1.kdna",
-      "latest_version": "0.1.1",
-      "tag": "agent-project-context-v0.1.1",
-      "sha256": "17ece15171ca2ec94641a9467dff2fa51268bbedb1e695886dee58caead00fb2",
+      "file": "agent-project-context-v0.1.2.kdna",
+      "latest_version": "0.1.2",
+      "tag": "agent-project-context-v0.1.2",
+      "sha256": "3728046081e1e17dd8f540f4902ef908bde5151568a79dcf721fba90d0d059ae",
       "release_date": "2026-06-25",
       "description": "Judges what belongs in an Agent-facing project document (AGENTS.md / CLAUDE.md / .cursorrules) — classifying each candidate line into CARRY / RELOCATE / DROP / CONVERT.",
       "description_zh": "判断 AGENTS.md / CLAUDE.md / .cursorrules 等项目文档的每一行内容——将候选行归类为 CARRY / RELOCATE / DROP / CONVERT。",
@@ -93,11 +93,13 @@
         "payload_scenarios": 5,
         "source_cases": 5,
         "payload_cases": 5,
+        "source_stages": 4,
+        "payload_evolution_stages": 4,
         "source_axioms": 5,
         "payload_core_axioms": 5,
         "reasoning_chains_note": "build derives failure_modes from axioms (1 axiom = 1 chain); source's 4 reasoning_chains are imported as reasoning cards but consumed by a different mechanism"
       },
-      "previous_version_status": "v0.1.0 (agent-project-context-v0.1.0.kdna, sha256 521ad68e8902b1083587e3bc642b9546462baacd9ff3336aafdd9902db93dae0) is preserved on GitHub Releases as a historical preview but is NOT in this index. v0.1.0 was classified as compiled-preview / released-preview because its source used field names that kdna-studio-cli migrate does not read; 6 self_checks, 6 misunderstandings, and 5 scenarios were in source but did not enter the compact-profile payload. v0.1.1 fixes the field-name gap and passes the 10-gate publish standard (see kdna-x/_strategy/10-gate-publish-standard.md)."
+      "previous_version_status": "v0.1.0 (agent-project-context-v0.1.0.kdna, sha256 521ad68e8902b1083587e3bc642b9546462baacd9ff3336aafdd9902db93dae0) and v0.1.1 (agent-project-context-v0.1.1.kdna, sha256 17ece15171ca2ec94641a9467dff2fa51268bbedb1e695886dee58caead00fb2) are preserved on GitHub Releases as historical previews but are NOT in this index. Both were classified as compiled-preview / released-preview. v0.1.0 had 5 source-schema gaps (misjudgments / self_checks / banned_phrases / chains / trigger_signals / growth_stages / cases shape). v0.1.1 fixed 3 of those but still had 2 gaps (cases input/classification shape, growth_stages field). v0.1.2 fixes the last 2 gaps and is the first version to pass the 10-gate release standard (see kdna-x/scripts/release-gate.mjs)."
     },
     {
       "name": "Completion Adjudication",
