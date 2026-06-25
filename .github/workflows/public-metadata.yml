@@ -1,0 +1,182 @@
+name: public-metadata
+
+# kdna-assets CI: validate the public asset index against reality on
+# every push to main and on every PR. Catches:
+#   - assets.json contains numbers that don't match payload
+#   - assets.json sha256 that doesn't match the actual release file
+#   - release URLs that return non-200
+#   - missing .sha256 sidecar files (R1 in the 2026-06-25 audit)
+#   - hand-written public `updated` timestamp that doesn't match
+#     the actual commit time (R5 in the 2026-06-25 audit)
+#   - deprecated field names in assets.json (reasoning_chains /
+#     anti_patterns / source_files)
+#   - hand-written public metadata that diverged from the release-gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets.json'
+      - 'README.md'
+      - 'showcase/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'assets.json'
+      - 'README.md'
+      - 'showcase/**'
+      - '.github/workflows/public-metadata.yml'
+      - '.github/pull_request_template.md'
+
+jobs:
+  public-metadata:
+    name: Gate 9 — public metadata truth
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history so we can compare updated to commit times
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: Install kdna CLI
+        run: npm install -g @aikdna/kdna-cli@0.27.4
+
+      - name: Clone kdna-x (read-only) to access audit-public-metadata.mjs
+        run: |
+          git clone --depth=1 https://github.com/aikdna/kdna-x.git /tmp/kdna-x
+
+      - name: Verify updated timestamp matches latest commit
+        # The `updated` field in assets.json must equal the ISO 8601
+        # timestamp of the latest commit that touched assets.json.
+        # This prevents hand-written "2026-06-25T00:00:00Z" placeholders
+        # (the 2026-06-25 audit caught one such placeholder being 1 day
+        # off from the actual commit time). To fix: rebase so the
+        # latest assets.json change has the right commit time, or
+        # touch assets.json (any small change) to refresh the timestamp.
+        run: |
+          actual=$(git log -1 --format='%cI' -- assets.json)
+          declared=$(python3 -c "import json; print(json.load(open('assets.json'))['updated'])")
+          echo "actual commit time:  $actual"
+          echo "assets.json updated: $declared"
+          if [ "$actual" != "$declared" ]; then
+            echo "::error::assets.json \`updated\` ($declared) does not match the latest commit time on assets.json ($actual). Refresh by touching assets.json or rebasing."
+            exit 1
+          fi
+          echo "OK: updated matches commit time"
+
+      - name: For each entry: verify sha256 + contains + URL + sidecar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 << 'PYEOF'
+          import json, subprocess, os, hashlib, urllib.request, urllib.error, sys
+
+          with open('assets.json') as f:
+              data = json.load(f)
+
+          errors = []
+          for entry in data['assets']:
+              name = entry.get('name', '?')
+              tag = entry.get('tag', '')
+              sha = entry.get('sha256', '')
+              file_field = entry.get('file', '')
+              url = f"https://github.com/aikdna/kdna-assets/releases/download/{tag}/{file_field}"
+              sidecar_name_v1 = f"{file_field}.sha256"  # flagship convention
+              sidecar_name_legacy = f"{file_field.replace('.kdna', '')}.sha256"  # legacy convention
+              sidecar_urls = [
+                  f"https://github.com/aikdna/kdna-assets/releases/download/{tag}/{sidecar_name_v1}",
+                  f"https://github.com/aikdna/kdna-assets/releases/download/{tag}/{sidecar_name_legacy}",
+              ]
+
+              print(f"=== {name} v{entry.get('latest_version', '?')} ===")
+              print(f"    URL: {url}")
+
+              # 1. Check URL returns 200
+              try:
+                  req = urllib.request.Request(url, method='HEAD')
+                  req.add_header('User-Agent', 'kdna-assets-CI/1.0')
+                  with urllib.request.urlopen(req, timeout=15) as r:
+                      status = r.status
+              except urllib.error.HTTPError as e:
+                  status = e.code
+              except Exception as e:
+                  status = 0
+              if status != 200:
+                  errors.append(f"{name}: release URL {url} returned {status}, expected 200")
+                  print(f"    URL status: {status} FAIL")
+                  continue
+
+              # 2. Check sidecar URL returns 200 (either naming convention)
+              sidecar_ok = False
+              sidecar_found = ''
+              for s_url in sidecar_urls:
+                  try:
+                      req = urllib.request.Request(s_url, method='HEAD')
+                      req.add_header('User-Agent', 'kdna-assets-CI/1.0')
+                      with urllib.request.urlopen(req, timeout=15) as r:
+                          if r.status == 200:
+                              sidecar_ok = True
+                              sidecar_found = s_url
+                              break
+                  except Exception:
+                      pass
+              if not sidecar_ok:
+                  errors.append(f"{name}: no .sha256 sidecar found. Tried: {sidecar_urls}")
+                  print(f"    Sidecar: FAIL")
+              else:
+                  print(f"    Sidecar: PASS ({sidecar_found.split('/')[-1]})")
+
+              # 3. Download + verify sha256
+              try:
+                  with urllib.request.urlopen(url, timeout=30) as r:
+                      content = r.read()
+                  actual_sha = hashlib.sha256(content).hexdigest()
+              except Exception as e:
+                  errors.append(f"{name}: download failed: {e}")
+                  print(f"    Download: FAIL ({e})")
+                  continue
+
+              if actual_sha != sha:
+                  errors.append(f"{name}: sha256 mismatch — assets.json says {sha[:12]}…, actual is {actual_sha[:12]}…")
+                  print(f"    SHA: FAIL ({actual_sha[:12]}… vs {sha[:12]}…)")
+                  continue
+              print(f"    SHA: PASS ({actual_sha[:12]}…)")
+
+              # 4. Save to temp file for kdna-cli inspection
+              tmp = f"/tmp/{file_field}"
+              with open(tmp, 'wb') as f:
+                  f.write(content)
+
+              # 5. Run audit-public-metadata.mjs from kdna-x
+              contains = entry.get('contains', {})
+              if contains:
+                  meta_path = '/tmp/test-entry.json'
+                  with open(meta_path, 'w') as f:
+                      json.dump(entry, f)
+                  r = subprocess.run(
+                      ['node', '/tmp/kdna-x/scripts/audit-public-metadata.mjs',
+                       '--dist', tmp, '--metadata', meta_path],
+                      capture_output=True, text=True
+                  )
+                  if r.returncode != 0:
+                      errors.append(f"{name}: audit-public-metadata.mjs FAILED:\n{r.stdout}\n{r.stderr}")
+                      print(f"    audit: FAIL")
+                  else:
+                      print(f"    audit: PASS")
+
+              # 6. Check for deprecated field names in contains
+              DEPRECATED = ['reasoning_chains', 'anti_patterns', 'source_files']
+              for f in DEPRECATED:
+                  if f in contains:
+                      errors.append(f"{name}: contains.{f} is deprecated (build schema does not produce this field)")
+                      print(f"    DEPRECATED field {f}: FAIL")
+
+          if errors:
+              print("\n❌ public-metadata audit FAILED:")
+              for e in errors:
+                  print(f"  ✗ {e}")
+              sys.exit(1)
+          print("\n✅ public-metadata audit: PASS")
+          PYEOF
