@@ -25,7 +25,9 @@
         "failure_modes": 3,
         "scenarios": 2,
         "cases": 2
-      }
+      },
+      "legacy": true,
+      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Not part of the A-layer flagship pipeline. See kdna-x/_strategy/legacy-assets-audit-plan.md for the audit plan."
     },
     {
       "name": "Title Attraction",
@@ -51,7 +53,9 @@
         "failure_modes": 3,
         "scenarios": 2,
         "cases": 2
-      }
+      },
+      "legacy": true,
+      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Not part of the A-layer flagship pipeline. See kdna-x/_strategy/legacy-assets-audit-plan.md for the audit plan."
     },
     {
       "name": "Short Video Hook Judgment",
@@ -77,7 +81,9 @@
         "failure_modes": 3,
         "scenarios": 2,
         "cases": 2
-      }
+      },
+      "legacy": true,
+      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Not part of the A-layer flagship pipeline. See kdna-x/_strategy/legacy-assets-audit-plan.md for the audit plan."
     },
     {
       "name": "Project Context Judgment",
