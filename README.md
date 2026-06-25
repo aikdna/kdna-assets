@@ -88,48 +88,76 @@ See [aikdna.com/en/assets](https://aikdna.com/en/assets) for the full gallery.
 
 ## Per-asset download / verify (working commands)
 
-The download / verify commands above are copy-paste-runnable
-for the 2 flagship assets. The 3 legacy content-domain
-assets (viral-topic-selection, title-attraction,
-short-video-script) follow a different file-naming
-convention from the flagships (legacy uses `<name>.kdna`
-without the version suffix, the sidecar is `<name>.sha256`
-without `.kdna`). Use these commands for the legacy 3:
+All 5 assets now use the unified sidecar naming convention
+`<name>-<version>.kdna.sha256`. The 3 legacy content-domain
+assets previously had sidecars under the old naming
+`<name>.sha256`; those old sidecars are kept on the releases
+for a transition period (6-12 months) and will be removed
+in a future PR. The commands below use the new naming.
+
+The 2 A-layer flagship assets have their `.kdna` file in the
+new naming (`<name>-<version>.kdna`). The 3 legacy content-domain
+assets have their `.kdna` file in the old naming (`<name>.kdna`,
+no version suffix) — only their sidecar is in the new naming.
+This is because the legacy 3 were published before the new
+naming was introduced; rebuilding them with the new naming
+is a separate (deferred) task.
 
 ```bash
-# viral-topic-selection v1.1.0
+# viral-topic-selection v1.1.0 (legacy content-domain)
 curl -L -O https://github.com/aikdna/kdna-assets/releases/download/viral-topic-selection-v1.1.0/viral-topic-selection.kdna
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/viral-topic-selection-v1.1.0/viral-topic-selection.sha256
-shasum -a 256 -c viral-topic-selection.sha256
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/viral-topic-selection-v1.1.0/viral-topic-selection-v1.1.0.kdna.sha256
+shasum -a 256 -c viral-topic-selection-v1.1.0.kdna.sha256
 kdna validate viral-topic-selection.kdna
 kdna plan-load viral-topic-selection.kdna
 kdna load viral-topic-selection.kdna --profile=compact --as=prompt
 ```
 
 ```bash
-# title-attraction v1.0.0
+# title-attraction v1.0.0 (legacy content-domain)
 curl -L -O https://github.com/aikdna/kdna-assets/releases/download/title-attraction-v1.0.0/title-attraction.kdna
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/title-attraction-v1.0.0/title-attraction.sha256
-shasum -a 256 -c title-attraction.sha256
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/title-attraction-v1.0.0/title-attraction-v1.0.0.kdna.sha256
+shasum -a 256 -c title-attraction-v1.0.0.kdna.sha256
 kdna validate title-attraction.kdna
 kdna plan-load title-attraction.kdna
 kdna load title-attraction.kdna --profile=compact --as=prompt
 ```
 
 ```bash
-# short-video-script v1.0.0
+# short-video-script v1.0.0 (legacy content-domain)
 curl -L -O https://github.com/aikdna/kdna-assets/releases/download/short-video-script-v1.0.0/short-video-script.kdna
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/short-video-script-v1.0.0/short-video-script.sha256
-shasum -a 256 -c short-video-script.sha256
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/short-video-script-v1.0.0/short-video-script-v1.0.0.kdna.sha256
+shasum -a 256 -c short-video-script-v1.0.0.kdna.sha256
 kdna validate short-video-script.kdna
 kdna plan-load short-video-script.kdna
 kdna load short-video-script.kdna --profile=compact --as=prompt
 ```
 
-The naming-convention split (flagships vs legacy) is a
-known artifact of pre-pipeline releases. A future PR will
-unify on `<name>-<version>.kdna` + `<name>-<version>.kdna.sha256`
-for all 5 assets.
+```bash
+# agent:project_context v0.1.2 (A-layer flagship)
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna.sha256
+shasum -a 256 -c agent-project-context-v0.1.2.kdna.sha256
+kdna validate agent-project-context-v0.1.2.kdna
+kdna plan-load agent-project-context-v0.1.2.kdna
+kdna load agent-project-context-v0.1.2.kdna --profile=compact --as=prompt
+```
+
+```bash
+# agent:completion_adjudication v0.1.1 (A-layer flagship)
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna
+curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna.sha256
+shasum -a 256 -c agent-completion-adjudication-v0.1.1.kdna.sha256
+kdna validate agent-completion-adjudication-v0.1.1.kdna
+kdna plan-load agent-completion-adjudication-v0.1.1.kdna
+kdna load agent-completion-adjudication-v0.1.1.kdna --profile=compact --as=prompt
+```
+
+> **Transition note**: the 3 legacy assets also have sidecars
+> under the old naming (`<name>.sha256` without `.kdna`).
+> These are kept on the releases for backward compatibility
+> but will be removed in a future PR. **Use the new naming
+> above for all new work.**
 
 ## What this is
 
