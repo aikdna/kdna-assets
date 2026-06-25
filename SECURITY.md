@@ -6,7 +6,7 @@ Please **do not** report security vulnerabilities through public GitHub issues.
 
 Instead, use one of these private channels:
 
-- **GitHub Private Vulnerability Reporting**: Go to the [Security Advisories](https://github.com/aikdna/kdna/security/advisories/new) page
+- **GitHub Private Vulnerability Reporting**: Go to the [Security Advisories](https://github.com/aikdna/kdna/security/advisories/new) page. Reports are directed to the parent kdna repo because the primary risk surface is kdna-cli's load logic, not asset content.
 - **Email**: security@aikdna.com
 
 We aim to respond within 72 hours and provide a timeline for resolution within 1 week.
