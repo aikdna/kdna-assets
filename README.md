@@ -204,9 +204,8 @@ docs (added 2026-06-25):
 - [showcase/short-video-script.md](showcase/short-video-script.md)
 
 The legacy 3 are released-as-is from before the new
-pipeline; see the
-[legacy assets audit plan](https://github.com/aikdna/kdna-x/blob/main/_strategy/legacy-assets-audit-plan.md)
-for their audit status.
+pipeline; see the legacy assets audit plan (private) for their
+audit status.
 
 ---
 
