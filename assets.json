@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-25T00:00:00Z",
+  "updated": "2026-06-25T00:24:00Z",
   "assets": [
     {
       "name": "Viral Topic Selection",
@@ -11,7 +11,12 @@
       "release_date": "2026-06-23",
       "description": "Helps AI evaluate content topics for viral potential — checking tension, curiosity gap, emotional resonance, and social currency.",
       "description_zh": "帮助 AI 判断内容选题的传播潜力——检查冲突张力、好奇心缺口、情绪共鸣和社交货币。",
-      "profiles": ["index", "compact", "scenario", "full"],
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
       "contains": {
         "axioms": 4,
         "boundaries": 3,
@@ -32,7 +37,12 @@
       "release_date": "2026-06-23",
       "description": "Helps AI evaluate title attraction — checking audience clarity, information gap, specific benefit, credibility, and promise-content alignment.",
       "description_zh": "帮助 AI 判断标题吸引力——检查受众明确度、信息缺口、具体利益、可信度和承诺匹配度。",
-      "profiles": ["index", "compact", "scenario", "full"],
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
       "contains": {
         "axioms": 4,
         "boundaries": 3,
@@ -53,7 +63,12 @@
       "release_date": "2026-06-23",
       "description": "Helps AI evaluate short video opening hooks — checking first-3-second gap, scene conflict, speakability, and audience retention signals.",
       "description_zh": "帮助 AI 判断短视频开头前三秒的钩子效果——检查信息缺口、场景冲突、口播顺口度和留存信号。",
-      "profiles": ["index", "compact", "scenario", "full"],
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
       "contains": {
         "axioms": 4,
         "boundaries": 3,
@@ -74,7 +89,12 @@
       "release_date": "2026-06-25",
       "description": "Judges what belongs in an Agent-facing project document (AGENTS.md / CLAUDE.md / .cursorrules) — classifying each candidate line into CARRY / RELOCATE / DROP / CONVERT.",
       "description_zh": "判断 AGENTS.md / CLAUDE.md / .cursorrules 等项目文档的每一行内容——将候选行归类为 CARRY / RELOCATE / DROP / CONVERT。",
-      "profiles": ["index", "compact", "scenario", "full"],
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
       "contains": {
         "axioms": 5,
         "boundaries": 0,
@@ -116,7 +136,12 @@
       "release_date": "2026-06-25",
       "description": "Judges whether an AI Agent's 'I'm done' claim is actually done. Forces four cells before the 'done' word: DONE CLAIM / OBSERVABLE PROOF / USER INTENT MATCH / UNRESOLVED RISK.",
       "description_zh": "判断 Agent 的「我做完了」声明是否真的完成。要求四格：完成声明 / 可观察证据 / 用户意图匹配 / 未解决风险，缺一格不可说「完成」。",
-      "profiles": ["index", "compact", "scenario", "full"],
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
       "contains": {
         "axioms": 5,
         "boundaries": 0,
