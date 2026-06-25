@@ -1,0 +1,53 @@
+name: public-metadata
+
+# kdna-assets CI: validate the public asset index against reality on
+# every push to main and on every PR. Catches:
+#   - assets.json `updated` timestamp that doesn't match the latest
+#     commit time on assets.json
+#   - assets.json `sha256` that doesn't match the actual dist file
+#   - Release URLs that return non-200
+#   - Missing .sha256 sidecar files
+#   - `contains` numbers that don't match the actual payload
+#   - Deprecated field names in assets.json (reasoning_chains /
+#     anti_patterns / source_files)
+#
+# This CI is self-contained: it uses only public-side tools (git
+# for the commit time, urllib for the release HEAD/GET, the
+# vendored `scripts/audit-public-metadata.py` for the checks,
+# and python's zipfile to read payload.kdnab). No private-repo
+# clone is performed.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets.json'
+      - 'README.md'
+      - 'showcase/**'
+      - 'scripts/audit-public-metadata.py'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'assets.json'
+      - 'README.md'
+      - 'showcase/**'
+      - 'scripts/audit-public-metadata.py'
+      - '.github/workflows/public-metadata.yml'
+      - '.github/pull_request_template.md'
+
+jobs:
+  public-metadata:
+    name: Gate 9 — public metadata truth
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history so the vendored script can `git log` the
+          # actual commit time on assets.json
+          fetch-depth: 0
+
+      - name: Run the vendored public-metadata audit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/audit-public-metadata.py
