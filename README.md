@@ -196,10 +196,17 @@ through a real before/after:
 - [showcase/agent-project-context.md](showcase/agent-project-context.md)
 - [showcase/agent-completion-adjudication.md](showcase/agent-completion-adjudication.md)
 
-The legacy 3 content-domain assets do not have showcase
-docs (they are released-as-is from before the showcase
-format existed; see the
-[legacy assets audit plan](https://github.com/aikdna/kdna-x/blob/main/_strategy/legacy-assets-audit-plan.md)).
+The 3 legacy content-domain assets also have showcase
+docs (added 2026-06-25):
+
+- [showcase/viral-topic-selection.md](showcase/viral-topic-selection.md)
+- [showcase/title-attraction.md](showcase/title-attraction.md)
+- [showcase/short-video-script.md](showcase/short-video-script.md)
+
+The legacy 3 are released-as-is from before the new
+pipeline; see the
+[legacy assets audit plan](https://github.com/aikdna/kdna-x/blob/main/_strategy/legacy-assets-audit-plan.md)
+for their audit status.
 
 ---
 
