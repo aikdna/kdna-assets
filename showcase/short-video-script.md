@@ -54,7 +54,7 @@ weak opening may score 1-2.
 
 ## Provenance
 
-- **Source:** kdna-x/D-content/legacy-viral-content/short-video-script/ (private)
+- **Source:** internal namespace (redacted in public release)
 - **Version:** 1.0.0 (released 2026-06-23, content-domain legacy)
 - **Asset type:** `domain_judgment` (NOT part of the A-layer
   flagship pipeline; this is a legacy released-as-is asset
@@ -83,5 +83,5 @@ This is a **legacy content-domain asset**, not a flagship
 A-layer asset. It was published under the pre-pipeline
 strategy (June 2026) and is not part of the new 10-gate
 release standard. It is preserved as-is. See
-[kdna-x/_strategy/legacy-assets-audit-plan.md](https://github.com/aikdna/kdna-x/blob/main/_strategy/legacy-assets-audit-plan.md)
+[internal strategy document (redacted in public release)]
 for the audit status.
