@@ -17,15 +17,15 @@ modify, and redistribute with attribution to the source.
 
 ## Quick start
 
-> Requires `kdna-cli ≥ 0.27.4` and a Linux / macOS shell.
+> Requires `kdna-cli ≥ 0.28.30` and a Linux / macOS shell.
 > `kdna-cli` is the runtime for `.kdna` v1 files; it is
 > separate from `kdna-studio-cli` (which authors assets).
 
 ### Install kdna-cli
 
 ```bash
-npm install -g @aikdna/kdna-cli@0.27.4
-kdna --version   # should print 0.27.4
+npm install -g @aikdna/kdna-cli@0.28.30
+kdna --version   # should print 0.28.30
 ```
 
 ### Use an asset — the two A-layer flagship assets
@@ -186,7 +186,7 @@ asset creator and the user.
 ## Related
 
 - [KDNA CLI](https://github.com/aikdna/kdna-cli) —
-  install via `npm install -g @aikdna/kdna-cli@0.27.4`
+  install via `npm install -g @aikdna/kdna-cli@0.28.30`
 - [KDNA Studio CLI](https://github.com/aikdna/kdna-studio-cli)
   — create assets via `npm install -g @aikdna/kdna-studio-cli`
 - [KDNA Core](https://github.com/aikdna/kdna) — protocol
