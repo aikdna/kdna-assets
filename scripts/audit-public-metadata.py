@@ -108,7 +108,7 @@ def actual_payload_counts(payload):
         'axioms':        len(payload.get('core', {}).get('axioms', [])),
         'boundaries':    len(payload.get('core', {}).get('boundaries', [])),
         'stances':       len(payload.get('core', {}).get('stances', [])),
-        'self_checks':   len(payload.get('reasoning', {}).get('self_checks', [])),
+        'self_check':    len(payload.get('reasoning', {}).get('self_checks', [])),
         'failure_modes': len(payload.get('reasoning', {}).get('failure_modes', [])),
         'scenarios':     len(payload.get('scenarios', [])),
         'cases':         len(payload.get('cases', [])),

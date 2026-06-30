@@ -52,7 +52,7 @@
         "axioms": 4,
         "boundaries": 3,
         "stances": 3,
-        "self_checks": 6,
+        "self_check": 6,
         "failure_modes": 3,
         "scenarios": 2,
         "cases": 2
@@ -84,7 +84,7 @@
         "axioms": 4,
         "boundaries": 3,
         "stances": 3,
-        "self_checks": 7,
+        "self_check": 7,
         "failure_modes": 3,
         "scenarios": 2,
         "cases": 2
@@ -116,7 +116,7 @@
         "axioms": 4,
         "boundaries": 3,
         "stances": 3,
-        "self_checks": 9,
+        "self_check": 9,
         "failure_modes": 3,
         "scenarios": 2,
         "cases": 2
@@ -148,7 +148,7 @@
         "axioms": 5,
         "boundaries": 0,
         "stances": 0,
-        "self_checks": 6,
+        "self_check": 6,
         "failure_modes": 5,
         "scenarios": 5,
         "cases": 5
@@ -199,7 +199,7 @@
         "axioms": 5,
         "boundaries": 0,
         "stances": 0,
-        "self_checks": 6,
+        "self_check": 6,
         "failure_modes": 5,
         "scenarios": 5,
         "cases": 5
