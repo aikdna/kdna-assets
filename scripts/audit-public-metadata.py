@@ -17,7 +17,7 @@ Catches:
   - `updated` field that doesn't match the latest commit time
     (R5 from 2026-06-25 audit)
 
-This script replaces the previous kdna-x-dependent
+This script replaces the previous private-incubator-dependent
 `audit-public-metadata.mjs` clone. The vendored copy is
 deliberately kept simple: it does only what public-side
 CI needs, no private-repo assumption.

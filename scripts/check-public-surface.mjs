@@ -7,10 +7,8 @@
  * showcase/, root-level *.md and *.json) for references that should not
  * be present in a public release:
  *
- *   - Private repo URLs (github.com/aikdna/kdna-x, aikdna/kdna-lab,
- *     aikdna/kdna-writing, aikdna/kdna-prompt_diagnosis, aikdna/kdna-agent_safety,
- *     aikdna/kdna-releases, aikdna/kdna-registry)
- *   - Private repo path references (kdna-x/A-agent-meta/, kdna-x/_strategy/, etc.)
+ *   - Private repo URLs (any aikdna/* repo not on the allowlist)
+ *   - Private repo path references (any private aikdna/* subdirectory)
  *   - Local filesystem paths leaking the developer's machine
  *     (/Users/AI/K/OPEN/, /private/tmp/)
  *   - Full (40-char) git commit hashes in audit/spec docs
@@ -52,19 +50,49 @@ const ALLOWLIST_FILES = new Set([
 
 const RULES = [
   {
+    // Allowlist: any aikdna/<x> reference where x is NOT on this list
+    // is a private-repo leak. The script does not name any private
+    // repo — it only names the public ones. This way the script itself
+    // does not leak the names of private repos.
     name: 'private-repo-URL',
-    pattern: /github\.com\/aikdna\/(kdna-x|kdna-lab|kdna-releases|kdna-registry|kdna-writing|kdna-prompt_diagnosis|kdna-agent_safety)\b/g,
-    hint: 'Replace with neutral wording or "(private)".',
+    pattern: /github\.com\/aikdna\/([a-z][a-z0-9_-]+)\b(?!\/)/g,
+    hint: 'aikdna/<x> reference where <x> is not in the public allowlist. Replace with neutral wording or "(private)".',
+    allowlist: new Set([
+      'kdna',
+      'kdna-cli',
+      'kdna-studio',
+      'kdna-studio-cli',
+      'kdna-studio-core',
+      'kdna-skills',
+      'kdna-vscode',
+      'kdna-core-swift',
+      'kdna-website',
+      'kdna-assets',
+      'kdna-asset-skill',
+      'kdna-evals',
+      'kdna-skill-template',
+    ]),
   },
   {
+    // Same logic for bare aikdna/<x> references
     name: 'private-repo-URL-bare',
-    pattern: /\baikdna\/(kdna-x|kdna-lab|kdna-releases|kdna-registry|kdna-writing|kdna-prompt_diagnosis|kdna-agent_safety)\b(?!\.)/g,
-    hint: 'Replace with neutral wording or "(private)".',
-  },
-  {
-    name: 'private-repo-path',
-    pattern: /kdna-x\/(A-agent-meta|_strategy|D-content|B-engineering|project-context|completion-adjudication|intent-boundary|safety-boundary|task-decomposition|anti-drift-context)\b/g,
-    hint: 'Replace with "internal namespace (redacted)".',
+    pattern: /\baikdna\/([a-z][a-z0-9_-]+)\b(?!\.)/g,
+    hint: 'aikdna/<x> reference where <x> is not in the public allowlist. Replace with neutral wording or "(private)".',
+    allowlist: new Set([
+      'kdna',
+      'kdna-cli',
+      'kdna-studio',
+      'kdna-studio-cli',
+      'kdna-studio-core',
+      'kdna-skills',
+      'kdna-vscode',
+      'kdna-core-swift',
+      'kdna-website',
+      'kdna-assets',
+      'kdna-asset-skill',
+      'kdna-evals',
+      'kdna-skill-template',
+    ]),
   },
   {
     name: 'local-filesystem-path',
@@ -153,6 +181,12 @@ for (const full of files) {
       rule.pattern.lastIndex = 0;
       let m;
       while ((m = rule.pattern.exec(line)) !== null) {
+        // For rules with an allowlist, the regex captures <x>; skip
+        // matches where <x> is in the allowlist.
+        if (rule.allowlist) {
+          const captured = m[1];
+          if (rule.allowlist.has(captured)) continue;
+        }
         findings.push({
           file: rel,
           line: i + 1,
