@@ -1,163 +1,90 @@
 # KDNA Assets
 
+> [aikdna.com](https://aikdna.com) · [`@aikdna/kdna-cli`](https://www.npmjs.com/package/@aikdna/kdna-cli)
+
 Public release repository for official KDNA judgment asset files.
 
-Each asset is distributed through a **GitHub Release** containing:
+A `.kdna` asset is a portable, inspectable, and verifiable container of domain judgment — the principles an expert reasons from, the traps they avoid, and the self-checks they run before deciding. Load it into any supported AI agent with one command.
 
-- The `.kdna` runtime file
-- A `.sha256` checksum file (same basename + `.sha256`)
-- A release card with purpose, usage, and limitations
+```bash
+npm install -g @aikdna/kdna-cli
+kdna load agent-project-context-v0.1.2.kdna --profile=compact --as=prompt
+```
+
+## Current assets
+
+Two production-quality assets are available today:
+
+| Asset | Use case | Requires | Showcase |
+|---|---|---|---|
+| **agent:project_context v0.1.2** | Judges every line of an AGENTS.md / CLAUDE.md / codex.md for CARRY / RELOCATE / DROP / CONVERT | kdna-cli ≥ 0.28.31 | [showcase →](showcase/agent-project-context.md) |
+| **agent:completion_adjudication v0.1.1** | Forces the agent to surface DONE CLAIM / OBSERVABLE PROOF / USER INTENT MATCH / UNRESOLVED RISK before any "I'm done" claim | kdna-cli ≥ 0.28.31 | [showcase →](showcase/agent-completion-adjudication.md) |
+
+### Try them now
+
+```bash
+npm install -g @aikdna/kdna-cli
+
+# agent:project_context — improve your AGENTS.md quality
+curl -LO https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna
+kdna validate agent-project-context-v0.1.2.kdna
+kdna load    agent-project-context-v0.1.2.kdna --profile=compact --as=prompt
+
+# agent:completion_adjudication — close the "I'm done" gap
+curl -LO https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna
+kdna validate agent-completion-adjudication-v0.1.1.kdna
+kdna load    agent-completion-adjudication-v0.1.1.kdna --profile=compact --as=prompt
+```
+
+## How to use with your AI agent
+
+Once loaded, the judgment context is injected into your agent's context. The agent behaves differently — it applies the domain's principles, avoids its documented failure modes, and runs its self-checks before responding. The user sees better answers; the KDNA mechanics stay silent.
+
+**For agents with the kdna-loader skill installed** (OpenCode, Codex, Claude Code, Cursor):
+```bash
+kdna install agent-project-context-v0.1.2.kdna
+# The agent will automatically discover and load it per task
+```
+
+**Manual injection** (any agent):
+```bash
+kdna load agent-project-context-v0.1.2.kdna --profile=compact --as=prompt
+# Copy the output into your system prompt or context
+```
+
+## Download and verify
+
+```bash
+# agent:project_context v0.1.2
+curl -LO https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna
+curl -LO https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna.sha256
+shasum -a 256 -c agent-project-context-v0.1.2.kdna.sha256
+kdna validate agent-project-context-v0.1.2.kdna
+```
+
+```bash
+# agent:completion_adjudication v0.1.1
+curl -LO https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna
+curl -LO https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna.sha256
+shasum -a 256 -c agent-completion-adjudication-v0.1.1.kdna.sha256
+kdna validate agent-completion-adjudication-v0.1.1.kdna
+```
+
+## Archive: content-domain assets (legacy)
+
+The following three assets were published before the current authoring pipeline and are preserved for reference. They work with current `kdna-cli` but are not maintained. Use the assets above for new work.
+
+| Asset | Description |
+|---|---|
+| [viral-topic-selection v1.1.0](https://github.com/aikdna/kdna-assets/releases/tag/viral-topic-selection-v1.1.0) | 爆款选题判断 — viral content topic evaluation |
+| [title-attraction v1.0.0](https://github.com/aikdna/kdna-assets/releases/tag/title-attraction-v1.0.0) | 标题吸引力判断 — title attraction evaluation |
+| [short-video-script v1.0.0](https://github.com/aikdna/kdna-assets/releases/tag/short-video-script-v1.0.0) | 短视频前三秒判断 — short video hook evaluation |
 
 ## License
 
-This repository is released under **CC-BY-4.0** (see the
-`LICENSE` file at the repo root). Asset creators retain
-copyright on the judgment content; users are free to use,
-modify, and redistribute with attribution to the source.
+CC-BY-4.0. Asset creators retain copyright on the judgment content; users are free to use, modify, and redistribute with attribution to the source.
 
-## Quick start
 
-> Requires `kdna-cli ≥ 0.28.30` and a Linux / macOS shell.
-> `kdna-cli` is the runtime for `.kdna` v1 files; it is
-> separate from `kdna-studio-cli` (which authors assets).
-
-### Install kdna-cli
-
-```bash
-npm install -g @aikdna/kdna-cli@0.28.30
-kdna --version   # should print 0.28.30
-```
-
-### Use an asset — the two A-layer flagship assets
-
-```bash
-# 1. Download agent:project_context v0.1.2
-curl -L -O \
-  https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna
-curl -L -O \
-  https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna.sha256
-
-# 2. Verify the SHA256 (fails loudly if anything is wrong)
-shasum -a 256 -c agent-project-context-v0.1.2.kdna.sha256
-
-# 3. Validate the v1 container (format / schema / payload / checksums)
-kdna validate agent-project-context-v0.1.2.kdna
-
-# 4. Probe load-readiness
-kdna plan-load agent-project-context-v0.1.2.kdna
-
-# 5. Load the compact-profile prompt into your AI agent
-kdna load agent-project-context-v0.1.2.kdna --profile=compact --as=prompt
-```
-
-```bash
-# Same 5 steps for agent:completion_adjudication v0.1.1
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna.sha256
-shasum -a 256 -c agent-completion-adjudication-v0.1.1.kdna.sha256
-kdna validate agent-completion-adjudication-v0.1.1.kdna
-kdna plan-load agent-completion-adjudication-v0.1.1.kdna
-kdna load agent-completion-adjudication-v0.1.1.kdna --profile=compact --as=prompt
-```
-
-### What the asset does (one-liners)
-
-- **`agent:project_context`** — judges every candidate line
-  in an Agent-facing project document (AGENTS.md / CLAUDE.md
-  / codex.md / .cursorrules) as CARRY / RELOCATE / DROP /
-  CONVERT. Read the
-  [showcase](showcase/agent-project-context.md) for the
-  full before/after.
-- **`agent:completion_adjudication`** — forces the Agent to
-  surface four cells (DONE CLAIM / OBSERVABLE PROOF / USER
-  INTENT MATCH / UNRESOLVED RISK) before any "I'm done"
-  claim. Read the
-  [showcase](showcase/agent-completion-adjudication.md).
-
-## Available assets
-
-| Asset | Version | SHA256 | Description |
-|---|---|---|---|
-| [viral-topic-selection.kdna](https://github.com/aikdna/kdna-assets/releases/tag/viral-topic-selection-v1.1.0) | 1.1.0 | `8cc71e23...` | 爆款选题判断 — 4 axioms, 6 self-checks, 2 cases |
-| [title-attraction.kdna](https://github.com/aikdna/kdna-assets/releases/tag/title-attraction-v1.0.0) | 1.0.0 | `c39ce0de...` | 标题吸引力判断 — 4 axioms, 7 self-checks, 2 cases |
-| [short-video-script.kdna](https://github.com/aikdna/kdna-assets/releases/tag/short-video-script-v1.0.0) | 1.0.0 | `12242462...` | 短视频前三秒判断 — 4 axioms, 9 self-checks, 2 cases |
-| [agent-project-context-v0.1.2.kdna](https://github.com/aikdna/kdna-assets/releases/tag/agent-project-context-v0.1.2) | 0.1.2 | `37280460...` | Project context judgment — 5 axioms, 6 self-checks, 5 cases |
-| [agent-completion-adjudication-v0.1.1.kdna](https://github.com/aikdna/kdna-assets/releases/tag/agent-completion-adjudication-v0.1.1) | 0.1.1 | `2f46bccc...` | Completion adjudication — 5 axioms, 6 self-checks, 5 cases |
-
-See [aikdna.com/en/assets](https://aikdna.com/en/assets) for the full gallery.
-
-## Per-asset download / verify (working commands)
-
-All 5 assets now use the unified sidecar naming convention
-`<name>-<version>.kdna.sha256`. The 3 legacy content-domain
-assets previously had sidecars under the old naming
-`<name>.sha256`; those old sidecars are kept on the releases
-for a transition period (6-12 months) and will be removed
-in a future PR. The commands below use the new naming.
-
-The 2 A-layer flagship assets have their `.kdna` file in the
-new naming (`<name>-<version>.kdna`). The 3 legacy content-domain
-assets have their `.kdna` file in the old naming (`<name>.kdna`,
-no version suffix) — only their sidecar is in the new naming.
-This is because the legacy 3 were published before the new
-naming was introduced; rebuilding them with the new naming
-is a separate (deferred) task.
-
-```bash
-# viral-topic-selection v1.1.0 (legacy content-domain)
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/viral-topic-selection-v1.1.0/viral-topic-selection.kdna
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/viral-topic-selection-v1.1.0/viral-topic-selection-v1.1.0.kdna.sha256
-shasum -a 256 -c viral-topic-selection-v1.1.0.kdna.sha256
-kdna validate viral-topic-selection.kdna
-kdna plan-load viral-topic-selection.kdna
-kdna load viral-topic-selection.kdna --profile=compact --as=prompt
-```
-
-```bash
-# title-attraction v1.0.0 (legacy content-domain)
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/title-attraction-v1.0.0/title-attraction.kdna
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/title-attraction-v1.0.0/title-attraction-v1.0.0.kdna.sha256
-shasum -a 256 -c title-attraction-v1.0.0.kdna.sha256
-kdna validate title-attraction.kdna
-kdna plan-load title-attraction.kdna
-kdna load title-attraction.kdna --profile=compact --as=prompt
-```
-
-```bash
-# short-video-script v1.0.0 (legacy content-domain)
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/short-video-script-v1.0.0/short-video-script.kdna
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/short-video-script-v1.0.0/short-video-script-v1.0.0.kdna.sha256
-shasum -a 256 -c short-video-script-v1.0.0.kdna.sha256
-kdna validate short-video-script.kdna
-kdna plan-load short-video-script.kdna
-kdna load short-video-script.kdna --profile=compact --as=prompt
-```
-
-```bash
-# agent:project_context v0.1.2 (A-layer flagship)
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna.sha256
-shasum -a 256 -c agent-project-context-v0.1.2.kdna.sha256
-kdna validate agent-project-context-v0.1.2.kdna
-kdna plan-load agent-project-context-v0.1.2.kdna
-kdna load agent-project-context-v0.1.2.kdna --profile=compact --as=prompt
-```
-
-```bash
-# agent:completion_adjudication v0.1.1 (A-layer flagship)
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna
-curl -L -O https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna.sha256
-shasum -a 256 -c agent-completion-adjudication-v0.1.1.kdna.sha256
-kdna validate agent-completion-adjudication-v0.1.1.kdna
-kdna plan-load agent-completion-adjudication-v0.1.1.kdna
-kdna load agent-completion-adjudication-v0.1.1.kdna --profile=compact --as=prompt
-```
-
-> **Transition note**: the 3 legacy assets also have sidecars
-> under the old naming (`<name>.sha256` without `.kdna`).
-> These are kept on the releases for backward compatibility
-> but will be removed in a future PR. **Use the new naming
-> above for all new work.**
 
 ## What this is
 
@@ -186,7 +113,7 @@ asset creator and the user.
 ## Related
 
 - [KDNA CLI](https://github.com/aikdna/kdna-cli) —
-  install via `npm install -g @aikdna/kdna-cli@0.28.30`
+  install via `npm install -g @aikdna/kdna-cli@0.28.31`
 - [KDNA Studio CLI](https://github.com/aikdna/kdna-studio-cli)
   — create assets via `npm install -g @aikdna/kdna-studio-cli`
 - [KDNA Core](https://github.com/aikdna/kdna) — protocol
