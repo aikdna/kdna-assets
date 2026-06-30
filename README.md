@@ -11,14 +11,16 @@ npm install -g @aikdna/kdna-cli
 kdna load agent-project-context-v0.1.2.kdna --profile=compact --as=prompt
 ```
 
-## Current assets
+## Available assets
 
-Two production-quality assets are available today:
+Two judgment assets are available today:
 
-| Asset | Use case | Requires | Showcase |
+| Asset | Workflow position | Use case | Showcase |
 |---|---|---|---|
-| **agent:project_context v0.1.2** | Judges every line of an AGENTS.md / CLAUDE.md / codex.md for CARRY / RELOCATE / DROP / CONVERT | kdna-cli ≥ 0.28.31 | [showcase →](showcase/agent-project-context.md) |
-| **agent:completion_adjudication v0.1.1** | Forces the agent to surface DONE CLAIM / OBSERVABLE PROOF / USER INTENT MATCH / UNRESOLVED RISK before any "I'm done" claim | kdna-cli ≥ 0.28.31 | [showcase →](showcase/agent-completion-adjudication.md) |
+| **agent:project_context v0.1.2** | L1 · Agent meta | Judges every line of an AGENTS.md / CLAUDE.md for CARRY / RELOCATE / DROP / CONVERT | [showcase →](showcase/agent-project-context.md) |
+| **agent:completion_adjudication v0.1.1** | L1 · Agent meta | Forces the agent to surface DONE CLAIM / OBSERVABLE PROOF / USER INTENT MATCH / UNRESOLVED RISK before any "I'm done" claim | [showcase →](showcase/agent-completion-adjudication.md) |
+
+> These are our first two production releases, completed in June 2026 alongside the toolchain stabilization. They contain real judgment, load correctly, and are actively used. New assets follow the production pipeline described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Try them now
 
@@ -113,7 +115,7 @@ asset creator and the user.
 ## Related
 
 - [KDNA CLI](https://github.com/aikdna/kdna-cli) —
-  install via `npm install -g @aikdna/kdna-cli@0.28.31`
+  install via `npm install -g @aikdna/kdna-cli`
 - [KDNA Studio CLI](https://github.com/aikdna/kdna-studio-cli)
   — create assets via `npm install -g @aikdna/kdna-studio-cli`
 - [KDNA Core](https://github.com/aikdna/kdna) — protocol
