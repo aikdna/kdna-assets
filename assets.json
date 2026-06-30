@@ -1,6 +1,37 @@
 {
-  "updated": "2026-06-30T00:00:00+08:00",
+  "updated": "2026-06-30T17:30:00+08:00",
   "assets": [
+    {
+      "name": "Creator Brand Positioning",
+      "name_zh": "创作者品牌定位判断",
+      "file": "creator-brand-positioning-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-brand-positioning-v0.1.0",
+      "sha256": "ec9c96f78a4b9a91d24c108b2f43a13be1b9962776a10ec75462a2e8ffca6b08",
+      "release_date": "2026-06-30",
+      "description": "Judges whether a creator's brand positioning is clear, defensible, and unoccupied. Uses the four-cell test (OCCUPIED / DEFENSIBLE / RESONANT / VERIFIABLE) to determine if a candidate positioning is ready to publish.",
+      "description_zh": "判断创作者的品牌定位是否清晰、稳固、无人占领。用四格测试（OCCUPIED / DEFENSIBLE / RESONANT / VERIFIABLE）判断候选定位是否可发布。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/A-strategy/brand-positioning/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "9 PASS, 1 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:e1292a65-9dba-4bd5-a57e-b350d91fbf67",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-06-30"
+    },
     {
       "name": "Viral Topic Selection",
       "name_zh": "爆款选题判断",
