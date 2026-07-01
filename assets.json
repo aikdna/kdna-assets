@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-01T01:14:54+08:00",
+  "updated": "2026-07-01T10:15:54+08:00",
   "assets": [
     {
       "name": "Content Mix",
@@ -21,8 +21,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -52,8 +51,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -83,8 +81,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -114,8 +111,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -145,8 +141,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -176,8 +171,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -207,8 +201,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -238,8 +231,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -269,8 +261,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -300,8 +291,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -331,8 +321,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -362,8 +351,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -393,8 +381,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -424,8 +411,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -455,8 +441,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
@@ -486,8 +471,7 @@
         "axioms": 5,
         "self_check": 5,
         "scenarios": 4,
-        "cases": 2,
-        "reasoning_chains": 2
+        "cases": 2
       },
       "status": "active",
       "source_repo": "kdna-assets-internal",
