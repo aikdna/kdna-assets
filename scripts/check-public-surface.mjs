@@ -55,7 +55,7 @@ const RULES = [
     // repo — it only names the public ones. This way the script itself
     // does not leak the names of private repos.
     name: 'private-repo-URL',
-    pattern: /github\.com\/aikdna\/([a-z][a-z0-9_-]+)\b(?!\/)/g,
+    pattern: /github\.com\/aikdna\/([a-z][a-z0-9_-]+)(?=\/|\s|$|[)"'\]])/g,
     hint: 'aikdna/<x> reference where <x> is not in the public allowlist. Replace with neutral wording or "(private)".',
     allowlist: new Set([
       'kdna',

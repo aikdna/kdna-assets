@@ -15,7 +15,7 @@ kdna load <asset>.kdna --profile=compact --as=prompt
 
 A **release repository** for downloadable `.kdna` files. Every asset listed here:
 
-- Was produced by the [`kdna-assets-internal`](https://github.com/aikdna/kdna-assets-internal) (private) 10-gate pipeline
+- Was produced by the private incubator pipeline (10-gate quality standard)
 - Passes `kdna validate` (format, schema, payload, checksums, load contract)
 - Has a public showcase explaining the failure mode it targets
 - Ships with SHA256 checksums and is reproducible from a public source tree
@@ -25,7 +25,7 @@ A **release repository** for downloadable `.kdna` files. Every asset listed here
 - **Not a registry** — no `kdna install`, no remote resolution, no automatic indexing
 - **Not a marketplace** — no transactions, no rankings, no recommendations
 - **Not an archive** — superseded assets are removed; superseded releases keep their download links but are not listed here
-- **Not an incubator** — assets are authored and built in [`kdna-assets-internal`](https://github.com/aikdna/kdna-assets-internal), not here
+- **Not an incubator** — assets are authored and built in a private incubator, not here
 
 ## Current assets
 
