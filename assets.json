@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-01T16:45:00+08:00",
+  "updated": "2026-07-01T16:55:00+08:00",
   "assets": [
     {
       "name": "Abstraction Threshold",
@@ -460,7 +460,7 @@
       "source_path": "dev-assets/C-debugging/fix-vs-workaround/",
       "build_pipeline": "node scripts/build-asset.mjs dev-assets/C-debugging/fix-vs-workaround",
       "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "",
+      "asset_uid": "urn:uuid:b74582cd-164a-48e1-98ec-4f9a5aaaacfd",
       "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
     },
     {
@@ -889,7 +889,7 @@
       "source_path": "dev-assets/B-code-review/security-vulnerability/",
       "build_pipeline": "node scripts/build-asset.mjs dev-assets/B-code-review/security-vulnerability",
       "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "",
+      "asset_uid": "urn:uuid:8acebf8c-1c9e-4d1c-8486-f4cfa25cd09a",
       "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
     },
     {
