@@ -108,7 +108,7 @@ def actual_payload_counts(payload):
         'axioms':        len(payload.get('core', {}).get('axioms', [])),
         'boundaries':    len(payload.get('core', {}).get('boundaries', [])),
         'stances':       len(payload.get('core', {}).get('stances', [])),
-        'self_check':    len(payload.get('reasoning', {}).get('self_checks', [])),
+        'self_check':    len(payload.get('reasoning', {}).get('self_check', [])),
         'failure_modes': len(payload.get('reasoning', {}).get('failure_modes', [])),
         'scenarios':     len(payload.get('scenarios', [])),
         'cases':         len(payload.get('cases', [])),
@@ -129,7 +129,7 @@ def audit_entry(entry, allow_legacy=False, tmpdir='/tmp'):
     tag = entry.get('tag', '')
     sha = entry.get('sha256', '')
     file_field = entry.get('file', '')
-    is_legacy = bool(entry.get('legacy', False))
+    is_legacy = bool(entry.get('legacy', False)) or entry.get('status') == 'superseded'
 
     # Legacy assets are allowed to be "as released" without
     # all 10-gate verification; the public-metadata-gate CI was
