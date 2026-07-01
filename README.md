@@ -17,7 +17,6 @@ A **release repository** for downloadable `.kdna` files. Every asset listed here
 
 - Was produced by the private incubator pipeline (10-gate quality standard)
 - Passes `kdna validate` (format, schema, payload, checksums, load contract)
-- Has a public showcase explaining the failure mode it targets
 - Ships with SHA256 checksums and is reproducible from a public source tree
 
 ## What this repo is NOT
@@ -29,11 +28,13 @@ A **release repository** for downloadable `.kdna` files. Every asset listed here
 
 ## Current assets
 
-See the [Releases page](https://github.com/aikdna/kdna-assets/releases) and `assets.json` index for the current list. Each release has a companion `showcase/<asset>.md` explaining the asset's judgment, when to load it, and a worked before/after example.
+See the [Releases page](https://github.com/aikdna/kdna-assets/releases) and `assets.json` index for the current list. The current active set contains 47 assets: 31 developer judgment assets and 16 creator judgment assets. Historical superseded assets remain downloadable for compatibility and are marked as `superseded` in the index.
+
+Many assets include companion `showcase/<asset>.md` notes. The machine-readable truth for all current assets is `assets.json` plus each release's `.kdna` and `.sha256` files.
 
 ## Machine-readable index
 
-An `assets.json` index at the repo root lists all current assets with version, tag, SHA256, and release date. Each entry has a `source_payload_parity` block documenting the source-to-payload field mapping.
+An `assets.json` index at the repo root lists all current assets with version, tag, SHA256, and release date. Some entries include a `source_payload_parity` block documenting the source-to-payload field mapping.
 
 ```bash
 curl -s https://raw.githubusercontent.com/aikdna/kdna-assets/main/assets.json
