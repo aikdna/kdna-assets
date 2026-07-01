@@ -40,7 +40,7 @@ jobs:
     name: Gate 9 — public metadata truth
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # Full history so the vendored script can `git log` the
           # actual commit time on assets.json
