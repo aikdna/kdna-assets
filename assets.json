@@ -1,6 +1,39 @@
 {
-  "updated": "2026-07-01T16:19:12+08:00",
+  "updated": "2026-07-01T16:22:23+08:00",
   "assets": [
+    {
+      "name": "Abstraction Threshold",
+      "name_zh": "「三次法则」：第一次写死，第二次忍受，第三次才抽象——不要为假想的重用而提前抽象。",
+      "file": "dev-abstraction-threshold-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-abstraction-threshold-v0.1.0",
+      "sha256": "2a919dc4bc88066f5a9aa48ecb3b665ac0faafc33bdd1e5688c04bd68fc9cf22",
+      "release_date": "2026-07-01",
+      "description": "Judges when software should stay concrete, when duplication is acceptable, and when an abstraction has earned its cost.",
+      "description_zh": "抽象层次的判断框架。核心问题：这里过度抽象了，还是抽象不够？好的抽象让代码更能表达意图、更容易复用；坏的抽象增加复杂度却没有带来真正的收益。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "A-code-writing",
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "dev-assets/A-code-writing/abstraction-threshold/",
+      "build_pipeline": "node scripts/build-asset.mjs dev-assets/A-code-writing/abstraction-threshold",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:90e484b1-e4c8-40d9-9903-0935887dd90a",
+      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+    },
     {
       "name": "AI Collaboration",
       "name_zh": "给 AI 的上下文应该是「任务需要什么就给什么」，不是「越多越好」或「越少越好」。",
@@ -1672,5 +1705,5 @@
       "superseded_reason": "Pre-pipeline asset with no source tree in the kdna-assets-internal lineage. Replaced by assets produced via the 10-gate pipeline. GitHub Release remains for backward compatibility but is no longer listed in README."
     }
   ],
-  "note": "Contains 30 dev assets (developer audience, Layer 1) and 16 creator assets (creator audience, Layer 2). All assets produced by the kdna-assets-internal 10-gate pipeline."
+  "note": "Contains 31 dev assets (developer audience, Layer 1) and 16 creator assets (creator audience, Layer 2). All assets produced by the kdna-assets-internal 10-gate pipeline."
 }
