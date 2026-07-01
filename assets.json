@@ -1,6 +1,471 @@
 {
-  "updated": "2026-06-30T17:30:00+08:00",
+  "updated": "2026-07-01T01:14:54+08:00",
   "assets": [
+    {
+      "name": "Content Mix",
+      "name_zh": "判断不同类型内容（常青/趋势/变现）的合",
+      "file": "creator-content-mix-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-content-mix-v0.1.0",
+      "sha256": "4f0c08f18cd13d74e22fcc1d24771b57ad61651a0378838d07f9cb39f0deac02",
+      "release_date": "2026-07-01",
+      "description": "Judges content mix decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断不同类型内容（常青/趋势/变现）的合理配比，以及如何根据创作阶段动态调整内容组合策略。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/A-strategy/content-mix/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:c943b74f-7a33-47c4-a913-d979895800ea",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Niche Calibration",
+      "name_zh": "判断创作者的垂直度是否合理——何时聚焦、",
+      "file": "creator-niche-calibration-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-niche-calibration-v0.1.0",
+      "sha256": "33d8c811319ff1f777b2e8d45e50ad829be6771e9a4a2dc398b86a71499d73f4",
+      "release_date": "2026-07-01",
+      "description": "Judges niche calibration decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断创作者的垂直度是否合理——何时聚焦、何时拓宽，以及如何识别「垂直焦虑」和「扩张焦虑」。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/A-strategy/niche-calibration/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:3cda5ea2-f45f-40f5-adfd-8aecdad7ead2",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Platform Selection",
+      "name_zh": "判断在资源有限的情况下，哪些平台值得深耕",
+      "file": "creator-platform-selection-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-platform-selection-v0.1.0",
+      "sha256": "764b61fde0c80aaad540dd8d537f4e364668ff966f0aa80c88901e338b5c3a57",
+      "release_date": "2026-07-01",
+      "description": "Judges platform selection decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断在资源有限的情况下，哪些平台值得深耕，哪些只做分发，哪些应该放弃。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/A-strategy/platform-selection/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:2a4928ef-a622-4c5d-ab43-8b3f63460da9",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Authenticity Balance",
+      "name_zh": "判断内容创作中的算法优化行为是否损伤了真",
+      "file": "creator-authenticity-balance-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-authenticity-balance-v0.1.0",
+      "sha256": "cfa0a2efbea7d8fc3248bb42378921bd37917b091d8be10f0f8d2071c4ee34ea",
+      "release_date": "2026-07-01",
+      "description": "Judges authenticity balance decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断内容创作中的算法优化行为是否损伤了真实性，以及累积的小妥协是否正在改变内容的本质。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/B-creation/authenticity-balance/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:bd850b49-6df5-459b-a162-a17c705d4c78",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Content Depth",
+      "name_zh": "判断某个内容应该做到什么深度，避免两个极",
+      "file": "creator-content-depth-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-content-depth-v0.1.0",
+      "sha256": "78ffcc26bdd5cf655207ec421ad21b4737785807b17d7de98b9ebdda0ff171cd",
+      "release_date": "2026-07-01",
+      "description": "Judges content depth decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断某个内容应该做到什么深度，避免两个极端：过于表面无法建立专家信任，过于深度超出受众接受能力或制作资源。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/B-creation/content-depth/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:352527ff-c806-40d7-a8bd-e6390e85129a",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Originality Judgment",
+      "name_zh": "判断一个内容是否有真正的原创价值——独特",
+      "file": "creator-originality-judgment-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-originality-judgment-v0.1.0",
+      "sha256": "05ee40e0c0c12e8364ec7f59c957588821b3a34221e944223f083e862aac1cc7",
+      "release_date": "2026-07-01",
+      "description": "Judges originality judgment decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断一个内容是否有真正的原创价值——独特的洞察、数据、角度，还是只是把别人已经说好的东西重新包装。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/B-creation/originality-judgment/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:50b7fec4-d0a6-4590-a8a5-d7281c9c789d",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Topic Selection",
+      "name_zh": "判断一个候选选题是否值得投入时间和精力创",
+      "file": "creator-topic-selection-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-topic-selection-v0.1.0",
+      "sha256": "0a3530823bb1681fcfda2f710e389df6e87e7552ddc57ad2608613f7746a8ecd",
+      "release_date": "2026-07-01",
+      "description": "Judges topic selection decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断一个候选选题是否值得投入时间和精力创作。核心问题：这个选题能给我的核心受众带来别处找不到的价值吗？",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/B-creation/topic-selection/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:7bc3eb55-ac07-49bc-a793-e7cf453f433a",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Audience Signal",
+      "name_zh": "帮助创作者正确解读受众反馈信号，区分真实",
+      "file": "creator-audience-signal-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-audience-signal-v0.1.0",
+      "sha256": "244bc540d551377178eaf19d1334897696e7cddd3170d2291d1a4e3ab7b95664",
+      "release_date": "2026-07-01",
+      "description": "Judges audience signal decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "帮助创作者正确解读受众反馈信号，区分真实需求与表面噪音，做出基于真实数据的内容决策。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/C-audience/audience-signal/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:5e5a60a4-bb00-409c-a860-125d91545d1b",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Community Engagement",
+      "name_zh": "帮助创作者判断何时、以何种深度与受众互动",
+      "file": "creator-community-engagement-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-community-engagement-v0.1.0",
+      "sha256": "00465a837032c00d9cf499ff49b7c6da9b9cfac1c3d8bedce1f16096e0d4baae",
+      "release_date": "2026-07-01",
+      "description": "Judges community engagement decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "帮助创作者判断何时、以何种深度与受众互动，在建立社区连接和保护创作精力之间找到可持续的平衡点。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/C-audience/community-engagement/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:e1ff6e59-1d10-40ad-a245-fc5703495057",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Controversy Navigation",
+      "name_zh": "帮助创作者判断面对争议性话题时，发声、保",
+      "file": "creator-controversy-navigation-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-controversy-navigation-v0.1.0",
+      "sha256": "1cd1732fe257e3b8d3a7059e394ffad4aa7a9f9b4324c6bc351869ab22f0be06",
+      "release_date": "2026-07-01",
+      "description": "Judges controversy navigation decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "帮助创作者判断面对争议性话题时，发声、保持中立还是回避——基于真实代价与价值的分析，而非情绪或从众。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/C-audience/controversy-navigation/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:8d0662a5-fa56-4d17-ab28-a393091a66db",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Monetization Timing",
+      "name_zh": "判断开始变现的时机是否成熟。核心问题：现",
+      "file": "creator-monetization-timing-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-monetization-timing-v0.1.0",
+      "sha256": "b5e980f08ac1db0d305e08913f6915b0daaa2b9a1c7f2cf7b80dcd3442bb3704",
+      "release_date": "2026-07-01",
+      "description": "Judges monetization timing decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断开始变现的时机是否成熟。核心问题：现在变现是「受众已经准备好了」，还是「我急于获得回报」？",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/D-monetization/monetization-timing/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:cde3d41d-edfd-42f1-ad8b-9a8bd6fd904c",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Offer Design",
+      "name_zh": "判断自有产品/课程/服务的形态、定价和目",
+      "file": "creator-offer-design-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-offer-design-v0.1.0",
+      "sha256": "4d098a88b31c92af473f50ecf7920d2704b1e6b36879cf345b983b7eea73c84b",
+      "release_date": "2026-07-01",
+      "description": "Judges offer design decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断自有产品/课程/服务的形态、定价和目标受众是否设计正确。核心问题：我的产品是「受众真正需要的解决方案」，还是「我能做的内容的商业版本」？",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/D-monetization/offer-design/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:d22602f5-1abc-4bb9-ad82-3bfc5dc5f6b3",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Sponsorship Selection",
+      "name_zh": "判断一个赞助合作是否值得接受。核心问题：",
+      "file": "creator-sponsorship-selection-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-sponsorship-selection-v0.1.0",
+      "sha256": "745238d1b234b228754e20031ef789d0b598c9c7f2ae5f4fcbe3a74bd3882b33",
+      "release_date": "2026-07-01",
+      "description": "Judges sponsorship selection decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断一个赞助合作是否值得接受。核心问题：这个合作带来的收入，是否值得它消耗的受众信任？",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/D-monetization/sponsorship-selection/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:9b447c33-17c9-467d-a99f-2964b8407e6d",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Creator Sustainability",
+      "name_zh": "帮助创作者在财务、精力、动机三个维度上评",
+      "file": "creator-sustainability-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-sustainability-v0.1.0",
+      "sha256": "231fe261d8f8faec86590a7e010308b3b44f9819f25c071fcb0876325f00f1bf",
+      "release_date": "2026-07-01",
+      "description": "Judges creator sustainability decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "帮助创作者在财务、精力、动机三个维度上评估创作模式的可持续性，在燃尽发生之前识别早期信号并做出结构性调整。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/E-operations/creator-sustainability/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:5716cf34-31cb-4449-a68b-3cd61880f98b",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
+    {
+      "name": "Publishing Rhythm",
+      "name_zh": "帮助创作者找到「质量临界频率」——在这个",
+      "file": "creator-publishing-rhythm-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-publishing-rhythm-v0.1.0",
+      "sha256": "3ae14e2b88750c34086fefd0b4829b468eadd8ddd7a6850e8033f0bb293a4dc3",
+      "release_date": "2026-07-01",
+      "description": "Judges publishing rhythm decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "帮助创作者找到「质量临界频率」——在这个节奏下能稳定产出高质量内容，而不是追求算法要求的最大化频率或随意降低频率。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2,
+        "reasoning_chains": 2
+      },
+      "status": "active",
+      "source_repo": "kdna-assets-internal",
+      "source_path": "creator-assets/E-operations/publishing-rhythm/",
+      "build_pipeline": "node scripts/build-asset.mjs",
+      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
+      "asset_uid": "urn:uuid:2380c936-d6d0-4123-a547-fc73160090b8",
+      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+    },
     {
       "name": "Creator Brand Positioning",
       "name_zh": "创作者品牌定位判断",
