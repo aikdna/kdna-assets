@@ -8,6 +8,8 @@ public-metadata audit. Validates that every entry in
 dist file on GitHub Releases.
 
 Catches:
+  - Active assets missing from the public repo checkout
+  - Active assets whose local .sha256 sidecar doesn't match assets.json
   - assets.json `sha256` that doesn't match the actual dist file
   - Release URL that returns non-200
   - Missing .sha256 sidecar (R1 from 2026-06-25 audit)
@@ -119,7 +121,62 @@ def actual_payload_counts(payload):
     }
 
 
-def audit_entry(entry, allow_legacy=False, tmpdir='/tmp'):
+def parse_sidecar_sha(body):
+    """Return the leading SHA-256 token from a .sha256 sidecar body."""
+    first = body.strip().split()[0] if body.strip() else ''
+    return first.lower()
+
+
+def audit_local_artifacts(entry, base_dir):
+    """Audit the checked-in asset and sidecar for active entries.
+
+    Superseded/legacy entries may remain downloadable from GitHub Releases
+    without being kept as root-level files in the public repo checkout.
+    """
+    errors = []
+    name = entry.get('name', '?')
+    sha = entry.get('sha256', '')
+    file_field = entry.get('file', '')
+    is_legacy = bool(entry.get('legacy', False)) or entry.get('status') == 'superseded'
+
+    if is_legacy:
+        return errors
+
+    local_asset = os.path.join(base_dir, file_field)
+    local_sidecar = f"{local_asset}.sha256"
+
+    if not os.path.exists(local_asset):
+        errors.append(f"{name}: active asset missing from repo checkout: {file_field}")
+        return errors
+
+    with open(local_asset, 'rb') as f:
+        actual_sha = hashlib.sha256(f.read()).hexdigest()
+    if actual_sha != sha:
+        errors.append(
+            f"{name}: local {file_field} sha256 mismatch — "
+            f"assets.json says {sha[:12]}…, local file is {actual_sha[:12]}…"
+        )
+    else:
+        print(f"  {name}: local asset SHA PASS ({actual_sha[:12]}…)")
+
+    if not os.path.exists(local_sidecar):
+        errors.append(f"{name}: active asset missing local sidecar: {file_field}.sha256")
+        return errors
+
+    with open(local_sidecar, 'r', encoding='utf-8') as f:
+        sidecar_sha = parse_sidecar_sha(f.read())
+    if sidecar_sha != sha:
+        errors.append(
+            f"{name}: local sidecar sha mismatch — "
+            f"assets.json says {sha[:12]}…, sidecar says {sidecar_sha[:12]}…"
+        )
+    else:
+        print(f"  {name}: local sidecar SHA PASS")
+
+    return errors
+
+
+def audit_entry(entry, allow_legacy=False, tmpdir='/tmp', base_dir='.'):
     """Audit a single assets.json entry. Returns a list of error
     strings (empty list = all checks passed)."""
     errors = []
@@ -140,6 +197,8 @@ def audit_entry(entry, allow_legacy=False, tmpdir='/tmp'):
     # (those are timeless), but skip the contains strict-check.
     if is_legacy and not allow_legacy:
         warnings.append(f"{name}: marked legacy, skipping strict contains check (use --allow-legacy to allow)")
+
+    errors.extend(audit_local_artifacts(entry, base_dir))
 
     dist_url = f"https://github.com/aikdna/kdna-assets/releases/download/{tag}/{file_field}"
     sidecar_urls = [
@@ -276,7 +335,11 @@ def main():
         name = entry.get('name', '?')
         ver = entry.get('latest_version', '?')
         print(f"=== {name} v{ver} ===")
-        errs, warns = audit_entry(entry, allow_legacy=args.allow_legacy)
+        errs, warns = audit_entry(
+            entry,
+            allow_legacy=args.allow_legacy,
+            base_dir=os.path.dirname(os.path.abspath(args.assets)) or '.',
+        )
         all_errors.extend(errs)
         all_warnings.extend(warns)
         print()

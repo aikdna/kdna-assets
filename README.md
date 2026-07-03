@@ -17,7 +17,8 @@ A **release repository** for downloadable `.kdna` files. Every asset listed here
 
 - Was produced by the private incubator pipeline (10-gate quality standard)
 - Passes `kdna validate` (format, schema, payload, checksums, load contract)
-- Ships with SHA256 checksums and public release metadata evidence
+- Ships with SHA256 checksums, public release artifacts, and recorded
+  source-to-release evidence
 
 ## What this repo is NOT
 
@@ -44,6 +45,15 @@ An `assets.json` index at the repo root lists all current assets with version, t
 
 ```bash
 curl -s https://raw.githubusercontent.com/aikdna/kdna-assets/main/assets.json
+```
+
+For active assets, the public metadata audit checks the full integrity chain:
+`assets.json` SHA, the checked-in `.kdna` file, the checked-in `.kdna.sha256`
+sidecar, the GitHub Release download, the release sidecar, and runtime payload
+counts.
+
+```bash
+python3 scripts/audit-public-metadata.py
 ```
 
 ## How to use with your AI agent

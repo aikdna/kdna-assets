@@ -51,6 +51,8 @@ how cards were verified.
 2. SHA-256 checksum matches: `shasum -a 256 <asset>.kdna`.
 3. `kdna load <asset>.kdna --profile=compact --as=prompt` produces
    readable output (not empty, not malformed).
+4. The public metadata audit passes:
+   `python3 scripts/audit-public-metadata.py`.
 
 ### Comparison evidence
 
@@ -98,6 +100,8 @@ targets.
    - What domain and audience layer
    - The before/after comparison showing behavioral difference
    - How cards were verified (Human Lock record or equivalent)
+   - The audit result proving that `assets.json`, the checked-in asset,
+     the checked-in sidecar, and the GitHub Release artifacts agree
 
 ## What NOT to do
 
