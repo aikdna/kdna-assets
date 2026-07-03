@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-01T16:57:00+08:00",
+  "updated": "2026-07-03T13:36:00+08:00",
   "assets": [
     {
       "name": "Abstraction Threshold",
@@ -1530,7 +1530,7 @@
         "cases": 2
       },
       "legacy": true,
-      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Not part of the A-layer flagship pipeline. See the legacy assets audit plan (private).",
+      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
       "status": "superseded",
       "superseded_date": "2026-06-30",
       "superseded_by": "kdna-assets-internal pipeline (new model)",
@@ -1562,7 +1562,7 @@
         "cases": 2
       },
       "legacy": true,
-      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Not part of the A-layer flagship pipeline. See the legacy assets audit plan (private).",
+      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
       "status": "superseded",
       "superseded_date": "2026-06-30",
       "superseded_by": "kdna-assets-internal pipeline (new model)",
@@ -1594,7 +1594,7 @@
         "cases": 2
       },
       "legacy": true,
-      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Not part of the A-layer flagship pipeline. See the legacy assets audit plan (private).",
+      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
       "status": "superseded",
       "superseded_date": "2026-06-30",
       "superseded_by": "kdna-assets-internal pipeline (new model)",
@@ -1705,5 +1705,5 @@
       "superseded_reason": "Pre-pipeline asset with no source tree in the kdna-assets-internal lineage. Replaced by assets produced via the 10-gate pipeline. GitHub Release remains for backward compatibility but is no longer listed in README."
     }
   ],
-  "note": "Contains 31 dev assets (developer audience, Layer 1) and 16 creator assets (creator audience, Layer 2). All assets produced by the kdna-assets-internal 10-gate pipeline."
+  "note": "Indexes 52 public release entries: 47 active assets (31 developer judgment assets and 16 creator judgment assets) plus 5 superseded compatibility releases. Active assets were produced by the 10-gate release pipeline."
 }
