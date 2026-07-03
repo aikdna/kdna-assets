@@ -159,21 +159,21 @@ For each candidate line, ask:
 Download the asset:
 
 ```bash
-curl -L -o agent-project-context.kdna \
-  https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context.kdna
+curl -L -o agent-project-context-v0.1.2.kdna \
+  https://github.com/aikdna/kdna-assets/releases/download/agent-project-context-v0.1.2/agent-project-context-v0.1.2.kdna
 
 # Verify SHA256
-echo "3728046081e1e17dd8f540f4902ef908bde5151568a79dcf721fba90d0d059ae  agent-project-context.kdna" | shasum -a 256 -c -
+echo "3728046081e1e17dd8f540f4902ef908bde5151568a79dcf721fba90d0d059ae  agent-project-context-v0.1.2.kdna" | shasum -a 256 -c -
 ```
 
 Load the asset as a prompt:
 
 ```bash
 # Compact profile (~5.7 KB / 31 lines) — for the per-task load path
-kdna load agent-project-context.kdna --profile=compact --as=prompt
+kdna load agent-project-context-v0.1.2.kdna --profile=compact --as=prompt
 
 # Full profile — for documentation / onboarding
-kdna load agent-project-context.kdna --profile=full --as=prompt
+kdna load agent-project-context-v0.1.2.kdna --profile=full --as=prompt
 ```
 
 Then give the Agent the prompt and your candidate lines.
