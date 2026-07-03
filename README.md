@@ -17,7 +17,7 @@ A **release repository** for downloadable `.kdna` files. Every asset listed here
 
 - Was produced by the private incubator pipeline (10-gate quality standard)
 - Passes `kdna validate` (format, schema, payload, checksums, load contract)
-- Ships with SHA256 checksums and is reproducible from a public source tree
+- Ships with SHA256 checksums and public release metadata evidence
 
 ## What this repo is NOT
 
