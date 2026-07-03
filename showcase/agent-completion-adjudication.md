@@ -140,18 +140,18 @@ completion claims. Both English and Chinese:
 Download the asset:
 
 ```bash
-curl -L -o agent-completion-adjudication.kdna \
-  https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication.kdna
+curl -L -o agent-completion-adjudication-v0.1.1.kdna \
+  https://github.com/aikdna/kdna-assets/releases/download/agent-completion-adjudication-v0.1.1/agent-completion-adjudication-v0.1.1.kdna
 
 # Verify SHA256
-echo "2f46bccc47a9be987eb74262af60b7344850178dfa478a078df00ab178f107e4  agent-completion-adjudication.kdna" | shasum -a 256 -c -
+echo "2f46bccc47a9be987eb74262af60b7344850178dfa478a078df00ab178f107e4  agent-completion-adjudication-v0.1.1.kdna" | shasum -a 256 -c -
 ```
 
 Load the asset as a prompt:
 
 ```bash
 # Compact profile (~5.9 KB / 31 lines) — for the per-task completion gate
-kdna load agent-completion-adjudication.kdna --profile=compact --as=prompt
+kdna load agent-completion-adjudication-v0.1.1.kdna --profile=compact --as=prompt
 ```
 
 Apply at every "I'm done" / "completed" / "all set" moment.

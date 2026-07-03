@@ -32,6 +32,12 @@ See the [Releases page](https://github.com/aikdna/kdna-assets/releases) and `ass
 
 Many assets include companion `showcase/<asset>.md` notes. The machine-readable truth for all current assets is `assets.json` plus each release's `.kdna` and `.sha256` files.
 
+Public showcase download snippets are checked against `assets.json`:
+
+```bash
+node scripts/check-showcase-downloads.mjs
+```
+
 ## Machine-readable index
 
 An `assets.json` index at the repo root lists all current assets with version, tag, SHA256, and release date. Some entries include a `source_payload_parity` block documenting the source-to-payload field mapping.
