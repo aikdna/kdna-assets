@@ -48,6 +48,25 @@ const ALLOWLIST_FILES = new Set([
   'CHANGELOG.md', // released history legitimately references removed repos
 ]);
 
+const PUBLIC_REPO_NAMES = new Set([
+  'kdna',
+  'kdna-cli',
+  'kdna-studio-cli',
+  'kdna-studio-core',
+  'kdna-skills',
+  'kdna-assets',
+  'kdna-activation-server',
+  'kdna-remote-server',
+  'kdna-web-server',
+  'kdna-web-client',
+  'kdna-react',
+  'create-kdna-web-app',
+  'kdna-core-swift',
+  'kdna-studio-swift',
+  'kdna-app-shared',
+  'kdna-vscode',
+]);
+
 const RULES = [
   {
     // Allowlist: any aikdna/<x> reference where x is NOT on this list
@@ -57,42 +76,14 @@ const RULES = [
     name: 'private-repo-URL',
     pattern: /github\.com\/aikdna\/([a-z][a-z0-9_-]+)(?=\/|\s|$|[)"'\]])/g,
     hint: 'aikdna/<x> reference where <x> is not in the public allowlist. Replace with neutral wording or "(private)".',
-    allowlist: new Set([
-      'kdna',
-      'kdna-cli',
-      'kdna-studio',
-      'kdna-studio-cli',
-      'kdna-studio-core',
-      'kdna-skills',
-      'kdna-vscode',
-      'kdna-core-swift',
-      'kdna-website',
-      'kdna-assets',
-      'kdna-asset-skill',
-      'kdna-evals',
-      'kdna-skill-template',
-    ]),
+    allowlist: PUBLIC_REPO_NAMES,
   },
   {
     // Same logic for bare aikdna/<x> references
     name: 'private-repo-URL-bare',
     pattern: /\baikdna\/([a-z][a-z0-9_-]+)\b(?!\.)/g,
     hint: 'aikdna/<x> reference where <x> is not in the public allowlist. Replace with neutral wording or "(private)".',
-    allowlist: new Set([
-      'kdna',
-      'kdna-cli',
-      'kdna-studio',
-      'kdna-studio-cli',
-      'kdna-studio-core',
-      'kdna-skills',
-      'kdna-vscode',
-      'kdna-core-swift',
-      'kdna-website',
-      'kdna-assets',
-      'kdna-asset-skill',
-      'kdna-evals',
-      'kdna-skill-template',
-    ]),
+    allowlist: PUBLIC_REPO_NAMES,
   },
   {
     name: 'local-filesystem-path',
