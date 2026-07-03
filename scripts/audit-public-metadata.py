@@ -8,6 +8,8 @@ public-metadata audit. Validates that every entry in
 dist file on GitHub Releases.
 
 Catches:
+  - Active assets missing from the public repo checkout
+  - Active assets whose local .sha256 sidecar doesn't match assets.json
   - assets.json `sha256` that doesn't match the actual dist file
   - Release URL that returns non-200
   - Missing .sha256 sidecar (R1 from 2026-06-25 audit)
@@ -37,6 +39,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -49,6 +52,9 @@ DEPRECATED_CONTAINS_FIELDS = {
     'source_files',
     'misconceptions',  # legacy field name; modern build uses 'patterns'
 }
+
+TRANSIENT_HTTP_STATUSES = {0, 408, 429, 500, 502, 503, 504}
+URL_ATTEMPTS = 3
 
 
 def read_assets(path):
@@ -68,28 +74,44 @@ def get_latest_commit_iso(repo_dir):
 
 def url_head(url, timeout=15):
     """Return (status_code, location) for a HEAD request."""
-    req = urllib.request.Request(url, method='HEAD')
-    req.add_header('User-Agent', 'kdna-assets-audit-public-metadata/1.0')
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            return r.status, r.headers.get('Location', '')
-    except urllib.error.HTTPError as e:
-        return e.code, ''
-    except Exception:
-        return 0, ''
+    last_status = 0
+    for attempt in range(1, URL_ATTEMPTS + 1):
+        req = urllib.request.Request(url, method='HEAD')
+        req.add_header('User-Agent', 'kdna-assets-audit-public-metadata/1.0')
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.status, r.headers.get('Location', '')
+        except urllib.error.HTTPError as e:
+            last_status = e.code
+        except Exception:
+            last_status = 0
+
+        if last_status not in TRANSIENT_HTTP_STATUSES or attempt == URL_ATTEMPTS:
+            return last_status, ''
+        time.sleep(0.5 * attempt)
+
+    return last_status, ''
 
 
 def url_get(url, timeout=30):
     """Return (status_code, body_bytes) for a GET request."""
-    req = urllib.request.Request(url)
-    req.add_header('User-Agent', 'kdna-assets-audit-public-metadata/1.0')
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            return r.status, r.read()
-    except urllib.error.HTTPError as e:
-        return e.code, b''
-    except Exception:
-        return 0, b''
+    last_status = 0
+    for attempt in range(1, URL_ATTEMPTS + 1):
+        req = urllib.request.Request(url)
+        req.add_header('User-Agent', 'kdna-assets-audit-public-metadata/1.0')
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.status, r.read()
+        except urllib.error.HTTPError as e:
+            last_status = e.code
+        except Exception:
+            last_status = 0
+
+        if last_status not in TRANSIENT_HTTP_STATUSES or attempt == URL_ATTEMPTS:
+            return last_status, b''
+        time.sleep(0.5 * attempt)
+
+    return last_status, b''
 
 
 def read_payload_kdnab(kdna_path):
@@ -119,7 +141,87 @@ def actual_payload_counts(payload):
     }
 
 
-def audit_entry(entry, allow_legacy=False, tmpdir='/tmp'):
+def parse_sidecar_sha(body):
+    """Return the leading SHA-256 token from a .sha256 sidecar body."""
+    first = body.strip().split()[0] if body.strip() else ''
+    return first.lower()
+
+
+def audit_remote_sidecar(name, sha, sidecar_urls):
+    """Fetch the remote .sha256 sidecar and verify its declared digest."""
+    attempts = []
+    for s_url in sidecar_urls:
+        s_status, sidecar_body = url_get(s_url, timeout=15)
+        attempts.append(f"{s_url} -> {s_status}")
+        if s_status != 200:
+            continue
+
+        sidecar_sha = parse_sidecar_sha(sidecar_body.decode('utf-8', errors='replace'))
+        if sidecar_sha != sha:
+            return [
+                f"{name}: remote sidecar sha mismatch — "
+                f"assets.json says {sha[:12]}…, sidecar says {sidecar_sha[:12]}…"
+            ]
+
+        print(f"  {name}: sidecar PASS ({sidecar_sha[:12]}…)")
+        return []
+
+    return [
+        f"{name}: no .sha256 sidecar found at {sidecar_urls} "
+        f"(GET attempts: {', '.join(attempts)})"
+    ]
+
+
+def audit_local_artifacts(entry, base_dir):
+    """Audit the checked-in asset and sidecar for active entries.
+
+    Superseded/legacy entries may remain downloadable from GitHub Releases
+    without being kept as root-level files in the public repo checkout.
+    """
+    errors = []
+    name = entry.get('name', '?')
+    sha = entry.get('sha256', '')
+    file_field = entry.get('file', '')
+    is_legacy = bool(entry.get('legacy', False)) or entry.get('status') == 'superseded'
+
+    if is_legacy:
+        return errors
+
+    local_asset = os.path.join(base_dir, file_field)
+    local_sidecar = f"{local_asset}.sha256"
+
+    if not os.path.exists(local_asset):
+        errors.append(f"{name}: active asset missing from repo checkout: {file_field}")
+        return errors
+
+    with open(local_asset, 'rb') as f:
+        actual_sha = hashlib.sha256(f.read()).hexdigest()
+    if actual_sha != sha:
+        errors.append(
+            f"{name}: local {file_field} sha256 mismatch — "
+            f"assets.json says {sha[:12]}…, local file is {actual_sha[:12]}…"
+        )
+    else:
+        print(f"  {name}: local asset SHA PASS ({actual_sha[:12]}…)")
+
+    if not os.path.exists(local_sidecar):
+        errors.append(f"{name}: active asset missing local sidecar: {file_field}.sha256")
+        return errors
+
+    with open(local_sidecar, 'r', encoding='utf-8') as f:
+        sidecar_sha = parse_sidecar_sha(f.read())
+    if sidecar_sha != sha:
+        errors.append(
+            f"{name}: local sidecar sha mismatch — "
+            f"assets.json says {sha[:12]}…, sidecar says {sidecar_sha[:12]}…"
+        )
+    else:
+        print(f"  {name}: local sidecar SHA PASS")
+
+    return errors
+
+
+def audit_entry(entry, allow_legacy=False, tmpdir='/tmp', base_dir='.'):
     """Audit a single assets.json entry. Returns a list of error
     strings (empty list = all checks passed)."""
     errors = []
@@ -141,6 +243,8 @@ def audit_entry(entry, allow_legacy=False, tmpdir='/tmp'):
     if is_legacy and not allow_legacy:
         warnings.append(f"{name}: marked legacy, skipping strict contains check (use --allow-legacy to allow)")
 
+    errors.extend(audit_local_artifacts(entry, base_dir))
+
     dist_url = f"https://github.com/aikdna/kdna-assets/releases/download/{tag}/{file_field}"
     sidecar_urls = [
         f"https://github.com/aikdna/kdna-assets/releases/download/{tag}/{file_field}.sha256",
@@ -154,17 +258,8 @@ def audit_entry(entry, allow_legacy=False, tmpdir='/tmp'):
         return errors, warnings  # no point continuing
     print(f"  {name}: dist URL PASS (200)")
 
-    # 2. Sidecar must return 200 (either naming convention)
-    sidecar_ok = False
-    for s_url in sidecar_urls:
-        s_status, _ = url_head(s_url)
-        if s_status == 200:
-            sidecar_ok = True
-            break
-    if not sidecar_ok:
-        errors.append(f"{name}: no .sha256 sidecar found at {sidecar_urls}")
-    else:
-        print(f"  {name}: sidecar PASS")
+    # 2. Sidecar must exist and declare the same SHA as assets.json
+    errors.extend(audit_remote_sidecar(name, sha, sidecar_urls))
 
     # 3. SHA must match
     s_status, body = url_get(dist_url)
@@ -276,7 +371,11 @@ def main():
         name = entry.get('name', '?')
         ver = entry.get('latest_version', '?')
         print(f"=== {name} v{ver} ===")
-        errs, warns = audit_entry(entry, allow_legacy=args.allow_legacy)
+        errs, warns = audit_entry(
+            entry,
+            allow_legacy=args.allow_legacy,
+            base_dir=os.path.dirname(os.path.abspath(args.assets)) or '.',
+        )
         all_errors.extend(errs)
         all_warnings.extend(warns)
         print()
