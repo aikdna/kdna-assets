@@ -60,6 +60,5 @@ kdna load dev-anti-drift-context-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:cc0dd56f-28e0-4c0b-8eda-457a71189b60`
 - **SHA256:** `f5d1437176440ecc10e765e02862a394132d2bb57b5ce54dcde17bb8971f5421`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

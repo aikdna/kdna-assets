@@ -61,6 +61,5 @@ kdna load dev-test-strategy-discretion-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:d30dc59a-bde8-4efc-9679-fc4bc60ced2d`
 - **SHA256:** `a14e9a78af3af6158c7ff373741c493e7d0572c91bceb0a493333e8819102bbb`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

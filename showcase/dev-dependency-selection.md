@@ -57,6 +57,5 @@ kdna load dev-dependency-selection-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:595c6a69-1e37-4ed1-8668-c0e1ba8ba888`
 - **SHA256:** `44055527743606ffcf8c4c73fa2bb54874045e2f28dd1951d0081dfbd3e4e0c5`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

@@ -57,6 +57,5 @@ kdna load dev-schema-design-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:6ba08c44-a153-4cb7-83d0-50c070d5b5ad`
 - **SHA256:** `ea82bf8da1eaa9103138cd58995787f61a982a31f255df17624ee0003d04000d`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

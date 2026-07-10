@@ -206,7 +206,7 @@ Then give the Agent the prompt and your candidate lines.
 
 ## Provenance
 
-- **Source:** internal namespace (redacted in public release)
+- **Source:** release metadata
 - **Asset UID:** `urn:uuid:7043a65e-f592-43a5-8c48-d214ebcfafc2`
 - **SHA256:** `3728046081e1e17dd8f540f4902ef908bde5151568a79dcf721fba90d0d059ae`
 - **Built with:** kdna-studio migrate --format v1 (kdna-studio-cli v0.6.4)

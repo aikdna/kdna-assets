@@ -60,6 +60,5 @@ kdna load dev-task-decomposition-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:c48be822-083b-45b4-8955-64a40fe52827`
 - **SHA256:** `044c33a61c589de2b665397ae266753b576dda06f242ae0e1d77dbe0658a1e56`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

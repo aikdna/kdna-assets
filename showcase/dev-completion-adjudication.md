@@ -61,6 +61,5 @@ kdna load dev-completion-adjudication-v0.1.1.kdna --profile=compact --as=prompt
 - **Version:** 0.1.1
 - **Asset UID:** `urn:uuid:6879a2d3-6cc9-4f46-9950-4916a39f7f20`
 - **SHA256:** `490bb03222b359b9d56ed539d7120aa5264e55a86497cda8ec7c15cacf01b3d3`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

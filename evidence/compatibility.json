@@ -1,0 +1,7 @@
+{
+  "kdna_compatibility_matrix": "0.1.0",
+  "generated_at": "2026-07-10T00:00:00Z",
+  "description": "Cross-asset compatibility: which assets can safely co-load. Pairs are mutually compatible (symmetric). Empty list means no verified compatibilities exist yet.",
+  "pairs": [],
+  "note": "This matrix is populated by independent evaluation. Empty entries are expected for unreviewed assets."
+}

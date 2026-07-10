@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-03T13:36:00+08:00",
+  "updated": "2026-07-10T21:24:25+08:00",
   "assets": [
     {
       "name": "Abstraction Threshold",
@@ -27,12 +27,7 @@
       "layer": "dev",
       "category": "A-code-writing",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/A-code-writing/abstraction-threshold/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/A-code-writing/abstraction-threshold",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:90e484b1-e4c8-40d9-9903-0935887dd90a",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:90e484b1-e4c8-40d9-9903-0935887dd90a"
     },
     {
       "name": "AI Collaboration",
@@ -60,12 +55,7 @@
       "layer": "dev",
       "category": "D-agent-meta",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/D-agent-meta/ai-collaboration/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/D-agent-meta/ai-collaboration",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:667d4a65-f22b-4a73-9043-ce06e2958d85",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:667d4a65-f22b-4a73-9043-ce06e2958d85"
     },
     {
       "name": "AI Output Review",
@@ -93,12 +83,7 @@
       "layer": "dev",
       "category": "B-code-review",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/B-code-review/ai-output-review/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/B-code-review/ai-output-review",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:410f1e48-fcce-408f-8736-3aa469b4bcd2",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:410f1e48-fcce-408f-8736-3aa469b4bcd2"
     },
     {
       "name": "Anti Drift Context",
@@ -126,12 +111,7 @@
       "layer": "dev",
       "category": "D-agent-meta",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/D-agent-meta/anti-drift-context/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/D-agent-meta/anti-drift-context",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:cc0dd56f-28e0-4c0b-8eda-457a71189b60",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:cc0dd56f-28e0-4c0b-8eda-457a71189b60"
     },
     {
       "name": "API Design Judgment",
@@ -159,12 +139,7 @@
       "layer": "dev",
       "category": "A-code-writing",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/A-code-writing/api-design-judgment/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/A-code-writing/api-design-judgment",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:61ea244f-f623-4e8b-87f0-782d6b6cff4e",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:61ea244f-f623-4e8b-87f0-782d6b6cff4e"
     },
     {
       "name": "Architecture Minimum Edit",
@@ -192,12 +167,7 @@
       "layer": "dev",
       "category": "E-maintenance",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/E-maintenance/architecture-minimum-edit/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/E-maintenance/architecture-minimum-edit",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:ad6aa859-7fc7-4785-9705-a6f6f86e2e21",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:ad6aa859-7fc7-4785-9705-a6f6f86e2e21"
     },
     {
       "name": "Breaking Change Detection",
@@ -225,12 +195,7 @@
       "layer": "dev",
       "category": "B-code-review",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/B-code-review/breaking-change-detection/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/B-code-review/breaking-change-detection",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:7ad5a6d4-d5aa-4d50-82a5-47705386679e",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:7ad5a6d4-d5aa-4d50-82a5-47705386679e"
     },
     {
       "name": "Bug Root Cause",
@@ -258,12 +223,7 @@
       "layer": "dev",
       "category": "C-debugging",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/C-debugging/bug-root-cause/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/C-debugging/bug-root-cause",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:1af6f220-b9ec-44bd-b2e6-67c1699b8f54",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:1af6f220-b9ec-44bd-b2e6-67c1699b8f54"
     },
     {
       "name": "Change Risk",
@@ -291,12 +251,7 @@
       "layer": "dev",
       "category": "B-code-review",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/B-code-review/change-risk/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/B-code-review/change-risk",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:935c0835-ebad-458e-8eeb-7bdd6acb759e",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:935c0835-ebad-458e-8eeb-7bdd6acb759e"
     },
     {
       "name": "Completion Adjudication",
@@ -324,12 +279,7 @@
       "layer": "dev",
       "category": "D-agent-meta",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/D-agent-meta/completion-adjudication/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/D-agent-meta/completion-adjudication",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:6879a2d3-6cc9-4f46-9950-4916a39f7f20",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:6879a2d3-6cc9-4f46-9950-4916a39f7f20"
     },
     {
       "name": "Dependency Selection",
@@ -357,12 +307,7 @@
       "layer": "dev",
       "category": "A-code-writing",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/A-code-writing/dependency-selection/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/A-code-writing/dependency-selection",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:595c6a69-1e37-4ed1-8668-c0e1ba8ba888",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:595c6a69-1e37-4ed1-8668-c0e1ba8ba888"
     },
     {
       "name": "Deploy Readiness",
@@ -390,12 +335,7 @@
       "layer": "dev",
       "category": "F-release",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/F-release/deploy-readiness/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/F-release/deploy-readiness",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:6e012aa5-7299-46e7-ac00-4d8e0be324f7",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:6e012aa5-7299-46e7-ac00-4d8e0be324f7"
     },
     {
       "name": "Documentation Judgment",
@@ -423,12 +363,7 @@
       "layer": "dev",
       "category": "E-maintenance",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/E-maintenance/documentation-judgment/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/E-maintenance/documentation-judgment",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:e0e9ebd7-87e9-4240-86cf-e29a1ff72280",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:e0e9ebd7-87e9-4240-86cf-e29a1ff72280"
     },
     {
       "name": "Fix Vs Workaround",
@@ -456,12 +391,7 @@
       "layer": "dev",
       "category": "C-debugging",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/C-debugging/fix-vs-workaround/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/C-debugging/fix-vs-workaround",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:b74582cd-164a-48e1-98ec-4f9a5aaaacfd",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:b74582cd-164a-48e1-98ec-4f9a5aaaacfd"
     },
     {
       "name": "Incident Triage",
@@ -489,12 +419,7 @@
       "layer": "dev",
       "category": "C-debugging",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/C-debugging/incident-triage/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/C-debugging/incident-triage",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:1a424ddb-671c-4415-93af-7b86090cca6e",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:1a424ddb-671c-4415-93af-7b86090cca6e"
     },
     {
       "name": "Intent Boundary",
@@ -522,12 +447,7 @@
       "layer": "dev",
       "category": "D-agent-meta",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/D-agent-meta/intent-boundary/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/D-agent-meta/intent-boundary",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:b49a565b-d24a-4a36-a5ac-fa367ab9e12e",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:b49a565b-d24a-4a36-a5ac-fa367ab9e12e"
     },
     {
       "name": "Naming Judgment",
@@ -555,12 +475,7 @@
       "layer": "dev",
       "category": "A-code-writing",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/A-code-writing/naming-judgment/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/A-code-writing/naming-judgment",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:f5ced2ca-c4c8-45e1-8717-f248581e5b5e",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:f5ced2ca-c4c8-45e1-8717-f248581e5b5e"
     },
     {
       "name": "OSS Maintainer Judgment",
@@ -588,12 +503,7 @@
       "layer": "dev",
       "category": "E-maintenance",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/E-maintenance/oss-maintainer-judgment/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/E-maintenance/oss-maintainer-judgment",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:99d55aec-1d57-420f-8bde-b78606bffb51",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:99d55aec-1d57-420f-8bde-b78606bffb51"
     },
     {
       "name": "Performance Antipattern",
@@ -621,12 +531,7 @@
       "layer": "dev",
       "category": "B-code-review",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/B-code-review/performance-antipattern/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/B-code-review/performance-antipattern",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:bdef7d00-2d5c-43e6-98e0-90c0b8e475ec",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:bdef7d00-2d5c-43e6-98e0-90c0b8e475ec"
     },
     {
       "name": "PR Scope Adjudication",
@@ -654,12 +559,7 @@
       "layer": "dev",
       "category": "B-code-review",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/B-code-review/pr-scope-adjudication/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/B-code-review/pr-scope-adjudication",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:5e6cafc7-38dc-4525-9388-162da7bbd4e9",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:5e6cafc7-38dc-4525-9388-162da7bbd4e9"
     },
     {
       "name": "Project Context",
@@ -687,12 +587,7 @@
       "layer": "dev",
       "category": "D-agent-meta",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/D-agent-meta/project-context/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/D-agent-meta/project-context",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:7e4ba8ac-2b26-4a31-8e7e-2400e33a3991",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:7e4ba8ac-2b26-4a31-8e7e-2400e33a3991"
     },
     {
       "name": "Refactoring Timing",
@@ -720,12 +615,7 @@
       "layer": "dev",
       "category": "E-maintenance",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/E-maintenance/refactoring-timing/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/E-maintenance/refactoring-timing",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:7a6fc14d-1fd5-4f22-96a2-08053d76c9b0",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:7a6fc14d-1fd5-4f22-96a2-08053d76c9b0"
     },
     {
       "name": "Review Severity Judgment",
@@ -753,12 +643,7 @@
       "layer": "dev",
       "category": "B-code-review",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/B-code-review/review-severity-judgment/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/B-code-review/review-severity-judgment",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:74d89fec-3349-4e10-b9a4-ddb2f0808465",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:74d89fec-3349-4e10-b9a4-ddb2f0808465"
     },
     {
       "name": "Safety Boundary",
@@ -786,12 +671,7 @@
       "layer": "dev",
       "category": "D-agent-meta",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/D-agent-meta/safety-boundary/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/D-agent-meta/safety-boundary",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:b88941f4-6729-4d78-b0ea-6f45947a8d70",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:b88941f4-6729-4d78-b0ea-6f45947a8d70"
     },
     {
       "name": "Schema Design",
@@ -819,12 +699,7 @@
       "layer": "dev",
       "category": "A-code-writing",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/A-code-writing/schema-design/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/A-code-writing/schema-design",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:6ba08c44-a153-4cb7-83d0-50c070d5b5ad",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:6ba08c44-a153-4cb7-83d0-50c070d5b5ad"
     },
     {
       "name": "Scope Creep Detection",
@@ -852,12 +727,7 @@
       "layer": "dev",
       "category": "D-agent-meta",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/D-agent-meta/scope-creep-detection/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/D-agent-meta/scope-creep-detection",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:ffad3cf5-be1f-4097-8bee-c8df9cdb0ac8",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:ffad3cf5-be1f-4097-8bee-c8df9cdb0ac8"
     },
     {
       "name": "Security Vulnerability",
@@ -885,12 +755,7 @@
       "layer": "dev",
       "category": "B-code-review",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/B-code-review/security-vulnerability/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/B-code-review/security-vulnerability",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:8acebf8c-1c9e-4d1c-8486-f4cfa25cd09a",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:8acebf8c-1c9e-4d1c-8486-f4cfa25cd09a"
     },
     {
       "name": "Silent Failure Detection",
@@ -918,12 +783,7 @@
       "layer": "dev",
       "category": "C-debugging",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/C-debugging/silent-failure-detection/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/C-debugging/silent-failure-detection",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:3d6d03e1-50db-4b7b-91aa-2a26f9290947",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:3d6d03e1-50db-4b7b-91aa-2a26f9290947"
     },
     {
       "name": "Task Decomposition",
@@ -951,12 +811,7 @@
       "layer": "dev",
       "category": "D-agent-meta",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/D-agent-meta/task-decomposition/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/D-agent-meta/task-decomposition",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:c48be822-083b-45b4-8955-64a40fe52827",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:c48be822-083b-45b4-8955-64a40fe52827"
     },
     {
       "name": "Tech Debt Signal",
@@ -984,12 +839,7 @@
       "layer": "dev",
       "category": "E-maintenance",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/E-maintenance/tech-debt-signal/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/E-maintenance/tech-debt-signal",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:a3208802-c29b-4a3d-b5cb-b5ef8d09bedb",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:a3208802-c29b-4a3d-b5cb-b5ef8d09bedb"
     },
     {
       "name": "Test Strategy Discretion",
@@ -1017,12 +867,7 @@
       "layer": "dev",
       "category": "A-code-writing",
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "dev-assets/A-code-writing/test-strategy-discretion/",
-      "build_pipeline": "node scripts/build-asset.mjs dev-assets/A-code-writing/test-strategy-discretion",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:d30dc59a-bde8-4efc-9679-fc4bc60ced2d",
-      "human_lock_statement": "人工审定-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:d30dc59a-bde8-4efc-9679-fc4bc60ced2d"
     },
     {
       "name": "Content Mix",
@@ -1047,12 +892,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/A-strategy/content-mix/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:c943b74f-7a33-47c4-a913-d979895800ea",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:c943b74f-7a33-47c4-a913-d979895800ea"
     },
     {
       "name": "Niche Calibration",
@@ -1077,12 +917,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/A-strategy/niche-calibration/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:3cda5ea2-f45f-40f5-adfd-8aecdad7ead2",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:3cda5ea2-f45f-40f5-adfd-8aecdad7ead2"
     },
     {
       "name": "Platform Selection",
@@ -1107,12 +942,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/A-strategy/platform-selection/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:2a4928ef-a622-4c5d-ab43-8b3f63460da9",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:2a4928ef-a622-4c5d-ab43-8b3f63460da9"
     },
     {
       "name": "Authenticity Balance",
@@ -1137,12 +967,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/B-creation/authenticity-balance/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:bd850b49-6df5-459b-a162-a17c705d4c78",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:bd850b49-6df5-459b-a162-a17c705d4c78"
     },
     {
       "name": "Content Depth",
@@ -1167,12 +992,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/B-creation/content-depth/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:352527ff-c806-40d7-a8bd-e6390e85129a",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:352527ff-c806-40d7-a8bd-e6390e85129a"
     },
     {
       "name": "Originality Judgment",
@@ -1197,12 +1017,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/B-creation/originality-judgment/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:50b7fec4-d0a6-4590-a8a5-d7281c9c789d",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:50b7fec4-d0a6-4590-a8a5-d7281c9c789d"
     },
     {
       "name": "Topic Selection",
@@ -1227,12 +1042,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/B-creation/topic-selection/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:7bc3eb55-ac07-49bc-a793-e7cf453f433a",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:7bc3eb55-ac07-49bc-a793-e7cf453f433a"
     },
     {
       "name": "Audience Signal",
@@ -1257,12 +1067,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/C-audience/audience-signal/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:5e5a60a4-bb00-409c-a860-125d91545d1b",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:5e5a60a4-bb00-409c-a860-125d91545d1b"
     },
     {
       "name": "Community Engagement",
@@ -1287,12 +1092,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/C-audience/community-engagement/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:e1ff6e59-1d10-40ad-a245-fc5703495057",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:e1ff6e59-1d10-40ad-a245-fc5703495057"
     },
     {
       "name": "Controversy Navigation",
@@ -1317,12 +1117,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/C-audience/controversy-navigation/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:8d0662a5-fa56-4d17-ab28-a393091a66db",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:8d0662a5-fa56-4d17-ab28-a393091a66db"
     },
     {
       "name": "Monetization Timing",
@@ -1347,12 +1142,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/D-monetization/monetization-timing/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:cde3d41d-edfd-42f1-ad8b-9a8bd6fd904c",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:cde3d41d-edfd-42f1-ad8b-9a8bd6fd904c"
     },
     {
       "name": "Offer Design",
@@ -1377,12 +1167,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/D-monetization/offer-design/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:d22602f5-1abc-4bb9-ad82-3bfc5dc5f6b3",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:d22602f5-1abc-4bb9-ad82-3bfc5dc5f6b3"
     },
     {
       "name": "Sponsorship Selection",
@@ -1407,12 +1192,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/D-monetization/sponsorship-selection/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:9b447c33-17c9-467d-a99f-2964b8407e6d",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:9b447c33-17c9-467d-a99f-2964b8407e6d"
     },
     {
       "name": "Creator Sustainability",
@@ -1437,12 +1217,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/E-operations/creator-sustainability/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:5716cf34-31cb-4449-a68b-3cd61880f98b",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:5716cf34-31cb-4449-a68b-3cd61880f98b"
     },
     {
       "name": "Publishing Rhythm",
@@ -1467,12 +1242,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/E-operations/publishing-rhythm/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "10 PASS, 0 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:2380c936-d6d0-4123-a547-fc73160090b8",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-07-01"
+      "asset_uid": "urn:uuid:2380c936-d6d0-4123-a547-fc73160090b8"
     },
     {
       "name": "Creator Brand Positioning",
@@ -1497,12 +1267,7 @@
         "cases": 2
       },
       "status": "active",
-      "source_repo": "kdna-assets-internal",
-      "source_path": "creator-assets/A-strategy/brand-positioning/",
-      "build_pipeline": "node scripts/build-asset.mjs",
-      "gates_passed": "9 PASS, 1 SKIP, 0 FAIL of 10",
-      "asset_uid": "urn:uuid:e1292a65-9dba-4bd5-a57e-b350d91fbf67",
-      "human_lock_statement": "资产孵化-pipeline-10-gate-pass-2026-06-30"
+      "asset_uid": "urn:uuid:e1292a65-9dba-4bd5-a57e-b350d91fbf67"
     },
     {
       "name": "Viral Topic Selection",
@@ -1532,9 +1297,7 @@
       "legacy": true,
       "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
       "status": "superseded",
-      "superseded_date": "2026-06-30",
-      "superseded_by": "kdna-assets-internal pipeline (new model)",
-      "superseded_reason": "Pre-pipeline asset with no source tree in the kdna-assets-internal lineage. Replaced by assets produced via the 10-gate pipeline. GitHub Release remains for backward compatibility but is no longer listed in README."
+      "superseded_date": "2026-06-30"
     },
     {
       "name": "Title Attraction",
@@ -1564,9 +1327,7 @@
       "legacy": true,
       "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
       "status": "superseded",
-      "superseded_date": "2026-06-30",
-      "superseded_by": "kdna-assets-internal pipeline (new model)",
-      "superseded_reason": "Pre-pipeline asset with no source tree in the kdna-assets-internal lineage. Replaced by assets produced via the 10-gate pipeline. GitHub Release remains for backward compatibility but is no longer listed in README."
+      "superseded_date": "2026-06-30"
     },
     {
       "name": "Short Video Hook Judgment",
@@ -1596,9 +1357,7 @@
       "legacy": true,
       "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
       "status": "superseded",
-      "superseded_date": "2026-06-30",
-      "superseded_by": "kdna-assets-internal pipeline (new model)",
-      "superseded_reason": "Pre-pipeline asset with no source tree in the kdna-assets-internal lineage. Replaced by assets produced via the 10-gate pipeline. GitHub Release remains for backward compatibility but is no longer listed in README."
+      "superseded_date": "2026-06-30"
     },
     {
       "name": "Project Context Judgment",
@@ -1644,12 +1403,8 @@
         "payload_evolution_stages_of_type_term": 0,
         "reasoning_chains_note": "build derives failure_modes from axioms (1 axiom = 1 chain); source's 4 reasoning_chains are imported as reasoning cards but consumed by a different mechanism"
       },
-      "build_coverage_notes": "Source fields that DO NOT enter the structured payload as a named field (they enter via a different mechanism or are documentation-only): (a) KDNA_Patterns.json.terminology.{standard_terms,banned_terms} — kdna-studio-core/src/compile/index.js:165-166 hardcodes these to empty arrays in the structured payload, BUT compileEvolution generates one stage per locked term/banned_term card, so the content reaches the payload as evolution.stages entries (not as a structured field). (b) KDNA_Evolution.json.stages — compileEvolution ignores source.stages and regenerates from card.audit_log; the source's 4 evolution stages appear as 4 of the 48 total payload.evolution.stages entries (the other 44 are derived from axiom / scenario / self_check / case / reasoning cards). (c) reasoning_chains → failure_modes is a DIFFERENT-MECHANISM derivation (1 axiom = 1 chain). These are the known build-coverage limitations of kdna-studio-core v0.6.4. They do not block release; they are documented here for honesty.",
-      "previous_version_status": "v0.1.0 and v0.1.1 are preserved on GitHub Releases as historical previews but are NOT in this index. v0.1.2 is the first version to pass the 10-gate release standard.",
       "status": "superseded",
-      "superseded_date": "2026-06-30",
-      "superseded_by": "kdna-assets-internal pipeline (new model)",
-      "superseded_reason": "Pre-pipeline asset with no source tree in the kdna-assets-internal lineage. Replaced by assets produced via the 10-gate pipeline. GitHub Release remains for backward compatibility but is no longer listed in README."
+      "superseded_date": "2026-06-30"
     },
     {
       "name": "Completion Adjudication",
@@ -1697,13 +1452,9 @@
         "payload_evolution_stages_of_type_term": 3,
         "reasoning_chains_note": "build derives failure_modes from axioms (1 axiom = 1 chain); the 5 source reasoning_chains are imported as reasoning cards. For completion_adjudication the counts match by design (5 axioms, 5 chains)."
       },
-      "build_coverage_notes": "Source fields that DO NOT enter the structured payload as a named field (they enter via a different mechanism or are documentation-only): (a) KDNA_Patterns.json.terminology.{standard_terms,banned_terms} — kdna-studio-core/src/compile/index.js:165-166 hardcodes these to empty arrays in the structured payload, BUT compileEvolution generates one stage per locked term/banned_term card, so the content reaches the payload as evolution.stages entries (not as a structured field). For this asset: 3 standard_terms → 3 term stages; 18 banned_terms → 18 banned_term stages. (b) KDNA_Evolution.json.stages — compileEvolution ignores source.stages and regenerates from card.audit_log; the source's 4 evolution stages appear as 4 of the 58 total payload.evolution.stages entries (the other 54 are derived from axiom / scenario / self_check / case / reasoning / banned_term / term / framework cards). (c) reasoning_chains → failure_modes is a DIFFERENT-MECHANISM derivation (1 axiom = 1 chain). These are the known build-coverage limitations of kdna-studio-core v0.6.4. They do not block release; they are documented here for honesty.",
-      "previous_version_status": "v0.1.0 is preserved on GitHub Releases as a historical preview but is NOT in this index. v0.1.1 is the first version to pass the 10-gate publish standard.",
       "status": "superseded",
-      "superseded_date": "2026-06-30",
-      "superseded_by": "kdna-assets-internal pipeline (new model)",
-      "superseded_reason": "Pre-pipeline asset with no source tree in the kdna-assets-internal lineage. Replaced by assets produced via the 10-gate pipeline. GitHub Release remains for backward compatibility but is no longer listed in README."
+      "superseded_date": "2026-06-30"
     }
   ],
-  "note": "Indexes 52 public release entries: 47 active assets (31 developer judgment assets and 16 creator judgment assets) plus 5 superseded compatibility releases. Active assets were produced by the 10-gate release pipeline."
+  "note": "Indexes public release entries. Asset files, release tags, and checksums are the public source of release integrity information."
 }

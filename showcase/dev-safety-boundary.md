@@ -60,6 +60,5 @@ kdna load dev-safety-boundary-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:b88941f4-6729-4d78-b0ea-6f45947a8d70`
 - **SHA256:** `41e65606abfc6311e7ab3d72a058e442c7eecf6e0d2dfb0ec80a45fb606783a3`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

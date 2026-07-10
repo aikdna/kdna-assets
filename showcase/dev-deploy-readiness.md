@@ -57,6 +57,5 @@ kdna load dev-deploy-readiness-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:6e012aa5-7299-46e7-ac00-4d8e0be324f7`
 - **SHA256:** `cd905dd99177a14996926a3353b407cf75e977120ea28569b041b8dbedd1207e`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

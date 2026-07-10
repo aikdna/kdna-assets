@@ -61,6 +61,5 @@ kdna load dev-architecture-minimum-edit-v0.1.0.kdna --profile=compact --as=promp
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:ad6aa859-7fc7-4785-9705-a6f6f86e2e21`
 - **SHA256:** `a6fdf15ce011d11446e5072f05cfe05ab325f697e4faf8cf52dee1e92635dc2e`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

@@ -57,6 +57,5 @@ kdna load dev-ai-collaboration-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:667d4a65-f22b-4a73-9043-ce06e2958d85`
 - **SHA256:** `65b5511868dada45519d55616283df66807e08bf604f42c429a8c5a3ab9e6964`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

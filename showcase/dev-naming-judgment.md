@@ -57,6 +57,5 @@ kdna load dev-naming-judgment-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:f5ced2ca-c4c8-45e1-8717-f248581e5b5e`
 - **SHA256:** `7a049af6afe88552b64f9c8f28bec34f69794ce7c921dfbed46863cd13bbebda`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

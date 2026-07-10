@@ -57,6 +57,5 @@ kdna load dev-incident-triage-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:1a424ddb-671c-4415-93af-7b86090cca6e`
 - **SHA256:** `c49fd5b460641cc2bbb2b3fcd6b86bae22f610657b86f1dcde77d79c86a5414b`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

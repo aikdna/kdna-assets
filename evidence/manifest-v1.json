@@ -1,0 +1,477 @@
+{
+  "kdna_asset_evidence_manifest": "0.1.0",
+  "generated_at": "2026-07-10T08:31:26.385Z",
+  "generated_by": "kdna-cli asset-evidence",
+  "assets": [
+    {
+      "asset_id": "creator-audience-signal-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:244bc540d551377178eaf19d1334897696e7cddd3170d2291d1a4e3ab7b95664",
+      "sidecar_files": [
+        "creator-audience-signal-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-authenticity-balance-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:cfa0a2efbea7d8fc3248bb42378921bd37917b091d8be10f0f8d2071c4ee34ea",
+      "sidecar_files": [
+        "creator-authenticity-balance-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-brand-positioning-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:ec9c96f78a4b9a91d24c108b2f43a13be1b9962776a10ec75462a2e8ffca6b08",
+      "sidecar_files": [
+        "creator-brand-positioning-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-community-engagement-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:00465a837032c00d9cf499ff49b7c6da9b9cfac1c3d8bedce1f16096e0d4baae",
+      "sidecar_files": [
+        "creator-community-engagement-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-content-depth-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:78ffcc26bdd5cf655207ec421ad21b4737785807b17d7de98b9ebdda0ff171cd",
+      "sidecar_files": [
+        "creator-content-depth-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-content-mix-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:4f0c08f18cd13d74e22fcc1d24771b57ad61651a0378838d07f9cb39f0deac02",
+      "sidecar_files": [
+        "creator-content-mix-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-controversy-navigation-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:1cd1732fe257e3b8d3a7059e394ffad4aa7a9f9b4324c6bc351869ab22f0be06",
+      "sidecar_files": [
+        "creator-controversy-navigation-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-monetization-timing-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:b5e980f08ac1db0d305e08913f6915b0daaa2b9a1c7f2cf7b80dcd3442bb3704",
+      "sidecar_files": [
+        "creator-monetization-timing-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-niche-calibration-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:33d8c811319ff1f777b2e8d45e50ad829be6771e9a4a2dc398b86a71499d73f4",
+      "sidecar_files": [
+        "creator-niche-calibration-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-offer-design-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:4d098a88b31c92af473f50ecf7920d2704b1e6b36879cf345b983b7eea73c84b",
+      "sidecar_files": [
+        "creator-offer-design-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-originality-judgment-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:05ee40e0c0c12e8364ec7f59c957588821b3a34221e944223f083e862aac1cc7",
+      "sidecar_files": [
+        "creator-originality-judgment-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-platform-selection-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:764b61fde0c80aaad540dd8d537f4e364668ff966f0aa80c88901e338b5c3a57",
+      "sidecar_files": [
+        "creator-platform-selection-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-publishing-rhythm-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:3ae14e2b88750c34086fefd0b4829b468eadd8ddd7a6850e8033f0bb293a4dc3",
+      "sidecar_files": [
+        "creator-publishing-rhythm-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-sponsorship-selection-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:745238d1b234b228754e20031ef789d0b598c9c7f2ae5f4fcbe3a74bd3882b33",
+      "sidecar_files": [
+        "creator-sponsorship-selection-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-sustainability-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:231fe261d8f8faec86590a7e010308b3b44f9819f25c071fcb0876325f00f1bf",
+      "sidecar_files": [
+        "creator-sustainability-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "creator-topic-selection-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:0a3530823bb1681fcfda2f710e389df6e87e7552ddc57ad2608613f7746a8ecd",
+      "sidecar_files": [
+        "creator-topic-selection-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-abstraction-threshold-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:2a919dc4bc88066f5a9aa48ecb3b665ac0faafc33bdd1e5688c04bd68fc9cf22",
+      "sidecar_files": [
+        "dev-abstraction-threshold-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-ai-collaboration-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:65b5511868dada45519d55616283df66807e08bf604f42c429a8c5a3ab9e6964",
+      "sidecar_files": [
+        "dev-ai-collaboration-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-ai-output-review-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:7b3dbdd10a752899ebd1238aacf25c8b26c18112569e5bf9daea8f683fb113aa",
+      "sidecar_files": [
+        "dev-ai-output-review-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-anti-drift-context-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:f5d1437176440ecc10e765e02862a394132d2bb57b5ce54dcde17bb8971f5421",
+      "sidecar_files": [
+        "dev-anti-drift-context-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-api-design-judgment-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:c25dc1a786c068cd49bf1d9c50f384ee34b085597eb8d4326bed71baf03899ee",
+      "sidecar_files": [
+        "dev-api-design-judgment-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-architecture-minimum-edit-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:a6fdf15ce011d11446e5072f05cfe05ab325f697e4faf8cf52dee1e92635dc2e",
+      "sidecar_files": [
+        "dev-architecture-minimum-edit-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-breaking-change-detection-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:9801e2a28418bb24fc073bcbddbab1994e5d7821a1eb532d89873feda697c151",
+      "sidecar_files": [
+        "dev-breaking-change-detection-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-bug-root-cause-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:96c93ca160ce5330df2e438214856a504951524158544b017bc68196cf1a7bb7",
+      "sidecar_files": [
+        "dev-bug-root-cause-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-change-risk-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:06df5c58a40be3d0eed7241417764e1ec1cb5a9b52cd87a4be71ff802ab7c963",
+      "sidecar_files": [
+        "dev-change-risk-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-completion-adjudication-v0.1.1",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:490bb03222b359b9d56ed539d7120aa5264e55a86497cda8ec7c15cacf01b3d3",
+      "sidecar_files": [
+        "dev-completion-adjudication-v0.1.1.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-dependency-selection-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:44055527743606ffcf8c4c73fa2bb54874045e2f28dd1951d0081dfbd3e4e0c5",
+      "sidecar_files": [
+        "dev-dependency-selection-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-deploy-readiness-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:cd905dd99177a14996926a3353b407cf75e977120ea28569b041b8dbedd1207e",
+      "sidecar_files": [
+        "dev-deploy-readiness-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-documentation-judgment-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:ae7ac12a121fbc3e3b3b0337d906eefa69853133cf10a0064361f9085f95d438",
+      "sidecar_files": [
+        "dev-documentation-judgment-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-fix-vs-workaround-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:2c1a1502e69c7b061e8073f00805bdb37ed29f0d6ccf216e4091ad70deaeb260",
+      "sidecar_files": [
+        "dev-fix-vs-workaround-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-incident-triage-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:c49fd5b460641cc2bbb2b3fcd6b86bae22f610657b86f1dcde77d79c86a5414b",
+      "sidecar_files": [
+        "dev-incident-triage-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-intent-boundary-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:34a43b1c65922e389b0dab4a0c62370eef4ac8a9c234a09b489a5021889fa8d7",
+      "sidecar_files": [
+        "dev-intent-boundary-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-naming-judgment-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:7a049af6afe88552b64f9c8f28bec34f69794ce7c921dfbed46863cd13bbebda",
+      "sidecar_files": [
+        "dev-naming-judgment-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-oss-maintainer-judgment-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:69afd120e4e4385d7b5d650bc7c16f0e428efcabf627de8959a4f468af536075",
+      "sidecar_files": [
+        "dev-oss-maintainer-judgment-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-performance-antipattern-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:31933ae324e6fd81567d4629bb8ce0d03bb1a6dd7786b77be9102c3198c482f3",
+      "sidecar_files": [
+        "dev-performance-antipattern-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-pr-scope-adjudication-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:4b90b14afffde1f866736f5b6195f93ae3bf1f76fb3503f1654332b76328439a",
+      "sidecar_files": [
+        "dev-pr-scope-adjudication-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-project-context-v0.1.2",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:2d219d8879bff29f4d84d863a3ef7b02c88de1b5621f84235c3edae2944c5837",
+      "sidecar_files": [
+        "dev-project-context-v0.1.2.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-refactoring-timing-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:8fbb3b49139128756189cbdfe775938c85653a4a4c2e56d9f92a5b6ef2433988",
+      "sidecar_files": [
+        "dev-refactoring-timing-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-review-severity-judgment-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:00e19d2f1565be87cbc2cc67c8d654105308e6edad41b8fc3e280c7007fa1051",
+      "sidecar_files": [
+        "dev-review-severity-judgment-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-safety-boundary-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:41e65606abfc6311e7ab3d72a058e442c7eecf6e0d2dfb0ec80a45fb606783a3",
+      "sidecar_files": [
+        "dev-safety-boundary-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-schema-design-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:ea82bf8da1eaa9103138cd58995787f61a982a31f255df17624ee0003d04000d",
+      "sidecar_files": [
+        "dev-schema-design-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-scope-creep-detection-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:59fde05d2cc8c6790956b37470d29f0f88cd9cace7ca4aebc38117396e8c7f8a",
+      "sidecar_files": [
+        "dev-scope-creep-detection-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-security-vulnerability-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:ced7b225429b83ef478884a5660368e1acaad244230487e4d7adf9a4fffc0151",
+      "sidecar_files": [
+        "dev-security-vulnerability-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-silent-failure-detection-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:efa1671e410076ecd323db312edffd6c31981713ebe72c34c95beafbb73abe72",
+      "sidecar_files": [
+        "dev-silent-failure-detection-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-task-decomposition-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:044c33a61c589de2b665397ae266753b576dda06f242ae0e1d77dbe0658a1e56",
+      "sidecar_files": [
+        "dev-task-decomposition-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-tech-debt-signal-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:55d140fc35f8526687b34227ef150cfbe67513a260d9fb9550ed522e289c783c",
+      "sidecar_files": [
+        "dev-tech-debt-signal-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    },
+    {
+      "asset_id": "dev-test-strategy-discretion-v0.1.0",
+      "version": "0.1.0",
+      "checksum_sha256": "sha256:a14e9a78af3af6158c7ff373741c493e7d0572c91bceb0a493333e8819102bbb",
+      "sidecar_files": [
+        "dev-test-strategy-discretion-v0.1.0.kdna"
+      ],
+      "kdna_core_version": ">=0.15.0",
+      "public_fixture_available": false
+    }
+  ]
+}

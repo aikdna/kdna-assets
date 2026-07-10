@@ -197,14 +197,14 @@ conditions, single-model self-eval, 2026-06) showed:
 | Intent gap surfaced | 0 / 3 | 3 / 3 | +3 |
 | UNRESOLVED RISK enumerated | 0 / 3 | 3 / 3 | +3 |
 
-Full report: (internal evaluation log; not published in this public release)
+No public comparative evaluation report is included with this release.
 
 This is single-model evidence (single-model self-evaluation). Cross-model
 runs (Claude, Codex) are planned follow-up.
 
 ## Provenance
 
-- **Source:** internal namespace (redacted in public release)
+- **Source:** release metadata
 - **Asset UID:** `urn:uuid:cb688d37-1d5e-4a7b-820f-e6a794288e5c`
 - **SHA256:** `2f46bccc47a9be987eb74262af60b7344850178dfa478a078df00ab178f107e4`
 - **Built with:** kdna-studio migrate --format v1 (kdna-studio-cli v0.6.4)

@@ -57,6 +57,5 @@ kdna load dev-documentation-judgment-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:e0e9ebd7-87e9-4240-86cf-e29a1ff72280`
 - **SHA256:** `ae7ac12a121fbc3e3b3b0337d906eefa69853133cf10a0064361f9085f95d438`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0
