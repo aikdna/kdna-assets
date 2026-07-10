@@ -57,6 +57,5 @@ kdna load dev-scope-creep-detection-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:ffad3cf5-be1f-4097-8bee-c8df9cdb0ac8`
 - **SHA256:** `59fde05d2cc8c6790956b37470d29f0f88cd9cace7ca4aebc38117396e8c7f8a`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

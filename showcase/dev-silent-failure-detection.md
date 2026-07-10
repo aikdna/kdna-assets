@@ -57,6 +57,5 @@ kdna load dev-silent-failure-detection-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:3d6d03e1-50db-4b7b-91aa-2a26f9290947`
 - **SHA256:** `efa1671e410076ecd323db312edffd6c31981713ebe72c34c95beafbb73abe72`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

@@ -61,6 +61,5 @@ kdna load dev-pr-scope-adjudication-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:5e6cafc7-38dc-4525-9388-162da7bbd4e9`
 - **SHA256:** `4b90b14afffde1f866736f5b6195f93ae3bf1f76fb3503f1654332b76328439a`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

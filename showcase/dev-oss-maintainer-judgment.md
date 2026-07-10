@@ -57,6 +57,5 @@ kdna load dev-oss-maintainer-judgment-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:99d55aec-1d57-420f-8bde-b78606bffb51`
 - **SHA256:** `69afd120e4e4385d7b5d650bc7c16f0e428efcabf627de8959a4f468af536075`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

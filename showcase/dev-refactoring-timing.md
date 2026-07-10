@@ -57,6 +57,5 @@ kdna load dev-refactoring-timing-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:7a6fc14d-1fd5-4f22-96a2-08053d76c9b0`
 - **SHA256:** `8fbb3b49139128756189cbdfe775938c85653a4a4c2e56d9f92a5b6ef2433988`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

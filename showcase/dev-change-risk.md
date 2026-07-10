@@ -60,6 +60,5 @@ kdna load dev-change-risk-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:935c0835-ebad-458e-8eeb-7bdd6acb759e`
 - **SHA256:** `06df5c58a40be3d0eed7241417764e1ec1cb5a9b52cd87a4be71ff802ab7c963`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

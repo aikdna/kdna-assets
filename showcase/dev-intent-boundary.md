@@ -61,6 +61,5 @@ kdna load dev-intent-boundary-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:b49a565b-d24a-4a36-a5ac-fa367ab9e12e`
 - **SHA256:** `34a43b1c65922e389b0dab4a0c62370eef4ac8a9c234a09b489a5021889fa8d7`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

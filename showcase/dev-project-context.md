@@ -60,6 +60,5 @@ kdna load dev-project-context-v0.1.2.kdna --profile=compact --as=prompt
 - **Version:** 0.1.2
 - **Asset UID:** `urn:uuid:7e4ba8ac-2b26-4a31-8e7e-2400e33a3991`
 - **SHA256:** `2d219d8879bff29f4d84d863a3ef7b02c88de1b5621f84235c3edae2944c5837`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

@@ -15,10 +15,10 @@ kdna load <asset>.kdna --profile=compact --as=prompt
 
 A **release repository** for downloadable `.kdna` files. Every asset listed here:
 
-- Was produced by the private incubator pipeline (10-gate quality standard)
 - Passes `kdna validate` (format, schema, payload, checksums, load contract)
-- Ships with SHA256 checksums, public release artifacts, and recorded
-  source-to-release evidence
+- Ships with SHA256 checksums and public release artifacts
+- May include a public evidence manifest describing integrity and compatibility
+  information
 
 ## What this repo is NOT
 
@@ -56,6 +56,17 @@ counts.
 python3 scripts/audit-public-metadata.py
 ```
 
+## Evidence and compatibility
+
+The [`evidence/`](./evidence/) directory contains public-safe manifests for
+published assets. Integrity evidence confirms that a released file and its
+checksum agree. Compatibility evidence records combinations that have been
+published with supporting evidence.
+
+An evidence manifest does not rank assets, guarantee task fit, or claim that
+an asset improves every model or workflow. Applications should still validate
+an asset and apply their own routing and review policy.
+
 ## How to use with your AI agent
 
 **For agents with the `kdna-loader` skill installed** (Claude Code, Codex, OpenCode, Cursor):
@@ -63,6 +74,11 @@ python3 scripts/audit-public-metadata.py
 kdna install <asset>.kdna
 # The agent will automatically discover and load it per task
 ```
+
+For an application that uses the optional consumption runtime, start with a
+validated packaged asset and use route, compose, project, and evaluation
+commands from [`@aikdna/kdna-cli`](https://github.com/aikdna/kdna-cli). Runtime
+sidecars remain separate from the asset release files.
 
 **Manual injection** (any agent):
 ```bash

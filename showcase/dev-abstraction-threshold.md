@@ -57,6 +57,5 @@ kdna load dev-abstraction-threshold-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:90e484b1-e4c8-40d9-9903-0935887dd90a`
 - **SHA256:** `2a919dc4bc88066f5a9aa48ecb3b665ac0faafc33bdd1e5688c04bd68fc9cf22`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

@@ -57,6 +57,5 @@ kdna load dev-performance-antipattern-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:bdef7d00-2d5c-43e6-98e0-90c0b8e475ec`
 - **SHA256:** `31933ae324e6fd81567d4629bb8ce0d03bb1a6dd7786b77be9102c3198c482f3`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

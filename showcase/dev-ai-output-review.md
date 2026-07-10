@@ -57,6 +57,5 @@ kdna load dev-ai-output-review-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:410f1e48-fcce-408f-8736-3aa469b4bcd2`
 - **SHA256:** `7b3dbdd10a752899ebd1238aacf25c8b26c18112569e5bf9daea8f683fb113aa`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

@@ -52,6 +52,5 @@ kdna load dev-breaking-change-detection-v0.1.0.kdna --profile=compact --as=promp
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:7ad5a6d4-d5aa-4d50-82a5-47705386679e`
 - **SHA256:** `9801e2a28418bb24fc073bcbddbab1994e5d7821a1eb532d89873feda697c151`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

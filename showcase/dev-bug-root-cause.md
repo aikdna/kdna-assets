@@ -60,6 +60,5 @@ kdna load dev-bug-root-cause-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:1af6f220-b9ec-44bd-b2e6-67c1699b8f54`
 - **SHA256:** `96c93ca160ce5330df2e438214856a504951524158544b017bc68196cf1a7bb7`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

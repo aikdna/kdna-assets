@@ -57,6 +57,5 @@ kdna load dev-tech-debt-signal-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:a3208802-c29b-4a3d-b5cb-b5ef8d09bedb`
 - **SHA256:** `55d140fc35f8526687b34227ef150cfbe67513a260d9fb9550ed522e289c783c`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

@@ -54,7 +54,7 @@ weak opening may score 1-2.
 
 ## Provenance
 
-- **Source:** internal namespace (redacted in public release)
+- **Source:** release metadata
 - **Version:** 1.0.0 (released 2026-06-23, content-domain legacy)
 - **Asset type:** `domain_judgment` (NOT part of the A-layer
   flagship pipeline; this is a legacy released-as-is asset

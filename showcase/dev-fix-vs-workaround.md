@@ -57,6 +57,5 @@ kdna load dev-fix-vs-workaround-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:b74582cd-164a-48e1-98ec-4f9a5aaaacfd`
 - **SHA256:** `2c1a1502e69c7b061e8073f00805bdb37ed29f0d6ccf216e4091ad70deaeb260`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0

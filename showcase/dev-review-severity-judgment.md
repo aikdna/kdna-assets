@@ -57,6 +57,5 @@ kdna load dev-review-severity-judgment-v0.1.0.kdna --profile=compact --as=prompt
 - **Version:** 0.1.0
 - **Asset UID:** `urn:uuid:74d89fec-3349-4e10-b9a4-ddb2f0808465`
 - **SHA256:** `00e19d2f1565be87cbc2cc67c8d654105308e6edad41b8fc3e280c7007fa1051`
-- **Built with:** kdna-studio-cli (kdna-assets-internal 10-gate pipeline)
-- **Gates:** 10 PASS, 0 SKIP, 0 FAIL of 10
+- **Built with:** KDNA Studio CLI
 - **License:** CC-BY-4.0
