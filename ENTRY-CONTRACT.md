@@ -121,7 +121,7 @@ download URL or behavioral claim.
     "load": "verified",
     "capsule": "verified",
     "verified_at": "<ISO-8601-date-time>",
-    "toolchain": "@aikdna/kdna-cli@0.31.0"
+    "toolchain": "@aikdna/kdna-cli@0.31.1"
   },
   "evidence_claims": []
 }
@@ -169,17 +169,18 @@ Capsule verification actually pass.
   "technical_status": {
     "manifest": "valid",
     "plan_use": "verified",
-    "plan_state": "blocked",
+    "plan_state": "planned",
     "verified_at": "<ISO-8601-date-time>",
-    "toolchain": "@aikdna/kdna-cli@0.31.0"
+    "toolchain": "@aikdna/kdna-cli@0.31.1"
   },
   "evidence_claims": []
 }
 ```
 
-`plan_state: "blocked"` is honest when the publication check can construct a
-Cluster plan but member assets are not installed/authorized in that
-environment. It is not a behavior-value claim.
+Use `plan_state: "planned"` only when a fixture package store contains the
+selected members and preflight produces a ready plan. Use `blocked` when the
+publication environment does not satisfy member availability or authorization.
+Neither state is a behavior-value claim.
 
 ## Required checks
 

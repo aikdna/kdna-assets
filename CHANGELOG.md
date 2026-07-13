@@ -2,9 +2,9 @@
 
 ## Unreleased
 
-- Staged twelve current-CBOR independent member assets and two explicit
-  technical/conformance Cluster manifests; current-index promotion remains
-  blocked until exact GitHub Release artifacts exist.
+- Added twelve current-CBOR independent member assets and two explicit
+  technical/conformance Cluster manifests with bounded routing, preflight,
+  conflict, budget, degradation, and digest checks.
 - Added two independently loadable public single-asset references:
   `@aikdna/laozi-wuwei@0.1.0` and
   `@aikdna/epictetus-control-and-character@0.1.0`.

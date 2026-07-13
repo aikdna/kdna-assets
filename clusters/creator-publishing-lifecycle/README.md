@@ -56,19 +56,22 @@ kdna use kdna.cluster.json \
 The manifest is JSON, not a `.kdna` container. A single-asset `plan-load` or
 `load` command never invokes this Cluster.
 
-## Bounds and known limits
+## Verified technical behavior
 
 - exactly one primary;
 - at most three loaded assets;
 - no all-member fallback;
-- missing primary blocks execution;
-- optional-advisor failure is declared as continue-with-warning, but CLI
-  0.30.4 currently fails the whole run;
+- missing or unauthorized primary blocks at preflight and execution with zero
+  loads;
+- an unavailable optional advisor is removed with a structured degradation
+  warning while the verified primary continues;
 - conflicts are surfaced rather than averaged;
-- custom manifest token/character limits are declared but not yet propagated
-  into the generated plan;
-- routing is not promoted: current holdout evidence contains wrong-primary and
-  out-of-domain failures.
+- custom token/character limits propagate, and hard budget overflow blocks
+  instead of silently truncating advisors;
+- KDNA CLI 0.31.1 reached exact primary, advisor, and applicability results on
+  the sealed reference holdout with zero observed contamination.
+
+These are technical/conformance results for the published fixtures. No model
+answer-quality or Cluster-over-single improvement claim is made.
 
 Licensed under CC-BY-4.0; see `LICENSE`.
-
