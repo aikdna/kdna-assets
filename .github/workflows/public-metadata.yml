@@ -4,6 +4,7 @@ name: public-metadata
 # paths, and GitHub Release consistency. No private repository is cloned.
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
