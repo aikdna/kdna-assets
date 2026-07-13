@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "kdna-current-index",
+  "updated": "2026-07-13T13:44:42Z",
+  "repository": "https://github.com/aikdna/kdna-assets",
+  "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
+  "assets": [
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/laozi-wuwei",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "OpenAI Codex agent"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/laozi-wuwei/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.1.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "ea0de0950b0217fb9421aa65c2d3d775fb5857efe18a93e82df52cda1815f924"
+      },
+      "artifact": {
+        "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/sage-reference-assets-v0.1.0/laozi-wuwei-0.1.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/sage-reference-assets-v0.1.0/laozi-wuwei-0.1.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T10:17:57Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.0"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/epictetus-control-and-character",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "OpenAI Codex agent"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/epictetus-control-and-character/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.1.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "04da31b0e7deb66eded8d55d369692504c013196ee644a75fc9460b9c0d1a800"
+      },
+      "artifact": {
+        "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/sage-reference-assets-v0.1.0/epictetus-control-and-character-0.1.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/sage-reference-assets-v0.1.0/epictetus-control-and-character-0.1.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T10:17:57Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.0"
+      },
+      "evidence_claims": []
+    }
+  ],
+  "clusters": []
+}

@@ -1,0 +1,56 @@
+name: public-metadata
+
+# Validate current entries, licenses, digests, official Asset/Cluster toolchain
+# paths, and GitHub Release consistency. No private repository is cloned.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index/**'
+      - 'references/**'
+      - 'clusters/**'
+      - 'schemas/**'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - 'LICENSE-POLICY.md'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'index/**'
+      - 'references/**'
+      - 'clusters/**'
+      - 'schemas/**'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - 'LICENSE-POLICY.md'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/public-metadata.yml'
+      - '.github/pull_request_template.md'
+
+jobs:
+  public-metadata:
+    name: Public metadata truth
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install repository checks and official KDNA CLI
+        run: |
+          npm ci
+          npm install -g @aikdna/kdna-cli@0.31.1
+
+      - name: Run fixture suite
+        run: npm test
+
+      - name: Run public metadata audit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/audit-public-metadata.py --online-releases

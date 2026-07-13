@@ -1,0 +1,20 @@
+{
+  "name": "@aikdna/kdna-assets",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:indexes": "node scripts/validate-indexes.mjs",
+    "check:digests": "node scripts/verify-digests.mjs",
+    "check:assets": "node scripts/check-current-assets.mjs",
+    "check:clusters": "node scripts/check-clusters.mjs",
+    "check:licenses": "node scripts/check-licenses.mjs",
+    "check:releases": "node scripts/check-release-consistency.mjs --online",
+    "test": "node tests/run-fixtures.mjs",
+    "audit": "npm run validate:indexes && npm run check:digests && npm run check:assets && npm run check:clusters && npm run check:licenses && node scripts/check-public-surface.mjs && python3 scripts/audit-public-metadata.py"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "3.0.1"
+  }
+}

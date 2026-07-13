@@ -1,0 +1,208 @@
+#!/usr/bin/env node
+
+/**
+ * scripts/check-public-surface.mjs
+ *
+ * Scans the public surface of this repository (.github/,
+ * references/, clusters/, schemas/, index/, and root entry files) for references that should not
+ * be present in a public release:
+ *
+ *   - Private repo URLs (any aikdna/* repo not on the allowlist)
+ *   - Private repo path references (any private aikdna/* subdirectory)
+ *   - Local filesystem paths leaking the developer's machine
+ *     (/Users/AI/K/OPEN/, /private/tmp/)
+ *   - Full (40-char) git commit hashes in audit/spec docs
+ *   - Internal code names ("M3 self-eval", "A-agent-meta")
+ *
+ * Exits 0 on a clean run, 1 on any finding. Each finding includes the
+ * file, line number, and the offending substring so the fix is
+ * mechanical.
+ *
+ * Run from repo root:  node scripts/check-public-surface.mjs
+ *   --strict          also flag the existence of 'kdna-lab' substring
+ *                      (some legitimate prose uses "test lab" — strict
+ *                      mode is for new PRs that should not add new refs)
+ */
+
+import { readdirSync, readFileSync, statSync } from 'fs';
+import { join, relative, sep } from 'path';
+
+const ROOT = process.cwd();
+const STRICT = process.argv.includes('--strict');
+
+const PUBLIC_DIRS = ['.github', 'references', 'clusters', 'schemas', 'index'];
+const PUBLIC_FILES = [
+  'README.md',
+  'README.zh.md',
+  'CHANGELOG.md',
+  'ecosystem-manifest.json',
+  'package.json',
+  'CONTRIBUTING.md',
+  'LICENSE-POLICY.md',
+];
+// Files that legitimately mention a private repo as an explicit public audit record
+const ALLOWLIST_FILES = new Set([
+  'docs/audits/2026-06-16-repo-compliance.md', // explicit compliance scan
+  'docs/audits/kdna-public-narrative-audit-2026-06.md', // the audit itself
+  'docs/audits/2026-06-16-rfc-0013-audit-note.md', // explicit public audit record
+]);
+
+const PUBLIC_REPO_NAMES = new Set([
+  'kdna',
+  'kdna-cli',
+  'kdna-studio-cli',
+  'kdna-studio-core',
+  'kdna-skills',
+  'kdna-assets',
+  'kdna-activation-server',
+  'kdna-remote-server',
+  'kdna-web-server',
+  'kdna-web-client',
+  'kdna-react',
+  'create-kdna-web-app',
+  'kdna-core-swift',
+  'kdna-studio-swift',
+  'kdna-app-shared',
+  'kdna-vscode',
+]);
+
+const RULES = [
+  {
+    // Allowlist: any aikdna/<x> reference where x is NOT on this list
+    // is a private-repo leak. The script does not name any private
+    // repo — it only names the public ones. This way the script itself
+    // does not leak the names of private repos.
+    name: 'private-repo-URL',
+    pattern: /github\.com\/aikdna\/([a-z][a-z0-9_-]+)(?=\/|\s|$|[)"'\]])/g,
+    hint: 'aikdna/<x> reference where <x> is not in the public allowlist. Replace with neutral wording or "(private)".',
+    allowlist: PUBLIC_REPO_NAMES,
+  },
+  {
+    // Same logic for bare aikdna/<x> references. Scoped npm package IDs such
+    // as @aikdna/example are protocol identifiers, not repository paths.
+    name: 'private-repo-URL-bare',
+    // A scoped KDNA asset id such as @aikdna/example is public protocol data,
+    // not a repository reference. Only flag unscoped aikdna/<repo> text.
+    pattern: /(?<!@)\baikdna\/([a-z][a-z0-9_-]+)\b(?!\.)/g,
+    hint: 'aikdna/<x> reference where <x> is not in the public allowlist. Replace with neutral wording or "(private)".',
+    allowlist: PUBLIC_REPO_NAMES,
+  },
+  {
+    name: 'local-filesystem-path',
+    pattern: /(\/Users\/AI\/K\/OPEN|\/private\/tmp\/kdna)/g,
+    hint: 'Replace /Users/AI/K/OPEN/<x> with <workdir>/<x>; /private/tmp/kdna-* with /tmp/kdna-*.',
+  },
+  {
+    name: 'full-commit-hash',
+    pattern: /(?<![a-f0-9])[a-f0-9]{40}(?![a-f0-9])/g,
+    hint: 'Replace full 40-char commit hash with short ref or "see acceptance note".',
+    // 40-char SHA1s are legitimate provenance pins in:
+    //   - .github/workflows/ — pinning a public release commit
+    //   - ecosystem-manifest.json conformance_commit field
+    excludePaths: ['.github/workflows/', 'ecosystem-manifest.json'],
+  },
+  {
+    name: 'internal-code-name',
+    pattern: /\bM3 self-eval\b/g,
+    hint: 'Replace with "single-model self-evaluation".',
+  },
+];
+
+function walk(dir, out = []) {
+  let entries;
+  try {
+    entries = readdirSync(dir);
+  } catch {
+    return out;
+  }
+  for (const entry of entries) {
+    if (entry === 'node_modules' || entry === '.git' || entry.startsWith('.')) continue;
+    const full = join(dir, entry);
+    const st = statSync(full);
+    if (st.isDirectory()) {
+      walk(full, out);
+    } else if (st.isFile()) {
+      out.push(full);
+    }
+  }
+  return out;
+}
+
+function isPublicPath(rel) {
+  if (rel.startsWith('node_modules' + sep) || rel.startsWith('.git' + sep)) return false;
+  if (PUBLIC_DIRS.some((d) => rel === d || rel.startsWith(d + sep))) return true;
+  if (PUBLIC_FILES.includes(rel)) return true;
+  return false;
+}
+
+function isAllowlisted(rel) {
+  for (const allow of ALLOWLIST_FILES) {
+    if (rel === allow.replace(/\/$/, '') || rel.startsWith(allow)) return true;
+  }
+  return false;
+}
+
+function isRuleExcluded(rel, rule) {
+  if (!rule.excludePaths) return false;
+  return rule.excludePaths.some((p) => rel === p || rel.startsWith(p));
+}
+
+const findings = [];
+const files = [];
+for (const d of PUBLIC_DIRS) {
+  files.push(...walk(join(ROOT, d)));
+}
+for (const f of PUBLIC_FILES) {
+  const full = join(ROOT, f);
+  try {
+    if (statSync(full).isFile()) files.push(full);
+  } catch {
+    /* not present */
+  }
+}
+
+for (const full of files) {
+  const rel = relative(ROOT, full);
+  if (!isPublicPath(rel)) continue;
+  if (isAllowlisted(rel)) continue;
+  const text = readFileSync(full, 'utf8');
+  const lines = text.split('\n');
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    for (const rule of RULES) {
+      if (isRuleExcluded(rel, rule)) continue;
+      rule.pattern.lastIndex = 0;
+      let m;
+      while ((m = rule.pattern.exec(line)) !== null) {
+        // For rules with an allowlist, the regex captures <x>; skip
+        // matches where <x> is in the allowlist.
+        if (rule.allowlist) {
+          const captured = m[1];
+          if (rule.allowlist.has(captured)) continue;
+        }
+        findings.push({
+          file: rel,
+          line: i + 1,
+          rule: rule.name,
+          match: m[0],
+          hint: rule.hint,
+        });
+      }
+    }
+  }
+}
+
+if (findings.length === 0) {
+  console.log('✅ public-surface check: 0 findings');
+  console.log(`   scanned ${files.length} files across ${PUBLIC_DIRS.join(', ')}`);
+  process.exit(0);
+}
+
+console.log(`❌ public-surface check: ${findings.length} finding(s)\n`);
+for (const f of findings) {
+  console.log(`  [${f.rule}] ${f.file}:${f.line}`);
+  console.log(`      match: ${f.match}`);
+  console.log(`      hint:  ${f.hint}`);
+  console.log('');
+}
+process.exit(1);

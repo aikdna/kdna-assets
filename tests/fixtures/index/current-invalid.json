@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "kdna-current-index",
+  "updated": "not-a-date",
+  "repository": "https://github.com/aikdna/kdna-assets",
+  "listing_policy": "invalid fixture",
+  "assets": [
+    {
+      "kind": "kdna-asset",
+      "id": "not-scoped"
+    }
+  ],
+  "clusters": []
+}
