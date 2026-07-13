@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "kind": "kdna-current-index",
-  "updated": "2026-07-13T10:17:57Z",
+  "updated": "2026-07-13T11:23:01.465Z",
   "repository": "https://github.com/aikdna/kdna-assets",
   "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
   "assets": [
@@ -84,7 +84,568 @@
         "toolchain": "@aikdna/kdna-cli@0.31.0"
       },
       "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/creator-audience-signal",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/creator-audience-signal/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "ffb0310d0a9850f5a631084550438a839135753313bda3a553c4e2585da609ab"
+      },
+      "artifact": {
+        "path": "references/public/creator-audience-signal/creator-audience-signal-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-audience-signal-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-audience-signal-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/creator-brand-positioning",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/creator-brand-positioning/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "0037bdb3ad15bff4a94777d5662cb08255c60a7a6e7a9f54c5554538251f5a0d"
+      },
+      "artifact": {
+        "path": "references/public/creator-brand-positioning/creator-brand-positioning-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-brand-positioning-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-brand-positioning-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/creator-content-depth",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/creator-content-depth/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "c2d7efa8a989ad75b5fbeea0392a5baccf4746f7caa0b0f9938ac02e825766fc"
+      },
+      "artifact": {
+        "path": "references/public/creator-content-depth/creator-content-depth-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-content-depth-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-content-depth-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/creator-originality-judgment",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/creator-originality-judgment/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "903fcf12fe632312a41d18f252499b54e9fd643c17cdd988ba073402df30aa3a"
+      },
+      "artifact": {
+        "path": "references/public/creator-originality-judgment/creator-originality-judgment-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-originality-judgment-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-originality-judgment-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/creator-publishing-rhythm",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/creator-publishing-rhythm/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "309ce0a1174d24557e7236da0b4a4bf5deb9e63079b5a706fb9afaa19957dffd"
+      },
+      "artifact": {
+        "path": "references/public/creator-publishing-rhythm/creator-publishing-rhythm-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-publishing-rhythm-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-publishing-rhythm-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/creator-topic-selection",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/creator-topic-selection/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "8b45efb623e061a2493e12aa990abb64f9a89a269e2631e27c816cdb2311a4a2"
+      },
+      "artifact": {
+        "path": "references/public/creator-topic-selection/creator-topic-selection-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-topic-selection-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-topic-selection-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/dev-change-risk",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/dev-change-risk/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "dffbf6edb2a51f49331749280134b17b7282729b06db51cbbca1f9968be64fd9"
+      },
+      "artifact": {
+        "path": "references/public/dev-change-risk/dev-change-risk-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-change-risk-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-change-risk-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/dev-completion-adjudication",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/dev-completion-adjudication/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "76007de8f7b917b58cc92f7c37829cf50d9d4bb5e94f160cf25e247486414d06"
+      },
+      "artifact": {
+        "path": "references/public/dev-completion-adjudication/dev-completion-adjudication-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-completion-adjudication-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-completion-adjudication-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/dev-deploy-readiness",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/dev-deploy-readiness/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "e89fbcf0c301c1f91c97864ecf3abfc66a265300b35d02231342b3a081960b6b"
+      },
+      "artifact": {
+        "path": "references/public/dev-deploy-readiness/dev-deploy-readiness-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-deploy-readiness-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-deploy-readiness-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/dev-intent-boundary",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/dev-intent-boundary/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "821844f4b74d95d79a8aafa446b0d4bc581cb9c68f40c3f81d8c879f0ccf61eb"
+      },
+      "artifact": {
+        "path": "references/public/dev-intent-boundary/dev-intent-boundary-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-intent-boundary-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-intent-boundary-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/dev-task-decomposition",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/dev-task-decomposition/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "394d2efe2fa200e95d53ae8cc866693d7277086c00dbde09668950b9b1c2cbeb"
+      },
+      "artifact": {
+        "path": "references/public/dev-task-decomposition/dev-task-decomposition-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-task-decomposition-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-task-decomposition-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/dev-test-strategy-discretion",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/dev-test-strategy-discretion/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "a2a125f36474269632ac03d83061ad2c29cab3c0255e3cb886c8c8915286f946"
+      },
+      "artifact": {
+        "path": "references/public/dev-test-strategy-discretion/dev-test-strategy-discretion-0.2.0.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-test-strategy-discretion-0.2.0.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/dev-test-strategy-discretion-0.2.0.kdna.sha256"
+      },
+      "technical_status": {
+        "format": "valid",
+        "plan_load": "ready",
+        "load": "verified",
+        "capsule": "verified",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
     }
   ],
-  "clusters": []
+  "clusters": [
+    {
+      "kind": "kdna-cluster",
+      "id": "@aikdna/developer-change-lifecycle",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "clusters/developer-change-lifecycle/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "ef1dcfa7955fe0b9636b3c06dce9d6547163389504bf3239d63219b6c23eede5"
+      },
+      "manifest": {
+        "path": "clusters/developer-change-lifecycle/kdna.cluster.json",
+        "media_type": "application/vnd.kdna.cluster+json",
+        "format": "kdna-cluster"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/developer-change-lifecycle-v0.2.0/kdna.cluster.json",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/developer-change-lifecycle-v0.2.0/kdna.cluster.json.sha256"
+      },
+      "technical_status": {
+        "manifest": "valid",
+        "plan_use": "verified",
+        "plan_state": "blocked",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    },
+    {
+      "kind": "kdna-cluster",
+      "id": "@aikdna/creator-publishing-lifecycle",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "AIKDNA reference asset contributors"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "clusters/creator-publishing-lifecycle/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.2.0",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "bfb4113d85aeb024b1af81506e07203af136335e2bb4cb48c4ac120212187a9e"
+      },
+      "manifest": {
+        "path": "clusters/creator-publishing-lifecycle/kdna.cluster.json",
+        "media_type": "application/vnd.kdna.cluster+json",
+        "format": "kdna-cluster"
+      },
+      "download": {
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/creator-publishing-lifecycle-v0.2.0/kdna.cluster.json",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/creator-publishing-lifecycle-v0.2.0/kdna.cluster.json.sha256"
+      },
+      "technical_status": {
+        "manifest": "valid",
+        "plan_use": "verified",
+        "plan_state": "blocked",
+        "verified_at": "2026-07-13T11:23:01.465Z",
+        "toolchain": "@aikdna/kdna-cli@0.31.1"
+      },
+      "evidence_claims": []
+    }
+  ]
 }

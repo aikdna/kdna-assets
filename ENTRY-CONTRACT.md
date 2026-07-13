@@ -169,7 +169,7 @@ Capsule verification actually pass.
   "technical_status": {
     "manifest": "valid",
     "plan_use": "verified",
-    "plan_state": "planned",
+    "plan_state": "blocked",
     "verified_at": "<ISO-8601-date-time>",
     "toolchain": "@aikdna/kdna-cli@0.31.1"
   },
@@ -177,10 +177,11 @@ Capsule verification actually pass.
 }
 ```
 
-Use `plan_state: "planned"` only when a fixture package store contains the
+Use `plan_state: "planned"` only when the publication check itself contains the
 selected members and preflight produces a ready plan. Use `blocked` when the
-publication environment does not satisfy member availability or authorization.
-Neither state is a behavior-value claim.
+repository check intentionally has no installed package store. Separate
+conformance evidence may verify ready execution in an isolated full-member
+store. Neither state is a behavior-value claim.
 
 ## Required checks
 
