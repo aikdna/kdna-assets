@@ -81,9 +81,10 @@ const RULES = [
     allowlist: PUBLIC_REPO_NAMES,
   },
   {
-    // Same logic for bare aikdna/<x> references
+    // Same logic for bare aikdna/<x> references. Scoped npm package IDs such
+    // as @aikdna/example are protocol identifiers, not repository paths.
     name: 'private-repo-URL-bare',
-    pattern: /\baikdna\/([a-z][a-z0-9_-]+)\b(?!\.)/g,
+    pattern: /(?<!@)\baikdna\/([a-z][a-z0-9_-]+)\b(?!\.)/g,
     hint: 'aikdna/<x> reference where <x> is not in the public allowlist. Replace with neutral wording or "(private)".',
     allowlist: PUBLIC_REPO_NAMES,
   },

@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Added two independently loadable public single-asset references:
+  `@aikdna/laozi-wuwei@0.1.0` and
+  `@aikdna/epictetus-control-and-character@0.1.0`.
+- Added exact Release checksums, entry-scoped CC-BY-4.0 licenses, official
+  toolchain usage guides, and a public creation article.
+- Recorded technical verification only; no behavior-lift, expert, field, or
+  protocol-endorsement claim is made.
 - Separated the empty current reference index from the immutable 52-entry
   pre-CBOR archive.
 - Added distinct public, licensed, and Cluster entry paths plus per-entry

@@ -7,14 +7,17 @@ references, explicit Cluster manifests, and historical release records.
 
 | Surface | Path | Current entries |
 |---|---|---:|
-| Public reference assets | `references/public/` | 0 |
+| Public reference assets | `references/public/` | 2 |
 | Licensed reference assets | `references/licensed/` | 0 |
 | Cluster manifests | `clusters/` | 0 |
 | Historical archive | `archive/` | 52 |
 
-`index/current.json` is valid when both `assets` and `clusters` are empty. New
-entries appear only after their own artifact, license, digest, release, and
-technical checks exist.
+The two current public references are Laozi-Inspired Wuwei Judgment and
+Epictetus-Inspired Control and Character Judgment. They are demonstrations of
+independent single-asset creation and consumption, not official truth or
+content standards. New entries appear only after their own artifact, license,
+digest, release, and technical checks exist; an empty current index also
+remains structurally valid.
 
 ## Repository model
 
