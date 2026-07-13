@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Added twelve current-CBOR independent member assets and two explicit
+  technical/conformance Cluster manifests with bounded routing, preflight,
+  conflict, budget, degradation, and digest checks.
 - Added two independently loadable public single-asset references:
   `@aikdna/laozi-wuwei@0.1.0` and
   `@aikdna/epictetus-control-and-character@0.1.0`.
@@ -9,7 +12,7 @@
   toolchain usage guides, and a public creation article.
 - Recorded technical verification only; no behavior-lift, expert, field, or
   protocol-endorsement claim is made.
-- Separated the empty current reference index from the immutable 52-entry
+- Separated the current reference index from the immutable 52-entry
   pre-CBOR archive.
 - Added distinct public, licensed, and Cluster entry paths plus per-entry
   license contracts.

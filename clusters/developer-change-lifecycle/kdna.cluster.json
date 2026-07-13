@@ -1,0 +1,228 @@
+{
+  "format": "kdna-cluster",
+  "format_version": "0.9.0",
+  "cluster_id": "@aikdna/developer-change-lifecycle",
+  "name": "Developer Change Lifecycle Reference Cluster",
+  "version": "0.2.0",
+  "description": "Explicitly routes a software-change task to one owning judgment asset and at most two distinct advisors, from authority and planning through evidence, completion, and production readiness.",
+  "type": "vertical",
+  "status": "schema_valid",
+  "access": "public",
+  "domains": [
+    {
+      "id": "@aikdna/dev-intent-boundary",
+      "version": "^0.2.0",
+      "digest": "sha256:821844f4b74d95d79a8aafa446b0d4bc581cb9c68f40c3f81d8c879f0ccf61eb",
+      "role": "primary-candidate",
+      "required": true,
+      "routing_signals": [
+        "authorize",
+        "authorized",
+        "authorization",
+        "permission",
+        "consent",
+        "requested scope",
+        "external side effect",
+        "send",
+        "publish patch",
+        "delete",
+        "授权",
+        "同意",
+        "权限",
+        "范围",
+        "发送",
+        "发布",
+        "删除",
+        "外部副作用",
+        "推断意图"
+      ],
+      "load_condition": "Authorize, authorized, authorizes, allowed, authority, consent, permission, requested scope, send, publish, delete, external side effect, inferred intent, 授权、同意、权限、范围、发送、发布、删除、外部副作用、推断意图。"
+    },
+    {
+      "id": "@aikdna/dev-task-decomposition",
+      "version": "^0.2.0",
+      "digest": "sha256:394d2efe2fa200e95d53ae8cc866693d7277086c00dbde09668950b9b1c2cbeb",
+      "role": "primary-candidate",
+      "required": true,
+      "routing_signals": [
+        "decompose",
+        "sequence",
+        "dependency",
+        "parallel work",
+        "milestone",
+        "workstream",
+        "implementation breakdown",
+        "拆解",
+        "依赖顺序",
+        "并行",
+        "里程碑",
+        "工作流"
+      ],
+      "load_condition": "Plan, decompose, sequence, dependency, parallel work, milestones, recovery plan, 规划、拆解、顺序、依赖、并行、里程碑。"
+    },
+    {
+      "id": "@aikdna/dev-completion-adjudication",
+      "version": "^0.2.0",
+      "digest": "sha256:76007de8f7b917b58cc92f7c37829cf50d9d4bb5e94f160cf25e247486414d06",
+      "role": "primary-candidate",
+      "required": true,
+      "routing_signals": [
+        "done",
+        "complete",
+        "completed",
+        "fixed",
+        "ready for handoff",
+        "completion evidence",
+        "acceptance evidence",
+        "unresolved risk",
+        "是否完成",
+        "修复完成",
+        "完成",
+        "交付",
+        "验收证据",
+        "残余风险"
+      ],
+      "load_condition": "Done, complete, fixed, ready, handoff, acceptance evidence, unresolved risk, 完成、修复、就绪、交付、验收证据、残余风险。"
+    },
+    {
+      "id": "@aikdna/dev-deploy-readiness",
+      "version": "^0.2.0",
+      "digest": "sha256:e89fbcf0c301c1f91c97864ecf3abfc66a265300b35d02231342b3a081960b6b",
+      "role": "primary-candidate",
+      "required": true,
+      "routing_signals": [
+        "deploy",
+        "production release",
+        "production readiness",
+        "rollout",
+        "canary",
+        "monitoring",
+        "on-call",
+        "rollback",
+        "release window",
+        "部署",
+        "生产发布",
+        "灰度",
+        "监控",
+        "值班",
+        "回滚"
+      ],
+      "load_condition": "Deploy, production release, rollout, canary, monitoring, on-call response, rollback, 部署、生产发布、灰度、监控、值班响应、回滚。"
+    },
+    {
+      "id": "@aikdna/dev-change-risk",
+      "version": "^0.2.0",
+      "digest": "sha256:dffbf6edb2a51f49331749280134b17b7282729b06db51cbbca1f9968be64fd9",
+      "role": "advisor",
+      "required": false,
+      "routing_signals": [
+        "shared contract",
+        "schema migration",
+        "persistent data",
+        "permission change",
+        "external side effect",
+        "blast radius",
+        "recovery cost",
+        "behavioral uncertainty",
+        "共享契约",
+        "数据迁移",
+        "持久数据",
+        "权限变更",
+        "外部副作用",
+        "爆炸半径",
+        "恢复成本",
+        "行为不确定性"
+      ],
+      "load_condition": "Shared contract, schema, persistent data, permission, migration, blast radius, recovery cost, behavioral uncertainty, 共享契约、数据、权限、迁移、爆炸半径、恢复成本、行为不确定性。",
+      "contribution_hypothesis_template": "For {task}, identify causal reach, asymmetric state changes, recovery cost, and verification gaps that the owning primary does not itself adjudicate."
+    },
+    {
+      "id": "@aikdna/dev-test-strategy-discretion",
+      "version": "^0.2.0",
+      "digest": "sha256:a2a125f36474269632ac03d83061ad2c29cab3c0255e3cb886c8c8915286f946",
+      "role": "advisor",
+      "required": false,
+      "routing_signals": [
+        "test",
+        "verification",
+        "verified",
+        "regression",
+        "unit coverage",
+        "integration path",
+        "contract test",
+        "end-to-end",
+        "coverage",
+        "测试",
+        "验证",
+        "回归",
+        "单元覆盖",
+        "集成路径",
+        "契约测试",
+        "端到端",
+        "覆盖率"
+      ],
+      "load_condition": "Test, verification, regression, unit, integration, contract test, end-to-end, coverage, 测试、验证、回归、单元、集成、契约测试、端到端、覆盖率。",
+      "contribution_hypothesis_template": "For {task}, choose the smallest failure-sensitive evidence portfolio and state residual uncertainty beyond the primary's decision frame."
+    }
+  ],
+  "composition": {
+    "strategy": "signal_based",
+    "max_active_domains": 3,
+    "conflict_policy": "block",
+    "priority_order": [
+      "@aikdna/dev-intent-boundary",
+      "@aikdna/dev-task-decomposition",
+      "@aikdna/dev-completion-adjudication",
+      "@aikdna/dev-deploy-readiness",
+      "@aikdna/dev-change-risk",
+      "@aikdna/dev-test-strategy-discretion"
+    ],
+    "primary_selection": "exactly_one",
+    "advisor_selection": "contribution_hypothesis_required"
+  },
+  "budget": {
+    "profile": "interactive",
+    "max_tokens": 800,
+    "max_chars": 2500,
+    "max_assets": 3,
+    "enforcement": "hard"
+  },
+  "degradation_policy": {
+    "primary_unavailable": "block",
+    "required_advisor_unavailable": "block",
+    "optional_advisor_unavailable": "continue_with_warning",
+    "budget_exceeded": "block"
+  },
+  "relationships": [
+    {
+      "from": "@aikdna/dev-intent-boundary",
+      "to": "@aikdna/dev-task-decomposition",
+      "type": "constrains",
+      "description": "Planning may not expand beyond granted authority."
+    },
+    {
+      "from": "@aikdna/dev-change-risk",
+      "to": "@aikdna/dev-task-decomposition",
+      "type": "informs",
+      "description": "Risk identifies which uncertainties and irreversible gates should be front-loaded."
+    },
+    {
+      "from": "@aikdna/dev-test-strategy-discretion",
+      "to": "@aikdna/dev-completion-adjudication",
+      "type": "informs",
+      "description": "Test judgment defines which evidence is actually defect-sensitive."
+    },
+    {
+      "from": "@aikdna/dev-change-risk",
+      "to": "@aikdna/dev-deploy-readiness",
+      "type": "constrains",
+      "description": "Deployment controls may lower exposure but cannot erase asymmetric change risk."
+    },
+    {
+      "from": "@aikdna/dev-test-strategy-discretion",
+      "to": "@aikdna/dev-deploy-readiness",
+      "type": "informs",
+      "description": "Release readiness needs targeted evidence for credible production failure modes."
+    }
+  ]
+}

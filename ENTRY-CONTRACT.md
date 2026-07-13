@@ -56,6 +56,31 @@ Add two objects to `index/current.json.clusters`. The content author chooses
 meaningful slugs and `cluster_id` values; both must match their index entry.
 The manifest stays `kdna.cluster.json` and never becomes `.kdna`.
 
+The selected slugs are `developer-change-lifecycle` and
+`creator-publishing-lifecycle`.
+
+Their twelve independent member assets use the normal public-reference layout
+under `references/public/`:
+
+```text
+references/public/<member-slug>/
+  <member-slug>-0.2.0.kdna
+  <member-slug>-0.2.0.kdna.sha256
+  LICENSE
+  README.md
+```
+
+The member slugs are `dev-intent-boundary`, `dev-task-decomposition`,
+`dev-change-risk`, `dev-test-strategy-discretion`,
+`dev-completion-adjudication`, `dev-deploy-readiness`,
+`creator-brand-positioning`, `creator-topic-selection`,
+`creator-content-depth`, `creator-originality-judgment`,
+`creator-audience-signal`, and `creator-publishing-rhythm`.
+
+Add their asset index objects only after the exact GitHub Release artifacts
+and checksum sidecars exist. Technical validation alone does not authorize a
+download URL or behavioral claim.
+
 ## Asset index object
 
 ```json
@@ -96,7 +121,7 @@ The manifest stays `kdna.cluster.json` and never becomes `.kdna`.
     "load": "verified",
     "capsule": "verified",
     "verified_at": "<ISO-8601-date-time>",
-    "toolchain": "@aikdna/kdna-cli@0.31.0"
+    "toolchain": "@aikdna/kdna-cli@0.31.1"
   },
   "evidence_claims": []
 }
@@ -146,15 +171,17 @@ Capsule verification actually pass.
     "plan_use": "verified",
     "plan_state": "blocked",
     "verified_at": "<ISO-8601-date-time>",
-    "toolchain": "@aikdna/kdna-cli@0.31.0"
+    "toolchain": "@aikdna/kdna-cli@0.31.1"
   },
   "evidence_claims": []
 }
 ```
 
-`plan_state: "blocked"` is honest when the publication check can construct a
-Cluster plan but member assets are not installed/authorized in that
-environment. It is not a behavior-value claim.
+Use `plan_state: "planned"` only when the publication check itself contains the
+selected members and preflight produces a ready plan. Use `blocked` when the
+repository check intentionally has no installed package store. Separate
+conformance evidence may verify ready execution in an isolated full-member
+store. Neither state is a behavior-value claim.
 
 ## Required checks
 

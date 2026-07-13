@@ -7,17 +7,18 @@ references, explicit Cluster manifests, and historical release records.
 
 | Surface | Path | Current entries |
 |---|---|---:|
-| Public reference assets | `references/public/` | 2 |
+| Public reference assets | `references/public/` | 14 |
 | Licensed reference assets | `references/licensed/` | 0 |
-| Cluster manifests | `clusters/` | 0 |
+| Cluster manifests | `clusters/` | 2 |
 | Historical archive | `archive/` | 52 |
 
-The two current public references are Laozi-Inspired Wuwei Judgment and
-Epictetus-Inspired Control and Character Judgment. They are demonstrations of
-independent single-asset creation and consumption, not official truth or
-content standards. New entries appear only after their own artifact, license,
-digest, release, and technical checks exist; an empty current index also
-remains structurally valid.
+The two primary single-asset demonstrations are Laozi-Inspired Wuwei Judgment
+and Epictetus-Inspired Control and Character Judgment. Twelve additional
+independently usable public assets are members of two explicit technical
+reference Clusters for developer and creator work. Every member works without
+a Cluster. None is official truth or a content standard. New entries appear
+only after their own artifact, license, digest, Release, and technical checks
+exist; an empty current index also remains structurally valid.
 
 ## Repository model
 
