@@ -20,20 +20,14 @@ of these missed.
 - [ ] **All release URLs return 200.** Test every download
       link in the body before submitting.
 - [ ] **`assets.json` `contains` matches the actual payload.**
-      Run
+      Install the current CLI and run the vendored metadata audit:
       ```bash
-      python3 -c "
-      import zipfile, json
-      z = zipfile.ZipFile('dist/<name>.kdna')
-      p = json.loads(z.read('payload.kdnab'))
-      print('axioms:', len(p.get('core', {}).get('axioms', [])))
-      print('self_checks:', len(p.get('reasoning', {}).get('self_checks', [])))
-      print('scenarios:', len(p.get('scenarios', [])))
-      print('cases:', len(p.get('cases', [])))
-      print('failure_modes:', len(p.get('reasoning', {}).get('failure_modes', [])))
-      "
+      npm install -g @aikdna/kdna-cli
+      python3 scripts/audit-public-metadata.py
       ```
-      and confirm the numbers match the entry in `assets.json`.
+      The audit loads current assets through `kdna load --profile=full
+      --as=json` and reads the resulting Runtime Capsule. Do not unzip the
+      asset or decode `payload.kdnab` directly.
 - [ ] **`source_payload_parity` block has no fabricated numbers.**
       Every value in `source_payload_parity` should be either
       a real count from the source tree or an honest
