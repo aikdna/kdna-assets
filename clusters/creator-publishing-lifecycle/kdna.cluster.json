@@ -3,7 +3,7 @@
   "format_version": "0.9.0",
   "cluster_id": "@aikdna/creator-publishing-lifecycle",
   "name": "Creator Publishing Lifecycle Reference Cluster",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Explicitly routes a creator decision to one owning judgment asset and at most two distinct advisors across positioning, topic choice, originality, audience evidence, depth, and sustainable publishing cadence.",
   "type": "vertical",
   "status": "schema_valid",
@@ -37,8 +37,8 @@
     },
     {
       "id": "@aikdna/creator-topic-selection",
-      "version": "^0.2.0",
-      "digest": "sha256:8b45efb623e061a2493e12aa990abb64f9a89a269e2631e27c816cdb2311a4a2",
+      "version": "^0.2.1",
+      "digest": "sha256:72a5d82d87227bfff5405f443946c11c0f1bb037f3734cda2ce43885f725cf28",
       "role": "primary-candidate",
       "required": true,
       "routing_signals": [
@@ -60,8 +60,8 @@
     },
     {
       "id": "@aikdna/creator-originality-judgment",
-      "version": "^0.2.0",
-      "digest": "sha256:903fcf12fe632312a41d18f252499b54e9fd643c17cdd988ba073402df30aa3a",
+      "version": "^0.2.1",
+      "digest": "sha256:9aa853465daf32beffe03ab48211819082252032d59ba39eea67a8256299670e",
       "role": "primary-candidate",
       "required": true,
       "routing_signals": [
@@ -85,8 +85,8 @@
     },
     {
       "id": "@aikdna/creator-publishing-rhythm",
-      "version": "^0.2.0",
-      "digest": "sha256:309ce0a1174d24557e7236da0b4a4bf5deb9e63079b5a706fb9afaa19957dffd",
+      "version": "^0.2.1",
+      "digest": "sha256:7f8cda6c49d11a098adbbbcc05b2c68bee7883b14a8ae254754c676efbe2978c",
       "role": "primary-candidate",
       "required": true,
       "routing_signals": [
@@ -109,8 +109,8 @@
     },
     {
       "id": "@aikdna/creator-content-depth",
-      "version": "^0.2.0",
-      "digest": "sha256:c2d7efa8a989ad75b5fbeea0392a5baccf4746f7caa0b0f9938ac02e825766fc",
+      "version": "^0.2.1",
+      "digest": "sha256:e8136aee48fc363cd8c04be449cd1e746316856e94e6e51fbac2afb3e18336bf",
       "role": "advisor",
       "required": false,
       "routing_signals": [
@@ -133,8 +133,8 @@
     },
     {
       "id": "@aikdna/creator-audience-signal",
-      "version": "^0.2.0",
-      "digest": "sha256:ffb0310d0a9850f5a631084550438a839135753313bda3a553c4e2585da609ab",
+      "version": "^0.2.1",
+      "digest": "sha256:bab7e56a55c4bc735fd1c498c34e845a5467b54d8f0f9a16246b91ba8015284a",
       "role": "advisor",
       "required": false,
       "routing_signals": [

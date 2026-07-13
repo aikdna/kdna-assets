@@ -102,25 +102,25 @@
         "scope": "asset-content-and-distribution",
         "repository_license_applies": false
       },
-      "version": "0.2.0",
+      "version": "0.2.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "ffb0310d0a9850f5a631084550438a839135753313bda3a553c4e2585da609ab"
+        "value": "bab7e56a55c4bc735fd1c498c34e845a5467b54d8f0f9a16246b91ba8015284a"
       },
       "artifact": {
-        "path": "references/public/creator-audience-signal/creator-audience-signal-0.2.0.kdna",
+        "path": "references/public/creator-audience-signal/creator-audience-signal-0.2.1.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "download": {
-        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-audience-signal-0.2.0.kdna",
-        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-audience-signal-0.2.0.kdna.sha256"
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.1/creator-audience-signal-0.2.1.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.1/creator-audience-signal-0.2.1.kdna.sha256"
       },
       "technical_status": {
         "format": "valid",
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-13T11:23:01.465Z",
+        "verified_at": "2026-07-13T11:45:52.772Z",
         "toolchain": "@aikdna/kdna-cli@0.31.1"
       },
       "evidence_claims": []
@@ -182,25 +182,25 @@
         "scope": "asset-content-and-distribution",
         "repository_license_applies": false
       },
-      "version": "0.2.0",
+      "version": "0.2.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "c2d7efa8a989ad75b5fbeea0392a5baccf4746f7caa0b0f9938ac02e825766fc"
+        "value": "e8136aee48fc363cd8c04be449cd1e746316856e94e6e51fbac2afb3e18336bf"
       },
       "artifact": {
-        "path": "references/public/creator-content-depth/creator-content-depth-0.2.0.kdna",
+        "path": "references/public/creator-content-depth/creator-content-depth-0.2.1.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "download": {
-        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-content-depth-0.2.0.kdna",
-        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-content-depth-0.2.0.kdna.sha256"
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.1/creator-content-depth-0.2.1.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.1/creator-content-depth-0.2.1.kdna.sha256"
       },
       "technical_status": {
         "format": "valid",
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-13T11:23:01.465Z",
+        "verified_at": "2026-07-13T11:45:52.772Z",
         "toolchain": "@aikdna/kdna-cli@0.31.1"
       },
       "evidence_claims": []
@@ -222,25 +222,25 @@
         "scope": "asset-content-and-distribution",
         "repository_license_applies": false
       },
-      "version": "0.2.0",
+      "version": "0.2.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "903fcf12fe632312a41d18f252499b54e9fd643c17cdd988ba073402df30aa3a"
+        "value": "9aa853465daf32beffe03ab48211819082252032d59ba39eea67a8256299670e"
       },
       "artifact": {
-        "path": "references/public/creator-originality-judgment/creator-originality-judgment-0.2.0.kdna",
+        "path": "references/public/creator-originality-judgment/creator-originality-judgment-0.2.1.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "download": {
-        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-originality-judgment-0.2.0.kdna",
-        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-originality-judgment-0.2.0.kdna.sha256"
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.1/creator-originality-judgment-0.2.1.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.1/creator-originality-judgment-0.2.1.kdna.sha256"
       },
       "technical_status": {
         "format": "valid",
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-13T11:23:01.465Z",
+        "verified_at": "2026-07-13T11:45:52.772Z",
         "toolchain": "@aikdna/kdna-cli@0.31.1"
       },
       "evidence_claims": []
@@ -262,25 +262,25 @@
         "scope": "asset-content-and-distribution",
         "repository_license_applies": false
       },
-      "version": "0.2.0",
+      "version": "0.2.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "309ce0a1174d24557e7236da0b4a4bf5deb9e63079b5a706fb9afaa19957dffd"
+        "value": "7f8cda6c49d11a098adbbbcc05b2c68bee7883b14a8ae254754c676efbe2978c"
       },
       "artifact": {
-        "path": "references/public/creator-publishing-rhythm/creator-publishing-rhythm-0.2.0.kdna",
+        "path": "references/public/creator-publishing-rhythm/creator-publishing-rhythm-0.2.1.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "download": {
-        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-publishing-rhythm-0.2.0.kdna",
-        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-publishing-rhythm-0.2.0.kdna.sha256"
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.1/creator-publishing-rhythm-0.2.1.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.1/creator-publishing-rhythm-0.2.1.kdna.sha256"
       },
       "technical_status": {
         "format": "valid",
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-13T11:23:01.465Z",
+        "verified_at": "2026-07-13T11:45:52.772Z",
         "toolchain": "@aikdna/kdna-cli@0.31.1"
       },
       "evidence_claims": []
@@ -302,25 +302,25 @@
         "scope": "asset-content-and-distribution",
         "repository_license_applies": false
       },
-      "version": "0.2.0",
+      "version": "0.2.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "8b45efb623e061a2493e12aa990abb64f9a89a269e2631e27c816cdb2311a4a2"
+        "value": "72a5d82d87227bfff5405f443946c11c0f1bb037f3734cda2ce43885f725cf28"
       },
       "artifact": {
-        "path": "references/public/creator-topic-selection/creator-topic-selection-0.2.0.kdna",
+        "path": "references/public/creator-topic-selection/creator-topic-selection-0.2.1.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "download": {
-        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-topic-selection-0.2.0.kdna",
-        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.0/creator-topic-selection-0.2.0.kdna.sha256"
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.1/creator-topic-selection-0.2.1.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/cluster-reference-members-v0.2.1/creator-topic-selection-0.2.1.kdna.sha256"
       },
       "technical_status": {
         "format": "valid",
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-13T11:23:01.465Z",
+        "verified_at": "2026-07-13T11:45:52.772Z",
         "toolchain": "@aikdna/kdna-cli@0.31.1"
       },
       "evidence_claims": []
@@ -624,10 +624,10 @@
         "scope": "asset-content-and-distribution",
         "repository_license_applies": false
       },
-      "version": "0.2.0",
+      "version": "0.2.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "bfb4113d85aeb024b1af81506e07203af136335e2bb4cb48c4ac120212187a9e"
+        "value": "ac2e5644e20fea09c7f4f33dc40a5f6764305299299b9ee68d6689a593598508"
       },
       "manifest": {
         "path": "clusters/creator-publishing-lifecycle/kdna.cluster.json",
@@ -635,14 +635,14 @@
         "format": "kdna-cluster"
       },
       "download": {
-        "url": "https://github.com/aikdna/kdna-assets/releases/download/creator-publishing-lifecycle-v0.2.0/kdna.cluster.json",
-        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/creator-publishing-lifecycle-v0.2.0/kdna.cluster.json.sha256"
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/creator-publishing-lifecycle-v0.2.1/kdna.cluster.json",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/creator-publishing-lifecycle-v0.2.1/kdna.cluster.json.sha256"
       },
       "technical_status": {
         "manifest": "valid",
         "plan_use": "verified",
         "plan_state": "blocked",
-        "verified_at": "2026-07-13T11:23:01.465Z",
+        "verified_at": "2026-07-13T11:45:52.772Z",
         "toolchain": "@aikdna/kdna-cli@0.31.1"
       },
       "evidence_claims": []

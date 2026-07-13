@@ -6,6 +6,10 @@ publish at an appropriate quality and cadence.
 This is an explicit technical/conformance reference. It does not claim that a
 Cluster improves answers over the correct single KDNA.
 
+Version 0.2.1 gives five re-authored creator members distinct current-
+generation asset UIDs. Their judgment content and the Cluster routing policy
+are unchanged; the patch corrects identity separation from archived history.
+
 ## Members
 
 The manifest selects exactly one primary and at most two optional advisors.
