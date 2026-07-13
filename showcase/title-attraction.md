@@ -1,5 +1,9 @@
 # title-attraction — 标题吸引力判断
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > **A title that promises nothing is read by no one. A title that promises everything is read but not trusted.**
 
 A KDNA asset that helps an AI Agent evaluate whether a
@@ -68,7 +72,7 @@ curl -L -O https://github.com/aikdna/kdna-assets/releases/download/title-attract
 shasum -a 256 -c title-attraction.sha256
 kdna validate title-attraction.kdna
 kdna plan-load title-attraction.kdna
-kdna load title-attraction.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## See also

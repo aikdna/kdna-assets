@@ -1,5 +1,9 @@
 # Incident Triage
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Incident Triage: the judgment threshold that separates good from harmful decisions.
 
 Judges incident triage trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -49,7 +53,7 @@ curl -L -o dev-incident-triage-v0.1.0.kdna \
 
 echo "c49fd5b460641cc2bbb2b3fcd6b86bae22f610657b86f1dcde77d79c86a5414b  dev-incident-triage-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-incident-triage-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

@@ -1,5 +1,9 @@
 # agent:completion_adjudication — "Done" is an evidence ruling, not a status declaration.
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > **An Agent saying "I'm done" is not completion. Completion is an evidence ruling.**
 
 A KDNA asset that forces the Agent to surface four cells
@@ -151,7 +155,7 @@ Load the asset as a prompt:
 
 ```bash
 # Compact profile (~5.9 KB / 31 lines) — for the per-task completion gate
-kdna load agent-completion-adjudication-v0.1.1.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 Apply at every "I'm done" / "completed" / "all set" moment.

@@ -1,5 +1,9 @@
 # Safety Boundary
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Safety Boundary: the judgment threshold that separates good from harmful decisions.
 
 Judgment asset for safety boundary — criteria, signals, and failure modes.
@@ -52,7 +56,7 @@ curl -L -o dev-safety-boundary-v0.1.0.kdna \
 
 echo "41e65606abfc6311e7ab3d72a058e442c7eecf6e0d2dfb0ec80a45fb606783a3  dev-safety-boundary-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-safety-boundary-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

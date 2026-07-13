@@ -1,5 +1,9 @@
 # Tech Debt Signal
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Tech Debt Signal: the judgment threshold that separates good from harmful decisions.
 
 Judges tech debt signal trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -49,7 +53,7 @@ curl -L -o dev-tech-debt-signal-v0.1.0.kdna \
 
 echo "55d140fc35f8526687b34227ef150cfbe67513a260d9fb9550ed522e289c783c  dev-tech-debt-signal-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-tech-debt-signal-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

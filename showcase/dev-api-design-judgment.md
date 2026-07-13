@@ -1,5 +1,9 @@
 # API Design Judgment
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Api Design Judgment: the judgment threshold that separates good from harmful decisions.
 
 Judges api design judgment trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -49,7 +53,7 @@ curl -L -o dev-api-design-judgment-v0.1.0.kdna \
 
 echo "c25dc1a786c068cd49bf1d9c50f384ee34b085597eb8d4326bed71baf03899ee  dev-api-design-judgment-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-api-design-judgment-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

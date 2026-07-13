@@ -1,5 +1,9 @@
 # Intent Boundary
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Intent Boundary: the judgment threshold that separates good from harmful decisions.
 
 Judgment asset for intent boundary — criteria, signals, and failure modes.
@@ -53,7 +57,7 @@ curl -L -o dev-intent-boundary-v0.1.0.kdna \
 
 echo "34a43b1c65922e389b0dab4a0c62370eef4ac8a9c234a09b489a5021889fa8d7  dev-intent-boundary-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-intent-boundary-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

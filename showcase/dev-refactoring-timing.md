@@ -1,5 +1,9 @@
 # Refactoring Timing
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Refactoring Timing: the judgment threshold that separates good from harmful decisions.
 
 Judges refactoring timing trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -49,7 +53,7 @@ curl -L -o dev-refactoring-timing-v0.1.0.kdna \
 
 echo "8fbb3b49139128756189cbdfe775938c85653a4a4c2e56d9f92a5b6ef2433988  dev-refactoring-timing-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-refactoring-timing-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

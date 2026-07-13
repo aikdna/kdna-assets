@@ -1,5 +1,9 @@
 # Deploy Readiness
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Deploy Readiness: the judgment threshold that separates good from harmful decisions.
 
 Judges deploy readiness trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -49,7 +53,7 @@ curl -L -o dev-deploy-readiness-v0.1.0.kdna \
 
 echo "cd905dd99177a14996926a3353b407cf75e977120ea28569b041b8dbedd1207e  dev-deploy-readiness-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-deploy-readiness-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance
