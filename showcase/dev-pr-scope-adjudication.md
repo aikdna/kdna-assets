@@ -1,5 +1,9 @@
 # PR Scope Adjudication
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Pr Scope Adjudication: the judgment threshold that separates good from harmful decisions.
 
 Judges pr scope adjudication trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -53,7 +57,7 @@ curl -L -o dev-pr-scope-adjudication-v0.1.0.kdna \
 
 echo "4b90b14afffde1f866736f5b6195f93ae3bf1f76fb3503f1654332b76328439a  dev-pr-scope-adjudication-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-pr-scope-adjudication-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

@@ -1,5 +1,9 @@
 # viral-topic-selection — 爆款选题判断
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > **A topic is only viral when it carries productive tension, not when it carries controversy.**
 
 A KDNA asset that helps an AI Agent evaluate whether a
@@ -70,7 +74,7 @@ curl -L -O https://github.com/aikdna/kdna-assets/releases/download/viral-topic-s
 shasum -a 256 -c viral-topic-selection.sha256
 kdna validate viral-topic-selection.kdna
 kdna plan-load viral-topic-selection.kdna
-kdna load viral-topic-selection.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## See also

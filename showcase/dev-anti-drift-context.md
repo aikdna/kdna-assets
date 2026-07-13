@@ -1,5 +1,9 @@
 # Anti Drift Context
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Anti Drift Context: the judgment threshold that separates good from harmful decisions.
 
 Judgment asset for anti drift context — criteria, signals, and failure modes.
@@ -52,7 +56,7 @@ curl -L -o dev-anti-drift-context-v0.1.0.kdna \
 
 echo "f5d1437176440ecc10e765e02862a394132d2bb57b5ce54dcde17bb8971f5421  dev-anti-drift-context-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-anti-drift-context-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

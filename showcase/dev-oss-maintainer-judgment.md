@@ -1,5 +1,9 @@
 # OSS Maintainer Judgment
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Oss Maintainer Judgment: the judgment threshold that separates good from harmful decisions.
 
 Judgment asset for oss maintainer judgment — criteria, signals, and failure modes.
@@ -49,7 +53,7 @@ curl -L -o dev-oss-maintainer-judgment-v0.1.0.kdna \
 
 echo "69afd120e4e4385d7b5d650bc7c16f0e428efcabf627de8959a4f468af536075  dev-oss-maintainer-judgment-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-oss-maintainer-judgment-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

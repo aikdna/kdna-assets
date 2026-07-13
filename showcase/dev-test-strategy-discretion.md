@@ -1,5 +1,9 @@
 # Test Strategy Discretion
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Test Strategy Discretion: the judgment threshold that separates good from harmful decisions.
 
 Judges test strategy discretion trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -53,7 +57,7 @@ curl -L -o dev-test-strategy-discretion-v0.1.0.kdna \
 
 echo "a14e9a78af3af6158c7ff373741c493e7d0572c91bceb0a493333e8819102bbb  dev-test-strategy-discretion-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-test-strategy-discretion-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

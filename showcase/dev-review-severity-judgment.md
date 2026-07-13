@@ -1,5 +1,9 @@
 # Review Severity Judgment
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Review Severity Judgment: the judgment threshold that separates good from harmful decisions.
 
 Judges review severity judgment trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -49,7 +53,7 @@ curl -L -o dev-review-severity-judgment-v0.1.0.kdna \
 
 echo "00e19d2f1565be87cbc2cc67c8d654105308e6edad41b8fc3e280c7007fa1051  dev-review-severity-judgment-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-review-severity-judgment-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

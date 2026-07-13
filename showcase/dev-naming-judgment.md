@@ -1,5 +1,9 @@
 # Naming Judgment
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Naming Judgment: the judgment threshold that separates good from harmful decisions.
 
 Judges naming judgment trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -49,7 +53,7 @@ curl -L -o dev-naming-judgment-v0.1.0.kdna \
 
 echo "7a049af6afe88552b64f9c8f28bec34f69794ce7c921dfbed46863cd13bbebda  dev-naming-judgment-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-naming-judgment-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

@@ -1,5 +1,9 @@
 # Project Context
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Project Context: the judgment threshold that separates good from harmful decisions.
 
 Judgment asset for project context — criteria, signals, and failure modes.
@@ -52,7 +56,7 @@ curl -L -o dev-project-context-v0.1.2.kdna \
 
 echo "2d219d8879bff29f4d84d863a3ef7b02c88de1b5621f84235c3edae2944c5837  dev-project-context-v0.1.2.kdna" | shasum -a 256 -c -
 
-kdna load dev-project-context-v0.1.2.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

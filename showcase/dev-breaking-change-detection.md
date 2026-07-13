@@ -1,5 +1,9 @@
 # Breaking Change Detection
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Breaking Change Detection: the judgment threshold that separates good from harmful decisions.
 
 Judges breaking change detection trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -44,7 +48,7 @@ curl -L -o dev-breaking-change-detection-v0.1.0.kdna \
 
 echo "9801e2a28418bb24fc073bcbddbab1994e5d7821a1eb532d89873feda697c151  dev-breaking-change-detection-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-breaking-change-detection-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

@@ -1,5 +1,9 @@
 # Performance Antipattern
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Performance Antipattern: the judgment threshold that separates good from harmful decisions.
 
 Judges performance antipattern trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -49,7 +53,7 @@ curl -L -o dev-performance-antipattern-v0.1.0.kdna \
 
 echo "31933ae324e6fd81567d4629bb8ce0d03bb1a6dd7786b77be9102c3198c482f3  dev-performance-antipattern-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-performance-antipattern-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

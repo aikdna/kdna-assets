@@ -1,5 +1,9 @@
 # Scope Creep Detection
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Scope Creep Detection: the judgment threshold that separates good from harmful decisions.
 
 Judgment asset for scope creep detection — criteria, signals, and failure modes.
@@ -49,7 +53,7 @@ curl -L -o dev-scope-creep-detection-v0.1.0.kdna \
 
 echo "59fde05d2cc8c6790956b37470d29f0f88cd9cace7ca4aebc38117396e8c7f8a  dev-scope-creep-detection-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-scope-creep-detection-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

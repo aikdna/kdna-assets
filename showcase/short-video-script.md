@@ -1,5 +1,9 @@
 # short-video-script — 短视频前三秒判断
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > **The first 3 seconds decide whether the audience stays. Everything after is the content's job.**
 
 A KDNA asset that helps an AI Agent evaluate whether the
@@ -69,7 +73,7 @@ curl -L -O https://github.com/aikdna/kdna-assets/releases/download/short-video-s
 shasum -a 256 -c short-video-script.sha256
 kdna validate short-video-script.kdna
 kdna plan-load short-video-script.kdna
-kdna load short-video-script.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## See also

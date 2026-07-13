@@ -1,5 +1,9 @@
 # Bug Root Cause
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Bug Root Cause: the judgment threshold that separates good from harmful decisions.
 
 Judges bug root cause trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -52,7 +56,7 @@ curl -L -o dev-bug-root-cause-v0.1.0.kdna \
 
 echo "96c93ca160ce5330df2e438214856a504951524158544b017bc68196cf1a7bb7  dev-bug-root-cause-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-bug-root-cause-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

@@ -1,5 +1,9 @@
 # Architecture Minimum Edit
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Architecture Minimum Edit: the judgment threshold that separates good from harmful decisions.
 
 Judges architecture minimum edit trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -53,7 +57,7 @@ curl -L -o dev-architecture-minimum-edit-v0.1.0.kdna \
 
 echo "a6fdf15ce011d11446e5072f05cfe05ab325f697e4faf8cf52dee1e92635dc2e  dev-architecture-minimum-edit-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-architecture-minimum-edit-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

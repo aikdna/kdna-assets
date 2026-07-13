@@ -1,5 +1,9 @@
 # Documentation Judgment
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Documentation Judgment: the judgment threshold that separates good from harmful decisions.
 
 Judges documentation judgment trade-offs in software engineering — distinguishing productive from counter-productive decisions.
@@ -49,7 +53,7 @@ curl -L -o dev-documentation-judgment-v0.1.0.kdna \
 
 echo "ae7ac12a121fbc3e3b3b0337d906eefa69853133cf10a0064361f9085f95d438  dev-documentation-judgment-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-documentation-judgment-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance

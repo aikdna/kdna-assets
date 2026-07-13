@@ -1,5 +1,9 @@
 # agent:project_context — Don't write a project wiki. Write project judgment.
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > **AGENTS.md is not a project encyclopedia. It's a compressed layer of project-specific judgment.**
 
 A KDNA asset that judges every candidate line in an Agent-facing
@@ -170,10 +174,10 @@ Load the asset as a prompt:
 
 ```bash
 # Compact profile (~5.7 KB / 31 lines) — for the per-task load path
-kdna load agent-project-context-v0.1.2.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 
 # Full profile — for documentation / onboarding
-kdna load agent-project-context-v0.1.2.kdna --profile=full --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 Then give the Agent the prompt and your candidate lines.

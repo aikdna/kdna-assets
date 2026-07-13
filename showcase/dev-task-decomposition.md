@@ -1,5 +1,9 @@
 # Task Decomposition
 
+> **Archived demonstration.** This page documents a superseded pre-CBOR AIKDNA example.
+> The file is preserved for historical integrity and is intentionally rejected by the current runtime.
+> Re-export legitimate source through current Studio/CLI tooling before attempting to load it.
+
 > Task Decomposition: the judgment threshold that separates good from harmful decisions.
 
 Judgment asset for task decomposition — criteria, signals, and failure modes.
@@ -52,7 +56,7 @@ curl -L -o dev-task-decomposition-v0.1.0.kdna \
 
 echo "044c33a61c589de2b665397ae266753b576dda06f242ae0e1d77dbe0658a1e56  dev-task-decomposition-v0.1.0.kdna" | shasum -a 256 -c -
 
-kdna load dev-task-decomposition-v0.1.0.kdna --profile=compact --as=prompt
+# Current runtime intentionally rejects this archived pre-CBOR artifact.
 ```
 
 ## Provenance
