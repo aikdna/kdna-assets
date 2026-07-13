@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aikdna/kdna-assets/schemas/archive-index.schema.json",
+  "title": "AIKDNA historical asset archive index",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "kind",
+    "generation",
+    "current_runtime_loadable",
+    "updated",
+    "assets",
+    "note"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "kind": { "const": "kdna-archive-index" },
+    "generation": { "const": "pre-cbor" },
+    "current_runtime_loadable": { "const": false },
+    "updated": { "type": "string", "format": "date-time" },
+    "note": { "type": "string", "minLength": 1 },
+    "assets": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "file",
+          "latest_version",
+          "tag",
+          "sha256",
+          "release_date",
+          "status",
+          "compatible_with_current_format",
+          "superseded_reason"
+        ],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "file": { "type": "string", "pattern": "\\.kdna$" },
+          "latest_version": { "type": "string", "minLength": 1 },
+          "tag": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "release_date": { "type": "string", "format": "date" },
+          "status": { "const": "superseded" },
+          "compatible_with_current_format": { "const": false },
+          "superseded_reason": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

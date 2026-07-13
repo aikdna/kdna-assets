@@ -3,8 +3,8 @@
 /**
  * scripts/check-public-surface.mjs
  *
- * Scans the public surface of this repository (docs/, specs/, .github/,
- * showcase/, root-level *.md and *.json) for references that should not
+ * Scans the public surface of this repository (.github/, archive/,
+ * references/, clusters/, schemas/, index/, and root entry files) for references that should not
  * be present in a public release:
  *
  *   - Private repo URLs (any aikdna/* repo not on the allowlist)
@@ -30,7 +30,7 @@ import { join, relative, sep } from 'path';
 const ROOT = process.cwd();
 const STRICT = process.argv.includes('--strict');
 
-const PUBLIC_DIRS = ['docs', 'specs', '.github', 'showcase'];
+const PUBLIC_DIRS = ['.github', 'archive', 'references', 'clusters', 'schemas', 'index'];
 const PUBLIC_FILES = [
   'README.md',
   'README.zh.md',
@@ -38,6 +38,8 @@ const PUBLIC_FILES = [
   'ecosystem-manifest.json',
   'package.json',
   'CONTRIBUTING.md',
+  'LICENSE-POLICY.md',
+  'ENTRY-CONTRACT.md',
 ];
 // Files that legitimately mention a private repo as historical record
 const ALLOWLIST_FILES = new Set([

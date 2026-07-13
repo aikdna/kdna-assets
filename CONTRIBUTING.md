@@ -1,116 +1,156 @@
-# Contributing to kdna-assets
+# Contributing to AIKDNA's reference display
 
-Official KDNA judgment asset releases. Each asset here is a
-validated, loadable `.kdna` file that gives an AI agent a
-specific, scoped judgment framework.
+This document governs only what AIKDNA chooses to display in this repository.
+It is not the KDNA protocol's creation or publication policy.
 
----
+## You do not need this repository
 
-## What qualifies as a publishable KDNA asset
+Anyone may create, package, license, distribute, or publish KDNA without:
 
-A KDNA asset is not a prompt, a template, or a checklist. It is a
-**scoped judgment framework** — the principles an expert consistently
-applies in a specific domain, the traps they avoid, the questions
-they ask before deciding.
+- joining this repository;
+- AIKDNA review or approval;
+- Human Lock;
+- behavior evidence or field validation;
+- an “expert” credential;
+- an entry in any registry or catalog.
 
-An asset is ready to publish when it passes all of the following:
+KDNA Core validates protocol structure and runtime contracts. It does not judge
+whether content is correct, valuable, tasteful, expert, or worthy of existence.
 
-### Scope
+## Separate dimensions
 
-- **One domain, one question.** The asset answers a single
-  `highest_question` (e.g. "Does this line of AGENTS.md earn its
-  load cost?"). If you find yourself answering two different questions,
-  split into two assets.
-- **Declared audience layer.** L1 (developers using AI coding tools),
-  L2 (content creators), or L3 (domain experts in a specific field).
-- **Specific task scope.** "writing" is too broad. "Judging whether an
-  argument structure supports the thesis" is scoped.
+AIKDNA reviews reference entries across independent dimensions:
 
-### Content (minimum viable)
+| Dimension | Question | Does not prove |
+|---|---|---|
+| Structure/runtime | Does the file validate, plan, load when authorized, and produce the required Capsule/plan? | Content quality or truth |
+| Provenance | Are creator and publisher recorded? | Expertise or endorsement |
+| Authorization/license | Is distribution and use authorized under the entry's own license? | Runtime validity or value |
+| Evidence | Is a bounded optional claim linked to evidence? | Universal usefulness |
+| Display status | Has AIKDNA chosen to show it here? | Protocol approval or official truth |
 
-- At least **3 axioms**, each with `one_sentence`, `applies_when`,
-  `does_not_apply_when`, and `failure_risk`.
-- At least **3 self-checks** — questions the agent runs on its own
-  output before responding.
-- At least **1 real case** with a before/after or decision trace that
-  shows the judgment in action.
-- **No fabricated evidence.** Every pattern and case must come from
-  real practice, not from generating examples to fill the schema.
+Human review, Human Lock, comparison tests, and field evidence may support a
+specific claim or AIKDNA's own display decision. They are never KDNA creation
+credentials.
 
-### Human verification
+## Entry kinds
 
-Every card in the asset must have been reviewed by a human — not just
-generated and accepted. The Human Lock mechanism in KDNA Studio CLI
-(`kdna-studio card approve`) records this confirmation. For assets
-submitted without Studio CLI, include a provenance note explaining
-how cards were verified.
+### Public reference asset
 
-### Format and integrity
+Use:
 
-1. The `.kdna` file passes `kdna validate` with `overall_valid: true`.
-2. SHA-256 checksum matches: `shasum -a 256 <asset>.kdna`.
-3. `kdna load <asset>.kdna --profile=compact --as=prompt` produces
-   readable output (not empty, not malformed).
-4. The public metadata audit passes:
-   `python3 scripts/audit-public-metadata.py`.
+```text
+references/public/<asset-slug>/
+```
 
-### Comparison evidence
+The artifact is a current `.kdna` container with an entry-local license.
 
-Before submitting, demonstrate the difference. Give the same prompt
-to an agent with and without the asset loaded, and include the
-comparison in your PR description. This is the minimum signal that
-the asset actually changes behavior.
+### Licensed reference asset
 
----
+Use:
 
-## Asset organization
+```text
+references/licensed/<asset-slug>/
+```
 
-Assets in this repository are organized by audience layer and workflow
-position:
+The artifact is a current `.kdna` container. Its own license and authorization
+terms govern it. Do not point at the root `LICENSE`; repository CC-BY does not
+override or absorb licensed content.
 
-**L1 — Developer tools** (for developers using AI coding agents)
-- Agent meta: project context, intent, scope, completion judgment
-- Code writing: API design, abstraction, naming
-- Code review: security, severity, AI output quality
-- Debugging: triage, silent failure patterns
-- Maintenance: docs, refactoring, tech debt
+### Cluster manifest
 
-**L2 — Content creator tools** (for bloggers, self-media creators)
-- Strategy: positioning, niche, mix
-- Creation: authenticity, depth, originality
-- Audience: signal, community
-- Monetization: timing, offer design
+Use:
 
-**L3 — Domain expert tools** (open — any expertise domain)
-- Any domain where expert judgment differs significantly from
-  generic AI output
+```text
+clusters/<cluster-slug>/kdna.cluster.json
+```
 
-When submitting, state which layer and workflow position your asset
-targets.
+A Cluster manifest is not `.kdna`. Validate and plan it with Cluster commands,
+never single-asset loading commands.
 
----
+### Historical material
 
-## Submission process
+Do not add old material to current paths. Historical entries belong only in
+`archive/` and may not include current onboarding or Agent load commands.
 
-1. Create a GitHub Release with:
-   - The `.kdna` file (`<name>-<version>.kdna`)
-   - The SHA-256 sidecar (`<name>-<version>.kdna.sha256`)
-2. Open a PR that updates `assets.json` with the new entry.
-3. Include in the PR description:
-   - What domain and audience layer
-   - The before/after comparison showing behavioral difference
-   - How cards were verified (Human Lock record or equivalent)
-   - The audit result proving that `assets.json`, the checked-in asset,
-     the checked-in sidecar, and the GitHub Release artifacts agree
+## Required current metadata
 
-## What NOT to do
+Add one entry to `index/current.json` following
+`schemas/current-index.schema.json`. Every entry requires:
 
-- Do NOT create a registry, marketplace, or install service.
-- Do NOT submit assets built entirely by AI without human card review.
-- Do NOT submit assets that duplicate an existing asset's domain
-  without clearly explaining the differentiation.
-- Do NOT pin to specific CLI versions in documentation.
+- `kind`, stable `id`, and `version`;
+- `publisher` and `creator`;
+- `access`;
+- per-entry `license` with `repository_license_applies: false`;
+- SHA-256 `digest`;
+- local artifact or manifest path;
+- pinned GitHub Release download and checksum URLs;
+- technical status and verification time;
+- optional `evidence_claims` only when a public evidence URL supports the
+  exact bounded claim.
+
+Do not use listing language that implies endorsement, official status,
+correctness, quality ranking, expert certification, or protocol truth.
+
+## Submission sequence
+
+1. Create the entry directory and its own `LICENSE` and `README.md`.
+2. Add the exact current `.kdna` plus `.sha256`, or the exact
+   `kdna.cluster.json` manifest plus `.sha256`.
+3. Run the applicable toolchain checks.
+4. Create a pinned GitHub Release containing the exact artifact and sidecar.
+5. Add the entry to `index/current.json` with matching version, digest, and
+   URLs.
+6. Run `npm test` and `npm run audit`.
+7. Open a signed-off pull request. Do not merge your own public PR without the
+   required review.
+
+Creating a GitHub Release is a deliberate maintainer action. Repository tests
+never publish, replace, or delete Releases.
+
+## Technical gates
+
+For current assets:
+
+```bash
+node scripts/check-current-assets.mjs
+```
+
+For current Clusters:
+
+```bash
+node scripts/check-clusters.mjs
+```
+
+For indexes, digests, licensing, archive isolation, and Release consistency:
+
+```bash
+npm run audit
+```
+
+The checks fail if current onboarding points into `archive/`, an archive entry
+appears in the current index, a Cluster is named `.kdna`, a digest drifts, a
+Release URL disagrees with its index entry, or a current license is missing or
+inherits the root license.
+
+## Historical protection
+
+Never:
+
+- delete one of the 52 archive entries;
+- edit a historical SHA-256;
+- regenerate an old binary;
+- decode an old JSON payload and repackage it as current CBOR;
+- add a compatibility fallback to make an old release load;
+- move archive URLs or commands into current onboarding.
+
+If legitimate historical source inspires a new asset, author a new identity
+through the current toolchain and publish it as a distinct versioned work.
 
 ## Sign-off
 
-Sign off all commits: `git commit -s`
+Sign off commits:
+
+```bash
+git commit -s
+```

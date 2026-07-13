@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- Separated the empty current reference index from the immutable 52-entry
+  pre-CBOR archive.
+- Added distinct public, licensed, and Cluster entry paths plus per-entry
+  license contracts.
+- Added schema, digest, lifecycle, Capsule, Cluster plan, onboarding-boundary,
+  GitHub Release, and license checks with positive and negative fixtures.
+- Moved historical sidecars, showcase pages, and evidence records under
+  `archive/` without changing archive SHA-256 values.
+
 ## 2026-07-01
 - Published the developer judgment asset set: 31 new active `dev-*` assets
   across code writing, code review, debugging, agent meta-judgment,

@@ -1,0 +1,1568 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "kdna-archive-index",
+  "generation": "pre-cbor",
+  "current_runtime_loadable": false,
+  "updated": "2026-07-13T09:54:00+08:00",
+  "assets": [
+    {
+      "name": "Abstraction Threshold",
+      "name_zh": "「三次法则」：第一次写死，第二次忍受，第三次才抽象——不要为假想的重用而提前抽象。",
+      "file": "dev-abstraction-threshold-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-abstraction-threshold-v0.1.0",
+      "sha256": "2a919dc4bc88066f5a9aa48ecb3b665ac0faafc33bdd1e5688c04bd68fc9cf22",
+      "release_date": "2026-07-01",
+      "description": "Judges when software should stay concrete, when duplication is acceptable, and when an abstraction has earned its cost.",
+      "description_zh": "抽象层次的判断框架。核心问题：这里过度抽象了，还是抽象不够？好的抽象让代码更能表达意图、更容易复用；坏的抽象增加复杂度却没有带来真正的收益。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "A-code-writing",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:90e484b1-e4c8-40d9-9903-0935887dd90a",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "AI Collaboration",
+      "name_zh": "给 AI 的上下文应该是「任务需要什么就给什么」，不是「越多越好」或「越少越好」。",
+      "file": "dev-ai-collaboration-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-ai-collaboration-v0.1.0",
+      "sha256": "65b5511868dada45519d55616283df66807e08bf604f42c429a8c5a3ab9e6964",
+      "release_date": "2026-07-01",
+      "description": "Judges how to collaborate with AI coding agents: what context to provide, what authority to grant, and when outputs require human verification.",
+      "description_zh": "与 AI agent 高效协作的判断框架。覆盖两个核心决策：(1) 给 AI 什么上下文（多少、哪些、什么格式）才能获得最好的输出；(2) AI 输出什么时候可以信任，什么时候必须人工核验。这是 Claude Code、Cursor、Codex 用户的元技能资产。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "D-agent-meta",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:667d4a65-f22b-4a73-9043-ce06e2958d85",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "AI Output Review",
+      "name_zh": "AI 写的代码在「通用逻辑」上通常是对的，在「项目集成」上经常是错的。",
+      "file": "dev-ai-output-review-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-ai-output-review-v0.1.0",
+      "sha256": "7b3dbdd10a752899ebd1238aacf25c8b26c18112569e5bf9daea8f683fb113aa",
+      "release_date": "2026-07-01",
+      "description": "Judges how to review AI-generated code by separating generally plausible logic from project-specific integration, contract, and edge-case risk.",
+      "description_zh": "AI 生成代码的审查判断框架。核心问题：「这段 AI 生成的代码，我需要核验什么，信任什么？」——AI 生成代码的失败模式与人写的代码不同，需要不同的审查策略。这个资产专门针对 Claude Code、Cursor、Copilot 等 AI 编码工具的用户。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "B-code-review",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:410f1e48-fcce-408f-8736-3aa469b4bcd2",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Anti Drift Context",
+      "name_zh": "Maintain an explicit active contract: goal, deliverable, scope, constraints, accepted decisions, proof state, and open loops.",
+      "file": "dev-anti-drift-context-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-anti-drift-context-v0.1.0",
+      "sha256": "f5d1437176440ecc10e765e02862a394132d2bb57b5ce54dcde17bb8971f5421",
+      "release_date": "2026-07-01",
+      "description": "Judges whether an agent still follows the accepted goal, scope, constraints, decisions, and evidence during long or interrupted work.",
+      "description_zh": "Judge whether an Agent's active context still matches the user's accepted goal, scope, constraints, decisions, evidence, and unresolved questions during long or interrupted work.",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 6,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "D-agent-meta",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:cc0dd56f-28e0-4c0b-8eda-457a71189b60",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "API Design Judgment",
+      "name_zh": "「调用方不需要理解实现就能正确使用」是 API 设计的唯一标准。",
+      "file": "dev-api-design-judgment-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-api-design-judgment-v0.1.0",
+      "sha256": "c25dc1a786c068cd49bf1d9c50f384ee34b085597eb8d4326bed71baf03899ee",
+      "release_date": "2026-07-01",
+      "description": "Judges whether an API makes correct use obvious, keeps callers independent from implementation details, and leaves room for compatible evolution.",
+      "description_zh": "API 设计好坏的判断框架。核心问题：这个 API 设计会让调用方痛苦吗？好的 API 让正确的使用比错误的使用更容易，让调用方不需要理解实现就能正确使用。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "A-code-writing",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:61ea244f-f623-4e8b-87f0-782d6b6cff4e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Architecture Minimum Edit",
+      "name_zh": "The minimum architecture edit is the smallest causal and contract change, not the fewest lines or files.",
+      "file": "dev-architecture-minimum-edit-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-architecture-minimum-edit-v0.1.0",
+      "sha256": "a6fdf15ce011d11446e5072f05cfe05ab325f697e4faf8cf52dee1e92635dc2e",
+      "release_date": "2026-07-01",
+      "description": "Judges the smallest architecture-level change that enables required behavior while preserving contracts, ownership boundaries, reversibility, and reviewability.",
+      "description_zh": "Judge the smallest architecture-level intervention that enables the required behavior while preserving existing responsibility boundaries, contracts, migration safety, reversibility, and reviewability.",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 6,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "E-maintenance",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:ad6aa859-7fc7-4785-9705-a6f6f86e2e21",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Breaking Change Detection",
+      "name_zh": "Breaking change 的定义是「现有调用方，在不修改自身代码的情况下，会出现运行时错误或行为改变」。",
+      "file": "dev-breaking-change-detection-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-breaking-change-detection-v0.1.0",
+      "sha256": "9801e2a28418bb24fc073bcbddbab1994e5d7821a1eb532d89873feda697c151",
+      "release_date": "2026-07-01",
+      "description": "Judges whether a change breaks existing callers or users by changing runtime behavior, contracts, data shape, or operational expectations.",
+      "description_zh": "Breaking change 判断框架。核心问题：「这个改动会让现有调用方在不修改自身代码的情况下出现错误吗？」——区分真正的 breaking change 和兼容的演进，避免错判（把兼容改动当 breaking 而过度保守）或漏判（把 breaking 改动当兼容而破坏调用方）。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 4,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "B-code-review",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:7ad5a6d4-d5aa-4d50-82a5-47705386679e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Bug Root Cause",
+      "name_zh": "Preserve the observed failure and establish the smallest reliable reproduction before explaining it.",
+      "file": "dev-bug-root-cause-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-bug-root-cause-v0.1.0",
+      "sha256": "96c93ca160ce5330df2e438214856a504951524158544b017bc68196cf1a7bb7",
+      "release_date": "2026-07-01",
+      "description": "Judges whether a bug diagnosis has found the causal defect, trigger, propagation path, and verified control-point fix instead of stopping at symptoms.",
+      "description_zh": "Judge whether a bug diagnosis identifies the observed failure, trigger, causal defect, propagation path, contributing conditions, and verified control-point fix instead of stopping at a symptom or suspicious line.",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 7,
+        "scenarios": 6,
+        "cases": 6
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "C-debugging",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:1af6f220-b9ec-44bd-b2e6-67c1699b8f54",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Change Risk",
+      "name_zh": "Change risk follows causal reach, not diff size, file count, or implementation effort.",
+      "file": "dev-change-risk-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-change-risk-v0.1.0",
+      "sha256": "06df5c58a40be3d0eed7241417764e1ec1cb5a9b52cd87a4be71ff802ab7c963",
+      "release_date": "2026-07-01",
+      "description": "Judges change risk through blast radius, behavioral uncertainty, recovery cost, and verification gap rather than diff size.",
+      "description_zh": "Judge the pre-change and residual risk of a code, configuration, dependency, schema, infrastructure, or rollout change using four cells: blast radius, behavioral uncertainty, recovery cost, and verification gap.",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 8,
+        "scenarios": 6,
+        "cases": 8
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "B-code-review",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:935c0835-ebad-458e-8eeb-7bdd6acb759e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Completion Adjudication",
+      "name_zh": "Completion is an evidence ruling, not a status declaration.",
+      "file": "dev-completion-adjudication-v0.1.1.kdna",
+      "latest_version": "0.1.1",
+      "tag": "dev-completion-adjudication-v0.1.1",
+      "sha256": "490bb03222b359b9d56ed539d7120aa5264e55a86497cda8ec7c15cacf01b3d3",
+      "release_date": "2026-07-01",
+      "description": "Judges whether an agent or developer can truthfully claim completion based on the requested outcome, observable proof, and unresolved risk.",
+      "description_zh": "Judge whether an Agent's completion claim is supported by a specific claim, observable proof, user-intent match, and explicit unresolved risk.",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 6,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "D-agent-meta",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:6879a2d3-6cc9-4f46-9950-4916a39f7f20",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Dependency Selection",
+      "name_zh": "引入依赖前先问：「这件事我自己实现需要多少行？」——如果答案是 20 行以内，不要引入依赖。",
+      "file": "dev-dependency-selection-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-dependency-selection-v0.1.0",
+      "sha256": "44055527743606ffcf8c4c73fa2bb54874045e2f28dd1951d0081dfbd3e4e0c5",
+      "release_date": "2026-07-01",
+      "description": "Judges whether a third-party dependency is worth its long-term maintenance, security, supply-chain, and coupling costs.",
+      "description_zh": "第三方依赖引入判断框架。核心问题：这个库/包值得引入吗？依赖决策既涉及当下的开发效率，也涉及未来的维护风险、安全风险和技术债务。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "A-code-writing",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:595c6a69-1e37-4ed1-8668-c0e1ba8ba888",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Deploy Readiness",
+      "name_zh": "代码质量合格 ≠ 部署就绪——部署就绪还需要时机、监控、回滚能力三个条件。",
+      "file": "dev-deploy-readiness-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-deploy-readiness-v0.1.0",
+      "sha256": "cd905dd99177a14996926a3353b407cf75e977120ea28569b041b8dbedd1207e",
+      "release_date": "2026-07-01",
+      "description": "Judges whether a change is ready for production deployment given timing, monitoring, rollout strategy, rollback ability, and side-effect risk.",
+      "description_zh": "部署就绪性判断框架。核心问题：「这段代码，现在可以 deploy 到生产了吗？」——不是「代码质量够好吗」（那是 code review 的工作），而是「在当前的时机、当前的环境下，部署这个变更的风险是可接受的吗」。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 3,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "F-release",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:6e012aa5-7299-46e7-ac00-4d8e0be324f7",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Documentation Judgment",
+      "name_zh": "注释应该解释「为什么」，不是「什么」——好的代码已经在解释「什么」了。",
+      "file": "dev-documentation-judgment-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-documentation-judgment-v0.1.0",
+      "sha256": "ae7ac12a121fbc3e3b3b0337d906eefa69853133cf10a0064361f9085f95d438",
+      "release_date": "2026-07-01",
+      "description": "Judges when code needs comments, README text, examples, or design notes, and when extra documentation would create noise or drift.",
+      "description_zh": "代码文档与注释的判断框架。核心问题：「这段代码需要注释/文档吗？」——不是「越多越好」，而是判断什么时候文字说明能比代码本身更有效地传递信息。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "E-maintenance",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:e0e9ebd7-87e9-4240-86cf-e29a1ff72280",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Fix Vs Workaround",
+      "name_zh": "Workaround 是时间借贷，不是解决方案——必须在选择时就定好归还（fix）的时间，否则借贷会变成永久债务。",
+      "file": "dev-fix-vs-workaround-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-fix-vs-workaround-v0.1.0",
+      "sha256": "2c1a1502e69c7b061e8073f00805bdb37ed29f0d6ccf216e4091ad70deaeb260",
+      "release_date": "2026-07-01",
+      "description": "Judges whether to remove a root cause now or apply a time-bounded workaround based on urgency, reversibility, user harm, and debt repayment.",
+      "description_zh": "Fix vs Workaround 裁定框架。核心问题：「在当前时间压力和风险条件下，该消除根因还是先绕过症状？」——不是二选一的原则问题，而是在具体场景下做出最优决策的判断框架。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "C-debugging",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:b74582cd-164a-48e1-98ec-4f9a5aaaacfd",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Incident Triage",
+      "name_zh": "止血永远优先于诊断——用户正在受损的每一分钟都比找根因更紧迫。",
+      "file": "dev-incident-triage-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-incident-triage-v0.1.0",
+      "sha256": "c49fd5b460641cc2bbb2b3fcd6b86bae22f610657b86f1dcde77d79c86a5414b",
+      "release_date": "2026-07-01",
+      "description": "Judges the next action during an incident by balancing user harm reduction, evidence preservation, diagnosis, and recovery sequencing.",
+      "description_zh": "生产事故处置的判断框架。核心问题：「现在应该先止血还是先找根因？」定义在压力下做出正确行动顺序的判断逻辑，而不是提供一份 SRE checklist。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 5,
+        "cases": 3
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "C-debugging",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:1a424ddb-671c-4415-93af-7b86090cca6e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Intent Boundary",
+      "name_zh": "Intent is the intersection of desired outcome, stated constraints, and granted authority—not literal wording alone.",
+      "file": "dev-intent-boundary-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-intent-boundary-v0.1.0",
+      "sha256": "34a43b1c65922e389b0dab4a0c62370eef4ac8a9c234a09b489a5021889fa8d7",
+      "release_date": "2026-07-01",
+      "description": "Judges how far an agent may act beyond literal wording while still respecting the user's intended outcome, constraints, and granted authority.",
+      "description_zh": "Judge how far an Agent may act beyond the user's literal wording while still serving the intended outcome, constraints, and granted authority.",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 6,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "D-agent-meta",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:b49a565b-d24a-4a36-a5ac-fa367ab9e12e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Naming Judgment",
+      "name_zh": "好名字让读者在读到名字的那一刻就知道它是什么——不需要看实现，不需要注释。",
+      "file": "dev-naming-judgment-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-naming-judgment-v0.1.0",
+      "sha256": "7a049af6afe88552b64f9c8f28bec34f69794ce7c921dfbed46863cd13bbebda",
+      "release_date": "2026-07-01",
+      "description": "Judges whether a code name accurately communicates responsibility, scope, and intent without forcing readers to inspect the implementation.",
+      "description_zh": "命名判断框架。核心问题：这个名字好不好？命名是开发者最频繁的判断之一，直接决定代码的可读性和维护成本。好的名字让读者不看实现就能理解意图，坏的名字是隐藏的债务。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "A-code-writing",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:f5ced2ca-c4c8-45e1-8717-f248581e5b5e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "OSS Maintainer Judgment",
+      "name_zh": "OSS 维护者的核心资源是「注意力」，不是「代码」——不合并一个 PR，通常是因为「未来维护这段代码的成本」高于「现在合并的价值」。",
+      "file": "dev-oss-maintainer-judgment-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-oss-maintainer-judgment-v0.1.0",
+      "sha256": "69afd120e4e4385d7b5d650bc7c16f0e428efcabf627de8959a4f468af536075",
+      "release_date": "2026-07-01",
+      "description": "Judges open-source PRs and issues by balancing user value, maintainership cost, project scope, contributor care, and long-term sustainability.",
+      "description_zh": "OSS 维护者判断框架（E4+E5 合并）。覆盖两个核心场景：贡献质量评估（什么 PR 该合，什么不该合）和 Issue 分诊（什么问题该优先处理，什么可以关闭）。OSS 维护者面对资源有限、贡献者期望多样的特殊压力，判断框架与纯内部项目不同。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "E-maintenance",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:99d55aec-1d57-420f-8bde-b78606bffb51",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Performance Antipattern",
+      "name_zh": "在没有真实负载数据之前，所有性能判断都是假设——要用数据说话，不用直觉说话。",
+      "file": "dev-performance-antipattern-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-performance-antipattern-v0.1.0",
+      "sha256": "31933ae324e6fd81567d4629bb8ce0d03bb1a6dd7786b77be9102c3198c482f3",
+      "release_date": "2026-07-01",
+      "description": "Judges whether a design or implementation is likely to create production performance problems under real load and data shape.",
+      "description_zh": "生产环境性能问题的判断框架。核心问题：「这里会在真实负载下出现性能问题吗？」——不是分析算法复杂度，而是识别在实际运行中哪些结构性选择会导致不可接受的性能下降。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "B-code-review",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:bdef7d00-2d5c-43e6-98e0-90c0b8e475ec",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "PR Scope Adjudication",
+      "name_zh": "A PR should make one coherent, externally verifiable change claim; line count and file count are secondary.",
+      "file": "dev-pr-scope-adjudication-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-pr-scope-adjudication-v0.1.0",
+      "sha256": "4b90b14afffde1f866736f5b6195f93ae3bf1f76fb3503f1654332b76328439a",
+      "release_date": "2026-07-01",
+      "description": "Judges which changes belong in one pull request by separating the core change claim from required support, incidental repair, and follow-up work.",
+      "description_zh": "Judge which changes belong in one pull request or review unit by separating the coherent change claim, required support, incidental repair, and independently reviewable follow-up.",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 6,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "B-code-review",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:5e6cafc7-38dc-4525-9388-162da7bbd4e9",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Project Context",
+      "name_zh": "Keep a line only when its absence predictably causes a project-specific Agent failure.",
+      "file": "dev-project-context-v0.1.2.kdna",
+      "latest_version": "0.1.2",
+      "tag": "dev-project-context-v0.1.2",
+      "sha256": "2d219d8879bff29f4d84d863a3ef7b02c88de1b5621f84235c3edae2944c5837",
+      "release_date": "2026-07-01",
+      "description": "Judges what belongs in agent-facing project context files such as AGENTS.md, CLAUDE.md, codex.md, and .cursorrules.",
+      "description_zh": "Judge what belongs in an Agent-facing project context document such as AGENTS.md, CLAUDE.md, codex.md, or .cursorrules.",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 6,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "D-agent-meta",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:7e4ba8ac-2b26-4a31-8e7e-2400e33a3991",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Refactoring Timing",
+      "name_zh": "重构有两个最佳时机：修 bug 时（顺路改）和添加功能之前（为新功能清理路径）——不是随机的空闲时间。",
+      "file": "dev-refactoring-timing-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-refactoring-timing-v0.1.0",
+      "sha256": "8fbb3b49139128756189cbdfe775938c85653a4a4c2e56d9f92a5b6ef2433988",
+      "release_date": "2026-07-01",
+      "description": "Judges whether refactoring should happen now, alongside a change, after evidence accumulates, or not at all.",
+      "description_zh": "重构时机判断框架。核心问题：「现在该重构还是等以后？」——重构的价值随时机而变化：在正确的时机重构事半功倍，在错误的时机重构引入风险或浪费精力。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "E-maintenance",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:7a6fc14d-1fd5-4f22-96a2-08053d76c9b0",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Review Severity Judgment",
+      "name_zh": "严重性来自「不改会发生什么」，不来自「写法多难看」或「和我的风格不同」。",
+      "file": "dev-review-severity-judgment-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-review-severity-judgment-v0.1.0",
+      "sha256": "00e19d2f1565be87cbc2cc67c8d654105308e6edad41b8fc3e280c7007fa1051",
+      "release_date": "2026-07-01",
+      "description": "Judges whether a review comment should block a change, request follow-up, or remain a non-blocking suggestion based on user impact and future cost.",
+      "description_zh": "代码审查意见的严重性裁定框架。定义「这条 review 意见应该 block 合并还是作为建议（nit）留下」的判断逻辑——不是从语气或感觉，而是从「如果不改，会发生什么」推导优先级。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 5,
+        "cases": 3
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "B-code-review",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:74d89fec-3349-4e10-b9a4-ddb2f0808465",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Safety Boundary",
+      "name_zh": "A safety boundary requires a credible harm path, not a taboo keyword or vague discomfort.",
+      "file": "dev-safety-boundary-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-safety-boundary-v0.1.0",
+      "sha256": "41e65606abfc6311e7ab3d72a058e442c7eecf6e0d2dfb0ec80a45fb606783a3",
+      "release_date": "2026-07-01",
+      "description": "Judges whether an agent should proceed, constrain, clarify, escalate, refuse, or redirect when an action may cause harm or exceed authority.",
+      "description_zh": "Judge whether an Agent should proceed, constrain, clarify, escalate, refuse, or redirect when an action could create harm, violate authority or consent, expose sensitive information, or cause a material side effect.",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 7,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "D-agent-meta",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:b88941f4-6729-4d78-b0ea-6f45947a8d70",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Schema Design",
+      "name_zh": "Schema 的变更成本远高于代码变更——数据库 Schema 一旦有生产数据，修改代价是代码修改的 10-100 倍。",
+      "file": "dev-schema-design-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-schema-design-v0.1.0",
+      "sha256": "ea82bf8da1eaa9103138cd58995787f61a982a31f255df17624ee0003d04000d",
+      "release_date": "2026-07-01",
+      "description": "Judges whether a data schema can survive real production data, future extension, migration pressure, and cross-system use.",
+      "description_zh": "数据 Schema 设计判断框架。核心问题：这个数据结构设计得好不好？Schema 决策的影响比普通代码更长远——一旦数据写入生产数据库，改变 Schema 的成本极高。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "A-code-writing",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:6ba08c44-a153-4cb7-83d0-50c070d5b5ad",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Scope Creep Detection",
+      "name_zh": "Agent 的授权范围由用户表述的意图定义，不由 agent 对「什么有帮助」的判断定义。",
+      "file": "dev-scope-creep-detection-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-scope-creep-detection-v0.1.0",
+      "sha256": "59fde05d2cc8c6790956b37470d29f0f88cd9cace7ca4aebc38117396e8c7f8a",
+      "release_date": "2026-07-01",
+      "description": "Judges whether an agent or PR has drifted beyond authorized scope into adjacent work that should be clarified or split out.",
+      "description_zh": "Agent 自我范围监控的判断框架。核心问题：「我现在正在做的事情，是否超出了用户给我的授权？」定义 agent 识别和阻止自身范围蔓延的判断逻辑，而不是让用户事后发现 agent 做了他们没有要求的事。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 5,
+        "cases": 3
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "D-agent-meta",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:ffad3cf5-be1f-4097-8bee-c8df9cdb0ac8",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Security Vulnerability",
+      "name_zh": "安全漏洞几乎总是「在错误的信任上下文里运行的正确代码」，而不是「写错的代码」。",
+      "file": "dev-security-vulnerability-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-security-vulnerability-v0.1.0",
+      "sha256": "ced7b225429b83ef478884a5660368e1acaad244230487e4d7adf9a4fffc0151",
+      "release_date": "2026-07-01",
+      "description": "Judges code for security vulnerability patterns by locating trust boundaries, authority changes, untrusted input, and sensitive side effects.",
+      "description_zh": "安全漏洞审查的判断框架。定义 agent 在阅读代码时识别安全风险的底层逻辑——不是给一张检查清单，而是建立「哪类结构天然脆弱」的直觉。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 5,
+        "cases": 4
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "B-code-review",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:8acebf8c-1c9e-4d1c-8486-f4cfa25cd09a",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Silent Failure Detection",
+      "name_zh": "静默失败总是来自「错误在某处被处理了，但没有被传递给调用方」——找到那个吞掉错误的地方。",
+      "file": "dev-silent-failure-detection-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-silent-failure-detection-v0.1.0",
+      "sha256": "efa1671e410076ecd323db312edffd6c31981713ebe72c34c95beafbb73abe72",
+      "release_date": "2026-07-01",
+      "description": "Judges failures where code appears to run normally but produces wrong results by tracing swallowed errors, missing assertions, and invisible contract drift.",
+      "description_zh": "静默失败的识别与追踪框架。核心问题：「为什么没有报错，但结果不对？」——定义 agent 在面对「代码运行正常但输出不符合预期」时的诊断思路，聚焦于识别错误被静默吞掉的结构性来源。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "C-debugging",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:3d6d03e1-50db-4b7b-91aa-2a26f9290947",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Task Decomposition",
+      "name_zh": "Decompose into independently verifiable outcomes, not activity labels.",
+      "file": "dev-task-decomposition-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-task-decomposition-v0.1.0",
+      "sha256": "044c33a61c589de2b665397ae266753b576dda06f242ae0e1d77dbe0658a1e56",
+      "release_date": "2026-07-01",
+      "description": "Judges whether a complex task has been split into dependency-aware, independently verifiable work units with clear stopping conditions.",
+      "description_zh": "Judge whether a complex task has been decomposed into dependency-aware, independently verifiable work units with explicit evidence and stopping conditions.",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 6,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "D-agent-meta",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:c48be822-083b-45b4-8955-64a40fe52827",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Tech Debt Signal",
+      "name_zh": "技术债的本质是「利息」：你现在每次在这段代码上工作，都要额外支付时间成本——这个额外成本是技术债。",
+      "file": "dev-tech-debt-signal-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-tech-debt-signal-v0.1.0",
+      "sha256": "55d140fc35f8526687b34227ef150cfbe67513a260d9fb9550ed522e289c783c",
+      "release_date": "2026-07-01",
+      "description": "Judges whether imperfect code is true technical debt by identifying recurring interest, slowed future work, and compounding risk.",
+      "description_zh": "技术债信号识别框架。核心问题：「这是真的技术债，还是只是不够整洁？」——并非所有不完美的代码都是技术债；技术债特指「当前设计决策正在拖慢未来工作速度」的情况。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 4,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "E-maintenance",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:a3208802-c29b-4a3d-b5cb-b5ef8d09bedb",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Test Strategy Discretion",
+      "name_zh": "Begin with a credible failure hypothesis and an observable contract, not with a preferred test layer or coverage target.",
+      "file": "dev-test-strategy-discretion-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "dev-test-strategy-discretion-v0.1.0",
+      "sha256": "a14e9a78af3af6158c7ff373741c493e7d0572c91bceb0a493333e8819102bbb",
+      "release_date": "2026-07-01",
+      "description": "Judges the smallest sufficient set of tests and verification evidence for a change based on the behavior at risk and the failure modes that matter.",
+      "description_zh": "Judge the smallest sufficient portfolio of tests and other verification evidence for a software change, based on behavior at risk, contract edges, semantic fidelity, failure modes, and residual uncertainty.",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 6,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "audience": "developer",
+      "layer": "dev",
+      "category": "A-code-writing",
+      "status": "superseded",
+      "asset_uid": "urn:uuid:d30dc59a-bde8-4efc-9679-fc4bc60ced2d",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Content Mix",
+      "name_zh": "判断不同类型内容（常青/趋势/变现）的合",
+      "file": "creator-content-mix-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-content-mix-v0.1.0",
+      "sha256": "4f0c08f18cd13d74e22fcc1d24771b57ad61651a0378838d07f9cb39f0deac02",
+      "release_date": "2026-07-01",
+      "description": "Judges content mix decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断不同类型内容（常青/趋势/变现）的合理配比，以及如何根据创作阶段动态调整内容组合策略。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:c943b74f-7a33-47c4-a913-d979895800ea",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Niche Calibration",
+      "name_zh": "判断创作者的垂直度是否合理——何时聚焦、",
+      "file": "creator-niche-calibration-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-niche-calibration-v0.1.0",
+      "sha256": "33d8c811319ff1f777b2e8d45e50ad829be6771e9a4a2dc398b86a71499d73f4",
+      "release_date": "2026-07-01",
+      "description": "Judges niche calibration decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断创作者的垂直度是否合理——何时聚焦、何时拓宽，以及如何识别「垂直焦虑」和「扩张焦虑」。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:3cda5ea2-f45f-40f5-adfd-8aecdad7ead2",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Platform Selection",
+      "name_zh": "判断在资源有限的情况下，哪些平台值得深耕",
+      "file": "creator-platform-selection-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-platform-selection-v0.1.0",
+      "sha256": "764b61fde0c80aaad540dd8d537f4e364668ff966f0aa80c88901e338b5c3a57",
+      "release_date": "2026-07-01",
+      "description": "Judges platform selection decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断在资源有限的情况下，哪些平台值得深耕，哪些只做分发，哪些应该放弃。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:2a4928ef-a622-4c5d-ab43-8b3f63460da9",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Authenticity Balance",
+      "name_zh": "判断内容创作中的算法优化行为是否损伤了真",
+      "file": "creator-authenticity-balance-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-authenticity-balance-v0.1.0",
+      "sha256": "cfa0a2efbea7d8fc3248bb42378921bd37917b091d8be10f0f8d2071c4ee34ea",
+      "release_date": "2026-07-01",
+      "description": "Judges authenticity balance decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断内容创作中的算法优化行为是否损伤了真实性，以及累积的小妥协是否正在改变内容的本质。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:bd850b49-6df5-459b-a162-a17c705d4c78",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Content Depth",
+      "name_zh": "判断某个内容应该做到什么深度，避免两个极",
+      "file": "creator-content-depth-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-content-depth-v0.1.0",
+      "sha256": "78ffcc26bdd5cf655207ec421ad21b4737785807b17d7de98b9ebdda0ff171cd",
+      "release_date": "2026-07-01",
+      "description": "Judges content depth decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断某个内容应该做到什么深度，避免两个极端：过于表面无法建立专家信任，过于深度超出受众接受能力或制作资源。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:352527ff-c806-40d7-a8bd-e6390e85129a",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Originality Judgment",
+      "name_zh": "判断一个内容是否有真正的原创价值——独特",
+      "file": "creator-originality-judgment-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-originality-judgment-v0.1.0",
+      "sha256": "05ee40e0c0c12e8364ec7f59c957588821b3a34221e944223f083e862aac1cc7",
+      "release_date": "2026-07-01",
+      "description": "Judges originality judgment decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断一个内容是否有真正的原创价值——独特的洞察、数据、角度，还是只是把别人已经说好的东西重新包装。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:50b7fec4-d0a6-4590-a8a5-d7281c9c789d",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Topic Selection",
+      "name_zh": "判断一个候选选题是否值得投入时间和精力创",
+      "file": "creator-topic-selection-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-topic-selection-v0.1.0",
+      "sha256": "0a3530823bb1681fcfda2f710e389df6e87e7552ddc57ad2608613f7746a8ecd",
+      "release_date": "2026-07-01",
+      "description": "Judges topic selection decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断一个候选选题是否值得投入时间和精力创作。核心问题：这个选题能给我的核心受众带来别处找不到的价值吗？",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:7bc3eb55-ac07-49bc-a793-e7cf453f433a",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Audience Signal",
+      "name_zh": "帮助创作者正确解读受众反馈信号，区分真实",
+      "file": "creator-audience-signal-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-audience-signal-v0.1.0",
+      "sha256": "244bc540d551377178eaf19d1334897696e7cddd3170d2291d1a4e3ab7b95664",
+      "release_date": "2026-07-01",
+      "description": "Judges audience signal decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "帮助创作者正确解读受众反馈信号，区分真实需求与表面噪音，做出基于真实数据的内容决策。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:5e5a60a4-bb00-409c-a860-125d91545d1b",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Community Engagement",
+      "name_zh": "帮助创作者判断何时、以何种深度与受众互动",
+      "file": "creator-community-engagement-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-community-engagement-v0.1.0",
+      "sha256": "00465a837032c00d9cf499ff49b7c6da9b9cfac1c3d8bedce1f16096e0d4baae",
+      "release_date": "2026-07-01",
+      "description": "Judges community engagement decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "帮助创作者判断何时、以何种深度与受众互动，在建立社区连接和保护创作精力之间找到可持续的平衡点。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:e1ff6e59-1d10-40ad-a245-fc5703495057",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Controversy Navigation",
+      "name_zh": "帮助创作者判断面对争议性话题时，发声、保",
+      "file": "creator-controversy-navigation-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-controversy-navigation-v0.1.0",
+      "sha256": "1cd1732fe257e3b8d3a7059e394ffad4aa7a9f9b4324c6bc351869ab22f0be06",
+      "release_date": "2026-07-01",
+      "description": "Judges controversy navigation decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "帮助创作者判断面对争议性话题时，发声、保持中立还是回避——基于真实代价与价值的分析，而非情绪或从众。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:8d0662a5-fa56-4d17-ab28-a393091a66db",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Monetization Timing",
+      "name_zh": "判断开始变现的时机是否成熟。核心问题：现",
+      "file": "creator-monetization-timing-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-monetization-timing-v0.1.0",
+      "sha256": "b5e980f08ac1db0d305e08913f6915b0daaa2b9a1c7f2cf7b80dcd3442bb3704",
+      "release_date": "2026-07-01",
+      "description": "Judges monetization timing decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断开始变现的时机是否成熟。核心问题：现在变现是「受众已经准备好了」，还是「我急于获得回报」？",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:cde3d41d-edfd-42f1-ad8b-9a8bd6fd904c",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Offer Design",
+      "name_zh": "判断自有产品/课程/服务的形态、定价和目",
+      "file": "creator-offer-design-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-offer-design-v0.1.0",
+      "sha256": "4d098a88b31c92af473f50ecf7920d2704b1e6b36879cf345b983b7eea73c84b",
+      "release_date": "2026-07-01",
+      "description": "Judges offer design decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断自有产品/课程/服务的形态、定价和目标受众是否设计正确。核心问题：我的产品是「受众真正需要的解决方案」，还是「我能做的内容的商业版本」？",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:d22602f5-1abc-4bb9-ad82-3bfc5dc5f6b3",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Sponsorship Selection",
+      "name_zh": "判断一个赞助合作是否值得接受。核心问题：",
+      "file": "creator-sponsorship-selection-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-sponsorship-selection-v0.1.0",
+      "sha256": "745238d1b234b228754e20031ef789d0b598c9c7f2ae5f4fcbe3a74bd3882b33",
+      "release_date": "2026-07-01",
+      "description": "Judges sponsorship selection decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "判断一个赞助合作是否值得接受。核心问题：这个合作带来的收入，是否值得它消耗的受众信任？",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:9b447c33-17c9-467d-a99f-2964b8407e6d",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Creator Sustainability",
+      "name_zh": "帮助创作者在财务、精力、动机三个维度上评",
+      "file": "creator-sustainability-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-sustainability-v0.1.0",
+      "sha256": "231fe261d8f8faec86590a7e010308b3b44f9819f25c071fcb0876325f00f1bf",
+      "release_date": "2026-07-01",
+      "description": "Judges creator sustainability decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "帮助创作者在财务、精力、动机三个维度上评估创作模式的可持续性，在燃尽发生之前识别早期信号并做出结构性调整。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:5716cf34-31cb-4449-a68b-3cd61880f98b",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Publishing Rhythm",
+      "name_zh": "帮助创作者找到「质量临界频率」——在这个",
+      "file": "creator-publishing-rhythm-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-publishing-rhythm-v0.1.0",
+      "sha256": "3ae14e2b88750c34086fefd0b4829b468eadd8ddd7a6850e8033f0bb293a4dc3",
+      "release_date": "2026-07-01",
+      "description": "Judges publishing rhythm decisions for content creators — when to optimize, when to hold, and what signals matter most.",
+      "description_zh": "帮助创作者找到「质量临界频率」——在这个节奏下能稳定产出高质量内容，而不是追求算法要求的最大化频率或随意降低频率。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:2380c936-d6d0-4123-a547-fc73160090b8",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Creator Brand Positioning",
+      "name_zh": "创作者品牌定位判断",
+      "file": "creator-brand-positioning-v0.1.0.kdna",
+      "latest_version": "0.1.0",
+      "tag": "creator-brand-positioning-v0.1.0",
+      "sha256": "ec9c96f78a4b9a91d24c108b2f43a13be1b9962776a10ec75462a2e8ffca6b08",
+      "release_date": "2026-06-30",
+      "description": "Judges whether a creator's brand positioning is clear, defensible, and unoccupied. Uses the four-cell test (OCCUPIED / DEFENSIBLE / RESONANT / VERIFIABLE) to determine if a candidate positioning is ready to publish.",
+      "description_zh": "判断创作者的品牌定位是否清晰、稳固、无人占领。用四格测试（OCCUPIED / DEFENSIBLE / RESONANT / VERIFIABLE）判断候选定位是否可发布。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "self_check": 5,
+        "scenarios": 4,
+        "cases": 2
+      },
+      "status": "superseded",
+      "asset_uid": "urn:uuid:e1292a65-9dba-4bd5-a57e-b350d91fbf67",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Viral Topic Selection",
+      "name_zh": "爆款选题判断",
+      "file": "viral-topic-selection.kdna",
+      "latest_version": "1.1.0",
+      "tag": "viral-topic-selection-v1.1.0",
+      "sha256": "8cc71e23e54fe93ac0b1404881b15553f6708e8b75d784241c96666fbbdd03d1",
+      "release_date": "2026-06-23",
+      "description": "Helps AI evaluate content topics for viral potential — checking tension, curiosity gap, emotional resonance, and social currency.",
+      "description_zh": "帮助 AI 判断内容选题的传播潜力——检查冲突张力、好奇心缺口、情绪共鸣和社交货币。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 4,
+        "boundaries": 3,
+        "stances": 3,
+        "self_check": 6,
+        "failure_modes": 3,
+        "scenarios": 2,
+        "cases": 2
+      },
+      "legacy": true,
+      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
+      "status": "superseded",
+      "superseded_date": "2026-06-30",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Title Attraction",
+      "name_zh": "标题吸引力判断",
+      "file": "title-attraction.kdna",
+      "latest_version": "1.0.0",
+      "tag": "title-attraction-v1.0.0",
+      "sha256": "c39ce0de0b46f71efbb1cbdee9f3c2b62a69c87200d6f65496c7d61ace27cb8a",
+      "release_date": "2026-06-23",
+      "description": "Helps AI evaluate title attraction — checking audience clarity, information gap, specific benefit, credibility, and promise-content alignment.",
+      "description_zh": "帮助 AI 判断标题吸引力——检查受众明确度、信息缺口、具体利益、可信度和承诺匹配度。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 4,
+        "boundaries": 3,
+        "stances": 3,
+        "self_check": 7,
+        "failure_modes": 3,
+        "scenarios": 2,
+        "cases": 2
+      },
+      "legacy": true,
+      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
+      "status": "superseded",
+      "superseded_date": "2026-06-30",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Short Video Hook Judgment",
+      "name_zh": "短视频前三秒判断",
+      "file": "short-video-script.kdna",
+      "latest_version": "1.0.0",
+      "tag": "short-video-script-v1.0.0",
+      "sha256": "12242462e89a53c847bef114d0d3f35cf7e2b25ed84852df7806c1fe76d67f42",
+      "release_date": "2026-06-23",
+      "description": "Helps AI evaluate short video opening hooks — checking first-3-second gap, scene conflict, speakability, and audience retention signals.",
+      "description_zh": "帮助 AI 判断短视频开头前三秒的钩子效果——检查信息缺口、场景冲突、口播顺口度和留存信号。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 4,
+        "boundaries": 3,
+        "stances": 3,
+        "self_check": 9,
+        "failure_modes": 3,
+        "scenarios": 2,
+        "cases": 2
+      },
+      "legacy": true,
+      "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
+      "status": "superseded",
+      "superseded_date": "2026-06-30",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Project Context Judgment",
+      "name_zh": "项目上下文判断",
+      "file": "agent-project-context-v0.1.2.kdna",
+      "latest_version": "0.1.2",
+      "tag": "agent-project-context-v0.1.2",
+      "sha256": "3728046081e1e17dd8f540f4902ef908bde5151568a79dcf721fba90d0d059ae",
+      "release_date": "2026-06-25",
+      "description": "Judges what belongs in an Agent-facing project document (AGENTS.md / CLAUDE.md / .cursorrules) — classifying each candidate line into CARRY / RELOCATE / DROP / CONVERT.",
+      "description_zh": "判断 AGENTS.md / CLAUDE.md / .cursorrules 等项目文档的每一行内容——将候选行归类为 CARRY / RELOCATE / DROP / CONVERT。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "boundaries": 0,
+        "stances": 0,
+        "self_check": 6,
+        "failure_modes": 5,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "source_payload_parity": {
+        "source_misunderstandings": 6,
+        "payload_patterns": 6,
+        "source_self_check": 6,
+        "payload_self_checks": 6,
+        "source_scenes": 5,
+        "payload_scenarios": 5,
+        "source_cases": 5,
+        "payload_cases": 5,
+        "source_axioms": 5,
+        "payload_core_axioms": 5,
+        "source_evolution_stages": 4,
+        "payload_evolution_stages_of_type_evolution_stage": 4,
+        "source_terminology_banned_terms": 12,
+        "payload_evolution_stages_of_type_banned_term": 12,
+        "source_terminology_standard_terms": 0,
+        "payload_evolution_stages_of_type_term": 0,
+        "reasoning_chains_note": "build derives failure_modes from axioms (1 axiom = 1 chain); source's 4 reasoning_chains are imported as reasoning cards but consumed by a different mechanism"
+      },
+      "status": "superseded",
+      "superseded_date": "2026-06-30",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    },
+    {
+      "name": "Completion Adjudication",
+      "name_zh": "完成度裁定",
+      "file": "agent-completion-adjudication-v0.1.1.kdna",
+      "latest_version": "0.1.1",
+      "tag": "agent-completion-adjudication-v0.1.1",
+      "sha256": "2f46bccc47a9be987eb74262af60b7344850178dfa478a078df00ab178f107e4",
+      "release_date": "2026-06-25",
+      "description": "Judges whether an AI Agent's 'I'm done' claim is actually done. Forces four cells before the 'done' word: DONE CLAIM / OBSERVABLE PROOF / USER INTENT MATCH / UNRESOLVED RISK.",
+      "description_zh": "判断 Agent 的「我做完了」声明是否真的完成。要求四格：完成声明 / 可观察证据 / 用户意图匹配 / 未解决风险，缺一格不可说「完成」。",
+      "profiles": [
+        "index",
+        "compact",
+        "scenario",
+        "full"
+      ],
+      "contains": {
+        "axioms": 5,
+        "boundaries": 0,
+        "stances": 0,
+        "self_check": 6,
+        "failure_modes": 5,
+        "scenarios": 5,
+        "cases": 5
+      },
+      "source_payload_parity": {
+        "source_misunderstandings": 6,
+        "payload_patterns": 6,
+        "source_self_check": 6,
+        "payload_self_checks": 6,
+        "source_scenes": 5,
+        "payload_scenarios": 5,
+        "source_cases": 5,
+        "payload_cases": 5,
+        "source_axioms": 5,
+        "payload_core_axioms": 5,
+        "source_reasoning_chains": 5,
+        "payload_failure_modes": 5,
+        "source_evolution_stages": 4,
+        "payload_evolution_stages_of_type_evolution_stage": 4,
+        "source_terminology_banned_terms": 18,
+        "payload_evolution_stages_of_type_banned_term": 18,
+        "source_terminology_standard_terms": 3,
+        "payload_evolution_stages_of_type_term": 3,
+        "reasoning_chains_note": "build derives failure_modes from axioms (1 axiom = 1 chain); the 5 source reasoning_chains are imported as reasoning cards. For completion_adjudication the counts match by design (5 axioms, 5 chains)."
+      },
+      "status": "superseded",
+      "superseded_date": "2026-06-30",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
+    }
+  ],
+  "note": "Historical pre-CBOR release archive. Original release tags, filenames, and SHA-256 values are preserved; no entry is current-runtime-loadable or part of current onboarding."
+}

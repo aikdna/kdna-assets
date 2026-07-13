@@ -1,0 +1,12 @@
+{
+  "format": "kdna-asset",
+  "format_version": "0.9.0",
+  "cluster_id": "@fixture/broken-cluster",
+  "name": "Broken Cluster Fixture",
+  "version": "1.0.0",
+  "domains": [],
+  "composition": {
+    "strategy": "fixed",
+    "conflict_policy": "surface"
+  }
+}

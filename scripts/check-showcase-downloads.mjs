@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Verify that showcase download snippets agree with assets.json.
+ * Verify that archive showcase download snippets agree with archive/index.json.
  *
  * This intentionally runs offline. The public-metadata audit already checks
  * GitHub Release availability and downloaded SHA values; this script keeps the
@@ -12,8 +12,8 @@ import { readdirSync, readFileSync } from 'fs';
 import { join, relative } from 'path';
 
 const ROOT = process.cwd();
-const ASSETS_PATH = join(ROOT, 'assets.json');
-const SHOWCASE_DIR = join(ROOT, 'showcase');
+const ASSETS_PATH = join(ROOT, 'archive', 'index.json');
+const SHOWCASE_DIR = join(ROOT, 'archive', 'showcase');
 const RELEASE_URL =
   /https:\/\/github\.com\/aikdna\/kdna-assets\/releases\/download\/([^/\s)]+)\/([^)\s\\]+)/g;
 const INLINE_SHA =
@@ -95,7 +95,7 @@ for (const entry of readdirSync(SHOWCASE_DIR, { withFileTypes: true })) {
         findings.push({
           file: rel,
           line,
-          message: `download URL ${tag}/${file} is not listed in assets.json`,
+          message: `download URL ${tag}/${file} is not listed in archive/index.json`,
         });
         continue;
       }
@@ -114,7 +114,7 @@ for (const entry of readdirSync(SHOWCASE_DIR, { withFileTypes: true })) {
         findings.push({
           file: rel,
           line: inline.line,
-          message: `${file} inline SHA ${inline.sha256} does not match assets.json ${asset.sha256}`,
+          message: `${file} inline SHA ${inline.sha256} does not match archive/index.json ${asset.sha256}`,
         });
       }
       continue;
@@ -127,7 +127,7 @@ for (const entry of readdirSync(SHOWCASE_DIR, { withFileTypes: true })) {
       findings.push({
         file: rel,
         line,
-        message: `${file} needs either an inline assets.json SHA check or a downloaded .sha256 sidecar check`,
+        message: `${file} needs either an inline archive-index SHA check or a downloaded .sha256 sidecar check`,
       });
     }
   }

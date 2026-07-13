@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aikdna/kdna-assets/schemas/current-index.schema.json",
+  "title": "AIKDNA current reference index",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "kind",
+    "updated",
+    "repository",
+    "listing_policy",
+    "assets",
+    "clusters"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "kind": { "const": "kdna-current-index" },
+    "updated": { "type": "string", "format": "date-time" },
+    "repository": { "type": "string", "format": "uri", "const": "https://github.com/aikdna/kdna-assets" },
+    "listing_policy": { "type": "string", "minLength": 40 },
+    "assets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/assetEntry" }
+    },
+    "clusters": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/clusterEntry" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identity": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "publisher": {
+      "type": "object",
+      "required": ["name", "url"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "license": {
+      "type": "object",
+      "required": ["id", "path", "scope", "repository_license_applies"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "path": {
+          "type": "string",
+          "pattern": "^(references/(public|licensed)|clusters)/[^/]+/LICENSE(\\.md|\\.txt)?$"
+        },
+        "url": { "type": "string", "format": "uri" },
+        "scope": { "const": "asset-content-and-distribution" },
+        "repository_license_applies": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "digest": {
+      "type": "object",
+      "required": ["algorithm", "value"],
+      "properties": {
+        "algorithm": { "const": "sha256" },
+        "value": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      },
+      "additionalProperties": false
+    },
+    "download": {
+      "type": "object",
+      "required": ["url", "checksum_url"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://github\\.com/aikdna/kdna-assets/releases/download/[^/]+/[^/]+$"
+        },
+        "checksum_url": {
+          "type": "string",
+          "pattern": "^https://github\\.com/aikdna/kdna-assets/releases/download/[^/]+/[^/]+\\.sha256$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidenceClaim": {
+      "type": "object",
+      "required": ["type", "claim", "evidence_url"],
+      "properties": {
+        "type": {
+          "enum": ["conformance", "behavioral", "field", "production"]
+        },
+        "claim": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "evidence_url": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "assetTechnicalStatus": {
+      "type": "object",
+      "required": ["format", "plan_load", "load", "capsule", "verified_at", "toolchain"],
+      "properties": {
+        "format": { "const": "valid" },
+        "plan_load": {
+          "enum": [
+            "ready",
+            "offline_grace",
+            "needs_password",
+            "needs_license",
+            "needs_account",
+            "needs_org_auth",
+            "needs_runtime"
+          ]
+        },
+        "load": { "enum": ["verified", "authorization-required"] },
+        "capsule": { "enum": ["verified", "authorization-required"] },
+        "verified_at": { "type": "string", "format": "date-time" },
+        "toolchain": { "type": "string", "pattern": "^@aikdna/kdna-cli@[0-9]+\\.[0-9]+\\.[0-9]+$" }
+      },
+      "additionalProperties": false
+    },
+    "clusterTechnicalStatus": {
+      "type": "object",
+      "required": ["manifest", "plan_use", "plan_state", "verified_at", "toolchain"],
+      "properties": {
+        "manifest": { "const": "valid" },
+        "plan_use": { "const": "verified" },
+        "plan_state": { "enum": ["planned", "blocked"] },
+        "verified_at": { "type": "string", "format": "date-time" },
+        "toolchain": { "type": "string", "pattern": "^@aikdna/kdna-cli@[0-9]+\\.[0-9]+\\.[0-9]+$" }
+      },
+      "additionalProperties": false
+    },
+    "assetEntry": {
+      "type": "object",
+      "required": [
+        "kind",
+        "id",
+        "publisher",
+        "creator",
+        "access",
+        "license",
+        "version",
+        "digest",
+        "artifact",
+        "download",
+        "technical_status"
+      ],
+      "properties": {
+        "kind": { "const": "kdna-asset" },
+        "id": { "type": "string", "pattern": "^@[a-z0-9][a-z0-9._-]*/[a-z0-9][a-z0-9._-]*$" },
+        "publisher": { "$ref": "#/$defs/publisher" },
+        "creator": { "$ref": "#/$defs/identity" },
+        "access": { "enum": ["public", "licensed", "remote"] },
+        "license": { "$ref": "#/$defs/license" },
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$" },
+        "digest": { "$ref": "#/$defs/digest" },
+        "artifact": {
+          "type": "object",
+          "required": ["path", "media_type"],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^references/(public|licensed)/[^/]+/[^/]+\\.kdna$"
+            },
+            "media_type": { "const": "application/vnd.kdna.asset" }
+          },
+          "additionalProperties": false
+        },
+        "download": { "$ref": "#/$defs/download" },
+        "technical_status": { "$ref": "#/$defs/assetTechnicalStatus" },
+        "evidence_claims": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidenceClaim" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "clusterEntry": {
+      "type": "object",
+      "required": [
+        "kind",
+        "id",
+        "publisher",
+        "creator",
+        "access",
+        "license",
+        "version",
+        "digest",
+        "manifest",
+        "download",
+        "technical_status"
+      ],
+      "properties": {
+        "kind": { "const": "kdna-cluster" },
+        "id": { "type": "string", "pattern": "^@[a-z0-9][a-z0-9._-]*/[a-z0-9][a-z0-9._-]*$" },
+        "publisher": { "$ref": "#/$defs/publisher" },
+        "creator": { "$ref": "#/$defs/identity" },
+        "access": { "enum": ["public", "licensed", "remote"] },
+        "license": { "$ref": "#/$defs/license" },
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$" },
+        "digest": { "$ref": "#/$defs/digest" },
+        "manifest": {
+          "type": "object",
+          "required": ["path", "media_type", "format"],
+          "properties": {
+            "path": { "type": "string", "pattern": "^clusters/[^/]+/kdna\\.cluster\\.json$" },
+            "media_type": { "const": "application/vnd.kdna.cluster+json" },
+            "format": { "const": "kdna-cluster" }
+          },
+          "additionalProperties": false
+        },
+        "download": { "$ref": "#/$defs/download" },
+        "technical_status": { "$ref": "#/$defs/clusterTechnicalStatus" },
+        "evidence_claims": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidenceClaim" }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
