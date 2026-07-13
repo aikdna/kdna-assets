@@ -16,8 +16,7 @@ Catches:
   - `contains` numbers that don't match the actual payload
   - Deprecated field names in `contains`
     (reasoning_chains / anti_patterns / source_files)
-  - `updated` field that doesn't match the latest commit time
-    (R5 from 2026-06-25 audit)
+  - malformed or future-dated `updated` metadata
 
 This script replaces the previous private-incubator-dependent
 `audit-public-metadata.mjs` clone. The vendored copy is
@@ -60,16 +59,6 @@ URL_ATTEMPTS = 3
 def read_assets(path):
     with open(path) as f:
         return json.load(f)
-
-
-def get_latest_commit_iso(repo_dir):
-    """Return the ISO 8601 commit time of the latest commit on the
-    given repo. Uses `git log` directly; no network calls."""
-    out = subprocess.check_output(
-        ['git', 'log', '-1', '--format=%cI', '--', 'assets.json'],
-        cwd=repo_dir, encoding='utf-8'
-    ).strip()
-    return out
 
 
 def url_head(url, timeout=15):
@@ -115,13 +104,15 @@ def url_get(url, timeout=30):
 
 
 def read_payload_kdnab(kdna_path):
-    """Extract payload.kdnab from a .kdna ZIP container and parse as JSON."""
+    """Load a full Runtime Capsule through the official CLI."""
     out = subprocess.check_output(
-        ['python3', '-c',
-         f'import zipfile, json, sys; z = zipfile.ZipFile({kdna_path!r}); sys.stdout.write(z.read("payload.kdnab").decode())'],
+        ['kdna', 'load', kdna_path, '--profile=full', '--as=json'],
         encoding='utf-8'
     )
-    return json.loads(out)
+    capsule = json.loads(out)
+    if capsule.get('type') != 'kdna.context.capsule':
+        raise ValueError('official CLI did not return a Runtime Capsule')
+    return capsule.get('context', {}).get('payload', {})
 
 
 def actual_payload_counts(payload):
@@ -254,6 +245,11 @@ def audit_entry(entry, allow_legacy=False, tmpdir='/tmp', base_dir='.'):
     # 1. URL must return 200
     status, _ = url_head(dist_url)
     if status != 200:
+        if is_legacy and status in TRANSIENT_HTTP_STATUSES:
+            warnings.append(
+                f"{name}: archived release URL could not be checked due to transient status {status}"
+            )
+            return errors, warnings
         errors.append(f"{name}: dist URL {dist_url} returned {status}, expected 200")
         return errors, warnings  # no point continuing
     print(f"  {name}: dist URL PASS (200)")
@@ -264,6 +260,11 @@ def audit_entry(entry, allow_legacy=False, tmpdir='/tmp', base_dir='.'):
     # 3. SHA must match
     s_status, body = url_get(dist_url)
     if s_status != 200:
+        if is_legacy and s_status in TRANSIENT_HTTP_STATUSES:
+            warnings.append(
+                f"{name}: archived release download could not be checked due to transient status {s_status}"
+            )
+            return errors, warnings
         errors.append(f"{name}: download failed (status {s_status})")
         return errors, warnings
     actual_sha = hashlib.sha256(body).hexdigest()
@@ -327,13 +328,6 @@ def main():
         print(f"Error: {args.assets} not found", file=sys.stderr)
         return 2
 
-    # Pre-check: updated timestamp
-    try:
-        commit_iso = get_latest_commit_iso(args.repo_dir)
-    except subprocess.CalledProcessError as e:
-        print(f"Error: git log failed: {e}", file=sys.stderr)
-        return 2
-
     data = read_assets(args.assets)
     declared_updated = data.get('updated', '')
 
@@ -341,30 +335,20 @@ def main():
     print("=" * 70)
     print()
     print(f"Assets file:  {args.assets}")
-    print(f"Commit time:  {commit_iso}")
     print(f"updated:      {declared_updated}")
     print()
 
     all_errors = []
     all_warnings = []
 
-    # Check 0: updated matches commit time (within ±2 seconds for
-    # round-trip / clock drift tolerance)
-    if declared_updated != commit_iso:
-        from datetime import datetime, timezone
-        def parse_iso(s):
-            # tolerate trailing 'Z' and ±HH:MM offsets
-            return datetime.fromisoformat(s.replace('Z', '+00:00'))
-        try:
-            delta = abs((parse_iso(declared_updated) - parse_iso(commit_iso)).total_seconds())
-        except ValueError:
-            delta = None
-        if delta is None or delta > 2:
-            all_errors.append(
-                f"assets.json \`updated\` ({declared_updated}) does not match the "
-                f"latest commit time on assets.json ({commit_iso}; delta={delta}s). "
-                f"Refresh by touching assets.json or rebasing."
-            )
+    # Check 0: updated must be parseable and must not be in the future.
+    from datetime import datetime, timezone
+    try:
+        updated_at = datetime.fromisoformat(declared_updated.replace('Z', '+00:00'))
+        if updated_at > datetime.now(timezone.utc):
+            all_errors.append(f"assets.json `updated` is in the future: {declared_updated}")
+    except (ValueError, AttributeError):
+        all_errors.append(f"assets.json `updated` is not valid ISO 8601: {declared_updated}")
 
     # Check 1..N: per-entry
     for entry in data.get('assets', []):

@@ -2,117 +2,90 @@
 
 > [aikdna.com](https://aikdna.com) · [`@aikdna/kdna-cli`](https://www.npmjs.com/package/@aikdna/kdna-cli)
 
-Public release repository for official KDNA judgment asset files (`.kdna`).
+Historical release archive for AIKDNA-published KDNA reference assets
+(`.kdna`).
 
-A `.kdna` asset is a portable, inspectable, and verifiable container of domain judgment — the principles an expert reasons from, the traps they avoid, and the self-checks they run before deciding. Load it into any supported AI agent with one command.
+The archived releases predate the single current CBOR payload contract and are
+not loadable by the current runtime. They remain downloadable with their
+original checksums as historical demonstration artifacts; they are not the
+current asset catalog and do not define what KDNA authors should create.
+
+## Current quick start
+
+Generate a canonical demonstration locally with the official toolchain:
 
 ```bash
 npm install -g @aikdna/kdna-cli
-kdna load <asset>.kdna --profile=compact --as=prompt
+kdna demo judgment ./demo-judgment
+kdna pack ./demo-judgment ./demo-judgment.kdna
+kdna validate ./demo-judgment.kdna --runtime
+kdna plan-load ./demo-judgment.kdna --json
+kdna load ./demo-judgment.kdna --profile=compact --as=json
 ```
 
-## What this repo is
+The last command returns a Runtime Capsule. Agents and applications consume
+the Capsule projection; they must not unpack the asset or decode
+`payload.kdnab` directly.
 
-A **release repository** for downloadable `.kdna` files. Every asset listed here:
+## Archive status
 
-- Passes `kdna validate` (format, schema, payload, checksums, load contract)
-- Ships with SHA256 checksums and public release artifacts
-- May include a public evidence manifest describing integrity and compatibility
-  information
+`assets.json` is the machine-readable historical index. It currently contains
+52 `superseded` entries and zero active entries. Forty-seven local showcase
+artifacts are preserved from the pre-CBOR generation; five older releases are
+kept by release URL only.
 
-## What this repo is NOT
+Every archived entry records:
 
-- **Not a registry** — no `kdna install`, no remote resolution, no automatic indexing
-- **Not a marketplace** — no transactions, no rankings, no recommendations
-- **Not an archive** — superseded assets are removed; superseded releases keep their download links but are not listed here
-- **Not an incubator** — assets are authored and built in a private incubator, not here
+- its original filename, version, tag, and SHA256;
+- its original GitHub Release URL and checksum sidecar;
+- `compatible_with_current_format: false`;
+- a `superseded_reason` that points authors to current Studio/CLI export.
 
-## Current assets
-
-See the [Releases page](https://github.com/aikdna/kdna-assets/releases) and `assets.json` index for the current list. The current active set contains 47 assets: 31 developer judgment assets and 16 creator judgment assets. Historical superseded assets remain downloadable for compatibility and are marked as `superseded` in the index.
-
-Many assets include companion `showcase/<asset>.md` notes. The machine-readable truth for all current assets is `assets.json` plus each release's `.kdna` and `.sha256` files.
-
-Public showcase download snippets are checked against `assets.json`:
+Public showcase download snippets are checked against the index:
 
 ```bash
 node scripts/check-showcase-downloads.mjs
 ```
 
-## Machine-readable index
-
-An `assets.json` index at the repo root lists all current assets with version, tag, SHA256, and release date. Some entries include a `source_payload_parity` block documenting the source-to-payload field mapping.
-
-```bash
-curl -s https://raw.githubusercontent.com/aikdna/kdna-assets/main/assets.json
-```
-
-For active assets, the public metadata audit checks the full integrity chain:
-`assets.json` SHA, the checked-in `.kdna` file, the checked-in `.kdna.sha256`
-sidecar, the GitHub Release download, the release sidecar, and runtime payload
-counts.
+The public metadata audit keeps historical checksums and release URLs honest.
+If a future current-format reference asset is added, its payload counts are
+checked through the official CLI and Runtime Capsule rather than direct ZIP or
+payload decoding:
 
 ```bash
 python3 scripts/audit-public-metadata.py
 ```
 
-## Evidence and compatibility
+## What this repository is not
 
-The [`evidence/`](./evidence/) directory contains public-safe manifests for
-published assets. Integrity evidence confirms that a released file and its
-checksum agree. Compatibility evidence records combinations that have been
-published with supporting evidence.
+- Not a registry, marketplace, ranking, or recommendation service.
+- Not an authoring workspace or private asset incubator.
+- Not the source of truth for the KDNA protocol or current wire format.
+- Not a requirement that the KDNA project produce official content assets.
 
-An evidence manifest does not rank assets, guarantee task fit, or claim that
-an asset improves every model or workflow. Applications should still validate
-an asset and apply their own routing and review policy.
-
-## How to use with your AI agent
-
-**For agents with the `kdna-loader` skill installed** (Claude Code, Codex, OpenCode, Cursor):
-```bash
-kdna install <asset>.kdna
-# The agent will automatically discover and load it per task
-```
-
-For an application that uses the optional consumption runtime, start with a
-validated packaged asset and use route, compose, project, and evaluation
-commands from [`@aikdna/kdna-cli`](https://github.com/aikdna/kdna-cli). Runtime
-sidecars remain separate from the asset release files.
-
-**Manual injection** (any agent):
-```bash
-kdna load <asset>.kdna --profile=compact --as=prompt
-# Copy the output into your system prompt or context
-```
-
-## Download and verify
-
-```bash
-# Download .kdna + .sha256 from the GitHub Release
-curl -LO https://github.com/aikdna/kdna-assets/releases/download/<tag>/<asset>.kdna
-curl -LO https://github.com/aikdna/kdna-assets/releases/download/<tag>/<asset>.kdna.sha256
-
-# Verify
-shasum -a 256 -c <asset>.kdna.sha256
-kdna validate <asset>.kdna
-```
+Anyone may create, package, publish, modify, license, or sell their own KDNA
+assets through the open protocol and official/compatible toolchain. AIKDNA is
+not the judge of whether the asset's judgment is good, true, or worthy of
+existence.
 
 ## Content neutrality
 
-KDNA is content-neutral. Listing an asset means it passed format, safety, and loadability checks. This does not mean AIKDNA endorses the judgment content, guarantees its correctness, or recommends it for all contexts. Content quality and applicability are determined by the asset creator and the user.
+KDNA represents judgment, taste, values, standards, boundaries, and decision
+patterns. It does not define truth or facts. An archived or current-format
+listing can describe format, integrity, compatibility, and evidence claims;
+it never means AIKDNA endorses the judgment content or guarantees task fit.
 
 ## License
 
-CC-BY-4.0. Asset creators retain copyright on the judgment content; users are free to use, modify, and redistribute with attribution to the source.
+CC-BY-4.0 for the archived reference content. Asset creators retain copyright
+in their judgment content.
 
 ## Related
 
-- [`@aikdna/kdna-cli`](https://www.npmjs.com/package/@aikdna/kdna-cli) — `npm install -g @aikdna/kdna-cli`
-- [`@aikdna/kdna-studio-cli`](https://www.npmjs.com/package/@aikdna/kdna-studio-cli) — authoring tool for `.kdna` files
-- [KDNA Core](https://github.com/aikdna/kdna) — protocol specification
-- [KDNA Website](https://aikdna.com) — documentation and asset gallery
-- [kdna-loader skill](https://github.com/aikdna/kdna-skills) — agent-side auto-loading
+- [`@aikdna/kdna-cli`](https://www.npmjs.com/package/@aikdna/kdna-cli) — inspect, validate, authorize, load, and manage assets
+- [`@aikdna/kdna-studio-cli`](https://www.npmjs.com/package/@aikdna/kdna-studio-cli) — create and export assets
+- [KDNA Core](https://github.com/aikdna/kdna) — protocol and runtime contract
+- [kdna-loader skill](https://github.com/aikdna/kdna-skills) — Agent-side toolchain integration
 
 ---
 
