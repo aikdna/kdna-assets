@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-10T21:24:25+08:00",
+  "updated": "2026-07-13T09:54:00+08:00",
   "assets": [
     {
       "name": "Abstraction Threshold",
@@ -26,8 +26,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "A-code-writing",
-      "status": "active",
-      "asset_uid": "urn:uuid:90e484b1-e4c8-40d9-9903-0935887dd90a"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:90e484b1-e4c8-40d9-9903-0935887dd90a",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "AI Collaboration",
@@ -54,8 +56,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "D-agent-meta",
-      "status": "active",
-      "asset_uid": "urn:uuid:667d4a65-f22b-4a73-9043-ce06e2958d85"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:667d4a65-f22b-4a73-9043-ce06e2958d85",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "AI Output Review",
@@ -82,8 +86,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "B-code-review",
-      "status": "active",
-      "asset_uid": "urn:uuid:410f1e48-fcce-408f-8736-3aa469b4bcd2"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:410f1e48-fcce-408f-8736-3aa469b4bcd2",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Anti Drift Context",
@@ -110,8 +116,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "D-agent-meta",
-      "status": "active",
-      "asset_uid": "urn:uuid:cc0dd56f-28e0-4c0b-8eda-457a71189b60"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:cc0dd56f-28e0-4c0b-8eda-457a71189b60",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "API Design Judgment",
@@ -138,8 +146,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "A-code-writing",
-      "status": "active",
-      "asset_uid": "urn:uuid:61ea244f-f623-4e8b-87f0-782d6b6cff4e"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:61ea244f-f623-4e8b-87f0-782d6b6cff4e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Architecture Minimum Edit",
@@ -166,8 +176,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "E-maintenance",
-      "status": "active",
-      "asset_uid": "urn:uuid:ad6aa859-7fc7-4785-9705-a6f6f86e2e21"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:ad6aa859-7fc7-4785-9705-a6f6f86e2e21",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Breaking Change Detection",
@@ -194,8 +206,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "B-code-review",
-      "status": "active",
-      "asset_uid": "urn:uuid:7ad5a6d4-d5aa-4d50-82a5-47705386679e"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:7ad5a6d4-d5aa-4d50-82a5-47705386679e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Bug Root Cause",
@@ -222,8 +236,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "C-debugging",
-      "status": "active",
-      "asset_uid": "urn:uuid:1af6f220-b9ec-44bd-b2e6-67c1699b8f54"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:1af6f220-b9ec-44bd-b2e6-67c1699b8f54",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Change Risk",
@@ -250,8 +266,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "B-code-review",
-      "status": "active",
-      "asset_uid": "urn:uuid:935c0835-ebad-458e-8eeb-7bdd6acb759e"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:935c0835-ebad-458e-8eeb-7bdd6acb759e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Completion Adjudication",
@@ -278,8 +296,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "D-agent-meta",
-      "status": "active",
-      "asset_uid": "urn:uuid:6879a2d3-6cc9-4f46-9950-4916a39f7f20"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:6879a2d3-6cc9-4f46-9950-4916a39f7f20",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Dependency Selection",
@@ -306,8 +326,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "A-code-writing",
-      "status": "active",
-      "asset_uid": "urn:uuid:595c6a69-1e37-4ed1-8668-c0e1ba8ba888"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:595c6a69-1e37-4ed1-8668-c0e1ba8ba888",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Deploy Readiness",
@@ -334,8 +356,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "F-release",
-      "status": "active",
-      "asset_uid": "urn:uuid:6e012aa5-7299-46e7-ac00-4d8e0be324f7"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:6e012aa5-7299-46e7-ac00-4d8e0be324f7",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Documentation Judgment",
@@ -362,8 +386,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "E-maintenance",
-      "status": "active",
-      "asset_uid": "urn:uuid:e0e9ebd7-87e9-4240-86cf-e29a1ff72280"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:e0e9ebd7-87e9-4240-86cf-e29a1ff72280",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Fix Vs Workaround",
@@ -390,8 +416,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "C-debugging",
-      "status": "active",
-      "asset_uid": "urn:uuid:b74582cd-164a-48e1-98ec-4f9a5aaaacfd"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:b74582cd-164a-48e1-98ec-4f9a5aaaacfd",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Incident Triage",
@@ -418,8 +446,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "C-debugging",
-      "status": "active",
-      "asset_uid": "urn:uuid:1a424ddb-671c-4415-93af-7b86090cca6e"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:1a424ddb-671c-4415-93af-7b86090cca6e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Intent Boundary",
@@ -446,8 +476,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "D-agent-meta",
-      "status": "active",
-      "asset_uid": "urn:uuid:b49a565b-d24a-4a36-a5ac-fa367ab9e12e"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:b49a565b-d24a-4a36-a5ac-fa367ab9e12e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Naming Judgment",
@@ -474,8 +506,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "A-code-writing",
-      "status": "active",
-      "asset_uid": "urn:uuid:f5ced2ca-c4c8-45e1-8717-f248581e5b5e"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:f5ced2ca-c4c8-45e1-8717-f248581e5b5e",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "OSS Maintainer Judgment",
@@ -502,8 +536,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "E-maintenance",
-      "status": "active",
-      "asset_uid": "urn:uuid:99d55aec-1d57-420f-8bde-b78606bffb51"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:99d55aec-1d57-420f-8bde-b78606bffb51",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Performance Antipattern",
@@ -530,8 +566,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "B-code-review",
-      "status": "active",
-      "asset_uid": "urn:uuid:bdef7d00-2d5c-43e6-98e0-90c0b8e475ec"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:bdef7d00-2d5c-43e6-98e0-90c0b8e475ec",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "PR Scope Adjudication",
@@ -558,8 +596,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "B-code-review",
-      "status": "active",
-      "asset_uid": "urn:uuid:5e6cafc7-38dc-4525-9388-162da7bbd4e9"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:5e6cafc7-38dc-4525-9388-162da7bbd4e9",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Project Context",
@@ -586,8 +626,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "D-agent-meta",
-      "status": "active",
-      "asset_uid": "urn:uuid:7e4ba8ac-2b26-4a31-8e7e-2400e33a3991"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:7e4ba8ac-2b26-4a31-8e7e-2400e33a3991",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Refactoring Timing",
@@ -614,8 +656,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "E-maintenance",
-      "status": "active",
-      "asset_uid": "urn:uuid:7a6fc14d-1fd5-4f22-96a2-08053d76c9b0"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:7a6fc14d-1fd5-4f22-96a2-08053d76c9b0",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Review Severity Judgment",
@@ -642,8 +686,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "B-code-review",
-      "status": "active",
-      "asset_uid": "urn:uuid:74d89fec-3349-4e10-b9a4-ddb2f0808465"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:74d89fec-3349-4e10-b9a4-ddb2f0808465",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Safety Boundary",
@@ -670,8 +716,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "D-agent-meta",
-      "status": "active",
-      "asset_uid": "urn:uuid:b88941f4-6729-4d78-b0ea-6f45947a8d70"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:b88941f4-6729-4d78-b0ea-6f45947a8d70",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Schema Design",
@@ -698,8 +746,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "A-code-writing",
-      "status": "active",
-      "asset_uid": "urn:uuid:6ba08c44-a153-4cb7-83d0-50c070d5b5ad"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:6ba08c44-a153-4cb7-83d0-50c070d5b5ad",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Scope Creep Detection",
@@ -726,8 +776,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "D-agent-meta",
-      "status": "active",
-      "asset_uid": "urn:uuid:ffad3cf5-be1f-4097-8bee-c8df9cdb0ac8"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:ffad3cf5-be1f-4097-8bee-c8df9cdb0ac8",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Security Vulnerability",
@@ -754,8 +806,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "B-code-review",
-      "status": "active",
-      "asset_uid": "urn:uuid:8acebf8c-1c9e-4d1c-8486-f4cfa25cd09a"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:8acebf8c-1c9e-4d1c-8486-f4cfa25cd09a",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Silent Failure Detection",
@@ -782,8 +836,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "C-debugging",
-      "status": "active",
-      "asset_uid": "urn:uuid:3d6d03e1-50db-4b7b-91aa-2a26f9290947"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:3d6d03e1-50db-4b7b-91aa-2a26f9290947",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Task Decomposition",
@@ -810,8 +866,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "D-agent-meta",
-      "status": "active",
-      "asset_uid": "urn:uuid:c48be822-083b-45b4-8955-64a40fe52827"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:c48be822-083b-45b4-8955-64a40fe52827",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Tech Debt Signal",
@@ -838,8 +896,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "E-maintenance",
-      "status": "active",
-      "asset_uid": "urn:uuid:a3208802-c29b-4a3d-b5cb-b5ef8d09bedb"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:a3208802-c29b-4a3d-b5cb-b5ef8d09bedb",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Test Strategy Discretion",
@@ -866,8 +926,10 @@
       "audience": "developer",
       "layer": "dev",
       "category": "A-code-writing",
-      "status": "active",
-      "asset_uid": "urn:uuid:d30dc59a-bde8-4efc-9679-fc4bc60ced2d"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:d30dc59a-bde8-4efc-9679-fc4bc60ced2d",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Content Mix",
@@ -891,8 +953,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:c943b74f-7a33-47c4-a913-d979895800ea"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:c943b74f-7a33-47c4-a913-d979895800ea",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Niche Calibration",
@@ -916,8 +980,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:3cda5ea2-f45f-40f5-adfd-8aecdad7ead2"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:3cda5ea2-f45f-40f5-adfd-8aecdad7ead2",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Platform Selection",
@@ -941,8 +1007,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:2a4928ef-a622-4c5d-ab43-8b3f63460da9"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:2a4928ef-a622-4c5d-ab43-8b3f63460da9",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Authenticity Balance",
@@ -966,8 +1034,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:bd850b49-6df5-459b-a162-a17c705d4c78"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:bd850b49-6df5-459b-a162-a17c705d4c78",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Content Depth",
@@ -991,8 +1061,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:352527ff-c806-40d7-a8bd-e6390e85129a"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:352527ff-c806-40d7-a8bd-e6390e85129a",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Originality Judgment",
@@ -1016,8 +1088,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:50b7fec4-d0a6-4590-a8a5-d7281c9c789d"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:50b7fec4-d0a6-4590-a8a5-d7281c9c789d",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Topic Selection",
@@ -1041,8 +1115,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:7bc3eb55-ac07-49bc-a793-e7cf453f433a"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:7bc3eb55-ac07-49bc-a793-e7cf453f433a",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Audience Signal",
@@ -1066,8 +1142,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:5e5a60a4-bb00-409c-a860-125d91545d1b"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:5e5a60a4-bb00-409c-a860-125d91545d1b",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Community Engagement",
@@ -1091,8 +1169,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:e1ff6e59-1d10-40ad-a245-fc5703495057"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:e1ff6e59-1d10-40ad-a245-fc5703495057",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Controversy Navigation",
@@ -1116,8 +1196,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:8d0662a5-fa56-4d17-ab28-a393091a66db"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:8d0662a5-fa56-4d17-ab28-a393091a66db",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Monetization Timing",
@@ -1141,8 +1223,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:cde3d41d-edfd-42f1-ad8b-9a8bd6fd904c"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:cde3d41d-edfd-42f1-ad8b-9a8bd6fd904c",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Offer Design",
@@ -1166,8 +1250,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:d22602f5-1abc-4bb9-ad82-3bfc5dc5f6b3"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:d22602f5-1abc-4bb9-ad82-3bfc5dc5f6b3",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Sponsorship Selection",
@@ -1191,8 +1277,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:9b447c33-17c9-467d-a99f-2964b8407e6d"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:9b447c33-17c9-467d-a99f-2964b8407e6d",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Creator Sustainability",
@@ -1216,8 +1304,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:5716cf34-31cb-4449-a68b-3cd61880f98b"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:5716cf34-31cb-4449-a68b-3cd61880f98b",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Publishing Rhythm",
@@ -1241,8 +1331,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:2380c936-d6d0-4123-a547-fc73160090b8"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:2380c936-d6d0-4123-a547-fc73160090b8",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Creator Brand Positioning",
@@ -1266,8 +1358,10 @@
         "scenarios": 4,
         "cases": 2
       },
-      "status": "active",
-      "asset_uid": "urn:uuid:e1292a65-9dba-4bd5-a57e-b350d91fbf67"
+      "status": "superseded",
+      "asset_uid": "urn:uuid:e1292a65-9dba-4bd5-a57e-b350d91fbf67",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Viral Topic Selection",
@@ -1297,7 +1391,9 @@
       "legacy": true,
       "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
       "status": "superseded",
-      "superseded_date": "2026-06-30"
+      "superseded_date": "2026-06-30",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Title Attraction",
@@ -1327,7 +1423,9 @@
       "legacy": true,
       "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
       "status": "superseded",
-      "superseded_date": "2026-06-30"
+      "superseded_date": "2026-06-30",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Short Video Hook Judgment",
@@ -1357,7 +1455,9 @@
       "legacy": true,
       "legacy_note": "Published 2026-06 under the pre-pipeline strategy. Built with kdna-studio-cli < 0.6.0; uses the older source schema (scenarios / growth_stages). Kept as a superseded compatibility release; see CHANGELOG.md for public release history.",
       "status": "superseded",
-      "superseded_date": "2026-06-30"
+      "superseded_date": "2026-06-30",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Project Context Judgment",
@@ -1404,7 +1504,9 @@
         "reasoning_chains_note": "build derives failure_modes from axioms (1 axiom = 1 chain); source's 4 reasoning_chains are imported as reasoning cards but consumed by a different mechanism"
       },
       "status": "superseded",
-      "superseded_date": "2026-06-30"
+      "superseded_date": "2026-06-30",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     },
     {
       "name": "Completion Adjudication",
@@ -1453,7 +1555,9 @@
         "reasoning_chains_note": "build derives failure_modes from axioms (1 axiom = 1 chain); the 5 source reasoning_chains are imported as reasoning cards. For completion_adjudication the counts match by design (5 axioms, 5 chains)."
       },
       "status": "superseded",
-      "superseded_date": "2026-06-30"
+      "superseded_date": "2026-06-30",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Archived reference artifact: this release predates the single current CBOR payload contract. Generate a current demo with the KDNA CLI or re-export source through KDNA Studio."
     }
   ],
   "note": "Indexes public release entries. Asset files, release tags, and checksums are the public source of release integrity information."
