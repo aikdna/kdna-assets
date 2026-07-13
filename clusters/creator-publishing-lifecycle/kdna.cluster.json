@@ -1,0 +1,123 @@
+{
+  "format": "kdna-cluster",
+  "format_version": "0.9.0",
+  "cluster_id": "@aikdna/creator-publishing-lifecycle",
+  "name": "Creator Publishing Lifecycle Reference Cluster",
+  "version": "0.1.0",
+  "description": "Explicitly routes a creator decision to one owning judgment asset and at most two distinct advisors across positioning, topic choice, originality, audience evidence, depth, and sustainable publishing cadence.",
+  "type": "vertical",
+  "status": "schema_valid",
+  "access": "public",
+  "domains": [
+    {
+      "id": "@aikdna/creator-brand-positioning",
+      "version": "^0.2.0",
+      "digest": "sha256:f8aa60aaa46b0f9b7fd00b5e7f583d09b3c0e54113dd5f8984b3c894cd47e4c1",
+      "role": "primary-candidate",
+      "required": true,
+      "load_condition": "Brand positioning, known for, remembered as, readers, audience, differentiation, niche value, creator identity, reposition, pivot, direction, 品牌定位、被记住、读者、受众心智、差异化、细分价值、创作者身份、转型、方向。"
+    },
+    {
+      "id": "@aikdna/creator-topic-selection",
+      "version": "^0.2.0",
+      "digest": "sha256:98dfe9d10117def9da6d03331440eee9e36af1b12ffa869f3968b3b94518e0f6",
+      "role": "primary-candidate",
+      "required": true,
+      "load_condition": "Topic, idea, candidate subject, trend, hot issue, angle, 选题、创意、候选话题、热点、角度。"
+    },
+    {
+      "id": "@aikdna/creator-originality-judgment",
+      "version": "^0.2.0",
+      "digest": "sha256:31f55ff337d273a7365dd837daf0b8f7087e2a86bb252a8b3e8b04a3d42c433f",
+      "role": "primary-candidate",
+      "required": true,
+      "load_condition": "Draft publication, original insight, distinct value, sources, curation, publish-worthiness, 草稿发布、原创洞察、独特价值、来源、策展、是否值得发布。"
+    },
+    {
+      "id": "@aikdna/creator-publishing-rhythm",
+      "version": "^0.2.0",
+      "digest": "sha256:12fd03b99dc9074e5edab6ac5b5d8d2133f6dd284f76da6edb62c96b15b82b24",
+      "role": "primary-candidate",
+      "required": true,
+      "load_condition": "Publishing cadence, schedule, frequency, daily, weekly, consistency, capacity, 发布节奏、排期、频率、日更、周更、规律、产能。"
+    },
+    {
+      "id": "@aikdna/creator-content-depth",
+      "version": "^0.2.0",
+      "digest": "sha256:66d30692f66f3cbe65f1211f21e70adde91f3e8696e5121b3463c4d7be8875d6",
+      "role": "advisor",
+      "required": false,
+      "load_condition": "Research depth, length, scope, beginner, expert, explanation, evidence burden, 研究深度、篇幅、范围、新手、专家、解释、证据负担。",
+      "contribution_hypothesis_template": "For {task}, define the audience-specific cognitive job and minimum sufficient depth that the owning primary does not determine."
+    },
+    {
+      "id": "@aikdna/creator-audience-signal",
+      "version": "^0.2.0",
+      "digest": "sha256:9e0f6ff4924b670689c57d9c8684aef98dcfe1f233ef07ebcd5968feddb99a33",
+      "role": "advisor",
+      "required": false,
+      "load_condition": "Metrics, comments, retention, completion rate, conversion, feedback, audience behavior, 指标、评论、留存、完播率、转化、反馈、受众行为。",
+      "contribution_hypothesis_template": "For {task}, test the primary's assumption against objective-matched audience evidence and name alternative explanations before changing direction."
+    }
+  ],
+  "composition": {
+    "strategy": "signal_based",
+    "max_active_domains": 3,
+    "conflict_policy": "surface",
+    "priority_order": [
+      "@aikdna/creator-brand-positioning",
+      "@aikdna/creator-topic-selection",
+      "@aikdna/creator-originality-judgment",
+      "@aikdna/creator-publishing-rhythm",
+      "@aikdna/creator-content-depth",
+      "@aikdna/creator-audience-signal"
+    ],
+    "primary_selection": "exactly_one",
+    "advisor_selection": "contribution_hypothesis_required"
+  },
+  "budget": {
+    "profile": "interactive",
+    "max_tokens": 800,
+    "max_chars": 2500,
+    "max_assets": 3,
+    "enforcement": "hard"
+  },
+  "degradation_policy": {
+    "primary_unavailable": "block",
+    "required_advisor_unavailable": "block",
+    "optional_advisor_unavailable": "continue_with_warning",
+    "budget_exceeded": "block"
+  },
+  "relationships": [
+    {
+      "from": "@aikdna/creator-brand-positioning",
+      "to": "@aikdna/creator-topic-selection",
+      "type": "constrains",
+      "description": "A topic may extend the position but should not silently redefine its audience or value."
+    },
+    {
+      "from": "@aikdna/creator-content-depth",
+      "to": "@aikdna/creator-topic-selection",
+      "type": "informs",
+      "description": "Feasible depth and evidence burden affect whether a topic is worth committing to now."
+    },
+    {
+      "from": "@aikdna/creator-content-depth",
+      "to": "@aikdna/creator-originality-judgment",
+      "type": "informs",
+      "description": "Depth tests whether a distinct claim is sufficiently developed for its audience."
+    },
+    {
+      "from": "@aikdna/creator-audience-signal",
+      "to": "@aikdna/creator-brand-positioning",
+      "type": "informs",
+      "description": "Repeated audience evidence can test whether intended positioning is actually perceived."
+    },
+    {
+      "from": "@aikdna/creator-audience-signal",
+      "to": "@aikdna/creator-publishing-rhythm",
+      "type": "informs",
+      "description": "Objective-matched response data can reveal whether cadence is degrading quality or expectation."
+    }
+  ]
+}

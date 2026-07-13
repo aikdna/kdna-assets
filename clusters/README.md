@@ -18,3 +18,12 @@ clusters/<cluster-2-slug>/README.md
 Each manifest receives a `kind: "kdna-cluster"` entry in
 `index/current.json`. Do not rename it to `.kdna`, embed it inside an asset, or
 use single-asset loading commands for it.
+
+The reserved slugs are:
+
+- `developer-change-lifecycle`
+- `creator-publishing-lifecycle`
+
+Both are technical/conformance references. Index them only after their exact
+Release manifests and checksum sidecars exist; do not add behavioral evidence
+claims without a passing preregistered Cluster Assay.

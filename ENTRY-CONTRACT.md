@@ -56,6 +56,31 @@ Add two objects to `index/current.json.clusters`. The content author chooses
 meaningful slugs and `cluster_id` values; both must match their index entry.
 The manifest stays `kdna.cluster.json` and never becomes `.kdna`.
 
+The selected slugs are `developer-change-lifecycle` and
+`creator-publishing-lifecycle`.
+
+Their twelve independent member assets use the normal public-reference layout
+under `references/public/`:
+
+```text
+references/public/<member-slug>/
+  <member-slug>-0.2.0.kdna
+  <member-slug>-0.2.0.kdna.sha256
+  LICENSE
+  README.md
+```
+
+The member slugs are `dev-intent-boundary`, `dev-task-decomposition`,
+`dev-change-risk`, `dev-test-strategy-discretion`,
+`dev-completion-adjudication`, `dev-deploy-readiness`,
+`creator-brand-positioning`, `creator-topic-selection`,
+`creator-content-depth`, `creator-originality-judgment`,
+`creator-audience-signal`, and `creator-publishing-rhythm`.
+
+Add their asset index objects only after the exact GitHub Release artifacts
+and checksum sidecars exist. Technical validation alone does not authorize a
+download URL or behavioral claim.
+
 ## Asset index object
 
 ```json

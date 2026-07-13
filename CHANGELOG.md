@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Staged twelve current-CBOR independent member assets and two explicit
+  technical/conformance Cluster manifests; current-index promotion remains
+  blocked until exact GitHub Release artifacts exist.
 - Separated the empty current reference index from the immutable 52-entry
   pre-CBOR archive.
 - Added distinct public, licensed, and Cluster entry paths plus per-entry

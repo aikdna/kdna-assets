@@ -83,7 +83,9 @@ const RULES = [
   {
     // Same logic for bare aikdna/<x> references
     name: 'private-repo-URL-bare',
-    pattern: /\baikdna\/([a-z][a-z0-9_-]+)\b(?!\.)/g,
+    // A scoped KDNA asset id such as @aikdna/example is public protocol data,
+    // not a repository reference. Only flag unscoped aikdna/<repo> text.
+    pattern: /(?<!@)\baikdna\/([a-z][a-z0-9_-]+)\b(?!\.)/g,
     hint: 'aikdna/<x> reference where <x> is not in the public allowlist. Replace with neutral wording or "(private)".',
     allowlist: PUBLIC_REPO_NAMES,
   },
