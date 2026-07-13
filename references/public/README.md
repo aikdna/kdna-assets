@@ -10,11 +10,13 @@ references/public/<asset-slug>/
   README.md
 ```
 
-Reserved handoff paths for the two public reference candidates are:
+Current public references:
 
-- `references/public/laozi-wuwei/`
-- `references/public/epictetus-control-and-character/`
+- [`laozi-wuwei/`](laozi-wuwei/)
+- [`epictetus-control-and-character/`](epictetus-control-and-character/)
 
-These directories are entry contracts only. No asset content is supplied by
-this repository foundation. Add the completed artifact and its metadata to
-`index/current.json` only after the current validation checks pass.
+Each directory supplies the exact `.kdna`, checksum, entry-scoped license, and
+usage guide. The files passed the current validate, LoadPlan, compact Runtime
+Capsule, Capsule verification, isolated install, and reproducible-build gates.
+Those are technical claims only; neither listing is a truth, expertise,
+behavior-lift, field-value, or protocol-endorsement claim.
