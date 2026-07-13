@@ -1,0 +1,324 @@
+#!/usr/bin/env node
+
+import { createHash } from 'node:crypto';
+import {
+  copyFileSync,
+  cpSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
+import { tmpdir } from 'node:os';
+import { basename, dirname, join, resolve } from 'node:path';
+import { spawnSync } from 'node:child_process';
+
+const repo = resolve(import.meta.dirname, '..');
+const fixtures = join(repo, 'tests/fixtures');
+const temp = mkdtempSync(join(tmpdir(), 'kdna-assets-fixtures-'));
+const results = [];
+
+try {
+  testIndexes();
+  testDigests();
+  testCurrentAssets();
+  testClusters();
+  testOnboarding();
+  testLicenses();
+  testReleases();
+} finally {
+  rmSync(temp, { recursive: true, force: true });
+}
+
+console.log(`Fixture suite: PASS (${results.length} positive/negative assertions)`);
+for (const result of results) console.log(`  ✓ ${result}`);
+
+function testIndexes() {
+  const common = [
+    '--current-schema', join(repo, 'schemas/current-index.schema.json'),
+    '--archive-schema', join(repo, 'schemas/archive-index.schema.json'),
+    '--expected-archive-count', '1',
+  ];
+  expectPass('index positive', 'scripts/validate-indexes.mjs', [
+    '--current', join(fixtures, 'index/current-empty-valid.json'),
+    '--archive', join(fixtures, 'index/archive-single-valid.json'),
+    ...common,
+  ]);
+  expectFail('index negative', 'scripts/validate-indexes.mjs', [
+    '--current', join(fixtures, 'index/current-invalid.json'),
+    '--archive', join(fixtures, 'index/archive-invalid.json'),
+    ...common,
+  ]);
+}
+
+function testDigests() {
+  const positive = join(temp, 'digests-positive');
+  prepareArtifactRoot(positive, join(fixtures, 'digests/positive'));
+  expectPass('digest positive', 'scripts/verify-digests.mjs', [
+    '--root', positive,
+    '--expected-archive-artifacts', '0',
+    '--expected-archive-sidecars', '0',
+  ]);
+
+  const negative = join(temp, 'digests-negative');
+  prepareArtifactRoot(negative, join(fixtures, 'digests/negative'));
+  expectFail('digest negative', 'scripts/verify-digests.mjs', [
+    '--root', negative,
+    '--expected-archive-artifacts', '0',
+    '--expected-archive-sidecars', '0',
+  ]);
+}
+
+function testCurrentAssets() {
+  const positive = join(temp, 'asset-positive');
+  mkdirSync(join(positive, 'references/public/current-demo'), { recursive: true });
+  mkdirSync(join(positive, 'index'), { recursive: true });
+  mkdirSync(join(positive, 'source'), { recursive: true });
+  runExternal('kdna', ['demo', 'judgment', join(positive, 'source')]);
+  const artifactRel = 'references/public/current-demo/current-demo-1.0.0.kdna';
+  const artifact = join(positive, artifactRel);
+  runExternal('kdna', ['pack', join(positive, 'source'), artifact]);
+  writeFileSync(`${artifact}.sha256`, `${sha256(artifact)}  ${basename(artifact)}\n`);
+  writeFileSync(join(dirname(artifact), 'LICENSE'), 'Fixture-only license.\n');
+  writeJson(join(positive, 'index/current.json'), currentIndex({
+    assets: [assetEntry(artifactRel, sha256(artifact))],
+  }));
+  expectPass('current asset positive', 'scripts/check-current-assets.mjs', ['--root', positive]);
+
+  const negative = join(temp, 'asset-negative');
+  mkdirSync(join(negative, 'references/public/broken'), { recursive: true });
+  mkdirSync(join(negative, 'index'), { recursive: true });
+  const brokenRel = 'references/public/broken/broken-1.0.0.kdna';
+  copyFileSync(join(fixtures, 'assets/negative.kdna'), join(negative, brokenRel));
+  writeJson(join(negative, 'index/current.json'), currentIndex({
+    assets: [assetEntry(brokenRel, sha256(join(negative, brokenRel)))],
+  }));
+  expectFail('current asset negative', 'scripts/check-current-assets.mjs', ['--root', negative]);
+}
+
+function testClusters() {
+  const positive = join(temp, 'cluster-positive');
+  const manifestRel = 'clusters/reference-cluster/kdna.cluster.json';
+  mkdirSync(join(positive, dirname(manifestRel)), { recursive: true });
+  mkdirSync(join(positive, 'index'), { recursive: true });
+  copyFileSync(join(fixtures, 'clusters/positive/kdna.cluster.json'), join(positive, manifestRel));
+  copyFileSync(join(fixtures, 'clusters/positive/LICENSE'), join(positive, dirname(manifestRel), 'LICENSE'));
+  writeFileSync(`${join(positive, manifestRel)}.sha256`, `${sha256(join(positive, manifestRel))}  kdna.cluster.json\n`);
+  writeJson(join(positive, 'index/current.json'), currentIndex({
+    clusters: [clusterEntry(manifestRel, sha256(join(positive, manifestRel)), '@fixture/reference-cluster')],
+  }));
+  expectPass('cluster positive', 'scripts/check-clusters.mjs', ['--root', positive]);
+
+  const negative = join(temp, 'cluster-negative');
+  mkdirSync(join(negative, dirname(manifestRel)), { recursive: true });
+  mkdirSync(join(negative, 'index'), { recursive: true });
+  copyFileSync(join(fixtures, 'clusters/negative/kdna.cluster.json'), join(negative, manifestRel));
+  writeJson(join(negative, 'index/current.json'), currentIndex({
+    clusters: [clusterEntry(manifestRel, sha256(join(negative, manifestRel)), '@fixture/broken-cluster')],
+  }));
+  expectFail('cluster negative', 'scripts/check-clusters.mjs', ['--root', negative]);
+}
+
+function testOnboarding() {
+  const positive = join(temp, 'onboarding-positive');
+  prepareBoundaryRoot(positive);
+  copyFileSync(join(fixtures, 'onboarding/positive/README.md'), join(positive, 'README.md'));
+  expectPass('onboarding positive', 'scripts/check-onboarding-boundary.mjs', ['--root', positive]);
+
+  const negative = join(temp, 'onboarding-negative');
+  prepareBoundaryRoot(negative);
+  cpSync(join(fixtures, 'onboarding/negative/archive'), join(negative, 'archive'), { recursive: true });
+  writeJson(join(negative, 'archive/index.json'), readJson(join(fixtures, 'index/archive-single-valid.json')));
+  expectFail('onboarding negative', 'scripts/check-onboarding-boundary.mjs', ['--root', negative]);
+}
+
+function testLicenses() {
+  const positive = join(temp, 'license-positive');
+  const artifactRel = 'references/public/licensed-fixture/licensed-fixture-1.0.0.kdna';
+  mkdirSync(join(positive, dirname(artifactRel)), { recursive: true });
+  mkdirSync(join(positive, 'index'), { recursive: true });
+  copyFileSync(join(fixtures, 'licenses/positive/LICENSE'), join(positive, dirname(artifactRel), 'LICENSE'));
+  writeJson(join(positive, 'index/current.json'), currentIndex({
+    assets: [assetEntry(artifactRel, 'a'.repeat(64))],
+  }));
+  expectPass('license positive', 'scripts/check-licenses.mjs', ['--root', positive]);
+
+  const negative = join(temp, 'license-negative');
+  mkdirSync(join(negative, dirname(artifactRel)), { recursive: true });
+  mkdirSync(join(negative, 'index'), { recursive: true });
+  writeFileSync(join(negative, 'LICENSE'), 'Root-only fixture license.\n');
+  const entry = assetEntry(artifactRel, 'a'.repeat(64));
+  entry.access = 'licensed';
+  entry.license = {
+    id: 'CC-BY-4.0',
+    path: 'LICENSE',
+    scope: 'asset-content-and-distribution',
+    repository_license_applies: false,
+  };
+  writeJson(join(negative, 'index/current.json'), currentIndex({ assets: [entry] }));
+  expectFail('license negative', 'scripts/check-licenses.mjs', ['--root', negative]);
+}
+
+function testReleases() {
+  const common = [
+    '--current', join(fixtures, 'index/current-empty-valid.json'),
+    '--archive', join(fixtures, 'index/archive-single-valid.json'),
+  ];
+  expectPass('release positive', 'scripts/check-release-consistency.mjs', [
+    ...common,
+    '--release-fixture', join(fixtures, 'releases/positive.json'),
+  ]);
+  expectFail('release negative', 'scripts/check-release-consistency.mjs', [
+    ...common,
+    '--release-fixture', join(fixtures, 'releases/negative.json'),
+  ]);
+}
+
+function prepareArtifactRoot(root, source) {
+  const artifactRel = 'references/public/fixture/fixture.kdna';
+  mkdirSync(join(root, dirname(artifactRel)), { recursive: true });
+  mkdirSync(join(root, 'index'), { recursive: true });
+  mkdirSync(join(root, 'archive/checksums'), { recursive: true });
+  copyFileSync(join(source, 'fixture.kdna'), join(root, artifactRel));
+  copyFileSync(join(source, 'fixture.kdna.sha256'), `${join(root, artifactRel)}.sha256`);
+  writeJson(join(root, 'index/current.json'), currentIndex({
+    assets: [assetEntry(artifactRel, sha256(join(root, artifactRel)))],
+  }));
+  writeJson(join(root, 'archive/index.json'), emptyArchive());
+}
+
+function prepareBoundaryRoot(root) {
+  mkdirSync(join(root, 'index'), { recursive: true });
+  mkdirSync(join(root, 'archive'), { recursive: true });
+  writeJson(join(root, 'index/current.json'), readJson(join(fixtures, 'index/current-empty-valid.json')));
+  writeJson(join(root, 'archive/index.json'), readJson(join(fixtures, 'index/archive-single-valid.json')));
+}
+
+function currentIndex({ assets = [], clusters = [] } = {}) {
+  return {
+    schema_version: '1.0.0',
+    kind: 'kdna-current-index',
+    updated: '2026-07-13T12:00:00+08:00',
+    repository: 'https://github.com/aikdna/kdna-assets',
+    listing_policy: 'Fixture only; no endorsement, correctness, quality, expertise, approval, or truth is implied.',
+    assets,
+    clusters,
+  };
+}
+
+function emptyArchive() {
+  return {
+    schema_version: '1.0.0',
+    kind: 'kdna-archive-index',
+    generation: 'pre-cbor',
+    current_runtime_loadable: false,
+    updated: '2026-07-13T12:00:00+08:00',
+    assets: [],
+    note: 'Fixture archive.',
+  };
+}
+
+function assetEntry(path, digest) {
+  const file = basename(path);
+  return {
+    kind: 'kdna-asset',
+    id: '@fixture/current-demo',
+    publisher: { name: 'Fixture Publisher', url: 'https://example.com/publisher' },
+    creator: { name: 'Fixture Creator' },
+    access: 'public',
+    license: {
+      id: 'LicenseRef-Fixture',
+      path: `${dirname(path)}/LICENSE`,
+      scope: 'asset-content-and-distribution',
+      repository_license_applies: false,
+    },
+    version: '1.0.0',
+    digest: { algorithm: 'sha256', value: digest },
+    artifact: { path, media_type: 'application/vnd.kdna.asset' },
+    download: {
+      url: `https://github.com/aikdna/kdna-assets/releases/download/current-demo-v1.0.0/${file}`,
+      checksum_url: `https://github.com/aikdna/kdna-assets/releases/download/current-demo-v1.0.0/${file}.sha256`,
+    },
+    technical_status: {
+      format: 'valid',
+      plan_load: 'ready',
+      load: 'verified',
+      capsule: 'verified',
+      verified_at: '2026-07-13T12:00:00+08:00',
+      toolchain: '@aikdna/kdna-cli@0.31.0',
+    },
+  };
+}
+
+function clusterEntry(path, digest, id) {
+  const file = basename(path);
+  return {
+    kind: 'kdna-cluster',
+    id,
+    publisher: { name: 'Fixture Publisher', url: 'https://example.com/publisher' },
+    creator: { name: 'Fixture Creator' },
+    access: 'public',
+    license: {
+      id: 'LicenseRef-Fixture',
+      path: `${dirname(path)}/LICENSE`,
+      scope: 'asset-content-and-distribution',
+      repository_license_applies: false,
+    },
+    version: '1.0.0',
+    digest: { algorithm: 'sha256', value: digest },
+    manifest: {
+      path,
+      media_type: 'application/vnd.kdna.cluster+json',
+      format: 'kdna-cluster',
+    },
+    download: {
+      url: `https://github.com/aikdna/kdna-assets/releases/download/reference-cluster-v1.0.0/${file}`,
+      checksum_url: `https://github.com/aikdna/kdna-assets/releases/download/reference-cluster-v1.0.0/${file}.sha256`,
+    },
+    technical_status: {
+      manifest: 'valid',
+      plan_use: 'verified',
+      plan_state: 'blocked',
+      verified_at: '2026-07-13T12:00:00+08:00',
+      toolchain: '@aikdna/kdna-cli@0.31.0',
+    },
+  };
+}
+
+function expectPass(name, script, args) {
+  const result = runScript(script, args);
+  if (result.status !== 0) throw new Error(`${name} unexpectedly failed:\n${result.stdout}\n${result.stderr}`);
+  results.push(name);
+}
+
+function expectFail(name, script, args) {
+  const result = runScript(script, args);
+  if (result.status === 0) throw new Error(`${name} unexpectedly passed:\n${result.stdout}`);
+  results.push(name);
+}
+
+function runScript(script, args) {
+  return spawnSync(process.execPath, [join(repo, script), ...args], {
+    cwd: repo,
+    encoding: 'utf8',
+  });
+}
+
+function runExternal(command, args) {
+  const result = spawnSync(command, args, { cwd: repo, encoding: 'utf8' });
+  if (result.status !== 0) throw new Error(`${command} ${args.join(' ')} failed:\n${result.stdout}\n${result.stderr}`);
+}
+
+function sha256(path) {
+  return createHash('sha256').update(readFileSync(path)).digest('hex');
+}
+
+function readJson(path) {
+  return JSON.parse(readFileSync(path, 'utf8'));
+}
+
+function writeJson(path, value) {
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
+}

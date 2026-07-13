@@ -1,0 +1,14 @@
+[
+  {
+    "tag_name": "archived-fixture-v0.1.0",
+    "assets": [
+      {
+        "name": "archived-fixture.kdna"
+      },
+      {
+        "name": "archived-fixture.kdna.sha256",
+        "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  archived-fixture.kdna\n"
+      }
+    ]
+  }
+]

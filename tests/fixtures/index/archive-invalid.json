@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "kdna-archive-index",
+  "generation": "pre-cbor",
+  "current_runtime_loadable": true,
+  "updated": "2026-07-13T12:00:00+08:00",
+  "assets": [],
+  "note": "Invalid fixture because archive loadability is true."
+}

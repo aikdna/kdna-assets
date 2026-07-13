@@ -1,92 +1,142 @@
 # KDNA Assets
 
-> [aikdna.com](https://aikdna.com) · [`@aikdna/kdna-cli`](https://www.npmjs.com/package/@aikdna/kdna-cli)
+AIKDNA's public reference display repository for current KDNA assets, licensed
+references, explicit Cluster manifests, and historical release records.
 
-Historical release archive for AIKDNA-published KDNA reference assets
-(`.kdna`).
+## Current status
 
-The archived releases predate the single current CBOR payload contract and are
-not loadable by the current runtime. They remain downloadable with their
-original checksums as historical demonstration artifacts; they are not the
-current asset catalog and do not define what KDNA authors should create.
+| Surface | Path | Current entries |
+|---|---|---:|
+| Public reference assets | `references/public/` | 0 |
+| Licensed reference assets | `references/licensed/` | 0 |
+| Cluster manifests | `clusters/` | 0 |
+| Historical archive | `archive/` | 52 |
 
-## Current quick start
+`index/current.json` is valid when both `assets` and `clusters` are empty. New
+entries appear only after their own artifact, license, digest, release, and
+technical checks exist.
 
-Generate a canonical demonstration locally with the official toolchain:
+## Repository model
 
-```bash
-npm install -g @aikdna/kdna-cli
-kdna demo judgment ./demo-judgment
-kdna pack ./demo-judgment ./demo-judgment.kdna
-kdna validate ./demo-judgment.kdna --runtime
-kdna plan-load ./demo-judgment.kdna --json
-kdna load ./demo-judgment.kdna --profile=compact --as=json
+```text
+references/
+  public/                  current public `.kdna` references
+  licensed/                current licensed `.kdna` references
+clusters/                  current `kdna.cluster.json` manifests
+index/current.json         machine-readable current index
+archive/
+  index.json               machine-readable 52-entry archive index
+  artifacts/               47 repository-tracked historical binaries
+  checksums/               preserved historical sidecars
+  showcase/                historical descriptive pages
+schemas/                   current and archive index schemas
+scripts/                   validation and publication checks
+tests/fixtures/            positive and negative infrastructure fixtures
 ```
 
-The last command returns a Runtime Capsule. Agents and applications consume
-the Capsule projection; they must not unpack the asset or decode
-`payload.kdnab` directly.
+Current and historical material never share an index or onboarding path.
+Public and licensed assets never share a directory. A Cluster manifest is JSON
+composition metadata; it is not a `.kdna` file and does not use single-asset
+load commands.
 
-## Archive status
+## What a current listing records
 
-`assets.json` is the machine-readable historical index. It currently contains
-52 `superseded` entries and zero active entries. Forty-seven local showcase
-artifacts are preserved from the pre-CBOR generation; five older releases are
-kept by release URL only.
+Every current Asset or Cluster entry records:
 
-Every archived entry records:
+- publisher and creator;
+- access mode and per-entry license;
+- version and SHA-256 digest;
+- checked-in artifact/manifest path and GitHub Release download URLs;
+- technical validation state;
+- optional, bounded evidence claims.
 
-- its original filename, version, tag, and SHA256;
-- its original GitHub Release URL and checksum sidecar;
-- `compatible_with_current_format: false`;
-- a `superseded_reason` that points authors to current Studio/CLI export.
+Listing means only that AIKDNA chose to display the entry under this
+repository's policy. It does not mean AIKDNA, KDNA Core, or the protocol
+endorses the content, certifies expertise, guarantees correctness, recommends
+the judgment, or treats it as official truth.
 
-Public showcase download snippets are checked against the index:
+## Create KDNA anywhere
 
-```bash
-node scripts/check-showcase-downloads.mjs
+No author needs this repository, AIKDNA approval, Human Lock, behavior
+evidence, or expert status to create or publish KDNA. This repository is one
+optional AIKDNA display surface, not a protocol registry, marketplace,
+creation gate, or content court.
+
+The protocol separates:
+
+1. structural/runtime validity;
+2. provenance;
+3. authorization and license;
+4. optional behavior or field evidence;
+5. display status in this repository.
+
+Passing or failing one dimension does not silently decide another.
+
+## Current asset lifecycle check
+
+Agents and applications consume current assets only through the official
+toolchain:
+
+```text
+validate → plan-load → authorization → load → Runtime Capsule
 ```
 
-The public metadata audit keeps historical checksums and release URLs honest.
-If a future current-format reference asset is added, its payload counts are
-checked through the official CLI and Runtime Capsule rather than direct ZIP or
-payload decoding:
+Run the repository checks with:
 
 ```bash
-python3 scripts/audit-public-metadata.py
+npm ci
+npm test
+npm run audit
 ```
 
-## What this repository is not
+The asset check never unpacks a container or decodes `payload.kdnab`. Public
+assets must complete a live load and Capsule check. Licensed/remote assets may
+truthfully report an authorization-required state in unauthenticated CI; a
+release owner must complete the authorized load before claiming it as verified.
 
-- Not a registry, marketplace, ranking, or recommendation service.
-- Not an authoring workspace or private asset incubator.
-- Not the source of truth for the KDNA protocol or current wire format.
-- Not a requirement that the KDNA project produce official content assets.
+## Cluster lifecycle check
 
-Anyone may create, package, publish, modify, license, or sell their own KDNA
-assets through the open protocol and official/compatible toolchain. AIKDNA is
-not the judge of whether the asset's judgment is good, true, or worthy of
-existence.
+Cluster entries use only the explicit Cluster path:
 
-## Content neutrality
+```text
+kdna cluster validate <kdna.cluster.json>
+kdna cluster plan-use <kdna.cluster.json> --task="..." --as=json
+```
 
-KDNA represents judgment, taste, values, standards, boundaries, and decision
-patterns. It does not define truth or facts. An archived or current-format
-listing can describe format, integrity, compatibility, and evidence claims;
-it never means AIKDNA endorses the judgment content or guarantees task fit.
+Cluster plan success is a technical claim, not proof of marginal behavior
+value. Cluster remains explicit and advanced; it is never invoked by current
+single-asset onboarding.
+
+## Historical archive
+
+`archive/index.json` retains all 52 superseded entries and their unchanged
+SHA-256 values and release identities. Forty-seven matching checksum sidecars
+and the historical showcase pages remain in the repository; the other five
+entries remain represented by their release records.
+
+These releases predate the sole current CBOR payload contract. Do not restore
+them through direct decode, JSON fallback, binary regeneration, or relabeling.
+Archive pages provide historical download/integrity information only and do
+not provide current Agent loading commands.
+
+The July 2026 behavior experiments did not prove the preregistered incremental
+value gates for the tested old assets or Cluster. That limits claims about
+those tested artifacts; it does not limit the KDNA protocol or anyone's right
+to author new assets.
 
 ## License
 
-CC-BY-4.0 for the archived reference content. Asset creators retain copyright
-in their judgment content.
+See [`LICENSE-POLICY.md`](LICENSE-POLICY.md). The repository-level
+CC-BY-4.0 notice does not override an entry's own license and must never be
+treated as licensing a current licensed reference by implication.
 
 ## Related
 
-- [`@aikdna/kdna-cli`](https://www.npmjs.com/package/@aikdna/kdna-cli) — inspect, validate, authorize, load, and manage assets
-- [`@aikdna/kdna-studio-cli`](https://www.npmjs.com/package/@aikdna/kdna-studio-cli) — create and export assets
-- [KDNA Core](https://github.com/aikdna/kdna) — protocol and runtime contract
-- [kdna-loader skill](https://github.com/aikdna/kdna-skills) — Agent-side toolchain integration
+- [KDNA Core](https://github.com/aikdna/kdna)
+- [`@aikdna/kdna-cli`](https://www.npmjs.com/package/@aikdna/kdna-cli)
+- [`@aikdna/kdna-studio-cli`](https://www.npmjs.com/package/@aikdna/kdna-studio-cli)
+- [Contribution and display policy](CONTRIBUTING.md)
+- [Current entry handoff contract](ENTRY-CONTRACT.md)
 
----
-
-Branch protection is enforced on `main`: pull request review required before merge.
+Branch protection is enforced on `main`; changes land through reviewed pull
+requests. This repository does not publish Releases as part of ordinary tests.

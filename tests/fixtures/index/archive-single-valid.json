@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "kdna-archive-index",
+  "generation": "pre-cbor",
+  "current_runtime_loadable": false,
+  "updated": "2026-07-13T12:00:00+08:00",
+  "assets": [
+    {
+      "name": "Archived Fixture",
+      "file": "archived-fixture.kdna",
+      "latest_version": "0.1.0",
+      "tag": "archived-fixture-v0.1.0",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "release_date": "2026-06-01",
+      "status": "superseded",
+      "compatible_with_current_format": false,
+      "superseded_reason": "Fixture for the pre-CBOR archive boundary."
+    }
+  ],
+  "note": "Positive single-entry archive fixture."
+}

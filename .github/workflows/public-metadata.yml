@@ -1,35 +1,42 @@
 name: public-metadata
 
-# kdna-assets CI: validate the public asset index against reality on
-# every push to main and on every PR. Catches:
-#   - malformed or future-dated assets.json `updated` metadata
-#   - assets.json `sha256` that doesn't match the actual dist file
-#   - Release URLs that return non-200
-#   - Missing .sha256 sidecar files
-#   - `contains` numbers that don't match the actual payload
-#   - Deprecated field names in assets.json (reasoning_chains /
-#     anti_patterns / source_files)
-#
-# This CI is self-contained: it uses urllib for release HEAD/GET,
-# the official KDNA CLI for Runtime Capsule loading, and the
-# vendored audit script. No private-repo
-# clone is performed.
+# Validate the current reference index, immutable archive index, per-entry
+# licenses, digests, current Asset/Cluster toolchain paths, onboarding
+# separation, and GitHub Release consistency. No private repository is cloned.
 
 on:
   push:
     branches: [main]
     paths:
-      - 'assets.json'
+      - 'index/**'
+      - 'archive/**'
+      - 'references/**'
+      - 'clusters/**'
+      - 'schemas/**'
       - 'README.md'
-      - 'showcase/**'
-      - 'scripts/audit-public-metadata.py'
+      - 'CONTRIBUTING.md'
+      - 'LICENSE-POLICY.md'
+      - 'ENTRY-CONTRACT.md'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
   pull_request:
     branches: [main]
     paths:
-      - 'assets.json'
+      - 'index/**'
+      - 'archive/**'
+      - 'references/**'
+      - 'clusters/**'
+      - 'schemas/**'
       - 'README.md'
-      - 'showcase/**'
-      - 'scripts/audit-public-metadata.py'
+      - 'CONTRIBUTING.md'
+      - 'LICENSE-POLICY.md'
+      - 'ENTRY-CONTRACT.md'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/public-metadata.yml'
       - '.github/pull_request_template.md'
 
@@ -40,15 +47,19 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          # Full history so the vendored script can `git log` the
-          # actual commit time on assets.json
+          # Full history keeps archive moves and checksum provenance reviewable.
           fetch-depth: 0
 
-      - name: Install the official KDNA CLI
-        run: npm install -g @aikdna/kdna-cli@0.30.2
+      - name: Install repository checks and official KDNA CLI
+        run: |
+          npm ci
+          npm install -g @aikdna/kdna-cli@0.31.0
 
-      - name: Run the vendored public-metadata audit
+      - name: Run fixture suite
+        run: npm test
+
+      - name: Run public metadata audit
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/audit-public-metadata.py
+          python3 scripts/audit-public-metadata.py --online-releases
