@@ -81,7 +81,8 @@ const RULES = [
     allowlist: PUBLIC_REPO_NAMES,
   },
   {
-    // Same logic for bare aikdna/<x> references
+    // Same logic for bare aikdna/<x> references. Scoped npm package IDs such
+    // as @aikdna/example are protocol identifiers, not repository paths.
     name: 'private-repo-URL-bare',
     // A scoped KDNA asset id such as @aikdna/example is public protocol data,
     // not a repository reference. Only flag unscoped aikdna/<repo> text.

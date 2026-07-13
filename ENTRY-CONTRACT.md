@@ -121,7 +121,7 @@ download URL or behavioral claim.
     "load": "verified",
     "capsule": "verified",
     "verified_at": "<ISO-8601-date-time>",
-    "toolchain": "@aikdna/kdna-cli@0.30.4"
+    "toolchain": "@aikdna/kdna-cli@0.31.0"
   },
   "evidence_claims": []
 }
@@ -171,7 +171,7 @@ Capsule verification actually pass.
     "plan_use": "verified",
     "plan_state": "blocked",
     "verified_at": "<ISO-8601-date-time>",
-    "toolchain": "@aikdna/kdna-cli@0.30.4"
+    "toolchain": "@aikdna/kdna-cli@0.31.0"
   },
   "evidence_claims": []
 }

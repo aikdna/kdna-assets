@@ -10,12 +10,12 @@ references/public/<asset-slug>/
   README.md
 ```
 
-Reserved handoff paths for the two public reference candidates are:
+Current public references:
 
-- `references/public/laozi-wuwei/`
-- `references/public/epictetus-control-and-character/`
+- [`laozi-wuwei/`](laozi-wuwei/)
+- [`epictetus-control-and-character/`](epictetus-control-and-character/)
 
-The developer and creator Cluster handoff also stages twelve independent
+The developer and creator reference Clusters also use twelve independent
 technical reference members:
 
 - `dev-intent-boundary`
@@ -31,9 +31,12 @@ technical reference members:
 - `creator-audience-signal`
 - `creator-publishing-rhythm`
 
-These directories are entry contracts only. No asset content is supplied by
-this repository foundation. Add the completed artifact and its metadata to
-`index/current.json` only after the current validation checks pass.
+Each directory supplies the exact `.kdna`, checksum, entry-scoped license, and
+usage guide. The files passed the current validate, LoadPlan, compact Runtime
+Capsule, Capsule verification, isolated install, and reproducible-build gates.
+Those are technical claims only; neither listing is a truth, expertise,
+behavior-lift, field-value, or protocol-endorsement claim.
 
-The staged Cluster members are technical/conformance candidates. They are not
-indexed until exact GitHub Release artifacts and checksum sidecars exist.
+The twelve Cluster members remain independently installable `.kdna` assets.
+They are technical/conformance candidates and are added to the current index
+only after their exact GitHub Release downloads and checksums pass.

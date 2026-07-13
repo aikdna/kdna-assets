@@ -246,7 +246,7 @@ function assetEntry(path, digest) {
       load: 'verified',
       capsule: 'verified',
       verified_at: '2026-07-13T12:00:00+08:00',
-      toolchain: '@aikdna/kdna-cli@0.30.4',
+      toolchain: '@aikdna/kdna-cli@0.31.0',
     },
   };
 }
@@ -281,7 +281,7 @@ function clusterEntry(path, digest, id) {
       plan_use: 'verified',
       plan_state: 'blocked',
       verified_at: '2026-07-13T12:00:00+08:00',
-      toolchain: '@aikdna/kdna-cli@0.30.4',
+      toolchain: '@aikdna/kdna-cli@0.31.0',
     },
   };
 }
