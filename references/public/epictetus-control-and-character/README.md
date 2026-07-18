@@ -52,7 +52,7 @@ or no-KDNA controls.
 ## Load through the official toolchain
 
 ```bash
-npm install -g @aikdna/kdna-cli@0.35.0
+npm install -g @aikdna/kdna-cli@0.35.1
 curl -LO https://github.com/aikdna/kdna-assets/releases/download/0.1.1/epictetus-control-and-character-0.1.1.kdna
 curl -LO https://github.com/aikdna/kdna-assets/releases/download/0.1.1/epictetus-control-and-character-0.1.1.kdna.sha256
 shasum -a 256 -c epictetus-control-and-character-0.1.1.kdna.sha256
