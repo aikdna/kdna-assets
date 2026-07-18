@@ -7,6 +7,7 @@ import { spawnSync } from 'node:child_process';
 import { argValue, failWith, readJson } from './lib.mjs';
 
 const args = process.argv.slice(2);
+const repositoryRoot = resolve(import.meta.dirname, '..');
 const root = resolve(argValue(args, '--root', '.'));
 const indexPath = resolve(root, argValue(args, '--current', 'index/current.json'));
 const requireLoad = args.includes('--require-load');
@@ -14,6 +15,20 @@ const current = readJson(indexPath);
 const errors = [];
 let loaded = 0;
 let gated = 0;
+const repositoryPackage = readJson(join(repositoryRoot, 'package.json'));
+const expectedCliVersion = repositoryPackage.devDependencies?.['@aikdna/kdna-cli'];
+const cliPackageRoot = join(repositoryRoot, 'node_modules', '@aikdna', 'kdna-cli');
+const cliPackage = readJson(join(cliPackageRoot, 'package.json'));
+if (
+  !/^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/u.test(expectedCliVersion) ||
+  cliPackage.name !== '@aikdna/kdna-cli' ||
+  cliPackage.version !== expectedCliVersion ||
+  cliPackage.bin?.kdna !== 'src/cli.js'
+) {
+  errors.push('installed KDNA CLI does not match the exact repository dependency coordinate');
+}
+const cliEntry = join(cliPackageRoot, 'src', 'cli.js');
+failWith(errors, 'Current asset check');
 
 for (const entry of current.assets || []) {
   const artifact = resolve(root, entry.artifact.path);
@@ -42,11 +57,7 @@ for (const entry of current.assets || []) {
     try {
       const capsulePath = join(temp, 'capsule.json');
       writeFileSync(capsulePath, `${JSON.stringify(load.value, null, 2)}\n`);
-      const verified = spawnSync(
-        'npx',
-        ['--no', 'kdna', 'capsule-verify', capsulePath, '--asset', artifact, '--json'],
-        { encoding: 'utf8' },
-      );
+      const verified = runCli(['capsule-verify', capsulePath, '--asset', artifact, '--json']);
       if (verified.status !== 0) errors.push(`${entry.id}: capsule-verify failed`);
     } finally {
       rmSync(temp, { recursive: true, force: true });
@@ -78,11 +89,18 @@ console.log(`  live Capsule verified: ${loaded}`);
 console.log(`  authorization-gated:   ${gated}`);
 
 function runJson(commandArgs) {
-  const result = spawnSync('npx', ['--no', 'kdna', ...commandArgs], { encoding: 'utf8' });
+  const result = runCli(commandArgs);
   if (result.status !== 0) return { ok: false, result };
   try {
     return { ok: true, value: JSON.parse(result.stdout), result };
   } catch {
     return { ok: false, result };
   }
+}
+
+function runCli(commandArgs) {
+  return spawnSync(process.execPath, [cliEntry, ...commandArgs], {
+    cwd: repositoryRoot,
+    encoding: 'utf8',
+  });
 }
