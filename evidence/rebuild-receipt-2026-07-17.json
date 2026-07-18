@@ -1,0 +1,84 @@
+{
+  "schema": "kdna.assets.rebuild-receipt",
+  "schema_version": "0.1.0",
+  "assets": [
+    {
+      "id": "@aikdna/laozi-wuwei",
+      "source": {
+        "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.0.kdna",
+        "sha256": "ea0de0950b0217fb9421aa65c2d3d775fb5857efe18a93e82df52cda1815f924",
+        "version": "0.1.0"
+      },
+      "rebuilt": {
+        "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.1.kdna",
+        "sha256": "86469d040f544c32af580b2a8ab6edfc7f38b606e85b50ff9db296b56b44856e",
+        "version": "0.1.1",
+        "judgment_version": "0.1.0"
+      },
+      "toolchain": {
+        "studio_cli": "0.10.1",
+        "studio_core": "2.0.1",
+        "core": "0.20.0",
+        "cli": "0.34.0"
+      },
+      "dual_build": {
+        "reproducible": true,
+        "build_a_sha256": "86469d040f544c32af580b2a8ab6edfc7f38b606e85b50ff9db296b56b44856e",
+        "build_b_sha256": "86469d040f544c32af580b2a8ab6edfc7f38b606e85b50ff9db296b56b44856e",
+        "method": "Strip random source_build_id after export; rebuild checksums from directory content; dual independent export runs produce byte-identical repacks."
+      },
+      "identity_preservation": {
+        "asset_id": "kdna:aikdna:laozi-wuwei",
+        "lineage": {
+          "type": "original"
+        },
+        "creator": {
+          "name": "OpenAI Codex agent",
+          "id": "openai-codex-agent"
+        },
+        "asset_uid": "urn:uuid:7dff1161-35a2-4e6c-a3b4-3a709cda2af7",
+        "judgment_cards_preserved": 85
+      },
+      "verified_at": "2026-07-17T17:00:00Z"
+    },
+    {
+      "id": "@aikdna/epictetus-control-and-character",
+      "source": {
+        "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.0.kdna",
+        "sha256": "04da31b0e7deb66eded8d55d369692504c013196ee644a75fc9460b9c0d1a800",
+        "version": "0.1.0"
+      },
+      "rebuilt": {
+        "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.1.kdna",
+        "sha256": "207f27aa63368a7c7e008f77a33fab9fbdab764291dd4a96ceaced578513a404",
+        "version": "0.1.1",
+        "judgment_version": "0.1.0"
+      },
+      "toolchain": {
+        "studio_cli": "0.10.1",
+        "studio_core": "2.0.1",
+        "core": "0.20.0",
+        "cli": "0.34.0"
+      },
+      "dual_build": {
+        "reproducible": true,
+        "build_a_sha256": "207f27aa63368a7c7e008f77a33fab9fbdab764291dd4a96ceaced578513a404",
+        "build_b_sha256": "207f27aa63368a7c7e008f77a33fab9fbdab764291dd4a96ceaced578513a404",
+        "method": "Strip random source_build_id after export; rebuild checksums from directory content; dual independent export runs produce byte-identical repacks."
+      },
+      "identity_preservation": {
+        "asset_id": "kdna:aikdna:epictetus-control-and-character",
+        "lineage": {
+          "type": "original"
+        },
+        "creator": {
+          "name": "OpenAI Codex agent",
+          "id": "openai-codex-agent"
+        },
+        "asset_uid": "urn:uuid:d33db0b8-74c9-4d7e-924b-d39ff32f1e5d",
+        "judgment_cards_preserved": 87
+      },
+      "verified_at": "2026-07-17T17:00:00Z"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "kind": "kdna-current-index",
-  "updated": "2026-07-17T16:00:00Z",
+  "updated": "2026-07-17T17:00:00Z",
   "repository": "https://github.com/aikdna/kdna-assets",
   "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
   "assets": [
@@ -25,34 +25,25 @@
       "version": "0.1.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "cb78e880dc4cdeb6a4c01d5a5a26a0be54d90c458c63d6f112981a08cfdaae33"
+        "value": "86469d040f544c32af580b2a8ab6edfc7f38b606e85b50ff9db296b56b44856e"
       },
       "artifact": {
         "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.1.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "download": {
-        "url": "https://github.com/aikdna/kdna-assets/releases/download/sage-reference-assets-v0.1.0/laozi-wuwei-0.1.0.kdna",
-        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/sage-reference-assets-v0.1.0/laozi-wuwei-0.1.0.kdna.sha256"
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/0.1.1/laozi-wuwei-0.1.1.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/0.1.1/laozi-wuwei-0.1.1.kdna.sha256"
       },
       "technical_status": {
         "format": "valid",
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "tool": "@aikdna/kdna-cli@0.34.0",
-        "core": "@aikdna/kdna-core@0.20.0",
-        "verified_at": "2026-07-17T16:00:00Z"
+        "verified_at": "2026-07-17T17:00:00Z",
+        "toolchain": "@aikdna/kdna-cli@0.34.0"
       },
-      "evidence_claims": [],
-      "rebuild": {
-        "note": "Rebuilt from the original 0.1.0 judgment content with Studio CLI 0.10.1 / Core 0.20.0. Source build ID stripped for reproducibility. Judgment content unchanged.",
-        "studio_cli": "0.10.1",
-        "studio_core": "2.0.1",
-        "core": "0.20.0",
-        "dual_build_reproducible": true,
-        "dual_build_sha256_match": true
-      }
+      "evidence_claims": []
     },
     {
       "kind": "kdna-asset",
@@ -74,34 +65,25 @@
       "version": "0.1.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "f81e7609062931f6ebb45df3224a56c6a236c63b97866b77e143c20a9ea7fd22"
+        "value": "207f27aa63368a7c7e008f77a33fab9fbdab764291dd4a96ceaced578513a404"
       },
       "artifact": {
         "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.1.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "download": {
-        "url": "https://github.com/aikdna/kdna-assets/releases/download/sage-reference-assets-v0.1.0/epictetus-control-and-character-0.1.0.kdna",
-        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/sage-reference-assets-v0.1.0/epictetus-control-and-character-0.1.0.kdna.sha256"
+        "url": "https://github.com/aikdna/kdna-assets/releases/download/0.1.1/epictetus-control-and-character-0.1.1.kdna",
+        "checksum_url": "https://github.com/aikdna/kdna-assets/releases/download/0.1.1/epictetus-control-and-character-0.1.1.kdna.sha256"
       },
       "technical_status": {
         "format": "valid",
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "tool": "@aikdna/kdna-cli@0.34.0",
-        "core": "@aikdna/kdna-core@0.20.0",
-        "verified_at": "2026-07-17T16:00:00Z"
+        "verified_at": "2026-07-17T17:00:00Z",
+        "toolchain": "@aikdna/kdna-cli@0.34.0"
       },
-      "evidence_claims": [],
-      "rebuild": {
-        "note": "Rebuilt from the original 0.1.0 judgment content with Studio CLI 0.10.1 / Core 0.20.0. Source build ID stripped for reproducibility. Judgment content unchanged.",
-        "studio_cli": "0.10.1",
-        "studio_core": "2.0.1",
-        "core": "0.20.0",
-        "dual_build_reproducible": true,
-        "dual_build_sha256_match": true
-      }
+      "evidence_claims": []
     }
   ],
   "clusters": []
