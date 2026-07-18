@@ -3,7 +3,7 @@
 ## Unreleased
 
 - Advanced the current validation and consumption baseline to the published
-  `@aikdna/kdna-cli@0.35.0` release without changing either reference asset or
+  `@aikdna/kdna-cli@0.35.1` release without changing either reference asset or
   its checksum. Historical rebuild receipts remain frozen at the exact
   toolchain that produced their evidence.
 - Added a validation gate that requires every current index toolchain claim to
