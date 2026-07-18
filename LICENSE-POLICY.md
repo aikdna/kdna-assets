@@ -1,7 +1,7 @@
 # License scope
 
-The root `LICENSE` applies to repository-authored documentation and supporting
-repository code.
+The root Apache License 2.0 in `LICENSE` applies to repository-authored
+documentation and supporting repository code.
 
 It does not automatically license a current reference asset or Cluster
 manifest. Every current entry in `index/current.json` must provide a license
