@@ -1,0 +1,26 @@
+name: release-verification
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install repository dependencies
+        run: npm ci
+      - name: Run fixture suite
+        run: npm test
+      - name: Run local audit
+        run: npm run audit
+      - name: Run online release consistency
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/check-release-consistency.mjs --online
+      - name: Verify release artifacts
+        run: |
+          set -euo pipefail
+          echo "Checking release artifacts for tag ${{ github.event.release.tag_name }}"
+          node scripts/check-release-consistency.mjs --online

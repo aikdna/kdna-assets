@@ -1,31 +1,45 @@
 {
   "schema": "kdna.assets.rebuild-receipt",
   "schema_version": "0.1.0",
+  "rebuilt_at": "2026-07-17T18:00:00.000Z",
+  "toolchain": {
+    "studio_cli": "0.10.1",
+    "studio_core": "2.0.1",
+    "core": "0.20.0",
+    "cli": "0.34.0"
+  },
+  "method": "Import with Studio CLI 0.9.2; patch project metadata; export with Studio CLI 0.10.1; normalize (strip random source_build_id, restore original asset_id/lineage/creator/review disclosures, set current compiler/conformance facts); rebuild checksums from directory content; repack. Dual independent export runs produce byte-identical final artifacts.",
+  "rebuild_script": "scripts/rebuild/rebuild-asset.cjs",
   "assets": [
     {
       "id": "@aikdna/laozi-wuwei",
       "source": {
         "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.0.kdna",
         "sha256": "ea0de0950b0217fb9421aa65c2d3d775fb5857efe18a93e82df52cda1815f924",
-        "version": "0.1.0"
+        "version": "0.1.0",
+        "profile": "judgment-profile-v1",
+        "cards": 85,
+        "source_authoring": {
+          "compiler": "@aikdna/kdna-studio-core",
+          "compiler_version": "1.8.0",
+          "conformance": {
+            "kdna_version": "1.0",
+            "validator_version": "1.8.0"
+          }
+        }
       },
       "rebuilt": {
         "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.1.kdna",
-        "sha256": "86469d040f544c32af580b2a8ab6edfc7f38b606e85b50ff9db296b56b44856e",
+        "sha256": "81729601b39d4b35d20043cf3ce5b388bd1724ae0e93c15a6d16eeaa0e4362e1",
         "version": "0.1.1",
-        "judgment_version": "0.1.0"
-      },
-      "toolchain": {
-        "studio_cli": "0.10.1",
-        "studio_core": "2.0.1",
-        "core": "0.20.0",
-        "cli": "0.34.0"
+        "judgment_version": "0.1.0",
+        "profile": "kdna.payload.judgment",
+        "profile_version": "0.1.0"
       },
       "dual_build": {
         "reproducible": true,
-        "build_a_sha256": "86469d040f544c32af580b2a8ab6edfc7f38b606e85b50ff9db296b56b44856e",
-        "build_b_sha256": "86469d040f544c32af580b2a8ab6edfc7f38b606e85b50ff9db296b56b44856e",
-        "method": "Strip random source_build_id after export; rebuild checksums from directory content; dual independent export runs produce byte-identical repacks."
+        "build_a_sha256": "81729601b39d4b35d20043cf3ce5b388bd1724ae0e93c15a6d16eeaa0e4362e1",
+        "build_b_sha256": "81729601b39d4b35d20043cf3ce5b388bd1724ae0e93c15a6d16eeaa0e4362e1"
       },
       "identity_preservation": {
         "asset_id": "kdna:aikdna:laozi-wuwei",
@@ -37,34 +51,54 @@
           "id": "openai-codex-agent"
         },
         "asset_uid": "urn:uuid:7dff1161-35a2-4e6c-a3b4-3a709cda2af7",
-        "judgment_cards_preserved": 85
+        "created_at_preserved": "2026-07-13T05:31:28.000Z",
+        "agent_reviewed": true,
+        "reviewer_type": "ai_agent",
+        "review_statement": "AI author review only; no human review or expert endorsement occurred."
       },
-      "verified_at": "2026-07-17T17:00:00Z"
+      "semantic_preservation": {
+        "card_ids_match": true,
+        "axiom_count": {
+          "source": 6,
+          "rebuilt": 6
+        },
+        "cards_total": {
+          "source": 85,
+          "rebuilt": 85
+        },
+        "first_axiom_one_sentence_match": true,
+        "profile_note": "Payload format changed from judgment-profile-v1 to kdna.payload.judgment 0.1.0; structural CBOR differs but judgment-core content and cards are preserved."
+      }
     },
     {
       "id": "@aikdna/epictetus-control-and-character",
       "source": {
         "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.0.kdna",
         "sha256": "04da31b0e7deb66eded8d55d369692504c013196ee644a75fc9460b9c0d1a800",
-        "version": "0.1.0"
+        "version": "0.1.0",
+        "profile": "judgment-profile-v1",
+        "cards": 87,
+        "source_authoring": {
+          "compiler": "@aikdna/kdna-studio-core",
+          "compiler_version": "1.8.0",
+          "conformance": {
+            "kdna_version": "1.0",
+            "validator_version": "1.8.0"
+          }
+        }
       },
       "rebuilt": {
         "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.1.kdna",
-        "sha256": "207f27aa63368a7c7e008f77a33fab9fbdab764291dd4a96ceaced578513a404",
+        "sha256": "fa4765b7737a517234167ee24183e12b570e05e211c4e498eb5a79e7ecf348bd",
         "version": "0.1.1",
-        "judgment_version": "0.1.0"
-      },
-      "toolchain": {
-        "studio_cli": "0.10.1",
-        "studio_core": "2.0.1",
-        "core": "0.20.0",
-        "cli": "0.34.0"
+        "judgment_version": "0.1.0",
+        "profile": "kdna.payload.judgment",
+        "profile_version": "0.1.0"
       },
       "dual_build": {
         "reproducible": true,
-        "build_a_sha256": "207f27aa63368a7c7e008f77a33fab9fbdab764291dd4a96ceaced578513a404",
-        "build_b_sha256": "207f27aa63368a7c7e008f77a33fab9fbdab764291dd4a96ceaced578513a404",
-        "method": "Strip random source_build_id after export; rebuild checksums from directory content; dual independent export runs produce byte-identical repacks."
+        "build_a_sha256": "fa4765b7737a517234167ee24183e12b570e05e211c4e498eb5a79e7ecf348bd",
+        "build_b_sha256": "fa4765b7737a517234167ee24183e12b570e05e211c4e498eb5a79e7ecf348bd"
       },
       "identity_preservation": {
         "asset_id": "kdna:aikdna:epictetus-control-and-character",
@@ -76,9 +110,24 @@
           "id": "openai-codex-agent"
         },
         "asset_uid": "urn:uuid:d33db0b8-74c9-4d7e-924b-d39ff32f1e5d",
-        "judgment_cards_preserved": 87
+        "created_at_preserved": "2026-07-13T05:31:28.000Z",
+        "agent_reviewed": true,
+        "reviewer_type": "ai_agent",
+        "review_statement": "AI author review only; no human review or expert endorsement occurred."
       },
-      "verified_at": "2026-07-17T17:00:00Z"
+      "semantic_preservation": {
+        "card_ids_match": true,
+        "axiom_count": {
+          "source": 6,
+          "rebuilt": 6
+        },
+        "cards_total": {
+          "source": 87,
+          "rebuilt": 87
+        },
+        "first_axiom_one_sentence_match": true,
+        "profile_note": "Payload format changed from judgment-profile-v1 to kdna.payload.judgment 0.1.0; structural CBOR differs but judgment-core content and cards are preserved."
+      }
     }
   ]
 }
