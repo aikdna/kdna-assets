@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "license": "Apache-2.0",
   "scripts": {
     "validate:indexes": "node scripts/validate-indexes.mjs",
     "check:digests": "node scripts/verify-digests.mjs",

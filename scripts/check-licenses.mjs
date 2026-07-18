@@ -1,13 +1,31 @@
 #!/usr/bin/env node
 
-import { existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, resolve, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { argValue, failWith, readJson } from './lib.mjs';
 
 const args = process.argv.slice(2);
 const root = resolve(argValue(args, '--root', '.'));
+const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const canonicalApacheLicenseSha256 =
+  '699a9bdd9d3fb95f2146586a5fb1d7a6a6197a43422914f86869fed84c34222c';
 const current = readJson(resolve(root, argValue(args, '--current', 'index/current.json')));
 const errors = [];
+
+if (root === repositoryRoot) {
+  const licenseDigest = createHash('sha256')
+    .update(readFileSync(resolve(root, 'LICENSE')))
+    .digest('hex');
+  if (licenseDigest !== canonicalApacheLicenseSha256) {
+    errors.push('root LICENSE must contain the complete canonical Apache-2.0 text');
+  }
+  const packageMetadata = readJson(resolve(root, 'package.json'));
+  if (packageMetadata.license !== 'Apache-2.0') {
+    errors.push('package.json license must be Apache-2.0');
+  }
+}
 
 for (const entry of [...(current.assets || []), ...(current.clusters || [])]) {
   const contentPath = entry.kind === 'kdna-asset' ? entry.artifact.path : entry.manifest.path;
