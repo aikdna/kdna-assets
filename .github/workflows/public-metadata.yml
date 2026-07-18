@@ -43,10 +43,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Install repository checks and official KDNA CLI
-        run: |
-          npm ci
-          npm install -g @aikdna/kdna-cli@0.31.1
+      - name: Install repository dependencies
+        run: npm ci
 
       - name: Run fixture suite
         run: npm test

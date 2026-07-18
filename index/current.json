@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "kind": "kdna-current-index",
-  "updated": "2026-07-13T13:44:42Z",
+  "updated": "2026-07-17T16:00:00Z",
   "repository": "https://github.com/aikdna/kdna-assets",
   "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
   "assets": [
@@ -22,13 +22,13 @@
         "scope": "asset-content-and-distribution",
         "repository_license_applies": false
       },
-      "version": "0.1.0",
+      "version": "0.1.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "ea0de0950b0217fb9421aa65c2d3d775fb5857efe18a93e82df52cda1815f924"
+        "value": "cb78e880dc4cdeb6a4c01d5a5a26a0be54d90c458c63d6f112981a08cfdaae33"
       },
       "artifact": {
-        "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.0.kdna",
+        "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.1.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "download": {
@@ -40,10 +40,19 @@
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-13T10:17:57Z",
-        "toolchain": "@aikdna/kdna-cli@0.31.0"
+        "tool": "@aikdna/kdna-cli@0.34.0",
+        "core": "@aikdna/kdna-core@0.20.0",
+        "verified_at": "2026-07-17T16:00:00Z"
       },
-      "evidence_claims": []
+      "evidence_claims": [],
+      "rebuild": {
+        "note": "Rebuilt from the original 0.1.0 judgment content with Studio CLI 0.10.1 / Core 0.20.0. Source build ID stripped for reproducibility. Judgment content unchanged.",
+        "studio_cli": "0.10.1",
+        "studio_core": "2.0.1",
+        "core": "0.20.0",
+        "dual_build_reproducible": true,
+        "dual_build_sha256_match": true
+      }
     },
     {
       "kind": "kdna-asset",
@@ -62,13 +71,13 @@
         "scope": "asset-content-and-distribution",
         "repository_license_applies": false
       },
-      "version": "0.1.0",
+      "version": "0.1.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "04da31b0e7deb66eded8d55d369692504c013196ee644a75fc9460b9c0d1a800"
+        "value": "f81e7609062931f6ebb45df3224a56c6a236c63b97866b77e143c20a9ea7fd22"
       },
       "artifact": {
-        "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.0.kdna",
+        "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.1.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "download": {
@@ -80,10 +89,19 @@
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-13T10:17:57Z",
-        "toolchain": "@aikdna/kdna-cli@0.31.0"
+        "tool": "@aikdna/kdna-cli@0.34.0",
+        "core": "@aikdna/kdna-core@0.20.0",
+        "verified_at": "2026-07-17T16:00:00Z"
       },
-      "evidence_claims": []
+      "evidence_claims": [],
+      "rebuild": {
+        "note": "Rebuilt from the original 0.1.0 judgment content with Studio CLI 0.10.1 / Core 0.20.0. Source build ID stripped for reproducibility. Judgment content unchanged.",
+        "studio_cli": "0.10.1",
+        "studio_core": "2.0.1",
+        "core": "0.20.0",
+        "dual_build_reproducible": true,
+        "dual_build_sha256_match": true
+      }
     }
   ],
   "clusters": []

@@ -14,7 +14,6 @@
     "audit": "npm run validate:indexes && npm run check:digests && npm run check:assets && npm run check:clusters && npm run check:licenses && node scripts/check-public-surface.mjs && python3 scripts/audit-public-metadata.py"
   },
   "devDependencies": {
-    "ajv": "^8.20.0",
-    "ajv-formats": "3.0.1"
+    "@aikdna/kdna-cli": "0.34.0"
   }
 }

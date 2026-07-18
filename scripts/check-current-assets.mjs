@@ -34,7 +34,7 @@ for (const entry of current.assets || []) {
 
   if (plan.value.can_load_now === true) {
     const load = runJson(['load', artifact, '--profile=compact', '--as=json']);
-    if (!load.ok || load.value?.type !== 'kdna.context.capsule' || load.value?.version !== '1.0') {
+    if (!load.ok || load.value?.type !== 'kdna.runtime-capsule' || load.value?.contract_version !== '0.1.0') {
       errors.push(`${entry.id}: load did not produce a v1.0 Runtime Capsule`);
       continue;
     }
@@ -43,8 +43,8 @@ for (const entry of current.assets || []) {
       const capsulePath = join(temp, 'capsule.json');
       writeFileSync(capsulePath, `${JSON.stringify(load.value, null, 2)}\n`);
       const verified = spawnSync(
-        'kdna',
-        ['capsule-verify', capsulePath, '--asset', artifact, '--json'],
+        'npx',
+        ['--no', 'kdna', 'capsule-verify', capsulePath, '--asset', artifact, '--json'],
         { encoding: 'utf8' },
       );
       if (verified.status !== 0) errors.push(`${entry.id}: capsule-verify failed`);
@@ -78,7 +78,7 @@ console.log(`  live Capsule verified: ${loaded}`);
 console.log(`  authorization-gated:   ${gated}`);
 
 function runJson(commandArgs) {
-  const result = spawnSync('kdna', commandArgs, { encoding: 'utf8' });
+  const result = spawnSync('npx', ['--no', 'kdna', ...commandArgs], { encoding: 'utf8' });
   if (result.status !== 0) return { ok: false, result };
   try {
     return { ok: true, value: JSON.parse(result.stdout), result };
