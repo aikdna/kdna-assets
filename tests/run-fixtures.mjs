@@ -20,6 +20,7 @@ const cliToolchain = `@aikdna/kdna-cli@${JSON.parse(readFileSync(join(repo, 'pac
 const results = [];
 
 try {
+  testLocalCliAuthority();
   testIndexes();
   testDigests();
   testCurrentAssets();
@@ -32,6 +33,17 @@ try {
 
 console.log(`Fixture suite: PASS (${results.length} positive/negative assertions)`);
 for (const result of results) console.log(`  ✓ ${result}`);
+
+function testLocalCliAuthority() {
+  const source = readFileSync(join(repo, 'scripts/check-current-assets.mjs'), 'utf8');
+  if (/spawnSync\(['"]npx['"]/u.test(source)) {
+    throw new Error('current asset checks must not delegate CLI authority to npx');
+  }
+  if (!source.includes('spawnSync(process.execPath, [cliEntry')) {
+    throw new Error('current asset checks must execute the exact installed CLI with current Node');
+  }
+  results.push('current asset CLI authority');
+}
 
 function testIndexes() {
   const common = ['--current-schema', join(repo, 'schemas/current-index.schema.json')];

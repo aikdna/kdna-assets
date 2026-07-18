@@ -8,6 +8,9 @@
   toolchain that produced their evidence.
 - Added a validation gate that requires every current index toolchain claim to
   match the repository's exact CLI dependency.
+- Bound current-asset validation directly to the exact installed CLI package
+  and current Node executable instead of delegating executable selection to
+  `npx`.
 
 ## 0.1.1 (2026-07-18)
 
