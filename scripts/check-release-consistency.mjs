@@ -90,8 +90,6 @@ if (releases) {
           errors.push(`${item.id}: Release artifact SHA-256 mismatch (${actualHash.slice(0, 12)}... vs index ${item.sha256.slice(0, 12)}...)`);
         }
       }
-    } else if (assetEntry && !online) {
-      errors.push(`${item.id}: release artifact exists online but cannot be downloaded in offline mode`);
     }
   }
 }

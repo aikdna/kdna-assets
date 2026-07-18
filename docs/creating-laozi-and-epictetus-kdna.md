@@ -3,8 +3,8 @@
 这次工作的产物不是两篇哲学摘要，也不是把名言塞进 Prompt。产物是两个可独立
 验证、规划加载并生成 Runtime Capsule 的 `.kdna` 判断资产：
 
-- `@aikdna/laozi-wuwei@0.1.0`
-- `@aikdna/epictetus-control-and-character@0.1.0`
+- `@aikdna/laozi-wuwei@0.1.1`
+- `@aikdna/epictetus-control-and-character@0.1.1`
 
 创建者是一个 OpenAI Codex agent。执行环境没有为用户要求的模型身份提供可验证
 证据，因此公开元数据和 provenance 不作任何模型专名署名。创建者也不是老子或
@@ -69,30 +69,35 @@ misunderstandings、patterns、scenarios、reasoning chains、cases、self-check
 
 ## 用公开工具链编译成当前 `.kdna`
 
-最终发布使用的公开工具版本是：KDNA Studio CLI 0.9.0、KDNA Studio Core 1.8.0、
-KDNA Core 0.16.0、KDNA CLI 0.31.0。依赖与命令版本都通过 npm registry 和本机
-干净环境再次确认。
+0.1.0 的原始创作使用 KDNA Studio CLI 0.9.0、Studio Core 1.8.0、Core 0.16.0
+和 CLI 0.31.0。当前 0.1.1 发行版则从保留的 0.1.0 文件出发，使用已发布的
+Studio CLI 0.10.2、Studio Core 2.0.2、Core 0.20.0 和 Runtime CLI 0.34.0
+重建；精确 npm 完整性、Git 提交和制品摘要记录在
+[`rebuild-receipt-2026-07-18.json`](../evidence/rebuild-receipt-2026-07-18.json)。
 
-每个资产都经过以下路径：
+原始创作路径是：
 
 1. `kdna-studio create` 创建独立 Studio 项目；
 2. `kdna-studio target declare` 声明任务范围、包含项、排除项和加载条件；
 3. `kdna-studio import` 导入 source ledger；
 4. `kdna-studio card add` 创建判断卡；
-5. 以 AI reviewer 身份记录卡片复核，并明确 `human_review=false`；
+5. 记录 AI 作者复核，并明确 `human_review=false`；
 6. Studio Core `compileDomain` 生成结构化编译结果；
 7. Studio Core `exportRuntimeAsset` 生成 CBOR runtime payload；
 8. KDNA Core `pack` 生成当前 `.kdna` 文件。
 
-没有手工制作 ZIP，也没有手工伪造 `payload.kdnab`。公开文章记录来源与创作过程；
-Agent 消费仍只能走 `plan-load` 和工具链产生的 Runtime Capsule。
+0.1.1 又在两个独立临时项目中分别导入旧 profile、编译和导出。Laozi 与
+Epictetus 分别完整导入 90 与 92 张 Studio 卡片；机器可读比较覆盖所有判断字段、
+来源引用、关系、推理和源作者 evolution 内容。两轮构建逐字节一致。由于没有人类
+审阅，发行 payload 不写入 `human_lock`。没有手工制作 ZIP，也没有手工伪造
+`payload.kdnab`。Agent 消费仍只能走 `plan-load` 和工具链产生的 Runtime Capsule。
 
 ## LoadPlan 和 Runtime Capsule
 
 结构验证通过后，CLI 先为每个文件生成 LoadPlan。两个资产都是 `access=public`，
 最终计划状态均为 `ready`、`can_load_now=true`、`required_action=load`，投影策略为
 `minimal`。随后使用 `--profile=compact --as=json` 生成
-`kdna.context.capsule@1.0`，再用 `capsule-verify` 绑定原资产验证。
+`kdna.runtime-capsule`（contract 0.1.0），再用 `capsule-verify` 绑定原资产验证。
 
 验证还包括 `inspect`，以及在空 HOME 中从单个 `.kdna` 文件安装后按包名重新
 `plan-load` 和 `load`。两个资产都是未签名文件，Capsule 的 `signature.state` 因此
@@ -115,6 +120,10 @@ Agent 消费仍只能走 `plan-load` 和工具链产生的 Runtime Capsule。
 - 首轮工具链暴露了 `reasoning.self_check` 与 compact 投影字段不一致的问题。发布
   前先修复 Core 并发布最终工具链，再从 Studio 源项目完整重建；最终两份资产的 8 条
   self-check 在 full payload 和 compact Runtime Capsule 中全部存在；
+- 2026-07-17 的首批 0.1.1 候选又暴露出更严重的迁移缺陷：每份资产丢失 5 类
+  legacy pattern，并丢失来源引用；当时的收据还比较了不存在的 `payload.core.cards`
+  路径，形成了空比较。该收据已明确标记为 rejected，候选未发布。Studio Core
+  2.0.2 与 Studio CLI 0.10.2 修复后，当前候选通过完整跨 profile 语义比较；
 - 客户端测试首轮没有关闭 stdin，导致部分进程在任何 KDNA 调用前等待；修正 runner
   后重跑，失败记录仍保留；
 - OpenCode 有一次并发数据库锁失败，隔离重跑成功；Codex 的初始模型请求在加载前
@@ -122,16 +131,20 @@ Agent 消费仍只能走 `plan-load` 和工具链产生的 Runtime Capsule。
 
 ## 行为验证没有证明“有效”
 
-最终发布文件分别以 SHA-256
+保留的 0.1.0 来源文件分别以 SHA-256
 `ea0de0950b0217fb9421aa65c2d3d775fb5857efe18a93e82df52cda1815f924`
 和 `04da31b0e7deb66eded8d55d369692504c013196ee644a75fc9460b9c0d1a800`
-冻结。Codex、Claude Code、OpenCode 各自对两个精确文件实际完成了 LoadPlan 和
-compact Capsule 加载，共 6 个最终 digest 绑定的客户端用例，全部使用 KDNA CLI
-0.31.0 并成功退出。
+冻结。当前 0.1.1 发行文件的 SHA-256 为
+`4a90b91fe955ec3a563a7c2b598568f0eedbd04d3393211692490dfde2e09ffc`
+和 `d8513486bc033523359b8a582ca5d879d5ec01c926601d2fde34813a793c5ccf`。
+Codex、Claude Code、OpenCode 曾分别对两个 0.1.0 来源文件完成 LoadPlan 和 compact
+Capsule 加载，共 6 个 digest 绑定的客户端用例，使用 KDNA CLI 0.31.0 并成功退出；
+这些历史运行不是当前 0.1.1 制品的客户端接受证据。
 
 更早的探索性 fixtures 覆盖正向适用、非适用、误用、对抗、wrong-KDNA、
 no-KDNA 和 holdout；任务与 rubric 分离，holdout 只运行一次。但这些对照与
-holdout 记录早于最终 artifact digest，不能被当成 0.1.0 最终文件的行为验证。
+holdout 记录早于当时的 artifact digest，不能被当成 0.1.0 或当前 0.1.1 文件的
+行为验证。
 
 但对照结果不支持“正确 KDNA 带来稳定提升”：在两个 anchor 上，correct-KDNA、
 wrong-KDNA 和 no-KDNA 都能产生合格回答；部分 no-KDNA 回答甚至更具体。另有

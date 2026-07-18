@@ -1,6 +1,10 @@
 {
   "schema": "kdna.assets.rebuild-receipt",
   "schema_version": "0.1.0",
+  "status": "rejected",
+  "superseded_at": "2026-07-18T06:56:00.000Z",
+  "superseded_by": "evidence/rebuild-receipt-2026-07-18.json",
+  "rejection_reason": "The 2026-07-17 candidates silently dropped five legacy pattern families per asset and source references; their card comparison inspected a nonexistent payload.core.cards path and was therefore not valid evidence.",
   "rebuilt_at": "2026-07-17T18:00:00.000Z",
   "toolchain": {
     "studio_cli": "0.10.1",

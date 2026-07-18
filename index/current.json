@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "kind": "kdna-current-index",
-  "updated": "2026-07-17T18:00:00.000Z",
+  "updated": "2026-07-18T06:56:00.000Z",
   "repository": "https://github.com/aikdna/kdna-assets",
   "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
   "assets": [
@@ -25,7 +25,7 @@
       "version": "0.1.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "dc9e1fbcc763fa35bc7b99181ed2b50039c1e45c4893bd465069b0a7b40e6281"
+        "value": "4a90b91fe955ec3a563a7c2b598568f0eedbd04d3393211692490dfde2e09ffc"
       },
       "artifact": {
         "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.1.kdna",
@@ -40,7 +40,7 @@
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-17T17:00:00Z",
+        "verified_at": "2026-07-18T06:56:00Z",
         "toolchain": "@aikdna/kdna-cli@0.34.0"
       },
       "evidence_claims": []
@@ -65,7 +65,7 @@
       "version": "0.1.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "7bd93d0921c08e6f894b287e4d96b33b11cf9e7c7015d8cf516c66a0645625d7"
+        "value": "d8513486bc033523359b8a582ca5d879d5ec01c926601d2fde34813a793c5ccf"
       },
       "artifact": {
         "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.1.kdna",
@@ -80,7 +80,7 @@
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-17T17:00:00Z",
+        "verified_at": "2026-07-18T06:56:00Z",
         "toolchain": "@aikdna/kdna-cli@0.34.0"
       },
       "evidence_claims": []

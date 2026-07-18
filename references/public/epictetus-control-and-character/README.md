@@ -1,6 +1,6 @@
 # Epictetus-Inspired Control and Character Judgment
 
-`@aikdna/epictetus-control-and-character@0.1.0` is a public, experimental
+`@aikdna/epictetus-control-and-character@0.1.1` is a public, experimental
 judgment asset. It is an AI-authored modern interpretation inspired by
 Epictetus, not an authoritative or complete account of Epictetus or Stoicism.
 
@@ -25,7 +25,7 @@ care, or forbid collective and legal action.
 
 ## Contents and access
 
-- 6 axioms, 5 patterns, 8 scenarios, 8 cases, 6 reasoning chains
+- 6 axioms, 26 patterns, 8 scenarios, 8 cases, 6 reasoning chains
 - 9 ontology distinctions, 5 boundaries, 6 risks, 6 misunderstandings
 - 8 self-check cards and 3 evolution stages
 - access: `public`
@@ -39,23 +39,26 @@ endorsement, field evidence, or protocol endorsement is claimed. The public
 sources, modern transformations, authoring path, failures, and corrections are
 described in [the creation article](../../../docs/creating-laozi-and-epictetus-kdna.md).
 
-The asset passes current-format Runtime validation, LoadPlan, compact Capsule,
-Capsule verification, inspection, and clean-room install/load. All 8 authored
-self-checks appear in both the full payload and compact Runtime Capsule under
-the final release toolchain. Exploratory behavior runs predate the final
-artifact digest and did not prove a benefit over wrong-KDNA or no-KDNA
-controls.
+Version 0.1.1 was rebuilt from the retained 0.1.0 source with the published
+Studio CLI 0.10.2 and Studio Core 2.0.2. A machine-readable cross-profile
+comparison confirms that the authored judgment semantics are identical; two
+independent rebuilds produced the same bytes. The asset passes current-format
+Runtime validation, LoadPlan, compact Capsule, Capsule verification,
+inspection, and clean-room install/load. All 8 authored self-checks appear in
+both the full payload and compact Runtime Capsule. Exploratory behavior runs
+predate the final artifact digest and did not prove a benefit over wrong-KDNA
+or no-KDNA controls.
 
 ## Load through the official toolchain
 
 ```bash
-npm install -g @aikdna/kdna-cli@0.31.0
-curl -LO https://github.com/aikdna/kdna-assets/releases/download/sage-reference-assets-v0.1.0/epictetus-control-and-character-0.1.0.kdna
-curl -LO https://github.com/aikdna/kdna-assets/releases/download/sage-reference-assets-v0.1.0/epictetus-control-and-character-0.1.0.kdna.sha256
-shasum -a 256 -c epictetus-control-and-character-0.1.0.kdna.sha256
-kdna validate epictetus-control-and-character-0.1.0.kdna
-kdna plan-load epictetus-control-and-character-0.1.0.kdna --json
-kdna load epictetus-control-and-character-0.1.0.kdna --profile=compact --as=json
+npm install -g @aikdna/kdna-cli@0.34.0
+curl -LO https://github.com/aikdna/kdna-assets/releases/download/0.1.1/epictetus-control-and-character-0.1.1.kdna
+curl -LO https://github.com/aikdna/kdna-assets/releases/download/0.1.1/epictetus-control-and-character-0.1.1.kdna.sha256
+shasum -a 256 -c epictetus-control-and-character-0.1.1.kdna.sha256
+kdna validate epictetus-control-and-character-0.1.1.kdna
+kdna plan-load epictetus-control-and-character-0.1.1.kdna --json
+kdna load epictetus-control-and-character-0.1.1.kdna --profile=compact --as=json
 ```
 
 Agents consume the returned Runtime Capsule. They must not unzip or directly

@@ -140,14 +140,14 @@ function testReleases() {
   const entry = assetEntry('references/public/current-demo/current-demo-1.0.0.kdna', digest);
   writeJson(currentPath, currentIndex({ assets: [entry] }));
   writeJson(releasePositive, [{
-    tag_name: 'current-demo-v1.0.0',
+    tag_name: 'current-demo-1.0.0',
     assets: [
       { name: 'current-demo-1.0.0.kdna' },
       { name: 'current-demo-1.0.0.kdna.sha256', content: `${digest}  current-demo-1.0.0.kdna\n` },
     ],
   }]);
   writeJson(releaseNegative, [{
-    tag_name: 'current-demo-v1.0.0',
+    tag_name: 'current-demo-1.0.0',
     assets: [{ name: 'current-demo-1.0.0.kdna' }],
   }]);
   expectPass('release positive', 'scripts/check-release-consistency.mjs', [
@@ -201,8 +201,8 @@ function assetEntry(path, digest) {
     digest: { algorithm: 'sha256', value: digest },
     artifact: { path, media_type: 'application/vnd.kdna.asset' },
     download: {
-      url: `https://github.com/aikdna/kdna-assets/releases/download/current-demo-v1.0.0/${file}`,
-      checksum_url: `https://github.com/aikdna/kdna-assets/releases/download/current-demo-v1.0.0/${file}.sha256`,
+      url: `https://github.com/aikdna/kdna-assets/releases/download/current-demo-1.0.0/${file}`,
+      checksum_url: `https://github.com/aikdna/kdna-assets/releases/download/current-demo-1.0.0/${file}.sha256`,
     },
     technical_status: {
       format: 'valid',
@@ -237,8 +237,8 @@ function clusterEntry(path, digest, id) {
       format: 'kdna-cluster',
     },
     download: {
-      url: `https://github.com/aikdna/kdna-assets/releases/download/reference-cluster-v1.0.0/${file}`,
-      checksum_url: `https://github.com/aikdna/kdna-assets/releases/download/reference-cluster-v1.0.0/${file}.sha256`,
+      url: `https://github.com/aikdna/kdna-assets/releases/download/reference-cluster-1.0.0/${file}`,
+      checksum_url: `https://github.com/aikdna/kdna-assets/releases/download/reference-cluster-1.0.0/${file}.sha256`,
     },
     technical_status: {
       manifest: 'valid',

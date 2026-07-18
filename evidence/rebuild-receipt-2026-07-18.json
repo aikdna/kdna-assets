@@ -1,0 +1,155 @@
+{
+  "schema": "kdna.assets.rebuild-receipt",
+  "schema_version": "0.1.0",
+  "status": "accepted",
+  "rebuilt_at": "2026-07-18T06:56:00.000Z",
+  "supersedes": "evidence/rebuild-receipt-2026-07-17.json",
+  "toolchain": {
+    "studio_cli": {
+      "version": "0.10.2",
+      "git_commit": "abd1624741a5dfa0b1a604e44d57209ce3caf18b",
+      "npm_integrity": "sha512-7XzdFNmSQby1FO6e/81lI+Pfh+IIC7SWQvTvwJq6DUGWqYy/LuCl4+wU0iNx1DcrIwcUGn9xD+wFYn0A1Rnusg=="
+    },
+    "studio_core": {
+      "version": "2.0.2",
+      "git_commit": "cc3ebabf119af751d6f50e2445ad4363aae88f37",
+      "npm_integrity": "sha512-5dJsSQ7z75IBlB8ddAcF3vHGivpL+QRIwa5hy7fuqos2LMVAW2U0UQbhjgGBQprWNEkquPvWSiXf4If0Ei4xZg=="
+    },
+    "core": {
+      "version": "0.20.0",
+      "git_commit": "1e77e3e0d486c330fe9f9262b514ef24c859d469",
+      "npm_integrity": "sha512-zdx5NuC4mOuN3625Dsn8Bq01/V9+MQy+kT870XXX2JHOjKJhXnBwO3BU8jke2vBrxfnzH7Jm9MmeqTM0UCBc0Q=="
+    },
+    "runtime_cli": "@aikdna/kdna-cli@0.34.0"
+  },
+  "method": {
+    "steps": [
+      "Install the exact published Studio CLI 0.10.2 package from npm.",
+      "Import each retained legacy 0.1.0 asset into two independent Studio projects.",
+      "Export both projects without claiming a Human Lock; the public assets disclose AI author review only.",
+      "Restore public identity and authored manifest fields, set distribution version 0.1.1, normalize explicit rebuild facts, rebuild checksums, and pack with Core 0.20.0.",
+      "Require byte-identical dual builds and a machine-readable cross-profile semantic comparison before acceptance."
+    ],
+    "rebuild_script": "scripts/rebuild/rebuild-asset.cjs",
+    "semantic_comparator": "scripts/semantic-compare.cjs",
+    "semantic_boundary": "Distribution version and authoring lifecycle fields are build metadata. Judgment version, public identity, every authored payload field, source reference, relation, reasoning field, and source-authored evolution entry are compared."
+  },
+  "review_boundary": {
+    "agent_reviewed": true,
+    "human_reviewed": false,
+    "expert_endorsed": false,
+    "human_locks_emitted": 0,
+    "statement": "AI author review only; no human review or expert endorsement occurred."
+  },
+  "cleanroom_acceptance": {
+    "runtime_cli": "@aikdna/kdna-cli@0.34.0",
+    "installation": "Exact package installed from npm into an empty temporary prefix.",
+    "checksum_sidecars": "passed for both artifacts",
+    "validate": "passed for both artifacts",
+    "plan_load": "ready for both artifacts",
+    "compact_capsule": "kdna.runtime-capsule contract 0.1.0 for both artifacts",
+    "capsule_verify": "passed for both artifacts"
+  },
+  "assets": [
+    {
+      "id": "@aikdna/laozi-wuwei",
+      "source": {
+        "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.0.kdna",
+        "sha256": "ea0de0950b0217fb9421aa65c2d3d775fb5857efe18a93e82df52cda1815f924",
+        "version": "0.1.0",
+        "profile": "judgment-profile-v1",
+        "studio_imported_cards": 90
+      },
+      "rebuilt": {
+        "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.1.kdna",
+        "sha256": "4a90b91fe955ec3a563a7c2b598568f0eedbd04d3393211692490dfde2e09ffc",
+        "version": "0.1.1",
+        "judgment_version": "0.1.0",
+        "profile": "kdna.payload.judgment",
+        "profile_version": "0.1.0"
+      },
+      "dual_build": {
+        "reproducible": true,
+        "build_a_sha256": "4a90b91fe955ec3a563a7c2b598568f0eedbd04d3393211692490dfde2e09ffc",
+        "build_b_sha256": "4a90b91fe955ec3a563a7c2b598568f0eedbd04d3393211692490dfde2e09ffc"
+      },
+      "semantic_preservation": {
+        "equal": true,
+        "projection_sha256": "2779dbd802fee187f3c399705411d5e403f7b67b85ace87f6e55a1bbf6953736",
+        "projection_bytes": 42266,
+        "first_difference": null
+      },
+      "payload_counts": {
+        "axioms": 6,
+        "ontology": 8,
+        "frameworks": 3,
+        "boundaries": 5,
+        "stances": 4,
+        "risks": 6,
+        "patterns": 25,
+        "scenarios": 8,
+        "cases": 8,
+        "self_checks": 8,
+        "failure_modes": 6,
+        "reasoning_chains": 6,
+        "evolution_stages": 3
+      },
+      "runtime_verification": {
+        "validate": true,
+        "plan_load": "ready",
+        "can_load_now": true,
+        "capsule_type": "kdna.runtime-capsule"
+      }
+    },
+    {
+      "id": "@aikdna/epictetus-control-and-character",
+      "source": {
+        "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.0.kdna",
+        "sha256": "04da31b0e7deb66eded8d55d369692504c013196ee644a75fc9460b9c0d1a800",
+        "version": "0.1.0",
+        "profile": "judgment-profile-v1",
+        "studio_imported_cards": 92
+      },
+      "rebuilt": {
+        "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.1.kdna",
+        "sha256": "d8513486bc033523359b8a582ca5d879d5ec01c926601d2fde34813a793c5ccf",
+        "version": "0.1.1",
+        "judgment_version": "0.1.0",
+        "profile": "kdna.payload.judgment",
+        "profile_version": "0.1.0"
+      },
+      "dual_build": {
+        "reproducible": true,
+        "build_a_sha256": "d8513486bc033523359b8a582ca5d879d5ec01c926601d2fde34813a793c5ccf",
+        "build_b_sha256": "d8513486bc033523359b8a582ca5d879d5ec01c926601d2fde34813a793c5ccf"
+      },
+      "semantic_preservation": {
+        "equal": true,
+        "projection_sha256": "bb2a65bf090dd1974959d8aebb7c56c8247eb3b14617f5cc7d8e302cafd99014",
+        "projection_bytes": 44771,
+        "first_difference": null
+      },
+      "payload_counts": {
+        "axioms": 6,
+        "ontology": 9,
+        "frameworks": 3,
+        "boundaries": 5,
+        "stances": 4,
+        "risks": 6,
+        "patterns": 26,
+        "scenarios": 8,
+        "cases": 8,
+        "self_checks": 8,
+        "failure_modes": 6,
+        "reasoning_chains": 6,
+        "evolution_stages": 3
+      },
+      "runtime_verification": {
+        "validate": true,
+        "plan_load": "ready",
+        "can_load_now": true,
+        "capsule_type": "kdna.runtime-capsule"
+      }
+    }
+  ]
+}

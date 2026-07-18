@@ -21,6 +21,11 @@ toolchain. They demonstrate how an author can express a coherent judgment
 system as a portable KDNA asset. They are not official truth, content
 standards, or judgments that other authors must follow.
 
+The current 0.1.1 artifacts were rebuilt through the published Core 0.20.0,
+Studio Core 2.0.2, and Studio CLI 0.10.2 chain. Their accepted cross-profile
+semantic, reproducibility, review-boundary, and clean-room evidence is recorded
+in [`evidence/rebuild-receipt-2026-07-18.json`](evidence/rebuild-receipt-2026-07-18.json).
+
 There is no current Cluster. Cluster remains a supported, explicit advanced
 path, but future Cluster examples will be designed and evaluated from a new
 problem definition instead of inheriting earlier experiments.
@@ -105,6 +110,7 @@ license; the repository-level license never overrides an entry's license.
 - [`@aikdna/kdna-studio-cli`](https://www.npmjs.com/package/@aikdna/kdna-studio-cli)
 - [Contribution and display policy](CONTRIBUTING.md)
 - [How the two reference assets were created](docs/creating-laozi-and-epictetus-kdna.md)
+- [Accepted 0.1.1 rebuild receipt](evidence/rebuild-receipt-2026-07-18.json)
 
 Branch protection is enforced on `main`; changes land through reviewed pull
 requests. Tests never publish, replace, or delete GitHub Releases.

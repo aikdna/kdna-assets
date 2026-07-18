@@ -9,11 +9,14 @@
     "check:assets": "node scripts/check-current-assets.mjs",
     "check:clusters": "node scripts/check-clusters.mjs",
     "check:licenses": "node scripts/check-licenses.mjs",
+    "check:semantic-tests": "node --test tests/semantic-compare.test.cjs",
     "check:releases": "node scripts/check-release-consistency.mjs --online",
-    "test": "node tests/run-fixtures.mjs",
-    "audit": "npm run validate:indexes && npm run check:digests && npm run check:assets && npm run check:clusters && npm run check:licenses && node scripts/check-public-surface.mjs && python3 scripts/audit-public-metadata.py"
+    "test": "node tests/run-fixtures.mjs && npm run check:semantic-tests",
+    "audit": "npm run validate:indexes && npm run check:digests && npm run check:assets && npm run check:clusters && npm run check:licenses && npm run check:semantic-tests && node scripts/check-public-surface.mjs && python3 scripts/audit-public-metadata.py"
   },
   "devDependencies": {
-    "@aikdna/kdna-cli": "0.34.0"
+    "@aikdna/kdna-cli": "0.34.0",
+    "@aikdna/kdna-core": "0.20.0",
+    "cbor-x": "1.6.4"
   }
 }

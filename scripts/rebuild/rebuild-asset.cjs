@@ -6,14 +6,44 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const { spawnSync } = require('node:child_process');
 const cbor = require('cbor-x');
+const { compareSemanticAssets } = require('../semantic-compare.cjs');
 
 const USAGE = 'Usage: node scripts/rebuild/rebuild-asset.cjs <raw-export-a.kdna> <raw-export-b.kdna> <original-0.1.0.kdna> <out-prefix>';
 const args = process.argv.slice(2);
 if (args.length !== 4) { console.error(USAGE); process.exit(1); }
 const [rawA, rawB, original, outPrefix] = args;
+const rebuildTimestamp = process.env.KDNA_REBUILD_TIMESTAMP;
+const rebuildTool = process.env.KDNA_REBUILD_TOOL;
+const rebuildVersion = process.env.KDNA_REBUILD_VERSION;
 
 function assert(cond, msg) { if (!cond) throw new Error(msg); }
 function sha(path) { return crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex'); }
+
+function normalizeReviewTimestamps(value) {
+  if (Array.isArray(value)) {
+    for (const item of value) normalizeReviewTimestamps(item);
+    return;
+  }
+  if (!value || typeof value !== 'object') return;
+  if (value.human_lock && typeof value.human_lock === 'object') {
+    value.human_lock.at = rebuildTimestamp;
+  }
+  for (const child of Object.values(value)) normalizeReviewTimestamps(child);
+}
+
+assert(
+  typeof rebuildTimestamp === 'string' &&
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(rebuildTimestamp),
+  'KDNA_REBUILD_TIMESTAMP must be an explicit UTC ISO date-time',
+);
+assert(
+  /^@aikdna\/kdna-studio-cli@[0-9]+\.[0-9]+\.[0-9]+$/.test(rebuildTool || ''),
+  'KDNA_REBUILD_TOOL must identify the exact Studio CLI coordinate',
+);
+assert(
+  /^[0-9]+\.[0-9]+\.[0-9]+$/.test(rebuildVersion || ''),
+  'KDNA_REBUILD_VERSION must identify the exact distribution version',
+);
 
 function rebuild(rawExport, origKdna, outPath) {
   const dir = '/tmp/kdna-rebuild-' + crypto.randomBytes(6).toString('hex');
@@ -28,30 +58,53 @@ function rebuild(rawExport, origKdna, outPath) {
     runNode(`const core=require('@aikdna/kdna-core');core.unpack('${rawExport}','${dir}');`);
     const m = JSON.parse(fs.readFileSync(path.join(dir, 'kdna.json'), 'utf8'));
 
-    // Restore identity from original
-    m.asset_id = o.asset_id;
-    m.lineage = o.lineage;
+    // Restore public identity and authored manifest semantics from the source.
+    // Runtime coordinates, digests, and authoring evidence remain build-owned.
+    for (const field of [
+      'access', 'asset_id', 'asset_type', 'asset_uid', 'creator', 'judgment_version',
+      'keywords', 'language', 'languages', 'license', 'lineage', 'load_contract',
+      'summary', 'title',
+    ]) {
+      if (o[field] === undefined) delete m[field];
+      else m[field] = JSON.parse(JSON.stringify(o[field]));
+    }
+    m.version = rebuildVersion;
     m.created_at = o.created_at;
-    m.updated_at = '2026-07-17T18:00:00.000Z';
-    m.creator = o.creator;
+    m.updated_at = rebuildTimestamp;
 
-    // Authoring: current toolchain facts, NO source_build_id
+    const rawAuthoring = m.authoring || {};
+    assert(rawAuthoring.compiler === '@aikdna/kdna-studio-core', 'raw export compiler mismatch');
+    assert(/^\d+\.\d+\.\d+$/.test(rawAuthoring.compiler_version || ''), 'raw compiler version missing');
+
+    // Authoring contains only reproducible current toolchain facts and the
+    // source's public review statement. Private source build identifiers are
+    // intentionally excluded from public assets.
     m.authoring = {
-      compiler: '@aikdna/kdna-studio-core',
-      compiler_version: '2.0.1',
+      compiler: rawAuthoring.compiler,
+      compiler_version: rawAuthoring.compiler_version,
       conformance: {
         passed: true,
         format_version: '0.1.0',
         validator: '@aikdna/kdna-studio-core/export-runtime',
-        validator_version: '2.0.1',
-        checked_at: '2026-07-17T18:00:00.000Z',
+        validator_version: rawAuthoring.compiler_version,
+        checked_at: rebuildTimestamp,
       },
       agent_reviewed: o.authoring?.agent_reviewed ?? false,
       reviewer_type: o.authoring?.reviewer_type ?? null,
       review_statement: o.authoring?.review_statement ?? null,
-      rebuilt_by: '@aikdna/kdna-studio-cli@0.10.1',
-      rebuilt_at: '2026-07-17T18:00:00.000Z',
+      rebuilt_by: rebuildTool,
+      rebuilt_at: rebuildTimestamp,
     };
+
+    // Human Lock timestamps describe this rebuild review, not authored
+    // judgment. Normalize them to the explicit receipt timestamp so two
+    // independent approvals produce the same public Runtime bytes.
+    const payloadPath = path.join(dir, 'payload.kdnab');
+    const payload = cbor.decode(fs.readFileSync(payloadPath));
+    normalizeReviewTimestamps(payload);
+    const payloadBytes = cbor.encode(payload);
+    fs.writeFileSync(payloadPath, payloadBytes);
+    m.payload.digest = `sha256:${crypto.createHash('sha256').update(payloadBytes).digest('hex')}`;
 
     fs.writeFileSync(path.join(dir, 'kdna.json'), JSON.stringify(m, null, 2) + '\n');
 
@@ -90,6 +143,7 @@ function verifyIdentity(rebuiltPath, origKdna) {
       ['lineage.type', o.lineage?.type, m.lineage?.type],
       ['created_at', o.created_at, m.created_at],
       ['judgment_version', o.judgment_version, m.judgment_version],
+      ['version', rebuildVersion, m.version],
     ];
     for (const [field, src, reb] of checks) {
       const match = JSON.stringify(src) === JSON.stringify(reb);
@@ -99,25 +153,13 @@ function verifyIdentity(rebuiltPath, origKdna) {
 
     // Verify authoring has no source_build_id
     assert(m.authoring && !('source_build_id' in m.authoring), 'source_build_id must be absent');
-    assert(m.authoring?.compiler_version === '2.0.1', 'compiler_version must be 2.0.1');
-
-    // Semantic: card ID comparison
-    const pR = cbor.decode(fs.readFileSync(path.join(dir, 'payload.kdnab')));
-    const pS = cbor.decode(fs.readFileSync(path.join(dirO, 'payload.kdnab')));
-    const rcIDs = (pR.core?.cards || []).map(c => c.id).filter(Boolean).sort();
-    const scIDs = (pS.core?.cards || []).map(c => c.id).filter(Boolean).sort();
-    const cardMatch = rcIDs.join(',') === scIDs.join(',');
-    console.log('Card IDs (%d source, %d rebuilt): %s', scIDs.length, rcIDs.length, cardMatch ? 'MATCH' : 'MISMATCH');
-    assert(cardMatch, 'Card IDs differ');
-
-    const raIDs = (pR.core?.axioms || []).map(a => a.id).filter(Boolean).sort();
-    const saIDs = (pS.core?.axioms || []).map(a => a.id).filter(Boolean).sort();
-    console.log('Axiom IDs (%d each): %s', saIDs.length, raIDs.join(',') === saIDs.join(',') ? 'MATCH' : 'MISMATCH');
-
-    const axMatch = (pS.core?.axioms?.[0]?.one_sentence||'') === (pR.core?.axioms?.[0]?.one_sentence||'');
-    console.log('First axiom one_sentence: %s', axMatch ? 'MATCH' : 'MISMATCH');
-
-    return { cardIdDigest: crypto.createHash('sha256').update(rcIDs.join(',')).digest('hex') };
+    const semantics = compareSemanticAssets(origKdna, rebuiltPath);
+    if (!semantics.equal) {
+      console.error('First semantic difference: %s', JSON.stringify(semantics.difference));
+    }
+    assert(semantics.equal, 'authored judgment semantics differ');
+    console.log('Authored judgment semantics: MATCH');
+    return { semanticProjection: semantics.sourceProjection };
   } finally {
     try { fs.rmSync(dir, { recursive: true, force: true }); } catch {}
     try { fs.rmSync(dirO, { recursive: true, force: true }); } catch {}
@@ -147,6 +189,6 @@ runNode(`
 
 // Move build A to final location, discard B
 fs.renameSync(outPrefix + '-a.kdna', outPrefix + '.kdna');
-fs.writeFileSync(outPrefix + '.sha256', shaA + '  ' + path.basename(outPrefix + '.kdna') + '\n');
+fs.writeFileSync(outPrefix + '.kdna.sha256', shaA + '  ' + path.basename(outPrefix + '.kdna') + '\n');
 try { fs.unlinkSync(outPrefix + '-b.kdna'); } catch {}
 console.log('Done: %s %s', shaA, outPrefix + '.kdna');
