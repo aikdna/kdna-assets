@@ -25,7 +25,7 @@
       "version": "0.1.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "81729601b39d4b35d20043cf3ce5b388bd1724ae0e93c15a6d16eeaa0e4362e1"
+        "value": "dc9e1fbcc763fa35bc7b99181ed2b50039c1e45c4893bd465069b0a7b40e6281"
       },
       "artifact": {
         "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.1.kdna",
@@ -65,7 +65,7 @@
       "version": "0.1.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "fa4765b7737a517234167ee24183e12b570e05e211c4e498eb5a79e7ecf348bd"
+        "value": "7bd93d0921c08e6f894b287e4d96b33b11cf9e7c7015d8cf516c66a0645625d7"
       },
       "artifact": {
         "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.1.kdna",

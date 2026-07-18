@@ -7,8 +7,19 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    if: ${{ !github.event.release.draft && !github.event.release.prerelease }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.release.tag_name }}
+      - name: Assert HEAD matches release tag
+        run: |
+          TAG_REF=$(git rev-parse "refs/tags/${{ github.event.release.tag_name }}" 2>/dev/null || echo '')
+          HEAD_REF=$(git rev-parse HEAD)
+          test "$TAG_REF" = "$HEAD_REF" || {
+            echo "HEAD ($HEAD_REF) does not match tag ${{ github.event.release.tag_name }} ($TAG_REF)"
+            exit 1
+          }
       - name: Install repository dependencies
         run: npm ci
       - name: Run fixture suite
@@ -19,8 +30,3 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/check-release-consistency.mjs --online
-      - name: Verify release artifacts
-        run: |
-          set -euo pipefail
-          echo "Checking release artifacts for tag ${{ github.event.release.tag_name }}"
-          node scripts/check-release-consistency.mjs --online

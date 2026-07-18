@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import { createHash } from 'node:crypto';
+
 import {
   argValue,
   canonicalReleaseUrl,
@@ -73,6 +75,23 @@ if (releases) {
       else if (parseSidecar(await response.text()) !== item.sha256) {
         errors.push(`${item.id}: Release sidecar digest disagrees with index`);
       }
+    }
+
+    // Download the .kdna artifact and verify its SHA-256
+    const assetEntry = assets.get(item.file);
+    if (assetEntry && online) {
+      const downloadResponse = await fetch(assetEntry.browser_download_url, { headers: githubHeaders() });
+      if (!downloadResponse.ok) {
+        errors.push(`${item.id}: Release artifact download returned ${downloadResponse.status}`);
+      } else {
+        const artifactBytes = Buffer.from(await downloadResponse.arrayBuffer());
+        const actualHash = createHash('sha256').update(artifactBytes).digest('hex');
+        if (actualHash !== item.sha256) {
+          errors.push(`${item.id}: Release artifact SHA-256 mismatch (${actualHash.slice(0, 12)}... vs index ${item.sha256.slice(0, 12)}...)`);
+        }
+      }
+    } else if (assetEntry && !online) {
+      errors.push(`${item.id}: release artifact exists online but cannot be downloaded in offline mode`);
     }
   }
 }

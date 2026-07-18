@@ -30,7 +30,7 @@
       },
       "rebuilt": {
         "path": "references/public/laozi-wuwei/laozi-wuwei-0.1.1.kdna",
-        "sha256": "81729601b39d4b35d20043cf3ce5b388bd1724ae0e93c15a6d16eeaa0e4362e1",
+        "sha256": "dc9e1fbcc763fa35bc7b99181ed2b50039c1e45c4893bd465069b0a7b40e6281",
         "version": "0.1.1",
         "judgment_version": "0.1.0",
         "profile": "kdna.payload.judgment",
@@ -38,8 +38,8 @@
       },
       "dual_build": {
         "reproducible": true,
-        "build_a_sha256": "81729601b39d4b35d20043cf3ce5b388bd1724ae0e93c15a6d16eeaa0e4362e1",
-        "build_b_sha256": "81729601b39d4b35d20043cf3ce5b388bd1724ae0e93c15a6d16eeaa0e4362e1"
+        "build_a_sha256": "dc9e1fbcc763fa35bc7b99181ed2b50039c1e45c4893bd465069b0a7b40e6281",
+        "build_b_sha256": "dc9e1fbcc763fa35bc7b99181ed2b50039c1e45c4893bd465069b0a7b40e6281"
       },
       "identity_preservation": {
         "asset_id": "kdna:aikdna:laozi-wuwei",
@@ -67,7 +67,10 @@
           "rebuilt": 85
         },
         "first_axiom_one_sentence_match": true,
-        "profile_note": "Payload format changed from judgment-profile-v1 to kdna.payload.judgment 0.1.0; structural CBOR differs but judgment-core content and cards are preserved."
+        "profile_note": "Payload format changed from judgment-profile-v1 to kdna.payload.judgment 0.1.0; structural CBOR differs but judgment-core content and cards are preserved.",
+        "card_id_digest": "dc9e1fbcc763fa35\u2026 (see rebuild script output for full canonical)",
+        "rebuild_script": "scripts/rebuild/rebuild-asset.cjs",
+        "card_comparison_note": "Card IDs are compared within the same payload profile. The source (judgment-profile-v1) and rebuilt (kdna.payload.judgment) CBOR structures differ; card-level comparison within the compiled project (studio.project.json) shows 85/85 and 87/87 cards preserved but is not a machine-readable cross-profile CBOR diff."
       }
     },
     {
@@ -89,7 +92,7 @@
       },
       "rebuilt": {
         "path": "references/public/epictetus-control-and-character/epictetus-control-and-character-0.1.1.kdna",
-        "sha256": "fa4765b7737a517234167ee24183e12b570e05e211c4e498eb5a79e7ecf348bd",
+        "sha256": "7bd93d0921c08e6f894b287e4d96b33b11cf9e7c7015d8cf516c66a0645625d7",
         "version": "0.1.1",
         "judgment_version": "0.1.0",
         "profile": "kdna.payload.judgment",
@@ -97,8 +100,8 @@
       },
       "dual_build": {
         "reproducible": true,
-        "build_a_sha256": "fa4765b7737a517234167ee24183e12b570e05e211c4e498eb5a79e7ecf348bd",
-        "build_b_sha256": "fa4765b7737a517234167ee24183e12b570e05e211c4e498eb5a79e7ecf348bd"
+        "build_a_sha256": "7bd93d0921c08e6f894b287e4d96b33b11cf9e7c7015d8cf516c66a0645625d7",
+        "build_b_sha256": "7bd93d0921c08e6f894b287e4d96b33b11cf9e7c7015d8cf516c66a0645625d7"
       },
       "identity_preservation": {
         "asset_id": "kdna:aikdna:epictetus-control-and-character",
@@ -126,7 +129,10 @@
           "rebuilt": 87
         },
         "first_axiom_one_sentence_match": true,
-        "profile_note": "Payload format changed from judgment-profile-v1 to kdna.payload.judgment 0.1.0; structural CBOR differs but judgment-core content and cards are preserved."
+        "profile_note": "Payload format changed from judgment-profile-v1 to kdna.payload.judgment 0.1.0; structural CBOR differs but judgment-core content and cards are preserved.",
+        "card_id_digest": "7bd93d0921c08e6f\u2026 (see rebuild script output for full canonical)",
+        "rebuild_script": "scripts/rebuild/rebuild-asset.cjs",
+        "card_comparison_note": "Card IDs are compared within the same payload profile. The source (judgment-profile-v1) and rebuilt (kdna.payload.judgment) CBOR structures differ; card-level comparison within the compiled project (studio.project.json) shows 85/85 and 87/87 cards preserved but is not a machine-readable cross-profile CBOR diff."
       }
     }
   ]
