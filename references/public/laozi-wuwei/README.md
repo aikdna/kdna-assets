@@ -52,7 +52,7 @@ or no-KDNA controls.
 ## Load through the official toolchain
 
 ```bash
-npm install -g @aikdna/kdna-cli@0.34.0
+npm install -g @aikdna/kdna-cli@0.35.0
 curl -LO https://github.com/aikdna/kdna-assets/releases/download/0.1.1/laozi-wuwei-0.1.1.kdna
 curl -LO https://github.com/aikdna/kdna-assets/releases/download/0.1.1/laozi-wuwei-0.1.1.kdna.sha256
 shasum -a 256 -c laozi-wuwei-0.1.1.kdna.sha256

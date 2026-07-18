@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Advanced the current validation and consumption baseline to the published
+  `@aikdna/kdna-cli@0.35.0` release without changing either reference asset or
+  its checksum. Historical rebuild receipts remain frozen at the exact
+  toolchain that produced their evidence.
+- Added a validation gate that requires every current index toolchain claim to
+  match the repository's exact CLI dependency.
+
 ## 0.1.1 (2026-07-18)
 
 - Rebuilt both public references through the published Studio CLI 0.10.2,

@@ -16,6 +16,7 @@ import { spawnSync } from 'node:child_process';
 const repo = resolve(import.meta.dirname, '..');
 const fixtures = join(repo, 'tests/fixtures');
 const temp = mkdtempSync(join(tmpdir(), 'kdna-assets-fixtures-'));
+const cliToolchain = `@aikdna/kdna-cli@${JSON.parse(readFileSync(join(repo, 'package.json'), 'utf8')).devDependencies['@aikdna/kdna-cli']}`;
 const results = [];
 
 try {
@@ -40,6 +41,18 @@ function testIndexes() {
   ]);
   expectFail('index negative', 'scripts/validate-indexes.mjs', [
     '--current', join(fixtures, 'index/current-invalid.json'),
+    ...common,
+  ]);
+
+  const staleToolchain = join(temp, 'index-stale-toolchain.json');
+  const entry = assetEntry(
+    'references/public/current-demo/current-demo-1.0.0.kdna',
+    'a'.repeat(64),
+  );
+  entry.technical_status.toolchain = '@aikdna/kdna-cli@0.34.0';
+  writeJson(staleToolchain, currentIndex({ assets: [entry] }));
+  expectFail('index stale CLI baseline', 'scripts/validate-indexes.mjs', [
+    '--current', staleToolchain,
     ...common,
   ]);
 }
@@ -210,7 +223,7 @@ function assetEntry(path, digest) {
       load: 'verified',
       capsule: 'verified',
       verified_at: '2026-07-13T12:00:00+08:00',
-      toolchain: '@aikdna/kdna-cli@0.31.0',
+      toolchain: cliToolchain,
     },
   };
 }
@@ -245,7 +258,7 @@ function clusterEntry(path, digest, id) {
       plan_use: 'verified',
       plan_state: 'blocked',
       verified_at: '2026-07-13T12:00:00+08:00',
-      toolchain: '@aikdna/kdna-cli@0.31.0',
+      toolchain: cliToolchain,
     },
   };
 }

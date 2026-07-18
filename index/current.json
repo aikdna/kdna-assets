@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "kind": "kdna-current-index",
-  "updated": "2026-07-18T06:56:00.000Z",
+  "updated": "2026-07-18T13:03:17.000Z",
   "repository": "https://github.com/aikdna/kdna-assets",
   "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
   "assets": [
@@ -40,8 +40,8 @@
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-18T06:56:00Z",
-        "toolchain": "@aikdna/kdna-cli@0.34.0"
+        "verified_at": "2026-07-18T13:03:17Z",
+        "toolchain": "@aikdna/kdna-cli@0.35.0"
       },
       "evidence_claims": []
     },
@@ -80,8 +80,8 @@
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-18T06:56:00Z",
-        "toolchain": "@aikdna/kdna-cli@0.34.0"
+        "verified_at": "2026-07-18T13:03:17Z",
+        "toolchain": "@aikdna/kdna-cli@0.35.0"
       },
       "evidence_claims": []
     }

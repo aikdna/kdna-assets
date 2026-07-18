@@ -74,6 +74,8 @@ misunderstandings、patterns、scenarios、reasoning chains、cases、self-check
 Studio CLI 0.10.2、Studio Core 2.0.2、Core 0.20.0 和 Runtime CLI 0.34.0
 重建；精确 npm 完整性、Git 提交和制品摘要记录在
 [`rebuild-receipt-2026-07-18.json`](../evidence/rebuild-receipt-2026-07-18.json)。
+该版本号是不可改写的历史重建坐标；后续 Runtime 验证基线见当前索引和各资产的
+加载说明，不会反向改写这份重建证据。
 
 原始创作路径是：
 
