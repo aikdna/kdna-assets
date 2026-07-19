@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Made online Release verification read the canonical artifact and checksum
+  URLs directly, with bounded retries only for network failures and transient
+  HTTP statuses. Missing files, permanent HTTP failures, and digest mismatches
+  remain fail-closed.
 - Advanced the current validation and consumption baseline to the published
   `@aikdna/kdna-cli@0.35.1` release without changing either reference asset or
   its checksum. Historical rebuild receipts remain frozen at the exact

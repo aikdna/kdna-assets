@@ -3,6 +3,7 @@
 import { createHash } from 'node:crypto';
 import {
   copyFileSync,
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -13,6 +14,8 @@ import { tmpdir } from 'node:os';
 import { basename, dirname, join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
+import { canonicalReleaseUrl } from '../scripts/lib.mjs';
+
 const repo = resolve(import.meta.dirname, '..');
 const fixtures = join(repo, 'tests/fixtures');
 const temp = mkdtempSync(join(tmpdir(), 'kdna-assets-fixtures-'));
@@ -21,6 +24,7 @@ const results = [];
 
 try {
   testLocalCliAuthority();
+  testReleaseDownloadAuthority();
   testIndexes();
   testDigests();
   testCurrentAssets();
@@ -43,6 +47,31 @@ function testLocalCliAuthority() {
     throw new Error('current asset checks must execute the exact installed CLI with current Node');
   }
   results.push('current asset CLI authority');
+}
+
+function testReleaseDownloadAuthority() {
+  const source = readFileSync(join(repo, 'scripts/check-release-consistency.mjs'), 'utf8');
+  if (/api\.github\.com|Authorization|GH_TOKEN|GITHUB_TOKEN/u.test(source)) {
+    throw new Error('release byte checks must use anonymous canonical downloads without REST API credentials');
+  }
+  if (/fetchPayloadWithRetry\(\s*item\.download/u.test(source)) {
+    throw new Error('release byte checks must not fetch an index-provided URL directly');
+  }
+  const canonicalGuard = source.indexOf('// Reject untrusted download coordinates');
+  const onlineDownloads = source.indexOf('if (online)');
+  if (canonicalGuard < 0 || onlineDownloads < 0 || canonicalGuard > onlineDownloads) {
+    throw new Error('canonical release coordinates must fail before online downloads begin');
+  }
+  if (!source.includes('const canonical = canonicalReleaseUrl(item.tag, item.file);')) {
+    throw new Error('online release downloads must reconstruct the canonical URL');
+  }
+  for (const workflow of ['public-metadata.yml', 'release-verification.yml']) {
+    const workflowSource = readFileSync(join(repo, '.github/workflows', workflow), 'utf8');
+    if (/GH_TOKEN|GITHUB_TOKEN|Authorization/u.test(workflowSource)) {
+      throw new Error(`${workflow} must not expose a credential to public Release downloads`);
+    }
+  }
+  results.push('release download authority');
 }
 
 function testIndexes() {
@@ -183,6 +212,79 @@ function testReleases() {
     '--current', currentPath,
     '--release-fixture', releaseNegative,
   ]);
+
+  const preload = join(repo, 'tests/fake-release-fetch.cjs');
+  const canonicalInvalid = join(root, 'canonical-invalid.json');
+  const canonicalEntry = assetEntry(
+    'references/public/current-demo/current-demo-1.0.0.kdna',
+    digest,
+  );
+  canonicalEntry.download.url = 'https://example.invalid/untrusted.kdna';
+  writeJson(canonicalInvalid, currentIndex({ assets: [canonicalEntry] }));
+  const canonicalLog = join(root, 'canonical-invalid-fetch.log');
+  const canonicalResult = runScriptWithEnv(
+    'scripts/check-release-consistency.mjs',
+    ['--current', canonicalInvalid, '--online'],
+    {
+      NODE_OPTIONS: `--require=${preload}`,
+      KDNA_TEST_FETCH_LOG: canonicalLog,
+    },
+  );
+  if (canonicalResult.status === 0) throw new Error('canonical mismatch unexpectedly passed');
+  if (existsSync(canonicalLog) && readFileSync(canonicalLog, 'utf8') !== '') {
+    throw new Error('canonical mismatch performed a network request');
+  }
+  results.push('release canonical mismatch zero network');
+
+  const missingCoordinate = join(root, 'missing-coordinate.json');
+  const missingEntry = assetEntry(
+    'references/public/current-demo/current-demo-1.0.0.kdna',
+    digest,
+  );
+  delete missingEntry.download.checksum_url;
+  writeJson(missingCoordinate, currentIndex({ assets: [missingEntry] }));
+  const missingLog = join(root, 'missing-coordinate-fetch.log');
+  const missingResult = runScriptWithEnv(
+    'scripts/check-release-consistency.mjs',
+    ['--current', missingCoordinate, '--online'],
+    {
+      NODE_OPTIONS: `--require=${preload}`,
+      KDNA_TEST_FETCH_LOG: missingLog,
+    },
+  );
+  if (missingResult.status === 0) throw new Error('missing Release coordinate unexpectedly passed');
+  if (existsSync(missingLog) && readFileSync(missingLog, 'utf8') !== '') {
+    throw new Error('missing Release coordinate performed a network request');
+  }
+  results.push('release missing coordinate zero network');
+
+  const digestMismatch = join(root, 'digest-mismatch.json');
+  writeJson(digestMismatch, currentIndex({
+    assets: [assetEntry('references/public/current-demo/current-demo-1.0.0.kdna', digest)],
+  }));
+  const digestLog = join(root, 'digest-mismatch-fetch.log');
+  const digestResult = runScriptWithEnv(
+    'scripts/check-release-consistency.mjs',
+    ['--current', digestMismatch, '--online'],
+    {
+      NODE_OPTIONS: `--require=${preload}`,
+      KDNA_TEST_FETCH_LOG: digestLog,
+      KDNA_TEST_FETCH_DIGEST: digest,
+    },
+  );
+  if (digestResult.status === 0) throw new Error('release digest mismatch unexpectedly passed');
+  const requests = readFileSync(digestLog, 'utf8').trim().split('\n').map((line) => JSON.parse(line));
+  if (requests.length !== 2) {
+    throw new Error(`release digest mismatch made ${requests.length} requests instead of 2`);
+  }
+  if (requests.some((request) => request.authorization)) {
+    throw new Error('public Release download included an Authorization header');
+  }
+  const canonical = canonicalReleaseUrl('current-demo-1.0.0', 'current-demo-1.0.0.kdna');
+  if (requests[0].url !== `${canonical}.sha256` || requests[1].url !== canonical) {
+    throw new Error('release digest mismatch did not use canonical download URLs');
+  }
+  results.push('release digest mismatch no retry');
 }
 
 function prepareArtifactRoot(root, source) {
@@ -291,6 +393,14 @@ function runScript(script, args) {
   return spawnSync(process.execPath, [join(repo, script), ...args], {
     cwd: repo,
     encoding: 'utf8',
+  });
+}
+
+function runScriptWithEnv(script, args, environment) {
+  return spawnSync(process.execPath, [join(repo, script), ...args], {
+    cwd: repo,
+    encoding: 'utf8',
+    env: { ...process.env, ...environment },
   });
 }
 
