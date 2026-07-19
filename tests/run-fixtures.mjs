@@ -70,6 +70,12 @@ function testReleaseDownloadAuthority() {
     if (/GH_TOKEN|GITHUB_TOKEN|Authorization/u.test(workflowSource)) {
       throw new Error(`${workflow} must not expose a credential to public Release downloads`);
     }
+    if (
+      workflow === 'public-metadata.yml' &&
+      !workflowSource.includes('python3 scripts/audit-public-metadata.py --online-releases')
+    ) {
+      throw new Error('public metadata CI must execute the online canonical Release audit');
+    }
   }
   results.push('release download authority');
 }
