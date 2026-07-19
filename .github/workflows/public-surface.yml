@@ -1,20 +1,7 @@
 name: public-surface
 
 on:
-  pull_request:
-    paths:
-      - 'archive/**'
-      - 'references/**'
-      - 'clusters/**'
-      - 'schemas/**'
-      - 'index/**'
-      - 'CHANGELOG.md'
-      - 'README.md'
-      - 'CONTRIBUTING.md'
-      - 'LICENSE-POLICY.md'
-      - 'ENTRY-CONTRACT.md'
-      - 'README.zh.md'
-      - 'ecosystem-manifest.json'
+  pull_request: {}
   push:
     branches: [main]
 
