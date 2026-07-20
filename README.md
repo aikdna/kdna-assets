@@ -1,9 +1,3 @@
-> **Development snapshot — release reset in progress**
->
-> This repository is not currently a stable, beta, or production-ready
-> release. Published packages and documentation may describe an earlier
-> development snapshot. A new Development Preview has not been released.
-
 # KDNA Assets
 
 AIKDNA's public reference display for KDNA assets.
