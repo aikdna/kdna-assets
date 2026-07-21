@@ -26,9 +26,9 @@ Studio Core 2.0.2, and Studio CLI 0.10.2 chain. Their accepted cross-profile
 semantic, reproducibility, review-boundary, and clean-room evidence is recorded
 in [`evidence/rebuild-receipt-2026-07-18.json`](evidence/rebuild-receipt-2026-07-18.json).
 
-There is no current Cluster. Cluster remains a supported, explicit advanced
-path, but future Cluster examples will be designed and evaluated from a new
-problem definition instead of inheriting earlier experiments.
+There is no current Cluster. Any future Cluster example requires its own
+explicit problem, user need, contract, and acceptance; it does not inherit
+authority from old prototypes.
 
 ## Repository model
 
@@ -59,7 +59,7 @@ The protocol and this display keep these dimensions separate:
 1. structural and runtime validity;
 2. provenance;
 3. authorization and license;
-4. optional behavior or field evidence;
+4. optional adoption, external assessment, or field evidence;
 5. display status in this repository.
 
 Passing or failing one dimension does not silently decide another.
@@ -94,9 +94,9 @@ kdna cluster validate <kdna.cluster.json>
 kdna cluster plan-use <kdna.cluster.json> --task="..." --as=json
 ```
 
-A valid Cluster plan proves a technical contract, not marginal behavior value.
-Any behavior claim must compare the Cluster with the correct single asset and
-report routing, answer quality, pollution, and cost separately.
+A valid Cluster plan proves only its technical contract. Any adoption,
+external-assessment, or outcome claim belongs to its named claimant and method;
+it is not a repository admission or protocol-validity requirement.
 
 ## License
 

@@ -9,7 +9,7 @@ Anyone may create, package, license, distribute, or publish KDNA without:
 
 - joining this repository;
 - AIKDNA review or approval;
-- behavior evidence or field validation;
+- adoption, external-assessment, or field evidence;
 - an expert credential;
 - an entry in any registry or catalog.
 
@@ -97,8 +97,8 @@ npm run audit
 ```
 
 The checks reject path, digest, license, lifecycle, Runtime Capsule, Cluster
-manifest, and Release inconsistencies. Technical success does not create a
-behavior or field-value claim.
+manifest, and Release inconsistencies. Technical success does not create an
+adoption, external-assessment, or field-outcome claim.
 
 ## Sign-off
 

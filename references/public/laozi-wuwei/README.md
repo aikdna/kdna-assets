@@ -45,9 +45,8 @@ comparison confirms that the authored judgment semantics are identical; two
 independent rebuilds produced the same bytes. The asset passes current-format
 Runtime validation, LoadPlan, compact Capsule, Capsule verification,
 inspection, and clean-room install/load. All 8 authored self-checks appear in
-both the full payload and compact Runtime Capsule. Exploratory behavior runs
-predate the final artifact digest and did not prove a benefit over wrong-KDNA
-or no-KDNA controls.
+both the full payload and compact Runtime Capsule. These are technical
+interoperability facts, not adoption, external-assessment, or outcome claims.
 
 ## Load through the official toolchain
 
