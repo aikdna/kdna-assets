@@ -20,5 +20,5 @@ use single-asset loading commands for it.
 
 The single-asset path remains the foundation and default. A future Cluster must
 give every member a distinct judgment responsibility, preserve exactly one
-owning primary, and demonstrate marginal value over the correct single asset
-before receiving any behavior claim.
+owning primary, and pass a separately admitted Host contract. Technical
+validity does not create an adoption, external-assessment, or outcome claim.
