@@ -3,9 +3,10 @@
 /**
  * scripts/check-public-surface.mjs
  *
- * Scans the public surface of this repository (.github/,
- * references/, clusters/, schemas/, index/, and root entry files) for references that should not
- * be present in a public release:
+ * Scans the public surface of this repository (.github/, references/,
+ * clusters/, fixtures/, schemas/, index/, the exact public evidence allowlist,
+ * and root entry files) for references that should not be present in a public
+ * release:
  *
  *   - Private repo URLs (any aikdna/* repo not on the allowlist)
  *   - Private repo path references (any private aikdna/* subdirectory)
@@ -24,13 +25,21 @@
  *                      mode is for new PRs that should not add new refs)
  */
 
-import { readdirSync, readFileSync, statSync } from 'fs';
+import { lstatSync, readdirSync, readFileSync, statSync } from 'fs';
 import { join, relative, sep } from 'path';
 
 const ROOT = process.cwd();
 const STRICT = process.argv.includes('--strict');
 
-const PUBLIC_DIRS = ['.github', 'references', 'clusters', 'schemas', 'index'];
+const PUBLIC_DIRS = [
+  '.github',
+  'references',
+  'clusters',
+  'fixtures',
+  'schemas',
+  'index',
+  'evidence',
+];
 const PUBLIC_FILES = [
   'README.md',
   'README.zh.md',
@@ -45,6 +54,12 @@ const ALLOWLIST_FILES = new Set([
   'docs/audits/2026-06-16-repo-compliance.md', // explicit compliance scan
   'docs/audits/kdna-public-narrative-audit-2026-06.md', // the audit itself
   'docs/audits/2026-06-16-rfc-0013-audit-note.md', // explicit public audit record
+  'evidence/rebuild-receipt-2026-07-17.json', // accepted public rebuild receipt
+  'evidence/rebuild-receipt-2026-07-18.json', // accepted public rebuild receipt
+]);
+const PUBLIC_EVIDENCE_FILES = new Set([
+  'evidence/rebuild-receipt-2026-07-17.json',
+  'evidence/rebuild-receipt-2026-07-18.json',
 ]);
 
 const PUBLIC_REPO_NAMES = new Set([
@@ -149,6 +164,20 @@ function isRuleExcluded(rel, rule) {
 
 const findings = [];
 const files = [];
+for (const entry of evidenceEntries(join(ROOT, 'evidence'))) {
+  const rel = relative(ROOT, entry.path);
+  if (entry.kind !== 'file' || !PUBLIC_EVIDENCE_FILES.has(rel)) {
+    findings.push({
+      file: rel,
+      line: 1,
+      rule: 'unexpected-public-evidence',
+      match: entry.kind,
+      hint:
+        'Keep private/current runtime receipts outside the public repository; ' +
+        'only the exact accepted public evidence allowlist may remain here.',
+    });
+  }
+}
 for (const d of PUBLIC_DIRS) {
   files.push(...walk(join(ROOT, d)));
 }
@@ -206,3 +235,25 @@ for (const f of findings) {
   console.log('');
 }
 process.exit(1);
+
+function evidenceEntries(dir, out = []) {
+  let entries;
+  try {
+    entries = readdirSync(dir);
+  } catch {
+    return out;
+  }
+  for (const entry of entries) {
+    const full = join(dir, entry);
+    const st = lstatSync(full);
+    if (st.isDirectory()) {
+      out.push({ path: full, kind: 'directory' });
+      evidenceEntries(full, out);
+    } else if (st.isFile()) {
+      out.push({ path: full, kind: 'file' });
+    } else {
+      out.push({ path: full, kind: 'non-regular-entry' });
+    }
+  }
+  return out;
+}

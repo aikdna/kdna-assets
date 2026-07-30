@@ -9,6 +9,7 @@ AIKDNA's public reference display for KDNA assets.
 | Public reference assets | `references/public/` | 2 |
 | Licensed reference assets | `references/licensed/` | 0 |
 | Cluster manifests | `clusters/` | 0 |
+| Creation acceptance fixtures | `fixtures/creation-acceptance/` | 8 role paths + 13 hostile cases |
 
 The repository intentionally starts with two independent single-asset
 references:
@@ -30,6 +31,18 @@ There is no current Cluster. Any future Cluster example requires its own
 explicit problem, user need, contract, and acceptance; it does not inherit
 authority from old prototypes.
 
+The Creation acceptance catalog is a public-safe, synthetic fixture contract
+for multi-role Creation Engine integration. It has both a dependency-free
+static gate and an adapter that runs all role and hostile fixtures through an
+available Studio Core `creationEngine`. It is not a `.kdna`, a real
+confirmation, or evidence of independent Runtime agreement. Every human or
+organization fixture receipt is explicitly
+`synthetic_fixture_authority` and cannot be used as evidence about a real
+person or organization. Engine checks bind exact subject, semantic digest, and
+declared authority; real identity assurance remains the external Host's
+responsibility. See
+[`fixtures/creation-acceptance/README.md`](fixtures/creation-acceptance/README.md).
+
 ## Repository model
 
 ```text
@@ -37,6 +50,8 @@ references/
   public/                  current public `.kdna` references
   licensed/                reserved for future licensed references
 clusters/                  reserved for future `kdna.cluster.json` manifests
+fixtures/
+  creation-acceptance/     synthetic multi-role and hostile fixture contract
 index/current.json         machine-readable current index
 schemas/                   current index contract
 scripts/                   validation and publication checks
@@ -82,7 +97,52 @@ npm ci
 npm test
 npm run audit
 npm run check:releases
+npm run check:creation-acceptance
+npm run check:creation-acceptance-engine
+npm run check:creation-runtime-matrix
+npm run check:creation-technical-candidate -- \
+  --mode vertical --artifacts <private-new-directory>
 ```
+
+`check:creation-acceptance-engine` auto-detects a sibling
+`kdna-studio-core` checkout. The underlying runner also accepts
+`--studio-core <path>` and `--json`. It verifies Creation Engine readiness and
+project compilation only; `.kdna` export and independent Runtime agreement
+remain separate work.
+
+`check:creation-runtime-matrix` is the explicit optional source-candidate
+integration gate. With sibling Studio Core, Studio CLI, and Swift Core
+checkouts available, it saves one accepted synthetic Agent-authored workspace,
+uses Studio CLI `export-agent` to produce and receipt the `.kdna`, and requires
+JavaScript and Swift
+LoadPlans plus compact/full Runtime Capsules to agree on semantic fields,
+including the complete projected context. It writes a machine-readable result
+to stdout with `--json` (or a concise summary otherwise), reports current
+source coordinates and the generated artifact digest, then removes all
+temporary assets and build files. The default run writes no receipt. A private
+coordination workflow may explicitly provide `--receipt <path>`, but the runner
+fails closed unless that path is outside this public repository. Clean-install
+behavior is not evaluated and remains a release gate, so this is not release
+evidence. It is not included in normal `npm test` when Swift is unavailable.
+
+`check:creation-technical-candidate` is the optional three-gate synthetic
+candidate runner. It creates agent-authored `ZERO_MATERIAL`,
+`HISTORICAL_100`, or `MIXED_GAP_FILL` workspaces, builds protected exact
+assets, and binds `FORMAT_VALID`, `JUDGMENT_ACCEPTED`, and
+`APPLICATION_VERIFIED` to one semantic/build coordinate. Application
+verification means adoption fidelity on a post-build fresh hidden
+free-response task set: all critical and boundary checks must pass, declared
+tradeoff direction must remain stable at or above `0.9`, and no model score or
+with-KDNA uplift threshold is used. `--mode vertical` runs two
+tradeoff-distinct zero-material assets with three Consumer/Evaluator
+repetitions; `--mode matrix` runs three seeds in each of the three material
+strategies. The required `--artifacts` directory must be a new private path
+outside this public repository.
+
+The static Creation acceptance catalog remains a repeatable development set.
+Its historical lane-comparison fields are retained for compatibility and
+engineering diagnosis only; they cannot close the current
+`APPLICATION_VERIFIED` gate.
 
 ## Cluster boundary
 
