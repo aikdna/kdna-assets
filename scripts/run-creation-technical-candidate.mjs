@@ -77,6 +77,9 @@ function main() {
   if (!['vertical', 'matrix'].includes(mode)) {
     throw new Error('--mode must be vertical or matrix');
   }
+  const artifactRoot = resolveExternalNewDirectory(
+    argValue(args, '--artifacts'),
+  );
   const studioCoreRoot = resolveCheckout(
     argValue(args, '--studio-core'),
     '../kdna-studio-core',
@@ -86,9 +89,6 @@ function main() {
     argValue(args, '--core'),
     '../kdna/packages/kdna-core',
     'src/index.js',
-  );
-  const artifactRoot = resolveExternalNewDirectory(
-    argValue(args, '--artifacts'),
   );
   mkdirSync(artifactRoot, { recursive: true, mode: 0o700 });
 
