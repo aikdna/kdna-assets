@@ -1,0 +1,1036 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aikdna/kdna-assets/schemas/creation-acceptance-catalog.schema.json",
+  "title": "KDNA Creation Engine multi-role acceptance fixture catalog",
+  "description": "Public-safe, synthetic, static fixture contract. It is not evidence of a real confirmation, Creation Engine execution, format validity, or Runtime agreement.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "kind",
+    "contract_status",
+    "authority_boundary",
+    "adapter_contract",
+    "roles",
+    "hostile_cases"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "kind": {
+      "const": "kdna-creation-acceptance-fixture-catalog"
+    },
+    "contract_status": {
+      "const": "fixture-contract-only"
+    },
+    "authority_boundary": {
+      "$ref": "#/$defs/authorityBoundary"
+    },
+    "adapter_contract": {
+      "$ref": "#/$defs/adapterContract"
+    },
+    "roles": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "$ref": "#/$defs/roleFixture"
+      }
+    },
+    "hostile_cases": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "items": {
+        "$ref": "#/$defs/hostileFixture"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "authorityBoundary": {
+      "type": "object",
+      "required": [
+        "creation_engine_api",
+        "fixture_execution",
+        "human_or_org_receipt_authority",
+        "reality_evidence",
+        "format_validation",
+        "runtime_validation"
+      ],
+      "properties": {
+        "creation_engine_api": {
+          "const": "external-studio-core-required"
+        },
+        "fixture_execution": {
+          "const": "static-and-engine-adapter"
+        },
+        "human_or_org_receipt_authority": {
+          "const": "synthetic_fixture_authority"
+        },
+        "reality_evidence": {
+          "const": "forbidden"
+        },
+        "format_validation": {
+          "const": "not-evaluated"
+        },
+        "runtime_validation": {
+          "const": "not-evaluated"
+        }
+      },
+      "additionalProperties": false
+    },
+    "adapterContract": {
+      "type": "object",
+      "required": [
+        "module_export",
+        "candidate_card_type",
+        "candidate_confidence_map",
+        "relation_status",
+        "semantic_test_kind_map",
+        "confirmation_binding",
+        "source_authority_map",
+        "source_currentness_map",
+        "source_sensitivity_map"
+      ],
+      "properties": {
+        "module_export": {
+          "const": "creationEngine"
+        },
+        "candidate_card_type": {
+          "const": "axiom"
+        },
+        "candidate_confidence_map": {
+          "type": "object",
+          "required": [
+            "tentative",
+            "supported",
+            "confirmed"
+          ],
+          "properties": {
+            "tentative": {
+              "const": "low"
+            },
+            "supported": {
+              "const": "medium"
+            },
+            "confirmed": {
+              "const": "high"
+            }
+          },
+          "additionalProperties": false
+        },
+        "relation_status": {
+          "const": "accepted"
+        },
+        "semantic_test_kind_map": {
+          "type": "object",
+          "required": [
+            "applicable",
+            "counterexample",
+            "global-boundary",
+            "held-out-real-task",
+            "comparison"
+          ],
+          "properties": {
+            "applicable": {
+              "const": "applicable"
+            },
+            "counterexample": {
+              "const": "counterexample"
+            },
+            "global-boundary": {
+              "const": "boundary"
+            },
+            "held-out-real-task": {
+              "const": "holdout"
+            },
+            "comparison": {
+              "const": "comparison"
+            }
+          },
+          "additionalProperties": false
+        },
+        "confirmation_binding": {
+          "const": "current-engine-semantic-revision-and-digest-at-record-time"
+        },
+        "source_authority_map": {
+          "type": "object",
+          "required": [
+            "synthetic-subject-owned",
+            "synthetic-client-constrained",
+            "synthetic-organization-policy",
+            "synthetic-agent-authored"
+          ],
+          "properties": {
+            "synthetic-subject-owned": {
+              "const": "current-highest"
+            },
+            "synthetic-client-constrained": {
+              "const": "supporting"
+            },
+            "synthetic-organization-policy": {
+              "const": "current-highest"
+            },
+            "synthetic-agent-authored": {
+              "const": "supporting"
+            }
+          },
+          "additionalProperties": false
+        },
+        "source_currentness_map": {
+          "type": "object",
+          "required": [
+            "synthetic-current",
+            "synthetic-historical",
+            "synthetic-unknown"
+          ],
+          "properties": {
+            "synthetic-current": {
+              "const": "current"
+            },
+            "synthetic-historical": {
+              "const": "historical"
+            },
+            "synthetic-unknown": {
+              "const": "unknown"
+            }
+          },
+          "additionalProperties": false
+        },
+        "source_sensitivity_map": {
+          "type": "object",
+          "required": [
+            "public-safe-synthetic",
+            "restricted-synthetic"
+          ],
+          "properties": {
+            "public-safe-synthetic": {
+              "const": "public"
+            },
+            "restricted-synthetic": {
+              "const": "sensitive"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "purpose": {
+      "type": "object",
+      "required": [
+        "id",
+        "outcome",
+        "scope",
+        "loading_condition",
+        "represented_subject",
+        "highest_question",
+        "worldview",
+        "value_order",
+        "judgment_role",
+        "boundaries"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "outcome": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "scope": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "loading_condition": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "represented_subject": {
+          "type": "string",
+          "pattern": "^synthetic-(human|organization|agent)-[a-z0-9-]+$"
+        },
+        "highest_question": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "worldview": {
+          "$ref": "#/$defs/stringList"
+        },
+        "value_order": {
+          "$ref": "#/$defs/stringList"
+        },
+        "judgment_role": {
+          "type": "object",
+          "required": [
+            "acts_as",
+            "does_not_act_as",
+            "responsibility"
+          ],
+          "properties": {
+            "acts_as": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "does_not_act_as": {
+              "$ref": "#/$defs/stringList"
+            },
+            "responsibility": {
+              "$ref": "#/$defs/nonEmptyString"
+            }
+          },
+          "additionalProperties": false
+        },
+        "boundaries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "statement"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/identifier"
+              },
+              "statement": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "digest": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "value"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha256"
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "source_kind",
+        "content_digest",
+        "declared_authority",
+        "currentness",
+        "sensitivity",
+        "external_constraints",
+        "scope_relation",
+        "fixture_material",
+        "untrusted_data"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "source_kind": {
+          "enum": [
+            "synthetic-work-sample",
+            "synthetic-decision-record",
+            "synthetic-interview",
+            "synthetic-policy"
+          ]
+        },
+        "content_digest": {
+          "description": "SHA-256 of the exact UTF-8 bytes of fixture_material.",
+          "$ref": "#/$defs/digest"
+        },
+        "declared_authority": {
+          "enum": [
+            "synthetic-subject-owned",
+            "synthetic-client-constrained",
+            "synthetic-organization-policy",
+            "synthetic-agent-authored"
+          ]
+        },
+        "currentness": {
+          "enum": [
+            "synthetic-current",
+            "synthetic-historical",
+            "synthetic-unknown"
+          ]
+        },
+        "sensitivity": {
+          "enum": [
+            "public-safe-synthetic",
+            "restricted-synthetic"
+          ]
+        },
+        "external_constraints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "uniqueItems": true
+        },
+        "scope_relation": {
+          "enum": [
+            "in-scope",
+            "boundary-evidence",
+            "split-candidate"
+          ]
+        },
+        "fixture_material": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "untrusted_data": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "candidate": {
+      "type": "object",
+      "required": [
+        "id",
+        "statement",
+        "rationale",
+        "scope",
+        "applies_when",
+        "does_not_apply_when",
+        "misuse_risk",
+        "source_refs",
+        "origin",
+        "agent_inference",
+        "confidence",
+        "status",
+        "uncertainty"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "statement": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "rationale": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "scope": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "applies_when": {
+          "$ref": "#/$defs/stringList"
+        },
+        "does_not_apply_when": {
+          "$ref": "#/$defs/stringList"
+        },
+        "misuse_risk": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "origin": {
+          "enum": [
+            "source-supported",
+            "interview-supported",
+            "agent-inference"
+          ]
+        },
+        "agent_inference": {
+          "type": "boolean"
+        },
+        "confidence": {
+          "enum": [
+            "tentative",
+            "supported",
+            "confirmed"
+          ]
+        },
+        "status": {
+          "const": "promoted"
+        },
+        "uncertainty": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "additionalProperties": false
+    },
+    "judgment": {
+      "type": "object",
+      "required": [
+        "id",
+        "candidate_ref",
+        "core",
+        "statement",
+        "rationale",
+        "applies_when",
+        "does_not_apply_when",
+        "misuse_risk",
+        "source_refs",
+        "confidence",
+        "confirmation_state"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "candidate_ref": {
+          "$ref": "#/$defs/identifier"
+        },
+        "core": {
+          "const": true
+        },
+        "statement": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "rationale": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "applies_when": {
+          "$ref": "#/$defs/stringList"
+        },
+        "does_not_apply_when": {
+          "$ref": "#/$defs/stringList"
+        },
+        "misuse_risk": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "confidence": {
+          "enum": [
+            "supported",
+            "confirmed"
+          ]
+        },
+        "confirmation_state": {
+          "enum": [
+            "synthetic-fixture-confirmed",
+            "not-required-agent-authored"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "relation": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "from",
+        "to",
+        "rationale"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "enum": [
+            "support",
+            "limit",
+            "exception",
+            "conflict",
+            "priority"
+          ]
+        },
+        "from": {
+          "$ref": "#/$defs/identifier"
+        },
+        "to": {
+          "$ref": "#/$defs/identifier"
+        },
+        "rationale": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "additionalProperties": false
+    },
+    "confirmationReceipt": {
+      "type": "object",
+      "required": [
+        "id",
+        "receipt_authority",
+        "subject_kind",
+        "subject_ref",
+        "confirmer_ref",
+        "binding_policy",
+        "decision",
+        "external_evidence",
+        "fixture_only"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "receipt_authority": {
+          "const": "synthetic_fixture_authority"
+        },
+        "subject_kind": {
+          "enum": [
+            "synthetic-human",
+            "synthetic-organization"
+          ]
+        },
+        "subject_ref": {
+          "type": "string",
+          "pattern": "^synthetic-(human|organization)-[a-z0-9-]+$"
+        },
+        "confirmer_ref": {
+          "type": "string",
+          "pattern": "^synthetic-(human|organization)-[a-z0-9-]+$"
+        },
+        "binding_policy": {
+          "const": "current-engine-semantic-revision-and-digest-at-record-time"
+        },
+        "decision": {
+          "const": "confirmed"
+        },
+        "external_evidence": {
+          "const": false
+        },
+        "fixture_only": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "confirmation": {
+      "type": "object",
+      "required": [
+        "required",
+        "receipts",
+        "acceptance_actor"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "receipts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/confirmationReceipt"
+          }
+        },
+        "acceptance_actor": {
+          "type": "string",
+          "pattern": "^synthetic-(human|organization|agent)-[a-z0-9-]+$"
+        },
+        "absence_reason": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "additionalProperties": false
+    },
+    "semanticTest": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "judgment_refs",
+        "boundary_refs",
+        "prompt",
+        "expected_decision",
+        "expected_reason",
+        "evaluator_authority",
+        "result"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "kind": {
+          "enum": [
+            "applicable",
+            "counterexample",
+            "global-boundary",
+            "held-out-real-task",
+            "comparison"
+          ]
+        },
+        "judgment_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "boundary_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "prompt": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "expected_decision": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "expected_reason": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "evaluator_authority": {
+          "const": "synthetic_fixture_authority"
+        },
+        "result": {
+          "const": "fixture-expected-pass"
+        },
+        "comparison_lanes": {
+          "type": "object",
+          "required": [
+            "lane_invariant",
+            "without_kdna",
+            "with_kdna",
+            "expected_improvement",
+            "expected_exit_behavior"
+          ],
+          "properties": {
+            "lane_invariant": {
+              "const": "identical-task-input"
+            },
+            "without_kdna": {
+              "$ref": "#/$defs/comparisonLane"
+            },
+            "with_kdna": {
+              "$ref": "#/$defs/comparisonLane"
+            },
+            "expected_improvement": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "expected_exit_behavior": {
+              "$ref": "#/$defs/nonEmptyString"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "comparison"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "comparison_lanes"
+            ],
+            "properties": {
+              "comparison_lanes": true
+            }
+          }
+        }
+      ]
+    },
+    "comparisonLane": {
+      "type": "object",
+      "required": [
+        "task",
+        "expected_decision",
+        "expected_reason"
+      ],
+      "properties": {
+        "task": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "expected_decision": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "expected_reason": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "additionalProperties": false
+    },
+    "expectedRoleResult": {
+      "type": "object",
+      "required": [
+        "format_validity",
+        "creation_acceptance",
+        "split",
+        "runtime_consistency"
+      ],
+      "properties": {
+        "format_validity": {
+          "const": "not-evaluated"
+        },
+        "creation_acceptance": {
+          "type": "object",
+          "required": [
+            "status",
+            "authority",
+            "scope",
+            "external_claim_permitted"
+          ],
+          "properties": {
+            "status": {
+              "const": "fixture-expected-pass"
+            },
+            "authority": {
+              "const": "synthetic_fixture_authority"
+            },
+            "scope": {
+              "const": "fixture-contract-only"
+            },
+            "external_claim_permitted": {
+              "const": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "split": {
+          "type": "object",
+          "required": [
+            "status",
+            "rationale"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "not-required",
+                "recommended",
+                "required"
+              ]
+            },
+            "rationale": {
+              "$ref": "#/$defs/nonEmptyString"
+            }
+          },
+          "additionalProperties": false
+        },
+        "runtime_consistency": {
+          "const": "not-evaluated"
+        }
+      },
+      "additionalProperties": false
+    },
+    "roleFixture": {
+      "type": "object",
+      "required": [
+        "id",
+        "role",
+        "creation_mode",
+        "purpose",
+        "sources",
+        "candidates",
+        "judgments",
+        "relations",
+        "confirmation",
+        "tests",
+        "expected"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "role": {
+          "enum": [
+            "content-creator",
+            "instructor",
+            "graphic-designer",
+            "architect",
+            "writer",
+            "programmer",
+            "agent-authored-non-human",
+            "organization-confirmed"
+          ]
+        },
+        "creation_mode": {
+          "enum": [
+            "agent-authored",
+            "human-confirmed",
+            "organization-confirmed"
+          ]
+        },
+        "purpose": {
+          "$ref": "#/$defs/purpose"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        },
+        "candidates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/candidate"
+          }
+        },
+        "judgments": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/judgment"
+          }
+        },
+        "relations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/relation"
+          }
+        },
+        "confirmation": {
+          "$ref": "#/$defs/confirmation"
+        },
+        "tests": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "$ref": "#/$defs/semanticTest"
+          }
+        },
+        "expected": {
+          "$ref": "#/$defs/expectedRoleResult"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hostileInput": {
+      "type": "object",
+      "required": [
+        "baseline_role",
+        "material_conditions",
+        "candidate_effect",
+        "confirmation_effect",
+        "test_signal"
+      ],
+      "properties": {
+        "baseline_role": {
+          "$ref": "#/$defs/identifier"
+        },
+        "material_conditions": {
+          "$ref": "#/$defs/stringList"
+        },
+        "candidate_effect": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "confirmation_effect": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "test_signal": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "additionalProperties": false
+    },
+    "expectedHostileResult": {
+      "type": "object",
+      "required": [
+        "primary_disposition",
+        "creation_acceptance",
+        "blocks_export",
+        "split_recommendation",
+        "invalidate_receipts",
+        "public_payload_allowed",
+        "required_actions",
+        "prohibited_claims"
+      ],
+      "properties": {
+        "primary_disposition": {
+          "enum": [
+            "refuse",
+            "pause",
+            "split",
+            "honest-downgrade"
+          ]
+        },
+        "creation_acceptance": {
+          "enum": [
+            "blocked",
+            "honest-downgrade"
+          ]
+        },
+        "blocks_export": {
+          "type": "boolean"
+        },
+        "split_recommendation": {
+          "enum": [
+            "not-required",
+            "reassess",
+            "required"
+          ]
+        },
+        "invalidate_receipts": {
+          "type": "boolean"
+        },
+        "public_payload_allowed": {
+          "type": "boolean"
+        },
+        "required_actions": {
+          "$ref": "#/$defs/stringList"
+        },
+        "prohibited_claims": {
+          "$ref": "#/$defs/stringList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hostileFixture": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "input",
+        "expected"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "input": {
+          "$ref": "#/$defs/hostileInput"
+        },
+        "expected": {
+          "$ref": "#/$defs/expectedHostileResult"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
