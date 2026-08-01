@@ -20,7 +20,6 @@
     "check:public-surface-tests": "node --test tests/public-surface.test.mjs tests/runtime-matrix-receipt-boundary.test.mjs",
     "check:creation-acceptance-engine": "node scripts/run-creation-acceptance.mjs",
     "check:creation-runtime-matrix": "node scripts/run-creation-runtime-matrix.mjs",
-    "check:creation-technical-candidate": "node scripts/run-creation-technical-candidate.mjs",
     "check:releases": "node scripts/check-release-consistency.mjs --online",
     "test": "node tests/run-fixtures.mjs && npm run check:semantic-tests && npm run check:release-network && npm run check:creation-acceptance && npm run check:public-surface-tests",
     "audit": "npm run validate:indexes && npm run check:digests && npm run check:assets && npm run check:clusters && npm run check:licenses && npm run check:semantic-tests && npm run check:creation-acceptance && node scripts/check-public-surface.mjs && python3 scripts/audit-public-metadata.py"
