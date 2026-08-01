@@ -100,8 +100,6 @@ npm run check:releases
 npm run check:creation-acceptance
 npm run check:creation-acceptance-engine
 npm run check:creation-runtime-matrix
-npm run check:creation-technical-candidate -- \
-  --mode vertical --artifacts <private-new-directory>
 ```
 
 `check:creation-acceptance-engine` auto-detects a sibling
@@ -124,20 +122,6 @@ coordination workflow may explicitly provide `--receipt <path>`, but the runner
 fails closed unless that path is outside this public repository. Clean-install
 behavior is not evaluated and remains a release gate, so this is not release
 evidence. It is not included in normal `npm test` when Swift is unavailable.
-
-`check:creation-technical-candidate` is the optional three-gate synthetic
-candidate runner. It creates agent-authored `ZERO_MATERIAL`,
-`HISTORICAL_100`, or `MIXED_GAP_FILL` workspaces, builds protected exact
-assets, and binds `FORMAT_VALID`, `JUDGMENT_ACCEPTED`, and
-`APPLICATION_VERIFIED` to one semantic/build coordinate. Application
-verification means adoption fidelity on a post-build fresh hidden
-free-response task set: all critical and boundary checks must pass, declared
-tradeoff direction must remain stable at or above `0.9`, and no model score or
-with-KDNA uplift threshold is used. `--mode vertical` runs two
-tradeoff-distinct zero-material assets with three Consumer/Evaluator
-repetitions; `--mode matrix` runs three seeds in each of the three material
-strategies. The required `--artifacts` directory must be a new private path
-outside this public repository.
 
 The static Creation acceptance catalog remains a repeatable development set.
 Its historical lane-comparison fields are retained for compatibility and

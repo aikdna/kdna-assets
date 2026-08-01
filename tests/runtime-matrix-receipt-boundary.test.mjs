@@ -6,10 +6,6 @@ import test from 'node:test';
 
 const repoRoot = resolve(import.meta.dirname, '..');
 const runner = resolve(repoRoot, 'scripts/run-creation-runtime-matrix.mjs');
-const technicalRunner = resolve(
-  repoRoot,
-  'scripts/run-creation-technical-candidate.mjs',
-);
 
 test('runtime matrix rejects an explicit receipt inside the public repository', () => {
   const receipt = resolve(repoRoot, 'evidence/forbidden-current-receipt.json');
@@ -29,41 +25,4 @@ test('runtime matrix rejects a missing receipt path before executing', () => {
   });
   assert.equal(result.status, 1);
   assert.match(result.stderr, /requires an explicit path/);
-});
-
-test('technical candidate rejects evidence inside the public repository', () => {
-  const artifacts = resolve(
-    repoRoot,
-    'evidence/forbidden-technical-candidate',
-  );
-  const result = spawnSync(
-    process.execPath,
-    [
-      technicalRunner,
-      '--mode',
-      'vertical',
-      '--artifacts',
-      artifacts,
-    ],
-    {
-      cwd: repoRoot,
-      encoding: 'utf8',
-    },
-  );
-  assert.equal(result.status, 1);
-  assert.match(result.stderr, /outside this public repository/);
-  assert.equal(existsSync(artifacts), false);
-});
-
-test('technical candidate requires an explicit evidence directory', () => {
-  const result = spawnSync(
-    process.execPath,
-    [technicalRunner, '--mode', 'vertical'],
-    {
-      cwd: repoRoot,
-      encoding: 'utf8',
-    },
-  );
-  assert.equal(result.status, 1);
-  assert.match(result.stderr, /--artifacts requires an explicit path/);
 });
