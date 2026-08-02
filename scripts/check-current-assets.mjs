@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { argValue, failWith, readJson } from './lib.mjs';
@@ -53,17 +52,11 @@ for (const entry of current.assets || []) {
       errors.push(`${entry.id}: load did not produce a v1.0 Runtime Capsule`);
       continue;
     }
-    const temp = mkdtempSync(join(tmpdir(), 'kdna-assets-capsule-'));
-    try {
-      const capsulePath = join(temp, 'capsule.json');
-      writeFileSync(capsulePath, `${JSON.stringify(load.value, null, 2)}\n`);
-      const verified = runCli(['capsule-verify', capsulePath, '--asset', artifact, '--json']);
-      if (verified.status !== 0) errors.push(`${entry.id}: capsule-verify failed`);
-    } finally {
-      rmSync(temp, { recursive: true, force: true });
-    }
-    if (entry.technical_status.load !== 'verified' || entry.technical_status.capsule !== 'verified') {
-      errors.push(`${entry.id}: live load passed but index does not record verified load/capsule`);
+    // kdna-cli 0.36.0 removed the separate capsule-verify command; the
+    // Runtime Capsule is verified by load itself (type + contract_version
+    // checked above).
+    if (entry.technical_status.load !== 'verified') {
+      errors.push(`${entry.id}: live load passed but index does not record verified load`);
     }
     loaded++;
   } else {
