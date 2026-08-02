@@ -1,14 +1,32 @@
 #!/usr/bin/env node
 
 import { resolve } from 'node:path';
-import { spawnSync } from 'node:child_process';
+import { loadCluster, detectDomainConflicts } from '@aikdna/kdna-core';
 import { argValue, failWith, readJson } from './lib.mjs';
 
 const args = process.argv.slice(2);
 const root = resolve(argValue(args, '--root', '.'));
 const current = readJson(resolve(root, argValue(args, '--current', 'index/current.json')));
-const task = argValue(args, '--task', 'Verify a reference Cluster publication decision');
 const errors = [];
+
+function validateClusterManifest(manifest) {
+  const issues = [];
+  if (!manifest || typeof manifest !== 'object') return ['Manifest is not a valid object'];
+  if (manifest.format !== 'kdna-cluster') issues.push('Missing or invalid format: must be "kdna-cluster"');
+  if (!manifest.cluster_id) issues.push('Missing cluster_id');
+  if (!manifest.name) issues.push('Missing name');
+  if (!manifest.version) issues.push('Missing version');
+  const rawDomains = manifest.domains;
+  const domains = Array.isArray(rawDomains) ? rawDomains : [];
+  if (!Array.isArray(rawDomains) || domains.length < 2) issues.push('Cluster must have at least 2 domains');
+  const primaryCandidates = domains.filter((domain) => domain.role === 'primary-candidate');
+  if (primaryCandidates.length !== 1) issues.push('Cluster must have exactly one primary-candidate domain');
+  for (const domain of domains) {
+    if (!domain.id) issues.push('Domain is missing id');
+    if (!domain.role) issues.push(`Domain ${domain.id || '?'} is missing role`);
+  }
+  return issues;
+}
 
 for (const entry of current.clusters || []) {
   if (entry.manifest.path.endsWith('.kdna')) errors.push(`${entry.id}: Cluster manifest must not be .kdna`);
@@ -18,17 +36,18 @@ for (const entry of current.clusters || []) {
   if (manifest.cluster_id !== entry.id) errors.push(`${entry.id}: cluster_id does not match index id`);
   if (manifest.version !== entry.version) errors.push(`${entry.id}: manifest version does not match index`);
 
-  const validation = runJson(['cluster', 'validate', manifestPath]);
-  if (!validation.ok || validation.value?.valid !== true) {
-    errors.push(`${entry.id}: cluster validate failed`);
+  // kdna-cli 0.36.0 removed the separate cluster subcommands; Core's
+  // loadCluster + detectDomainConflicts now own cluster planning.
+  const issues = validateClusterManifest(manifest);
+  if (issues.length > 0) {
+    errors.push(`${entry.id}: cluster validate failed: ${issues.join('; ')}`);
     continue;
   }
-  const plan = runJson(['cluster', 'plan-use', manifestPath, `--task=${task}`, '--as=json']);
-  if (!plan.ok || plan.value?.mode !== 'cluster' || plan.value?.cluster_ref?.cluster_id !== entry.id) {
-    errors.push(`${entry.id}: cluster plan-use did not produce the expected Cluster plan`);
-    continue;
-  }
-  const observedState = plan.value.load_plan_ref?.status === 'blocked' ? 'blocked' : 'planned';
+  const loaded = loadCluster(manifestPath, () => null);
+  const conflicts = detectDomainConflicts(loaded.domains);
+  const loadBlocked = loaded.errors.length > 0 || loaded.domains.some((domain) => domain.required && domain.core === null);
+  const conflictBlocked = conflicts.some((conflict) => conflict.type === 'error');
+  const observedState = loadBlocked || conflictBlocked ? 'blocked' : 'planned';
   if (observedState !== entry.technical_status.plan_state) {
     errors.push(`${entry.id}: index plan_state=${entry.technical_status.plan_state}, observed ${observedState}`);
   }
@@ -37,13 +56,3 @@ for (const entry of current.clusters || []) {
 failWith(errors, 'Cluster check');
 console.log('Cluster check: PASS');
 console.log(`  entries validated/planned: ${(current.clusters || []).length}`);
-
-function runJson(commandArgs) {
-  const result = spawnSync('kdna', commandArgs, { encoding: 'utf8' });
-  if (result.status !== 0) return { ok: false, result };
-  try {
-    return { ok: true, value: JSON.parse(result.stdout), result };
-  } catch {
-    return { ok: false, result };
-  }
-}
