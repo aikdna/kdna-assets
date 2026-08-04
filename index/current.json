@@ -40,8 +40,8 @@
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-18T22:37:09Z",
-        "toolchain": "@aikdna/kdna-cli@0.35.1"
+        "verified_at": "2026-08-04T21:20:00Z",
+        "toolchain": "@aikdna/kdna-cli@0.36.1"
       },
       "evidence_claims": []
     },
@@ -80,8 +80,8 @@
         "plan_load": "ready",
         "load": "verified",
         "capsule": "verified",
-        "verified_at": "2026-07-18T22:37:09Z",
-        "toolchain": "@aikdna/kdna-cli@0.35.1"
+        "verified_at": "2026-08-04T21:20:00Z",
+        "toolchain": "@aikdna/kdna-cli@0.36.1"
       },
       "evidence_claims": []
     }
