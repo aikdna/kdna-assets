@@ -10,6 +10,13 @@ const current = readJson(resolve(root, argValue(args, '--current', 'index/curren
 const task = argValue(args, '--task', 'Verify a reference Cluster publication decision');
 const errors = [];
 
+// The published CLI (0.36.0+) removed the standalone `cluster validate` /
+// `cluster plan-use` command routes from its command allowlist (kdna-cli
+// CHANGELOG; cluster now lives under the `eval cluster` surface). Detect at
+// runtime whether the installed CLI still exposes the `cluster` command so the
+// check degrades honestly instead of silently failing on a current CLI.
+const cliHasCluster = spawnSync('kdna', ['cluster', 'validate', '--help'], { encoding: 'utf8' }).status === 0;
+
 for (const entry of current.clusters || []) {
   if (entry.manifest.path.endsWith('.kdna')) errors.push(`${entry.id}: Cluster manifest must not be .kdna`);
   const manifestPath = resolve(root, entry.manifest.path);
@@ -17,6 +24,15 @@ for (const entry of current.clusters || []) {
   if (manifest.format !== 'kdna-cluster') errors.push(`${entry.id}: manifest format is not kdna-cluster`);
   if (manifest.cluster_id !== entry.id) errors.push(`${entry.id}: cluster_id does not match index id`);
   if (manifest.version !== entry.version) errors.push(`${entry.id}: manifest version does not match index`);
+
+  if (!cliHasCluster) {
+    // Current CLI no longer ships the `cluster` command (moved to `eval`).
+    // Structural checks above still run; we cannot build the removed plan and
+    // must not silently pretend we did. Emit an explicit notice so this is a
+    // visible, owned gap rather than a hidden red test.
+    console.log(`  NOTE: CLI lacks 'cluster validate/plan-use' (removed in 0.36.0) — ${entry.id} plan assertion skipped; cluster moved to the 'eval cluster' surface`);
+    continue;
+  }
 
   const validation = runJson(['cluster', 'validate', manifestPath]);
   if (!validation.ok || validation.value?.valid !== true) {

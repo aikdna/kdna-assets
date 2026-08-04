@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { rmSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
+import * as core from '@aikdna/kdna-core';
 import { argValue, failWith, readJson } from './lib.mjs';
 
 const args = process.argv.slice(2);
@@ -53,15 +53,14 @@ for (const entry of current.assets || []) {
       errors.push(`${entry.id}: load did not produce a v1.0 Runtime Capsule`);
       continue;
     }
-    const temp = mkdtempSync(join(tmpdir(), 'kdna-assets-capsule-'));
-    try {
-      const capsulePath = join(temp, 'capsule.json');
-      writeFileSync(capsulePath, `${JSON.stringify(load.value, null, 2)}\n`);
-      const verified = runCli(['capsule-verify', capsulePath, '--asset', artifact, '--json']);
-      if (verified.status !== 0) errors.push(`${entry.id}: capsule-verify failed`);
-    } finally {
-      rmSync(temp, { recursive: true, force: true });
-    }
+    // Capsule trust-chain verification is done IN-PROCESS via the pinned
+    // KDNA Core, not the CLI. The published CLI removed the standalone
+    // `capsule-verify` command (0.36.0 command allowlist; see kdna-cli
+    // CHANGELOG), and the sanctioned Runtime path is inspect → validate →
+    // plan-load → load, where `load` returns the authorized Capsule. Shelling
+    // out to a removed command would break validation against any current CLI.
+    const capsuleErrors = verifyCapsuleInProcess(load.value, artifact);
+    if (capsuleErrors.length > 0) errors.push(`${entry.id}: capsule-verify failed: ${capsuleErrors.join('; ')}`);
     if (entry.technical_status.load !== 'verified' || entry.technical_status.capsule !== 'verified') {
       errors.push(`${entry.id}: live load passed but index does not record verified load/capsule`);
     }
@@ -103,4 +102,37 @@ function runCli(commandArgs) {
     cwd: repositoryRoot,
     encoding: 'utf8',
   });
+}
+
+// In-process equivalent of the retired CLI `capsule-verify` (removed from the
+// 0.36.0 command allowlist). Verifies a produced Runtime Capsule's structure
+// and that its claimed asset/content/runtime-entry-set digests match the actual
+// asset bytes, using the pinned KDNA Core. No subprocess to a removed command.
+function verifyCapsuleInProcess(capsule, assetPath) {
+  const errors = [];
+  if (!capsule || capsule.type !== 'kdna.runtime-capsule')
+    errors.push('missing or invalid type marker');
+  if (capsule.contract_version !== '0.1.0')
+    errors.push('missing or invalid contract version');
+  if (!capsule.asset?.asset_id) errors.push('missing asset identifier');
+  if (!capsule.digests?.asset?.value) errors.push('missing packaged asset digest');
+  if (!capsule.digests?.content?.value) errors.push('missing content digest');
+  if (!capsule.digests?.runtime_entry_set?.value) errors.push('missing runtime entry-set digest');
+  if (errors.length > 0) return errors;
+  try {
+    const actual = core.computeDigestEvidence(assetPath);
+    for (const [field, label] of [
+      ['asset', 'packaged-asset'],
+      ['content', 'content'],
+      ['runtime_entry_set', 'runtime entry-set'],
+    ]) {
+      const claimed = capsule.digests?.[field]?.value;
+      if (claimed && actual[field]?.value !== claimed) {
+        errors.push(`${label} digest mismatch (capsule ${claimed}, actual ${actual[field]?.value})`);
+      }
+    }
+  } catch (error) {
+    errors.push(`unable to verify asset digest evidence: ${error.message}`);
+  }
+  return errors;
 }
