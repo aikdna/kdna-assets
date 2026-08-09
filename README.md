@@ -22,10 +22,13 @@ toolchain. They demonstrate how an author can express a coherent judgment
 system as a portable KDNA asset. They are not official truth, content
 standards, or judgments that other authors must follow.
 
-The current 0.1.1 artifacts were rebuilt through the published Core 0.20.0,
+The 0.1.1 artifacts were rebuilt through the published Core 0.20.0,
 Studio Core 2.0.2, and Studio CLI 0.10.2 chain. Their accepted cross-profile
 semantic, reproducibility, review-boundary, and clean-room evidence is recorded
 in [`evidence/rebuild-receipt-2026-07-18.json`](evidence/rebuild-receipt-2026-07-18.json).
+The current index re-verifies both references through the published
+`@aikdna/kdna-cli@0.36.1` toolchain (Core 0.21.0), as recorded in
+[`index/current.json`](index/current.json).
 
 There is no current Cluster. Any future Cluster example requires its own
 explicit problem, user need, contract, and acceptance; it does not inherit
