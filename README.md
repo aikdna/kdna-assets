@@ -145,6 +145,14 @@ A valid Cluster plan proves only its technical contract. Any adoption,
 external-assessment, or outcome claim belongs to its named claimant and method;
 it is not a repository admission or protocol-validity requirement.
 
+
+## Official packages
+
+Official KDNA packages are published under the `@aikdna` npm scope and the
+`aikdna` name on PyPI. The unscoped npm package `kdna` is not affiliated with
+the KDNA project. Install only from the official coordinates shown in this
+README.
+
 ## License
 
 See [`LICENSE-POLICY.md`](LICENSE-POLICY.md). Every displayed asset owns its
