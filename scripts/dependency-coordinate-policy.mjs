@@ -12,10 +12,16 @@
 // accompanying regression test), so they are not required to carry an
 // override.
 //
+// Rule 2: every direct declaration must be a checkable coordinate - either an
+// exact SemVer, or a `file:` pin whose target exists, whose lockfile
+// `resolved` equals the declared coordinate, and whose lockfile `integrity` is
+// a complete sha512 digest. Floating ranges (`^`, `~`, `*`, `latest`, `x`
+// wildcards, comparators, unions, hyphen ranges) are rejected.
+//
 // Everything is checked against the committed bytes only; nothing here
 // contacts the network.
 
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 export const DEPENDENCY_FIELDS = Object.freeze([
@@ -24,6 +30,10 @@ export const DEPENDENCY_FIELDS = Object.freeze([
   'peerDependencies',
   'devDependencies',
 ]);
+
+const EXACT_SEMVER_RE = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/u;
+const SHA512_INTEGRITY_RE = /^sha512-[A-Za-z0-9+/]{86}==$/u;
+const FILE_COORDINATE_PREFIX = 'file:';
 
 function readJson(file) {
   return JSON.parse(readFileSync(file, 'utf8'));
@@ -69,7 +79,50 @@ export function peerBindingFindings({ manifest, lock }) {
 export function checkRepository(root) {
   const manifest = readJson(resolve(root, 'package.json'));
   const lock = readJson(resolve(root, 'package-lock.json'));
-  return peerBindingFindings({ manifest, lock });
+  return [
+    ...peerBindingFindings({ manifest, lock }),
+    ...coordinateFindings({ manifest, lock, root }),
+  ];
+}
+
+// Rule 2: direct declarations must be checkable coordinates.
+export function coordinateFindings({ manifest, lock, root }) {
+  const findings = [];
+  for (const [name, { field, spec }] of directSpecs(manifest)) {
+    if (typeof spec !== 'string') {
+      findings.push({ rule: 'non_string_spec', name, field, spec: null });
+      continue;
+    }
+    if (EXACT_SEMVER_RE.test(spec)) continue;
+    if (!spec.startsWith(FILE_COORDINATE_PREFIX)) {
+      findings.push({ rule: 'floating_or_unpinned_range', name, field, spec });
+      continue;
+    }
+    const target = spec.slice(FILE_COORDINATE_PREFIX.length);
+    if (target.length === 0 || !existsSync(resolve(root, target))) {
+      findings.push({ rule: 'file_coordinate_target_missing', name, field, spec });
+    }
+    const locked = lock.packages?.[`node_modules/${name}`];
+    if (locked?.resolved !== spec) {
+      findings.push({
+        rule: 'file_coordinate_lock_drift',
+        name,
+        field,
+        spec,
+        lock_resolved: locked?.resolved ?? null,
+      });
+    }
+    if (!SHA512_INTEGRITY_RE.test(locked?.integrity ?? '')) {
+      findings.push({
+        rule: 'file_coordinate_without_sha512_integrity',
+        name,
+        field,
+        spec,
+        integrity: locked?.integrity ?? null,
+      });
+    }
+  }
+  return findings;
 }
 
 function main(argv) {
