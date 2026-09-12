@@ -21,10 +21,9 @@
       "unavailable_codes": [
         "index_schema_version",
         "entries_without_technical_status",
-        "entries_without_download_url",
-        "exact_semver_kdna_cli_pin"
+        "entries_without_download_url"
       ],
-      "trigger": "an index published in the retired 1.0.0 metadata schema (technical_status + download) is committed for the leg to audit",
+      "trigger": "an index published in the retired 1.0.0 metadata schema (technical_status + download) is committed for the leg to audit; the @aikdna/kdna-cli pin is only required to be a checkable coordinate (exact SemVer or integrity-locked file: pin), so it no longer holds this leg at not_run",
       "owner": "kdna-open",
       "review_by": "2027-03-31"
     },
@@ -36,10 +35,9 @@
       "unavailable_codes": [
         "index_schema_version",
         "entries_without_technical_status",
-        "entries_without_download_url",
-        "exact_semver_kdna_cli_pin"
+        "entries_without_download_url"
       ],
-      "trigger": "an index published in the retired 1.0.0 metadata schema (technical_status + download) is committed for the leg to compare against the online releases",
+      "trigger": "an index published in the retired 1.0.0 metadata schema (technical_status + download) is committed for the leg to compare against the online releases; the @aikdna/kdna-cli pin is only required to be a checkable coordinate, so it no longer holds this leg at not_run",
       "owner": "kdna-open",
       "review_by": "2027-03-31"
     }

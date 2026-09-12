@@ -204,6 +204,7 @@ function checkNotRunIsFalsifiable(root, leg, definition, registration, findings)
       mkdirSync(dirname(join(sandbox, relative)), { recursive: true });
       copyFileSync(resolve(root, relative), join(sandbox, relative));
     }
+    copyFileSync(resolve(root, 'package-lock.json'), join(sandbox, 'package-lock.json'));
     mkdirSync(join(sandbox, 'fixtures'), { recursive: true });
     copyFileSync(resolve(root, REGISTRY_PATH), join(sandbox, REGISTRY_PATH));
     mkdirSync(join(sandbox, 'scripts'), { recursive: true });
