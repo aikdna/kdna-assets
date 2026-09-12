@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "kind": "kdna-current-index",
-  "updated": "2026-09-10T15:55:53.207Z",
+  "updated": "2026-09-10T07:21:58.772Z",
   "repository": "https://github.com/aikdna/kdna-assets",
   "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
   "assets": [
@@ -65,8 +65,8 @@
         }
       ],
       "observation": {
-        "checked_at": "2026-09-10T15:55:53.157Z",
-        "method": "public_node_adapter",
+        "checked_at": "2026-09-10T07:21:58.772Z",
+        "method": "public_cli",
         "core": {
           "status": "rejected",
           "reason": "READ_CORE_INVALID"
@@ -80,7 +80,7 @@
           "read_permission": "not_evaluated",
           "delivery": "not_delivered"
         },
-        "scope": "Actual current exact graph and exact file bytes; local explicit read permission, no transferable authority or remote acknowledgment."
+        "scope": "exact bytes and explicitly permitted local observation; permission is not transferable"
       },
       "publication_status": "existing_reference",
       "proof_limits": {
@@ -150,8 +150,8 @@
         }
       ],
       "observation": {
-        "checked_at": "2026-09-10T15:55:53.207Z",
-        "method": "public_node_adapter",
+        "checked_at": "2026-09-10T07:21:58.772Z",
+        "method": "public_cli",
         "core": {
           "status": "rejected",
           "reason": "READ_CORE_INVALID"
@@ -165,7 +165,7 @@
           "read_permission": "not_evaluated",
           "delivery": "not_delivered"
         },
-        "scope": "Actual current exact graph and exact file bytes; local explicit read permission, no transferable authority or remote acknowledgment."
+        "scope": "exact bytes and explicitly permitted local observation; permission is not transferable"
       },
       "publication_status": "existing_reference",
       "proof_limits": {
@@ -177,5 +177,5 @@
     }
   ],
   "clusters": [],
-  "toolchain_binding_sha256": "9867980bb9edb866ae5b63793de4894bc74d880083b4d9a3fec58dfb6bd0ca5c"
+  "toolchain_binding_sha256": "b3ffd99249836c16ef75a13d33cfd80f678bdacc02d424141719a7089c533475"
 }

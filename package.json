@@ -1,6 +1,6 @@
 {
   "name": "@aikdna/kdna-assets",
-  "version": "0.1.1",
+  "version": "0.3.0-rc.component-semantics.1",
   "private": true,
   "type": "module",
   "license": "Apache-2.0",
@@ -9,24 +9,33 @@
     "url": "https://github.com/aikdna/kdna-assets"
   },
   "scripts": {
-    "validate:indexes": "node scripts/validate-indexes.mjs",
-    "check:digests": "node scripts/verify-digests.mjs",
-    "check:assets": "node scripts/check-current-assets.mjs",
-    "check:clusters": "node scripts/check-clusters.mjs",
-    "check:licenses": "node scripts/check-licenses.mjs",
-    "check:semantic-tests": "node --test tests/semantic-compare.test.cjs",
-    "check:release-network": "node --test tests/retry-fetch.test.mjs",
-    "check:creation-acceptance": "node scripts/check-creation-acceptance-catalog.mjs && node --test tests/creation-acceptance-catalog.test.mjs",
-    "check:public-surface-tests": "node --test tests/public-surface.test.mjs tests/runtime-matrix-receipt-boundary.test.mjs",
-    "check:creation-acceptance-engine": "node scripts/run-creation-acceptance.mjs",
-    "check:creation-runtime-matrix": "node scripts/run-creation-runtime-matrix.mjs",
-    "check:releases": "node scripts/check-release-consistency.mjs --online",
-    "test": "node tests/run-fixtures.mjs && npm run check:semantic-tests && npm run check:release-network && npm run check:creation-acceptance && npm run check:public-surface-tests",
-    "audit": "npm run validate:indexes && npm run check:digests && npm run check:assets && npm run check:clusters && npm run check:licenses && npm run check:semantic-tests && npm run check:creation-acceptance && node scripts/check-public-surface.mjs && python3 scripts/audit-public-metadata.py"
+    "test": "node tests/current-read.test.mjs",
+    "validate:indexes": "node scripts/audit-current.mjs --validate-only",
+    "audit": "node scripts/audit-current.mjs",
+    "audit:read": "node scripts/audit-current.mjs --allow-read",
+    "read": "node scripts/read-current.mjs",
+    "prepublishOnly": "node -e \"throw new Error('This workspace is private; publication is not configured')\""
   },
   "devDependencies": {
-    "@aikdna/kdna-cli": "0.36.1",
-    "@aikdna/kdna-core": "0.21.0",
-    "cbor-x": "1.6.4"
+    "@aikdna/kdna-core": "file:vendor/aikdna-kdna-core-0.24.0-rc.component-semantics.2.tgz",
+    "@aikdna/kdna-read": "file:vendor/aikdna-kdna-read-0.3.0-rc.component-semantics.2.tgz",
+    "ajv": "file:vendor/ajv-8.20.0.tgz",
+    "ajv-formats": "file:vendor/ajv-formats-3.0.1.tgz",
+    "cbor-x": "file:vendor/cbor-x-1.6.5.tgz",
+    "fast-deep-equal": "file:vendor/fast-deep-equal-3.1.3.tgz",
+    "fast-uri": "file:vendor/fast-uri-3.1.7.tgz",
+    "json-schema-traverse": "file:vendor/json-schema-traverse-1.0.0.tgz",
+    "@noble/hashes": "file:vendor/noble-hashes-1.8.0.tgz",
+    "pako": "file:vendor/pako-2.1.0.tgz",
+    "require-from-string": "file:vendor/require-from-string-2.0.2.tgz",
+    "@aikdna/kdna-cli": "file:vendor/aikdna-kdna-cli-0.38.0-rc.component-semantics.1.tgz"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": "./src/current-read.mjs",
+    "./catalog": "./src/catalog.mjs",
+    "./package.json": "./package.json"
   }
 }

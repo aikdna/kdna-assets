@@ -1,0 +1,344 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aikdna/kdna-assets/schemas/public-read-index.schema.json",
+  "title": "Asset catalog with contextual public Read observations",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "2.0.0"
+    },
+    "kind": {
+      "const": "kdna-current-index"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository": {
+      "const": "https://github.com/aikdna/kdna-assets"
+    },
+    "listing_policy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "toolchain_binding_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "const": "kdna-asset"
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "publisher": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false
+          },
+          "creator": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false
+          },
+          "access": {
+            "enum": [
+              "public",
+              "licensed",
+              "remote"
+            ]
+          },
+          "license": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scope": {
+                "const": "asset-content-and-distribution"
+              },
+              "repository_license_applies": {
+                "const": false
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "id",
+              "path",
+              "scope",
+              "repository_license_applies"
+            ],
+            "additionalProperties": false
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "digest": {
+            "type": "object",
+            "properties": {
+              "algorithm": {
+                "const": "sha256"
+              },
+              "value": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "algorithm",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          "artifact": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "media_type": {
+                "const": "application/vnd.kdna.asset"
+              }
+            },
+            "required": [
+              "path",
+              "media_type"
+            ],
+            "additionalProperties": false
+          },
+          "files": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "bytes": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "bytes",
+                "sha256"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "observation": {
+            "type": "object",
+            "properties": {
+              "checked_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "method": {
+                "enum": [
+                  "public_cli",
+                  "public_node_adapter"
+                ]
+              },
+              "core": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "accepted",
+                      "rejected"
+                    ]
+                  },
+                  "reason": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "status",
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "read": {
+                "type": "object",
+                "properties": {
+                  "channel": {
+                    "enum": [
+                      "read_envelope",
+                      "admission_rejection",
+                      "no_body_control",
+                      "transport_failure"
+                    ]
+                  },
+                  "status": {
+                    "enum": [
+                      "ready",
+                      "rejected",
+                      "no_body",
+                      "failed"
+                    ]
+                  },
+                  "diagnostics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "read_permission": {
+                    "enum": [
+                      "allowed",
+                      "denied",
+                      "not_evaluated"
+                    ]
+                  },
+                  "delivery": {
+                    "enum": [
+                      "delivered",
+                      "not_delivered"
+                    ]
+                  }
+                },
+                "required": [
+                  "channel",
+                  "status",
+                  "diagnostics",
+                  "read_permission",
+                  "delivery"
+                ],
+                "additionalProperties": false
+              },
+              "scope": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "checked_at",
+              "method",
+              "core",
+              "read",
+              "scope"
+            ],
+            "additionalProperties": false
+          },
+          "publication_status": {
+            "enum": [
+              "existing_reference",
+              "unpublished_candidate"
+            ]
+          },
+          "proof_limits": {
+            "type": "object",
+            "properties": {
+              "creation": {
+                "const": "not_evaluated"
+              },
+              "identity": {
+                "const": "not_evaluated"
+              },
+              "action_authorization": {
+                "const": "not_evaluated"
+              },
+              "legal_clearance": {
+                "const": "not_evaluated"
+              }
+            },
+            "required": [
+              "creation",
+              "identity",
+              "action_authorization",
+              "legal_clearance"
+            ],
+            "additionalProperties": false
+          },
+          "evidence_claims": {
+            "type": "array",
+            "maxItems": 0
+          }
+        },
+        "required": [
+          "kind",
+          "id",
+          "publisher",
+          "creator",
+          "access",
+          "license",
+          "version",
+          "digest",
+          "artifact",
+          "files",
+          "observation",
+          "publication_status",
+          "proof_limits",
+          "evidence_claims"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "clusters": {
+      "type": "array",
+      "maxItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "updated",
+    "repository",
+    "listing_policy",
+    "toolchain_binding_sha256",
+    "assets",
+    "clusters"
+  ],
+  "additionalProperties": false
+}

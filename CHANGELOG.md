@@ -1,3 +1,18 @@
+## 0.3.0-rc.component-semantics.1
+
+- Bind exact accepted public Core/Read/CLI component graph and current tuple/definition.
+- Preserve all path, digest, license, entry-version and default-deny guards; component interpretation remains in public Core.
+- Forward rejected Core states and component_failure unchanged so blocked interpretation and structural invalidity remain distinguishable.
+- Retain previous reference observations as history and document separately supplied private collection layout.
+- Current integration observations and new source archive require separate independent acceptance; no publication.
+
+# 0.2.0-rc.public-read.1 — 2026-09-10
+
+- Add a schema 2 current index, exact offline public dependency graph, and read-only Core/Read adapter with explicit per-call permission and result channels.
+- Preserve both original public references and accurately index their rejection by the current Core/Read graph; retain the former index as history.
+- Check paths, asset and license digests, observation consistency, and installed dependency bytes before use. Use the official Node admission entry point for compressed assets.
+- Exercise default deny, explicit permission, selection, whole-asset semantics, budget outcomes, historical rejection, and changed-input boundaries. No official 100-asset distribution, CS1 interpretation, content-quality certification, publication, or action authorization is implied.
+
 # Changelog
 
 ## Unreleased

@@ -1,0 +1,122 @@
+{
+  "format": "kdna.assets-public-read-binding/1",
+  "implementation": {
+    "name": "@aikdna/kdna-assets",
+    "version": "0.3.0-rc.component-semantics.1"
+  },
+  "tuple": {
+    "container": "0.2.0",
+    "core": "kdna.core/0.3.0",
+    "host": "kdna.agent-host/0.2.0",
+    "ir": "kdna.canonical-ir/0.2.0",
+    "payload_profile": "kdna.payload.judgment",
+    "payload_version": "0.2.0",
+    "plan": "kdna.consumption-plan/0.2.0",
+    "read": "kdna.read/0.2.0",
+    "runtime": "kdna.runtime-capsule/0.2.0",
+    "trace": "kdna.judgment-trace/0.2.0"
+  },
+  "semantic_source_sha256": "862cea95bdb3a634356ad729b95e0882cb0b75fdb80f103a11f4037783899110",
+  "generated_contract_sha256": "ec8a2616a768f5523e8852487e757f6f9560d1933ea3a9ee90ead69fe1120f4d",
+  "packages": [
+    {
+      "name": "@aikdna/kdna-core",
+      "version": "0.24.0-rc.component-semantics.2",
+      "archive": "vendor/aikdna-kdna-core-0.24.0-rc.component-semantics.2.tgz",
+      "bytes": 235986,
+      "sha256": "a9cb3f08735b00657e4848766f0ac517abdcb256121a841f01e662525a0858ea",
+      "members": 39
+    },
+    {
+      "name": "@aikdna/kdna-read",
+      "version": "0.3.0-rc.component-semantics.2",
+      "archive": "vendor/aikdna-kdna-read-0.3.0-rc.component-semantics.2.tgz",
+      "bytes": 100934,
+      "sha256": "43d0f12a1a63a88d26570bfff821919a5cd478fdbd0568bd9c819bc56078b0f0",
+      "members": 36
+    },
+    {
+      "name": "ajv",
+      "version": "8.20.0",
+      "archive": "vendor/ajv-8.20.0.tgz",
+      "bytes": 216977,
+      "sha256": "fae4b66af86b883f888c03dee309592a69c863c843c4a5c3e8ae849249a0df99",
+      "members": 466
+    },
+    {
+      "name": "ajv-formats",
+      "version": "3.0.1",
+      "archive": "vendor/ajv-formats-3.0.1.tgz",
+      "bytes": 15840,
+      "sha256": "a249bc89a9ba8b948774b9d34d01585d4fa5b702afff4f9f6c52d51f8019893d",
+      "members": 15
+    },
+    {
+      "name": "cbor-x",
+      "version": "1.6.5",
+      "archive": "vendor/cbor-x-1.6.5.tgz",
+      "bytes": 419049,
+      "sha256": "219be6b1732913143a86ccd79a44a9ea78dd2f34450845ce2109c979b918beeb",
+      "members": 31
+    },
+    {
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "archive": "vendor/fast-deep-equal-3.1.3.tgz",
+      "bytes": 3618,
+      "sha256": "6d4c2b9c0b3dd6e58e0c5a4d73709e06b3aa2fbf313fedcc0a2f49ee6eb5bf79",
+      "members": 11
+    },
+    {
+      "name": "fast-uri",
+      "version": "3.1.7",
+      "archive": "vendor/fast-uri-3.1.7.tgz",
+      "bytes": 43515,
+      "sha256": "75d114fa009a342a4f964e099012cfc9660cab130d8df367184e01f0d0198777",
+      "members": 44
+    },
+    {
+      "name": "json-schema-traverse",
+      "version": "1.0.0",
+      "archive": "vendor/json-schema-traverse-1.0.0.tgz",
+      "bytes": 6027,
+      "sha256": "57be57126b2f47e0361a83cb54d812624ce6ed8bc939984c359cdeddaa5e029b",
+      "members": 12
+    },
+    {
+      "name": "@noble/hashes",
+      "version": "1.8.0",
+      "archive": "vendor/noble-hashes-1.8.0.tgz",
+      "bytes": 154380,
+      "sha256": "2f8ce985a97936715bab16a7b3025bd73cc317831ec4d7ccaa4d136a6b04bfb5",
+      "members": 247
+    },
+    {
+      "name": "pako",
+      "version": "2.1.0",
+      "archive": "vendor/pako-2.1.0.tgz",
+      "bytes": 412482,
+      "sha256": "49fedc8866b4abfc8e71dc7fe75ad4ef1ff1ac9601b0642cff88ee5bf2338709",
+      "members": 33
+    },
+    {
+      "name": "require-from-string",
+      "version": "2.0.2",
+      "archive": "vendor/require-from-string-2.0.2.tgz",
+      "bytes": 1795,
+      "sha256": "daf9e97bbcd592f3af8ae259359536d1b9d81a697253f22fe2aeb8fcbe1c33ba",
+      "members": 4
+    },
+    {
+      "name": "@aikdna/kdna-cli",
+      "version": "0.38.0-rc.component-semantics.1",
+      "archive": "vendor/aikdna-kdna-cli-0.38.0-rc.component-semantics.1.tgz",
+      "bytes": 12015,
+      "sha256": "3e2fbdbc7dcaf07b6a8dbc17b8df7f365e4837c61d391d8d6416d951abcac3be",
+      "members": 7
+    }
+  ],
+  "toolchain_files_sha256": "1186dba0123b9289ea5df3ca07d7cab35cc8ca4921f61ab5a5887cda81497b25",
+  "authority_limit": "Exact technical dependency coordinates. Admission, authorship, confirmation, reading permission, actions, content quality and per-file licenses remain separate.",
+  "component_semantics_digest": "sha256:3087cd19542e72322aec19b3015c916d2cfb074fa42e3fd76b3756bb4f097de3"
+}
