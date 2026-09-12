@@ -4,98 +4,114 @@
 //
 // Exactly three outcomes are allowed, and they are distinguishable:
 //   * required configuration missing  -> KDNA-CI-CONFIG-MISSING on stderr, exit 2,
-//     and no not_run receipt is printed;
-//   * object unavailable              -> exactly one `KDNA-CI-NOT-RUN: <leg> ...`
-//     receipt on stdout, exit 0;
-//   * object available                -> the real leg command is executed and its
-//     exit status becomes this process's exit status.
+//     and no receipt is printed;
+//   * object registered as retired and unavailable -> one `KDNA-CI-NOT-RUN:`
+//     line plus one machine-readable `KDNA-CI-RECEIPT: {...}` line, exit 0;
+//   * object available                -> the real leg command runs and its exit
+//     status becomes this process's exit status, with one `run` receipt.
 //
-// The object of both legs is an index published in the retired 1.0.0 metadata
-// schema (`technical_status` + `download`) that `scripts/validate-indexes.mjs`,
-// `scripts/audit-public-metadata.py` and `scripts/check-release-consistency.mjs`
-// consume. The committed index is the current kdna-current-index 2.0.0 format,
-// so those three tools cannot run against it; the legs are checked rather than
-// skipped, and they run for real again as soon as such an index exists.
-//
-// `current-assets` guards the other direction: `scripts/check-current-assets.mjs`
-// drives every indexed asset through the packed CLI, so it can only run while
-// the committed Core admits those assets.
+// A not_run outcome requires BOTH an explicit registration in
+// fixtures/ci-leg-registry.json AND the recomputed unavailability codes it
+// names. The gate cannot invent a condition of its own: whenever a code it
+// computes is not registered, or a registered code is no longer true, the real
+// leg command runs instead. scripts/verify-ci-leg-receipts.mjs re-derives the
+// same codes independently and refuses a receipt that disagrees.
 
-import { readFileSync } from 'node:fs';
+import { readFileSync, realpathSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
+import { environmentFor, LEGS, REGISTRY_PATH } from './ci-leg-definitions.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const require = createRequire(import.meta.url);
-
-const LEGS = {
-  'current-assets': {
-    object: 'indexed assets admitted by the committed public Core',
-    command: () => ['node', 'scripts/check-current-assets.mjs'],
-  },
-  'index-metadata': {
-    object: 'index published in the retired 1.0.0 metadata schema (technical_status + download)',
-    command: (environment) =>
-      environment.KDNA_CI_ONLINE === '1'
-        ? ['python3', 'scripts/audit-public-metadata.py', '--online-releases']
-        : ['python3', 'scripts/audit-public-metadata.py'],
-  },
-  'online-release-consistency': {
-    object: 'index download coordinates for the online GitHub Release comparison',
-    command: () => ['node', 'scripts/check-release-consistency.mjs', '--online'],
-  },
-};
-
-async function admitIndexedAssets(environment) {
-  const indexPath = resolve(root, environment.KDNA_ASSETS_METADATA_INDEX);
-  const current = readJson(indexPath);
-  let admitNode;
-  try {
-    ({ admitNode } = require('@aikdna/kdna-core/node'));
-  } catch (error) {
-    // The installed Core has no public admission entry: the object the leg
-    // needs is unavailable, which is a not_run receipt, not a red leg.
-    return [`installed_core_admission_entry_unavailable:${error.code ?? 'UNKNOWN'}`];
-  }
-  const rejected = [];
-  for (const entry of [...(current.assets ?? []), ...(current.clusters ?? [])]) {
-    const artifactPath = entry.artifact?.path ?? entry.manifest?.path;
-    if (!artifactPath) continue;
-    const admitted = await admitNode(readFileSync(resolve(root, artifactPath)));
-    if (admitted.status !== 'accepted') {
-      rejected.push(`${entry.id}:${admitted.reason}`);
-    }
-  }
-  return rejected;
-}
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, 'utf8'));
 }
 
-function missingRequirements(environment) {
-  const indexPath = resolve(root, environment.KDNA_ASSETS_METADATA_INDEX);
-  const current = readJson(indexPath);
+function sha256(path) {
+  return createHash('sha256').update(readFileSync(path)).digest('hex');
+}
+
+export function inputDigests(environment) {
+  return inputDigestsAt(root, environment);
+}
+
+export function inputDigestsAt(target, environment) {
+  return {
+    [environment.KDNA_ASSETS_METADATA_INDEX]: sha256(resolve(target, environment.KDNA_ASSETS_METADATA_INDEX)),
+    [environment.KDNA_ASSETS_METADATA_PACKAGE]: sha256(resolve(target, environment.KDNA_ASSETS_METADATA_PACKAGE)),
+  };
+}
+
+export function legRegistry() {
+  return legRegistryAt(root);
+}
+
+export function legRegistryAt(target) {
+  return readJson(resolve(target, REGISTRY_PATH));
+}
+
+function registrationFor(leg) {
+  return (legRegistry().entries ?? []).find((entry) => entry.leg === leg);
+}
+
+// The installed Core is asked to admit every indexed asset; the codes it
+// rejects with are the leg's unavailability codes.
+export async function admissionCodes(environment, target = root) {
+  const current = readJson(resolve(target, environment.KDNA_ASSETS_METADATA_INDEX));
+  let admitNode;
+  try {
+    ({ admitNode } = require('@aikdna/kdna-core/node'));
+  } catch (error) {
+    return { codes: [`installed_core_admission_entry_unavailable:${error.code ?? 'UNKNOWN'}`], rejected: 0 };
+  }
+  const rejected = [];
+  for (const entry of [...(current.assets ?? []), ...(current.clusters ?? [])]) {
+    const artifactPath = entry.artifact?.path ?? entry.manifest?.path;
+    if (!artifactPath) continue;
+    const admitted = await admitNode(readFileSync(resolve(target, artifactPath)));
+    if (admitted.status !== 'accepted') {
+      rejected.push(`${entry.id}:${admitted.reason}`);
+    }
+  }
+  if (rejected.length === 0) return { codes: [], rejected: 0 };
+  return { codes: ['installed_core_rejects_indexed_assets'], rejected: rejected.length, rejected_assets: rejected };
+}
+
+// Everything the committed index cannot satisfy, as stable codes.
+export function missingRequirements(environment, target = root) {
+  const current = readJson(resolve(target, environment.KDNA_ASSETS_METADATA_INDEX));
   const entries = [...(current.assets ?? []), ...(current.clusters ?? [])];
-  const requirements = [];
+  const codes = [];
+  const detail = [];
   if (current.schema_version !== '1.0.0') {
-    requirements.push(`index_schema_version=${String(current.schema_version)}`);
+    codes.push('index_schema_version');
+    detail.push(`index_schema_version=${String(current.schema_version)}`);
   }
   const withoutTechnicalStatus = entries.filter((entry) => !entry.technical_status);
   if (withoutTechnicalStatus.length > 0) {
-    requirements.push(`entries_without_technical_status=${withoutTechnicalStatus.length}`);
+    codes.push('entries_without_technical_status');
+    detail.push(`entries_without_technical_status=${withoutTechnicalStatus.length}`);
   }
   const withoutDownload = entries.filter((entry) => !entry.download?.url);
   if (withoutDownload.length > 0) {
-    requirements.push(`entries_without_download_url=${withoutDownload.length}`);
+    codes.push('entries_without_download_url');
+    detail.push(`entries_without_download_url=${withoutDownload.length}`);
   }
-  const manifest = readJson(resolve(root, environment.KDNA_ASSETS_METADATA_PACKAGE));
+  const manifest = readJson(resolve(target, environment.KDNA_ASSETS_METADATA_PACKAGE));
   const cliCoordinate = manifest.devDependencies?.['@aikdna/kdna-cli'];
   if (!/^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/u.test(cliCoordinate ?? '')) {
-    requirements.push(`exact_semver_kdna_cli_pin=${String(cliCoordinate)}`);
+    codes.push('exact_semver_kdna_cli_pin');
+    detail.push(`exact_semver_kdna_cli_pin=${String(cliCoordinate)}`);
   }
-  return { requirements, entries: entries.length, indexPath };
+  return { codes, detail, entries: entries.length };
+}
+
+function receipt(payload) {
+  return `KDNA-CI-RECEIPT: ${JSON.stringify(payload)}`;
 }
 
 async function main(argv) {
@@ -104,11 +120,8 @@ async function main(argv) {
     console.error(`usage: node scripts/ci-leg-receipt.mjs <${Object.keys(LEGS).join('|')}>`);
     return 2;
   }
-  const environment = {
-    ...process.env,
-    KDNA_ASSETS_METADATA_INDEX: process.env.KDNA_ASSETS_METADATA_INDEX ?? 'index/current.json',
-    KDNA_ASSETS_METADATA_PACKAGE: process.env.KDNA_ASSETS_METADATA_PACKAGE ?? 'package.json',
-  };
+  const definition = LEGS[leg];
+  const environment = environmentFor();
   if (!process.env.KDNA_ASSETS_METADATA_INDEX) {
     console.error(
       `KDNA-CI-CONFIG-MISSING: ${leg} missing=KDNA_ASSETS_METADATA_INDEX ` +
@@ -116,24 +129,34 @@ async function main(argv) {
     );
     return 2;
   }
-  const definition = LEGS[leg];
+  const registration = registrationFor(leg);
+  const unavailable = [];
   if (leg === 'current-assets') {
-    const rejected = await admitIndexedAssets(environment);
-    if (rejected.length > 0) {
-      console.log(
-        `KDNA-CI-NOT-RUN: ${leg} reason=committed_core_rejects_indexed_assets ` +
-          `object=${definition.object} index=${environment.KDNA_ASSETS_METADATA_INDEX} ` +
-          `rejected=${rejected.join(',')}`,
-      );
-      return 0;
-    }
+    const admission = await admissionCodes(environment);
+    unavailable.push(...admission.codes);
+  } else {
+    unavailable.push(...missingRequirements(environment).codes);
   }
-  const { requirements, entries } = missingRequirements(environment);
-  if (requirements.length > 0) {
+  const registered = new Set(registration?.unavailable_codes ?? []);
+  const computed = new Set(unavailable);
+  const agrees =
+    registration?.class === 'not_run' &&
+    computed.size === registered.size &&
+    [...computed].every((code) => registered.has(code));
+  if (agrees) {
     console.log(
-      `KDNA-CI-NOT-RUN: ${leg} reason=retired_index_metadata_schema ` +
-        `object=${definition.object} index=${environment.KDNA_ASSETS_METADATA_INDEX} ` +
-        `entries=${entries} unavailable=${requirements.join(' ')}`,
+      `KDNA-CI-NOT-RUN: ${leg} reason=${registration.reason} object=${definition.object} ` +
+        `index=${environment.KDNA_ASSETS_METADATA_INDEX} unavailable=${[...computed].join(',')}`,
+    );
+    console.log(
+      receipt({
+        leg,
+        class: 'not_run',
+        reason: registration.reason,
+        object: definition.object,
+        unavailable_codes: [...computed].sort(),
+        inputs: inputDigests(environment),
+      }),
     );
     return 0;
   }
@@ -141,9 +164,32 @@ async function main(argv) {
   const result = spawnSync(command, commandArgs, { cwd: root, stdio: 'inherit' });
   if (result.error) throw result.error;
   if (result.signal) throw new Error(`${leg} was interrupted by ${result.signal}`);
+  console.log(
+    receipt({
+      leg,
+      class: 'run',
+      command: [command, ...commandArgs],
+      status: result.status,
+      inputs: inputDigests(environment),
+    }),
+  );
   return result.status;
 }
 
-if (process.argv[1] === import.meta.filename) process.exitCode = await main(process.argv.slice(2));
+// An entry-point check that survives a symlinked invocation path. Comparing
+// `process.argv[1]` with `import.meta.filename` literally is false whenever the
+// caller reaches this file through a symlink (macOS /tmp and /var are symlinks
+// into /private), and the module then exits 0 without printing anything: a
+// silent no-op in the middle of the receipt path.
+function isEntryPoint() {
+  if (!process.argv[1]) return false;
+  try {
+    return realpathSync(process.argv[1]) === realpathSync(import.meta.filename);
+  } catch {
+    return false;
+  }
+}
 
-export { LEGS, missingRequirements };
+if (isEntryPoint()) process.exitCode = await main(process.argv.slice(2));
+
+export { LEGS };
