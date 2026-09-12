@@ -23,6 +23,7 @@
 
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { isEntryPoint } from './lib.mjs';
 
 export const DEPENDENCY_FIELDS = Object.freeze([
   'dependencies',
@@ -140,4 +141,4 @@ function main(argv) {
   return argv.includes('--report-only') ? 0 : 1;
 }
 
-if (process.argv[1] === import.meta.filename) process.exitCode = main(process.argv.slice(2));
+if (isEntryPoint(import.meta.url)) process.exitCode = main(process.argv.slice(2));

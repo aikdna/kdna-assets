@@ -28,6 +28,7 @@ import { dirname, join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { environmentFor, LEGS, REGISTRY_PATH } from './ci-leg-definitions.mjs';
 import { admissionCodes, missingRequirements } from './ci-leg-receipt.mjs';
+import { isEntryPoint } from './lib.mjs';
 
 const RECEIPT_PREFIX = 'KDNA-CI-RECEIPT: ';
 const NOT_RUN_PREFIX = 'KDNA-CI-NOT-RUN: ';
@@ -208,7 +209,7 @@ function checkNotRunIsFalsifiable(root, leg, definition, registration, findings)
     mkdirSync(join(sandbox, 'fixtures'), { recursive: true });
     copyFileSync(resolve(root, REGISTRY_PATH), join(sandbox, REGISTRY_PATH));
     mkdirSync(join(sandbox, 'scripts'), { recursive: true });
-    for (const name of ['ci-leg-receipt.mjs', 'ci-leg-definitions.mjs']) {
+    for (const name of ['ci-leg-receipt.mjs', 'ci-leg-definitions.mjs', 'lib.mjs']) {
       copyFileSync(resolve(root, 'scripts', name), join(sandbox, 'scripts', name));
     }
     writeFileSync(join(sandbox, 'index-satisfied.json'), `${JSON.stringify(index, null, 2)}\n`);
@@ -291,4 +292,4 @@ async function main(argv) {
   return 0;
 }
 
-if (process.argv[1] === import.meta.filename) process.exitCode = await main(process.argv.slice(2));
+if (isEntryPoint(import.meta.url)) process.exitCode = await main(process.argv.slice(2));
