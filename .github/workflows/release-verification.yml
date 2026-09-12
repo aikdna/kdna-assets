@@ -21,10 +21,13 @@ jobs:
             exit 1
           }
       - name: Install repository dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts --omit=optional --no-audit --no-fund
       - name: Run fixture suite
         run: npm test
       - name: Run local audit
         run: npm run audit
       - name: Run online release consistency
-        run: node scripts/check-release-consistency.mjs --online
+        env:
+          KDNA_ASSETS_METADATA_INDEX: index/current.json
+          KDNA_CI_ONLINE: '1'
+        run: node scripts/ci-leg-receipt.mjs online-release-consistency
