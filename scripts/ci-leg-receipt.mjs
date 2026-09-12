@@ -17,12 +17,13 @@
 // leg command runs instead. scripts/verify-ci-leg-receipts.mjs re-derives the
 // same codes independently and refuses a receipt that disagrees.
 
-import { existsSync, readFileSync, realpathSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { environmentFor, LEGS, REGISTRY_PATH } from './ci-leg-definitions.mjs';
+import { isEntryPoint } from './lib.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const require = createRequire(import.meta.url);
@@ -207,20 +208,6 @@ async function main(argv) {
   return result.status;
 }
 
-// An entry-point check that survives a symlinked invocation path. Comparing
-// `process.argv[1]` with `import.meta.filename` literally is false whenever the
-// caller reaches this file through a symlink (macOS /tmp and /var are symlinks
-// into /private), and the module then exits 0 without printing anything: a
-// silent no-op in the middle of the receipt path.
-function isEntryPoint() {
-  if (!process.argv[1]) return false;
-  try {
-    return realpathSync(process.argv[1]) === realpathSync(import.meta.filename);
-  } catch {
-    return false;
-  }
-}
-
-if (isEntryPoint()) process.exitCode = await main(process.argv.slice(2));
+if (isEntryPoint(import.meta.url)) process.exitCode = await main(process.argv.slice(2));
 
 export { LEGS };

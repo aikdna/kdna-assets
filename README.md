@@ -32,6 +32,23 @@ A direct declaration is either an exact SemVer or an integrity-locked `file:` co
 
 If a release is ever published from this repository, every `file:` coordinate must first be replaced by the **exact registry version** (the `@aikdna/kdna-cli` pin included), because a consumer that installs the packed artifact from a registry has no `vendor/` directory next to it. `npm run check:publish-coordinates` reports the coordinates that are still local; it is green here because the package is `private` and no publication is configured.
 
+## Gate entry points
+
+A script that is a gate entry point starts its work behind `isEntryPoint()` from
+`scripts/lib.mjs`, which compares realpaths instead of path strings. A literal
+`process.argv[1] === import.meta.filename` comparison is false whenever the
+caller reaches the file through a symlink (on macOS `/tmp` and `/var` are
+symlinks into `/private`), and the module then exits 0 without printing
+anything: a silent no-op that reads exactly like a passing gate.
+
+Every gate entry point carries the same pair of checks before it is merged, and
+`npm test` enforces the pair in `tests/entry-point-guard.test.mjs`:
+
+1. invoking it through a symlinked path must still run it, and
+2. a clean copy of this repository must really run it and print its success line.
+
+An exit status of 0 is not evidence on its own; the success line is.
+
 ## Reading and observations
 
 `npm run audit` checks the recorded Core outcomes with local read permission denied by default. `npm run audit:read` additionally gives explicit permission for that call and compares the current Read outcome with the indexed observation. A successful audit means the observation matches, including an accurately recorded rejection. When Core successfully admits an asset, the indexed `version` must exactly match its observed `asset_version`; a mismatch raises `ASSETS_ENTRY_VERSION_MISMATCH` before Read. Assets rejected by Core retain their original rejection and its public `states`, `diagnostics` and `component_failure` unchanged; their version is not guessed from rejected bytes. A Core-valid asset with blocked interpretation remains rejected, distinct from structurally invalid bytes. The adapter does not infer a more permissive state.

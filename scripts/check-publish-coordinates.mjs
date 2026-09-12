@@ -10,8 +10,9 @@
 //
 // usage: node scripts/check-publish-coordinates.mjs [--root <dir>] [--report-only]
 
-import { readFileSync, realpathSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { isEntryPoint } from './lib.mjs';
 
 export const DEPENDENCY_FIELDS = Object.freeze([
   'dependencies',
@@ -54,17 +55,4 @@ function main(argv) {
   return argv.includes('--report-only') ? 0 : 1;
 }
 
-// Realpath comparison: a literal `process.argv[1] === import.meta.filename`
-// check is false whenever the caller reaches this file through a symlink
-// (macOS /tmp and /var are symlinks), and the module would then exit 0 without
-// reporting anything.
-function isEntryPoint() {
-  if (!process.argv[1]) return false;
-  try {
-    return realpathSync(process.argv[1]) === realpathSync(import.meta.filename);
-  } catch {
-    return false;
-  }
-}
-
-if (isEntryPoint()) process.exitCode = main(process.argv.slice(2));
+if (isEntryPoint(import.meta.url)) process.exitCode = main(process.argv.slice(2));

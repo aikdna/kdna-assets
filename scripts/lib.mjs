@@ -1,6 +1,22 @@
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, realpathSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+// The entry-point check every gate in this repository uses. Comparing
+// `process.argv[1]` with `import.meta.filename` literally is false whenever the
+// caller reaches the file through a symlink (macOS `/tmp` and `/var` are
+// symlinks into `/private`), and the module then exits 0 without printing
+// anything: a silent no-op that reads like a passing gate. Realpath both sides.
+export function isEntryPoint(importMetaUrl) {
+  const entry = process.argv[1];
+  if (!entry) return false;
+  try {
+    return realpathSync(entry) === realpathSync(fileURLToPath(importMetaUrl));
+  } catch {
+    return false;
+  }
+}
 
 export function argValue(args, flag, fallback = null) {
   const equals = args.find((arg) => arg.startsWith(`${flag}=`));
