@@ -1,0 +1,1 @@
+Synthetic technical fixture for the public Core component-cycle boundary. Test data only; not a formal official asset, live authoring event, authenticated person or task-effect result. Its bytes are retained exactly from the fixed public Core boundary witness.
