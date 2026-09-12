@@ -44,11 +44,32 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      # --omit=optional keeps the installed graph equal to the audited
+      # toolchain: the vendored lock resolves every non-optional package to
+      # file:vendor/*.tgz, and src/toolchain.mjs:22 rejects any package set
+      # other than the one recorded in toolchain-files.json.
       - name: Install repository dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts --omit=optional --no-audit --no-fund
 
       - name: Run fixture suite
         run: npm test
 
-      - name: Run public metadata audit
-        run: python3 scripts/audit-public-metadata.py --online-releases
+      - name: Run the committed current-surface validators
+        run: |
+          npm run validate:indexes
+          npm run audit
+          node scripts/verify-digests.mjs
+          node scripts/check-clusters.mjs
+          node scripts/check-licenses.mjs
+          node scripts/check-public-surface.mjs
+
+      - name: Check the indexed reference assets through the packed CLI
+        env:
+          KDNA_ASSETS_METADATA_INDEX: index/current.json
+        run: node scripts/ci-leg-receipt.mjs current-assets
+
+      - name: Audit the retired 1.0.0 index metadata
+        env:
+          KDNA_ASSETS_METADATA_INDEX: index/current.json
+          KDNA_CI_ONLINE: '1'
+        run: node scripts/ci-leg-receipt.mjs index-metadata

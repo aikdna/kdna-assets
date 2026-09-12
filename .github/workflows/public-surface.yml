@@ -13,6 +13,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 22
-      - run: npm ci
+      - run: npm ci --ignore-scripts --omit=optional --no-audit --no-fund
       - name: Run public-surface check
         run: node scripts/check-public-surface.mjs
