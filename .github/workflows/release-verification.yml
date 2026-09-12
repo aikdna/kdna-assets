@@ -26,6 +26,13 @@ jobs:
         run: npm test
       - name: Run local audit
         run: npm run audit
+      # The receipt generator is never trusted about its own verdict: this step
+      # re-derives every leg's unavailability codes from the committed bytes and
+      # requires the receipt and the registration to agree with them.
+      - name: Verify the CI leg receipts against the committed bytes
+        env:
+          KDNA_ASSETS_METADATA_INDEX: index/current.json
+        run: node scripts/verify-ci-leg-receipts.mjs
       - name: Run online release consistency
         env:
           KDNA_ASSETS_METADATA_INDEX: index/current.json
