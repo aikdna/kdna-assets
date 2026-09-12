@@ -16,11 +16,27 @@ const errors = [];
 let loaded = 0;
 let gated = 0;
 const repositoryPackage = readJson(join(repositoryRoot, 'package.json'));
-const expectedCliVersion = repositoryPackage.devDependencies?.['@aikdna/kdna-cli'];
+const binding = readJson(join(repositoryRoot, 'public-contract-binding.json'));
+const declaredCliCoordinate = repositoryPackage.devDependencies?.['@aikdna/kdna-cli'];
+// The repository declares the CLI by the committed file:vendor coordinate; the
+// exact version is the one public-contract-binding.json records for that
+// archive. A stable SemVer pin is still accepted for a legacy manifest, and in
+// both cases the installed package must equal the declared coordinate exactly.
+const boundCli = (binding.packages ?? []).find((entry) => entry.name === '@aikdna/kdna-cli');
+const expectedCliVersion = (() => {
+  if (typeof declaredCliCoordinate === 'string' && declaredCliCoordinate.startsWith('file:')) {
+    return declaredCliCoordinate.slice('file:'.length) === boundCli?.archive
+      ? boundCli.version
+      : null;
+  }
+  return /^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/u.test(declaredCliCoordinate ?? '')
+    ? declaredCliCoordinate
+    : null;
+})();
 const cliPackageRoot = join(repositoryRoot, 'node_modules', '@aikdna', 'kdna-cli');
 const cliPackage = readJson(join(cliPackageRoot, 'package.json'));
 if (
-  !/^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/u.test(expectedCliVersion) ||
+  expectedCliVersion === null ||
   cliPackage.name !== '@aikdna/kdna-cli' ||
   cliPackage.version !== expectedCliVersion ||
   cliPackage.bin?.kdna !== 'src/cli.js'
