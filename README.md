@@ -26,6 +26,12 @@ Optional native packages are omitted; no install hooks are required. Run these c
 
 The adapter verifies the exact dependency bytes before loading them. Extra, changed, missing, or unexpected symbolic-link dependency files fail closed. Asset paths, digests, per-asset file manifests, and license attachments are checked before calling the official Node Core and Read entry points. The adapter does not unpack `.kdna` containers or define a second payload parser.
 
+## Dependency coordinates and publication
+
+A direct declaration is either an exact SemVer or an integrity-locked `file:` coordinate. Placement follows what the documented entry needs: the vendored `@aikdna/*` pins belong in `devDependencies`, because here every documented command (`npm test`, `npm run audit`, `npm run audit:read`, `npm run read`) is a validation or inspection path for this workspace rather than a runtime surface of a publishable package, and `npm ci --omit=dev` intentionally leaves the workspace without an adapter graph. The peer that a vendored member declares is bound to this repository's own coordinate through `overrides`, so an unreadable vendor archive fails locally instead of sending npm to the registry.
+
+If a release is ever published from this repository, every `file:` coordinate must first be replaced by the **exact registry version** (the `@aikdna/kdna-cli` pin included), because a consumer that installs the packed artifact from a registry has no `vendor/` directory next to it. `npm run check:publish-coordinates` reports the coordinates that are still local; it is green here because the package is `private` and no publication is configured.
+
 ## Reading and observations
 
 `npm run audit` checks the recorded Core outcomes with local read permission denied by default. `npm run audit:read` additionally gives explicit permission for that call and compares the current Read outcome with the indexed observation. A successful audit means the observation matches, including an accurately recorded rejection. When Core successfully admits an asset, the indexed `version` must exactly match its observed `asset_version`; a mismatch raises `ASSETS_ENTRY_VERSION_MISMATCH` before Read. Assets rejected by Core retain their original rejection and its public `states`, `diagnostics` and `component_failure` unchanged; their version is not guessed from rejected bytes. A Core-valid asset with blocked interpretation remains rejected, distinct from structurally invalid bytes. The adapter does not infer a more permissive state.

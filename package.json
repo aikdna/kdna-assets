@@ -11,6 +11,7 @@
   "scripts": {
     "test": "node --test tests/*.test.mjs tests/*.test.cjs",
     "validate:indexes": "node scripts/audit-current.mjs --validate-only",
+    "check:publish-coordinates": "node scripts/check-publish-coordinates.mjs",
     "audit": "node scripts/audit-current.mjs",
     "audit:read": "node scripts/audit-current.mjs --allow-read",
     "read": "node scripts/read-current.mjs",
