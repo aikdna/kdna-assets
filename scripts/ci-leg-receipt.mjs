@@ -17,7 +17,7 @@
 // leg command runs instead. scripts/verify-ci-leg-receipts.mjs re-derives the
 // same codes independently and refuses a receipt that disagrees.
 
-import { readFileSync, realpathSync } from 'node:fs';
+import { existsSync, readFileSync, realpathSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -81,6 +81,40 @@ export async function admissionCodes(environment, target = root) {
   return { codes: ['installed_core_rejects_indexed_assets'], rejected: rejected.length, rejected_assets: rejected };
 }
 
+// The `@aikdna/kdna-cli` pin is checked as a *coordinate*, not as a spelling:
+// an exact SemVer and a `file:` pin whose target exists, whose lockfile
+// `resolved` matches and whose lockfile `integrity` is a complete sha512 digest
+// are all acceptable; only a floating range, a missing target, a lock drift or
+// a missing integrity is an unavailability code. The previous
+// `exact_semver_kdna_cli_pin` spelling requirement was invented by this gate,
+// is not read by scripts/audit-public-metadata.py or
+// scripts/check-release-consistency.mjs, and would have held the two metadata
+// legs at not_run no matter what the leg tooling could audit.
+function pinCodes(target, environment) {
+  const manifest = readJson(resolve(target, environment.KDNA_ASSETS_METADATA_PACKAGE));
+  const coordinate = manifest.devDependencies?.['@aikdna/kdna-cli'];
+  if (coordinate === undefined) return { codes: [], detail: [] };
+  if (/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/u.test(coordinate)) return { codes: [], detail: [] };
+  if (!coordinate.startsWith('file:')) {
+    return { codes: ['kdna_cli_pin_not_checkable'], detail: [`kdna_cli_pin_not_checkable=${coordinate}`] };
+  }
+  const relative = coordinate.slice('file:'.length);
+  if (relative.length === 0 || !existsSync(resolve(target, relative))) {
+    return { codes: ['kdna_cli_pin_not_checkable'], detail: [`kdna_cli_pin_target_missing=${coordinate}`] };
+  }
+  const lockPath = resolve(target, 'package-lock.json');
+  if (!existsSync(lockPath)) {
+    return { codes: ['kdna_cli_pin_not_checkable'], detail: [`kdna_cli_pin_without_lock=${coordinate}`] };
+  }
+  const locked = readJson(lockPath).packages?.['node_modules/@aikdna/kdna-cli'];
+  const detail = [];
+  if (locked?.resolved !== coordinate) detail.push(`kdna_cli_pin_lock_drift=${String(locked?.resolved)}`);
+  if (!/^sha512-[A-Za-z0-9+/]{86}==$/u.test(locked?.integrity ?? '')) {
+    detail.push(`kdna_cli_pin_without_sha512_integrity=${String(locked?.integrity)}`);
+  }
+  return detail.length === 0 ? { codes: [], detail: [] } : { codes: ['kdna_cli_pin_not_checkable'], detail };
+}
+
 // Everything the committed index cannot satisfy, as stable codes.
 export function missingRequirements(environment, target = root) {
   const current = readJson(resolve(target, environment.KDNA_ASSETS_METADATA_INDEX));
@@ -101,12 +135,9 @@ export function missingRequirements(environment, target = root) {
     codes.push('entries_without_download_url');
     detail.push(`entries_without_download_url=${withoutDownload.length}`);
   }
-  const manifest = readJson(resolve(target, environment.KDNA_ASSETS_METADATA_PACKAGE));
-  const cliCoordinate = manifest.devDependencies?.['@aikdna/kdna-cli'];
-  if (!/^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/u.test(cliCoordinate ?? '')) {
-    codes.push('exact_semver_kdna_cli_pin');
-    detail.push(`exact_semver_kdna_cli_pin=${String(cliCoordinate)}`);
-  }
+  const pin = pinCodes(target, environment);
+  codes.push(...pin.codes);
+  detail.push(...pin.detail);
   return { codes, detail, entries: entries.length };
 }
 

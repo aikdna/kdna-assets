@@ -32,6 +32,7 @@ function sandboxTree() {
   cpSync(join(root, 'index'), join(sandbox, 'index'), { recursive: true });
   cpSync(join(root, 'tests', 'current-fixtures'), join(sandbox, 'tests', 'current-fixtures'), { recursive: true });
   cpSync(join(root, 'references'), join(sandbox, 'references'), { recursive: true });
+  cpSync(join(root, 'vendor'), join(sandbox, 'vendor'), { recursive: true });
   mkdirSync(join(sandbox, 'fixtures'), { recursive: true });
   cpSync(join(root, REGISTRY_PATH), join(sandbox, REGISTRY_PATH));
   cpSync(join(root, 'package.json'), join(sandbox, 'package.json'));
