@@ -122,7 +122,9 @@ test('a platform-optional package may be present or absent, and only that class 
  // both as the empty scope directory an installer may leave behind and as the
  // real platform package.
  const emptyScope=toolchainCopy();
- mkdirSync(join(emptyScope,'node_modules/@cbor-extract'));
+ // Recursive because the runner this test has to pass on may already have that
+ // directory: this file must not assume the host platform's shape either.
+ mkdirSync(join(emptyScope,'node_modules/@cbor-extract'),{recursive:true});
  assert.equal(verifyToolchain(emptyScope).files,945);
  const linux=toolchainCopy();
  simulatePlatformOptionalPackage(linux);
