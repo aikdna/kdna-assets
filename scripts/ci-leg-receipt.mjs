@@ -22,7 +22,7 @@ import { resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
-import { environmentFor, LEGS, REGISTRY_PATH } from './ci-leg-definitions.mjs';
+import { environmentFor, INPUT_NAMES, LEGS, REGISTRY_PATH } from './ci-leg-definitions.mjs';
 import { isEntryPoint } from './lib.mjs';
 
 const root = resolve(import.meta.dirname, '..');
@@ -41,10 +41,16 @@ export function inputDigests(environment) {
 }
 
 export function inputDigestsAt(target, environment) {
-  return {
-    [environment.KDNA_ASSETS_METADATA_INDEX]: sha256(resolve(target, environment.KDNA_ASSETS_METADATA_INDEX)),
-    [environment.KDNA_ASSETS_METADATA_PACKAGE]: sha256(resolve(target, environment.KDNA_ASSETS_METADATA_PACKAGE)),
-  };
+  // The receipt binds which named inputs were consumed and the sha256 of the
+  // bytes read through each. The value the operator configured is an input to
+  // this process, never an output of it: keying by the name is what keeps a
+  // path out of the retained CI log today and a token out of it tomorrow.
+  const digests = {};
+  for (const name of INPUT_NAMES) {
+    const relative = environment[name];
+    if (typeof relative === 'string' && relative.length > 0) digests[name] = sha256(resolve(target, relative));
+  }
+  return digests;
 }
 
 export function legRegistry() {
@@ -178,7 +184,7 @@ async function main(argv) {
   if (agrees) {
     console.log(
       `KDNA-CI-NOT-RUN: ${leg} reason=${registration.reason} object=${definition.object} ` +
-        `index=${environment.KDNA_ASSETS_METADATA_INDEX} unavailable=${[...computed].join(',')}`,
+      `index_input_name=${INPUT_NAMES[0]} unavailable=${[...computed].join(',')}`,
     );
     console.log(
       receipt({
