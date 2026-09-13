@@ -7,23 +7,31 @@ export const sha256=bytes=>createHash('sha256').update(bytes).digest('hex');
 // lock resolves with `optional: true` (a native platform binary, for one) is
 // allowed to be present or absent, and which one an installer materialises is a
 // property of the runner, not of this repository. The committed lockfile is the
-// explicit, reviewable source of that allow-set, and it is the only waiver: the
-// derivation adds a package path and its scope ancestors, nothing else.
-export function optionalToolchainDirectories(root=packageRoot){
+// explicit, reviewable source of that allow-set. It waives exactly two things:
+// the declared optional package's own subtree, whose recorded shape does not
+// exist because it differs per platform, and the scope directories that exist
+// only to hold such packages. The scope directories are not skipped - they are
+// still walked, so an undeclared sibling beside an optional package is an extra
+// directory like anywhere else.
+export function optionalToolchainGraph(root=packageRoot){
   const lock=JSON.parse(readFileSync(join(root,'package-lock.json'),'utf8'));
-  const allowed=new Set();
+  const packages=new Set();
+  const scopes=new Set();
   for(const [path,row] of Object.entries(lock.packages??{})){
     if(!path.startsWith('node_modules/')||row.optional!==true)continue;
     const parts=path.slice('node_modules/'.length).split('/');
-    allowed.add(parts.join('/'));
+    packages.add(parts.join('/'));
     parts.pop();
-    while(parts.length){allowed.add(parts.join('/'));parts.pop();}
+    while(parts.length){scopes.add(parts.join('/'));parts.pop();}
   }
-  return allowed;
+  // A declared optional package is skipped whole, so it is not also a scope to
+  // walk into.
+  for(const name of packages)scopes.delete(name);
+  return {packages,scopes};
 }
 export function verifyToolchain(root=packageRoot){
   const manifest=JSON.parse(readFileSync(join(root,'toolchain-files.json'),'utf8'));
-  const optional=optionalToolchainDirectories(root);
+  const {packages:optionalPackages,scopes:optionalScopes}=optionalToolchainGraph(root);
   const modules=join(root,'node_modules');
   const expected=new Map(manifest.files.map(x=>[x.path,x]));
   const directories=new Set();
@@ -38,10 +46,15 @@ export function verifyToolchain(root=packageRoot){
       const rel=prefix?prefix+'/'+name:name;const path=join(dir,name);const stat=lstatSync(path);
       if(stat.isSymbolicLink())throw new Error('ASSETS_TOOLCHAIN_SYMLINK: '+rel);
       if(stat.isDirectory()){
-        // A directory the manifest requires is walked; a platform-optional one
-        // is left alone either way. Anything else is still an extra directory.
+        // A directory the manifest requires is walked and verified. A declared
+        // optional package is the installing runner's platform shape, so its
+        // own subtree is left alone either way. A scope that only holds such
+        // packages is still walked, so an undeclared sibling beside one is an
+        // extra directory, exactly as it would be anywhere else.
         if(directories.has(rel))walk(path,rel);
-        else if(!optional.has(rel))throw new Error('ASSETS_TOOLCHAIN_EXTRA_DIRECTORY: '+rel);
+        else if(optionalPackages.has(rel))continue;
+        else if(optionalScopes.has(rel))walk(path,rel);
+        else throw new Error('ASSETS_TOOLCHAIN_EXTRA_DIRECTORY: '+rel);
       }
       else if(stat.isFile()){
         const row=expected.get(rel);
