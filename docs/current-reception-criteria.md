@@ -2,6 +2,9 @@
 
 > Last verified: 2026-09-13. This page records the criteria and the current
 > blocker. It does not accept, create or register any asset by itself.
+> See [Status update](#status-update-2026-09-13) for what changed after the
+> blocker below was written; the blocker paragraph is kept as the record of
+> the state it described.
 
 ## What "received" means here
 
@@ -33,6 +36,25 @@ Consequence: the repository currently holds **no example that completes the
 loop on the current contract**. A reader who downloads the present examples and
 uses the current candidates will see an explicit rejection. That is the honest
 current state, not a defect to be papered over.
+
+### Status update (2026-09-13)
+
+The consequence sentence above is **superseded**, and the two rejection
+statements above it are **not**. The two registered historical references
+still retain their bytes and are still rejected with `READ_CORE_INVALID`.
+
+One current-contract candidate is now registered beside them:
+`@aikdna/verification-scope@0.1.5`, recorded in `index/current.json` as
+`unpublished_candidate`. Its bytes were produced by one complete creation
+through the public Studio terminal Host, are admitted by the bound Core
+`0.24.0-rc.component-semantics.2`, and are disclosed by the bound Read under
+explicit local read permission. That covers steps 1-3 of the loop below.
+
+Steps 4 and 5 are still incomplete for this entry and are not claimed: no
+human previewed it, and it has no Release coordinate, so it is not published.
+The loop is therefore closed for admission and disclosure, and open for human
+preview and publication. The obligation not to edit the registered bytes, not
+to relabel a fixture, and not to let a listing imply endorsement is unchanged.
 
 ## What must not be done to unblock it
 
@@ -72,6 +94,11 @@ current state, not a defect to be papered over.
    one machine.
 5. Publish an entry only after the loop above completed, and report the rest as
    pending.
+
+Step 1 has one instance (`@aikdna/verification-scope`, created through the
+current public creation flow rather than rebuilt from a legacy asset), and
+steps 2 and 3 were carried out for it. Steps 4 and 5 remain pending, and step 4
+is the reason it is listed as an `unpublished_candidate`.
 
 ## Related
 
