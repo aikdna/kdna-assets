@@ -26,7 +26,7 @@ import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync,
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { environmentFor, LEGS, REGISTRY_PATH } from './ci-leg-definitions.mjs';
+import { environmentFor, INPUT_NAMES, LEGS, REGISTRY_PATH } from './ci-leg-definitions.mjs';
 import { admissionCodes, missingRequirements } from './ci-leg-receipt.mjs';
 import { isEntryPoint } from './lib.mjs';
 
@@ -46,10 +46,15 @@ export function digestOf(root, relative) {
 }
 
 export function expectedDigests(root, environment) {
-  return {
-    [environment.KDNA_ASSETS_METADATA_INDEX]: digestOf(root, environment.KDNA_ASSETS_METADATA_INDEX),
-    [environment.KDNA_ASSETS_METADATA_PACKAGE]: digestOf(root, environment.KDNA_ASSETS_METADATA_PACKAGE),
-  };
+  // Keyed by the input's name, not by the value the operator configured: the
+  // receipt's binding is "these named inputs, with these content digests", and
+  // no configured value is ever written into a log.
+  const digests = {};
+  for (const name of INPUT_NAMES) {
+    const relative = environment[name];
+    if (typeof relative === 'string' && relative.length > 0) digests[name] = digestOf(root, relative);
+  }
+  return digests;
 }
 
 // Re-derive the unavailability codes for a leg from the committed bytes. The
