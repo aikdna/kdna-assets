@@ -47,11 +47,12 @@ jobs:
       # --omit=optional keeps the installed graph equal to the audited
       # toolchain: the vendored lock resolves every non-optional package to
       # file:vendor/*.tgz, and src/toolchain.mjs rejects any package set other
-      # than the one recorded in toolchain-files.json. Packages the lock marks
-      # `optional: true` are the one exemption: which native platform package an
-      # installer materialises is a property of the runner, so those
-      # directories may appear or be absent. Every required package stays
-      # byte-exact, and a required extra directory is still rejected.
+      # than the one recorded in toolchain-files.json. A package the lock marks
+      # `optional: true` is the one exemption, because which native platform
+      # package an installer materialises is a property of the runner: it may
+      # appear or be absent, and its own members are not compared. The scope
+      # directory around it is still walked, every required package stays
+      # byte-exact, and an undeclared directory is rejected wherever it appears.
       - name: Install repository dependencies
         run: npm ci --ignore-scripts --omit=optional --no-audit --no-fund
 

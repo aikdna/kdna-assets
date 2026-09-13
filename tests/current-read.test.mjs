@@ -3,17 +3,22 @@ import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync,mkdtempSync,copyFileSync,mkdirSync,symlinkSync,cpSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {packageRoot,sha256,verifyToolchain,optionalToolchainDirectories} from '../src/toolchain.mjs';
+import {packageRoot,sha256,verifyToolchain,optionalToolchainGraph} from '../src/toolchain.mjs';
 import {validateIndex,auditIndex} from '../src/catalog.mjs';
 import {observeAsset,verifyEntryFiles,resolveEntryFile,summarizeRead} from '../src/current-read.mjs';
 const original=JSON.parse(readFileSync(join(packageRoot,'index/current.json')));
 const HISTORICAL_REFERENCES=['@aikdna/laozi-wuwei','@aikdna/epictetus-control-and-character'];
-// The lock resolves `@cbor-extract/*` with `optional: true`, so the Linux
-// runners that raised the original failure saw a `node_modules` directory this
-// macOS machine never installs. The allow-set is the lock's own declaration,
-// spelled out here so any change to it has to be reviewed in a diff.
-const PLATFORM_OPTIONAL_DIRECTORIES=[
- '@cbor-extract',
+// The lock resolves `@cbor-extract/cbor-extract-<platform>` with `optional:
+// true`, so the Linux runners that raised the original failure saw a
+// `node_modules` directory this macOS machine never installs. The allow-set is
+// the lock's own declaration, spelled out here so any change to it has to be
+// reviewed in a diff.
+//
+// Two different waivers, and the difference matters: a declared optional
+// package is skipped whole (its recorded shape does not exist, because it
+// differs per platform), while its scope directory is still walked (so an
+// undeclared sibling inside it is an extra directory like anywhere else).
+const PLATFORM_OPTIONAL_PACKAGES=[
  '@cbor-extract/cbor-extract-darwin-arm64',
  '@cbor-extract/cbor-extract-darwin-x64',
  '@cbor-extract/cbor-extract-linux-arm',
@@ -24,6 +29,7 @@ const PLATFORM_OPTIONAL_DIRECTORIES=[
  'detect-libc',
  'node-gyp-build-optional-packages',
 ];
+const PLATFORM_OPTIONAL_SCOPES=['@cbor-extract'];
 function toolchainCopy(){
  const root=mkdtempSync(join(tmpdir(),'kdna-assets-toolchain-'));
  for(const f of ['toolchain-files.json','public-contract-binding.json','package-lock.json'])copyFileSync(join(packageRoot,f),join(root,f));
@@ -89,8 +95,10 @@ test('artifact, license, path and inventory claims are checked before reading',(
  const stale=structuredClone(original);stale.toolchain_binding_sha256='0'.repeat(64);assert.throws(()=>validateIndex(stale,{checkFiles:false}),/ASSETS_INDEX_TOOLCHAIN_MISMATCH/);
 });
 test('the platform-optional allow-set is exactly the optional packages the committed lock declares',()=>{
- const allow=[...optionalToolchainDirectories()].sort();
- assert.deepEqual(allow,[...PLATFORM_OPTIONAL_DIRECTORIES].sort());
+ const {packages,scopes}=optionalToolchainGraph();
+ assert.deepEqual([...packages].sort(),[...PLATFORM_OPTIONAL_PACKAGES].sort());
+ assert.deepEqual([...scopes].sort(),[...PLATFORM_OPTIONAL_SCOPES].sort());
+ assert.deepEqual([...packages].filter(name=>scopes.has(name)),[]);
  // The waiver may never cover a package the manifest requires: every allow
  // entry is outside the required tree, so a required package keeps its exact
  // bytes and a required directory keeps its extra-directory rejection.
@@ -98,7 +106,7 @@ test('the platform-optional allow-set is exactly the optional packages the commi
  const required=new Set();
  for(const {path} of manifest.files){const parts=path.split('/');parts.pop();while(parts.length){required.add(parts.join('/'));parts.pop();}}
  for(const name of manifest.packages.map(x=>x.name))required.add(name);
- for(const dir of allow)assert.ok(!required.has(dir),`${dir} is required, so it may not be waved through`);
+ for(const dir of [...packages,...scopes])assert.ok(!required.has(dir),`${dir} is required, so it may not be waved through`);
 });
 
 test('extra and changed executable dependency bytes fail exact graph validation',()=>{
@@ -111,7 +119,11 @@ test('extra and changed executable dependency bytes fail exact graph validation'
 
 test('a platform-optional package may be present or absent, and only that class is exempt',()=>{
  // Positive: the runner shape that failed (optional package present) is green,
- // and it stays green whether or not the machine already had the directory.
+ // both as the empty scope directory an installer may leave behind and as the
+ // real platform package.
+ const emptyScope=toolchainCopy();
+ mkdirSync(join(emptyScope,'node_modules/@cbor-extract'));
+ assert.equal(verifyToolchain(emptyScope).files,945);
  const linux=toolchainCopy();
  simulatePlatformOptionalPackage(linux);
  assert.equal(verifyToolchain(linux).files,945);
@@ -119,18 +131,36 @@ test('a platform-optional package may be present or absent, and only that class 
  const macos=toolchainCopy();
  assert.equal(verifyToolchain(macos).files,945);
  // Reverse: an extra directory that no lock entry marks optional still fails,
- // both at the top level and inside a required scope.
+ // at the top level, inside a required scope, and as a sibling of a declared
+ // optional package inside that package's own scope - the exemption covers the
+ // optional package, never the scope around it.
  const stray=toolchainCopy();
  mkdirSync(join(stray,'node_modules/leftover-native-package'));writeFileSync(join(stray,'node_modules/leftover-native-package/index.js'),'module.exports=1;\n');
  assert.throws(()=>verifyToolchain(stray),{message:'ASSETS_TOOLCHAIN_EXTRA_DIRECTORY: leftover-native-package'});
  const strayScoped=toolchainCopy();
  mkdirSync(join(strayScoped,'node_modules/@aikdna/leftover-native-package'));
  assert.throws(()=>verifyToolchain(strayScoped),{message:'ASSETS_TOOLCHAIN_EXTRA_DIRECTORY: @aikdna/leftover-native-package'});
+ const smuggledAmongOptional=toolchainCopy();
+ simulatePlatformOptionalPackage(smuggledAmongOptional);
+ mkdirSync(join(smuggledAmongOptional,'node_modules/@cbor-extract/smuggled'));
+ writeFileSync(join(smuggledAmongOptional,'node_modules/@cbor-extract/smuggled/index.js'),'module.exports=1;\n');
+ assert.throws(()=>verifyToolchain(smuggledAmongOptional),{message:'ASSETS_TOOLCHAIN_EXTRA_DIRECTORY: @cbor-extract/smuggled'});
+ const smuggledFileAmongOptional=toolchainCopy();
+ simulatePlatformOptionalPackage(smuggledFileAmongOptional);
+ writeFileSync(join(smuggledFileAmongOptional,'node_modules/@cbor-extract/smuggled.js'),'module.exports=1;\n');
+ assert.throws(()=>verifyToolchain(smuggledFileAmongOptional),{message:'ASSETS_TOOLCHAIN_CHANGED: @cbor-extract/smuggled.js'});
  // Reverse: the optional allowance does not relax a required file's exact bytes.
  const tampered=toolchainCopy();
  simulatePlatformOptionalPackage(tampered);
  writeFileSync(join(tampered,'node_modules/cbor-x/package.json'),'{}');
  assert.throws(()=>verifyToolchain(tampered),/ASSETS_TOOLCHAIN_CHANGED: cbor-x\/package\.json/);
+ // The one thing that is genuinely not checked, stated rather than implied: the
+ // inside of a declared optional package. No recorded shape of it exists -
+ // that is what "optional" means here - so its members cannot be compared.
+ const insideDeclaredOptional=toolchainCopy();
+ simulatePlatformOptionalPackage(insideDeclaredOptional);
+ writeFileSync(join(insideDeclaredOptional,'node_modules/@cbor-extract/cbor-extract-linux-x64/index.js'),'module.exports=1;\n');
+ assert.equal(verifyToolchain(insideDeclaredOptional).files,945);
 });
 
 test('an accepted asset must match the exact indexed version before any Read result',async()=>{
