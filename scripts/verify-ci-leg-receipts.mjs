@@ -154,6 +154,23 @@ async function checkReceipt(root, leg, definition, registration, findings) {
       detail: 'the receipt is not bound to the sha256 digests of the committed input files',
     });
   }
+  // The gate's own lines bind the NAME of each input and the digest of its
+  // bytes. A configured value that reaches them is a leak in a retained log
+  // whether or not it is a secret today, and it is not a property this leg may
+  // regress into, so the shape is enforced here and not only by the scanner.
+  for (const line of result.stdout.split('\n')) {
+    if (!line.startsWith(NOT_RUN_PREFIX) && !line.startsWith(RECEIPT_PREFIX)) continue;
+    for (const name of INPUT_NAMES) {
+      const configured = environment[name];
+      if (typeof configured === 'string' && configured.length > 2 && line.includes(configured)) {
+        findings.push({
+          leg,
+          check: 'gate_line_echoes_configured_value',
+          detail: `${name} is written as clear text into the gate's own output`,
+        });
+      }
+    }
+  }
 
   if (expected === 'not_run') {
     if (result.status !== 0) findings.push({ leg, check: 'not_run_exit', detail: String(result.status) });
