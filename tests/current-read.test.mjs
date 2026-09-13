@@ -21,8 +21,19 @@ test('public inventory keeps the historical reference rejections and records the
  // candidate is added beside them, never in place of them.
  const historical=original.assets.filter(entry=>entry.publication_status==='existing_reference');
  assert.deepEqual(historical.map(entry=>entry.id).sort(),[...HISTORICAL_REFERENCES].sort());
- assert.equal(validateIndex(original).assets,original.assets.length);
+ // The inventory is allowed to grow (the current-contract candidate is added
+ // beside the historical references), so the gate is per entry rather than a
+ // fixed total: every indexed entry must pass the real audit on its own and
+ // must keep its own recorded outcome.
+ for(const entry of original.assets)assert.equal(validateIndex({...original,assets:[entry]}).assets,1);
  const r=await auditIndex(original,{allowRead:true});assert.equal(r.results.length,original.assets.length);
+ for(const entry of original.assets){
+  const result=r.results.find(candidate=>candidate.id===entry.id);
+  assert.ok(result,`indexed entry must have its own audit result: ${entry.id}`);
+  assert.equal(result.admission.status,entry.observation.core.status);
+  assert.equal(result.admission.reason??null,entry.observation.core.reason??null);
+  assert.equal(result.read.envelope.status,entry.observation.read.status);
+ }
  for(const x of r.results.filter(result=>HISTORICAL_REFERENCES.includes(result.id))){assert.equal(x.admission.status,'rejected');assert.equal(x.admission.reason,'READ_CORE_INVALID');assert.equal(x.read.envelope.status,'rejected');}
  const candidate=r.results.find(result=>result.id==='@aikdna/verification-scope');
  assert.equal(candidate.admission.status,'accepted');
