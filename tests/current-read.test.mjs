@@ -3,11 +3,39 @@ import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync,mkdtempSync,copyFileSync,mkdirSync,symlinkSync,cpSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {packageRoot,sha256,verifyToolchain} from '../src/toolchain.mjs';
+import {packageRoot,sha256,verifyToolchain,optionalToolchainDirectories} from '../src/toolchain.mjs';
 import {validateIndex,auditIndex} from '../src/catalog.mjs';
 import {observeAsset,verifyEntryFiles,resolveEntryFile,summarizeRead} from '../src/current-read.mjs';
 const original=JSON.parse(readFileSync(join(packageRoot,'index/current.json')));
 const HISTORICAL_REFERENCES=['@aikdna/laozi-wuwei','@aikdna/epictetus-control-and-character'];
+// The lock resolves `@cbor-extract/*` with `optional: true`, so the Linux
+// runners that raised the original failure saw a `node_modules` directory this
+// macOS machine never installs. The allow-set is the lock's own declaration,
+// spelled out here so any change to it has to be reviewed in a diff.
+const PLATFORM_OPTIONAL_DIRECTORIES=[
+ '@cbor-extract',
+ '@cbor-extract/cbor-extract-darwin-arm64',
+ '@cbor-extract/cbor-extract-darwin-x64',
+ '@cbor-extract/cbor-extract-linux-arm',
+ '@cbor-extract/cbor-extract-linux-arm64',
+ '@cbor-extract/cbor-extract-linux-x64',
+ '@cbor-extract/cbor-extract-win32-x64',
+ 'cbor-extract',
+ 'detect-libc',
+ 'node-gyp-build-optional-packages',
+];
+function toolchainCopy(){
+ const root=mkdtempSync(join(tmpdir(),'kdna-assets-toolchain-'));
+ for(const f of ['toolchain-files.json','public-contract-binding.json','package-lock.json'])copyFileSync(join(packageRoot,f),join(root,f));
+ cpSync(join(packageRoot,'node_modules'),join(root,'node_modules'),{recursive:true,verbatimSymlinks:true});
+ return root;
+}
+// `@cbor-extract/cbor-extract-linux-x64` is the shape the ubuntu runner
+// installs; materialising it turns this macOS checkout into the failing runner.
+function simulatePlatformOptionalPackage(root){
+ const dir=join(root,'node_modules/@cbor-extract/cbor-extract-linux-x64');mkdirSync(dir,{recursive:true});
+ writeFileSync(join(dir,'package.json'),'{"name":"@cbor-extract/cbor-extract-linux-x64","version":"2.2.2"}\n');
+}
 function fixture(){
  const root=mkdtempSync(join(tmpdir(),'kdna-assets-synthetic-'));mkdirSync(join(root,'synthetic'));
  for(const f of ['asset.kdna','LICENSE'])copyFileSync(join(packageRoot,'tests/current-fixtures/synthetic',f),join(root,'synthetic',f));
@@ -60,12 +88,49 @@ test('artifact, license, path and inventory claims are checked before reading',(
  const invalid=structuredClone(original);invalid.assets[0].observation.read.status='ready';assert.throws(()=>validateIndex(invalid,{checkFiles:false}),/ASSETS_OBSERVATION_CONFLICT/);
  const stale=structuredClone(original);stale.toolchain_binding_sha256='0'.repeat(64);assert.throws(()=>validateIndex(stale,{checkFiles:false}),/ASSETS_INDEX_TOOLCHAIN_MISMATCH/);
 });
+test('the platform-optional allow-set is exactly the optional packages the committed lock declares',()=>{
+ const allow=[...optionalToolchainDirectories()].sort();
+ assert.deepEqual(allow,[...PLATFORM_OPTIONAL_DIRECTORIES].sort());
+ // The waiver may never cover a package the manifest requires: every allow
+ // entry is outside the required tree, so a required package keeps its exact
+ // bytes and a required directory keeps its extra-directory rejection.
+ const manifest=JSON.parse(readFileSync(join(packageRoot,'toolchain-files.json'),'utf8'));
+ const required=new Set();
+ for(const {path} of manifest.files){const parts=path.split('/');parts.pop();while(parts.length){required.add(parts.join('/'));parts.pop();}}
+ for(const name of manifest.packages.map(x=>x.name))required.add(name);
+ for(const dir of allow)assert.ok(!required.has(dir),`${dir} is required, so it may not be waved through`);
+});
+
 test('extra and changed executable dependency bytes fail exact graph validation',()=>{
- assert.equal(verifyToolchain().files,945);const root=mkdtempSync(join(tmpdir(),'kdna-assets-toolchain-'));
- for(const f of ['toolchain-files.json','public-contract-binding.json'])copyFileSync(join(packageRoot,f),join(root,f));cpSync(join(packageRoot,'node_modules'),join(root,'node_modules'),{recursive:true,verbatimSymlinks:true});
+ assert.equal(verifyToolchain().files,945);
+ const root=toolchainCopy();
  assert.equal(verifyToolchain(root).files,945);
  const file=join(root,'node_modules/@aikdna/kdna-cli/LICENSE');writeFileSync(file,'modified');assert.throws(()=>verifyToolchain(root),/ASSETS_TOOLCHAIN_CHANGED/);
  copyFileSync(join(packageRoot,'node_modules/@aikdna/kdna-cli/LICENSE'),file);writeFileSync(join(root,'node_modules/@aikdna/kdna-cli/extra.js'),'throw new Error("must not execute")');assert.throws(()=>verifyToolchain(root),/ASSETS_TOOLCHAIN_CHANGED/);
+});
+
+test('a platform-optional package may be present or absent, and only that class is exempt',()=>{
+ // Positive: the runner shape that failed (optional package present) is green,
+ // and it stays green whether or not the machine already had the directory.
+ const linux=toolchainCopy();
+ simulatePlatformOptionalPackage(linux);
+ assert.equal(verifyToolchain(linux).files,945);
+ // Removing it again is the macOS shape and is equally green.
+ const macos=toolchainCopy();
+ assert.equal(verifyToolchain(macos).files,945);
+ // Reverse: an extra directory that no lock entry marks optional still fails,
+ // both at the top level and inside a required scope.
+ const stray=toolchainCopy();
+ mkdirSync(join(stray,'node_modules/leftover-native-package'));writeFileSync(join(stray,'node_modules/leftover-native-package/index.js'),'module.exports=1;\n');
+ assert.throws(()=>verifyToolchain(stray),{message:'ASSETS_TOOLCHAIN_EXTRA_DIRECTORY: leftover-native-package'});
+ const strayScoped=toolchainCopy();
+ mkdirSync(join(strayScoped,'node_modules/@aikdna/leftover-native-package'));
+ assert.throws(()=>verifyToolchain(strayScoped),{message:'ASSETS_TOOLCHAIN_EXTRA_DIRECTORY: @aikdna/leftover-native-package'});
+ // Reverse: the optional allowance does not relax a required file's exact bytes.
+ const tampered=toolchainCopy();
+ simulatePlatformOptionalPackage(tampered);
+ writeFileSync(join(tampered,'node_modules/cbor-x/package.json'),'{}');
+ assert.throws(()=>verifyToolchain(tampered),/ASSETS_TOOLCHAIN_CHANGED: cbor-x\/package\.json/);
 });
 
 test('an accepted asset must match the exact indexed version before any Read result',async()=>{
