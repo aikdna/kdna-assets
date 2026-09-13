@@ -7,6 +7,7 @@ import {packageRoot,sha256,verifyToolchain} from '../src/toolchain.mjs';
 import {validateIndex,auditIndex} from '../src/catalog.mjs';
 import {observeAsset,verifyEntryFiles,resolveEntryFile,summarizeRead} from '../src/current-read.mjs';
 const original=JSON.parse(readFileSync(join(packageRoot,'index/current.json')));
+const HISTORICAL_REFERENCES=['@aikdna/laozi-wuwei','@aikdna/epictetus-control-and-character'];
 function fixture(){
  const root=mkdtempSync(join(tmpdir(),'kdna-assets-synthetic-'));mkdirSync(join(root,'synthetic'));
  for(const f of ['asset.kdna','LICENSE'])copyFileSync(join(packageRoot,'tests/current-fixtures/synthetic',f),join(root,'synthetic',f));
@@ -14,10 +15,19 @@ function fixture(){
  const entry=structuredClone(original.assets[0]);entry.id='synthetic-read-observation';entry.version='1.0.0';entry.artifact.path=files[0].path;entry.files=files;entry.digest.value=files[0].sha256;entry.license.path=files[1].path;entry.license.id='Apache-2.0';
  return{root,entry};
 }
-test('public inventory keeps the two actually rejected historical references',async()=>{
- assert.equal(validateIndex(original).assets,2);
- const r=await auditIndex(original,{allowRead:true});assert.equal(r.results.length,2);
- for(const x of r.results){assert.equal(x.admission.status,'rejected');assert.equal(x.admission.reason,'READ_CORE_INVALID');assert.equal(x.read.envelope.status,'rejected');}
+test('public inventory keeps the historical reference rejections and records the accepted candidate',async()=>{
+ // The historical references must keep their original bytes and their exact
+ // recorded rejection whenever the inventory grows. A current-contract
+ // candidate is added beside them, never in place of them.
+ const historical=original.assets.filter(entry=>entry.publication_status==='existing_reference');
+ assert.deepEqual(historical.map(entry=>entry.id).sort(),[...HISTORICAL_REFERENCES].sort());
+ assert.equal(validateIndex(original).assets,original.assets.length);
+ const r=await auditIndex(original,{allowRead:true});assert.equal(r.results.length,original.assets.length);
+ for(const x of r.results.filter(result=>HISTORICAL_REFERENCES.includes(result.id))){assert.equal(x.admission.status,'rejected');assert.equal(x.admission.reason,'READ_CORE_INVALID');assert.equal(x.read.envelope.status,'rejected');}
+ const candidate=r.results.find(result=>result.id==='@aikdna/verification-scope');
+ assert.equal(candidate.admission.status,'accepted');
+ assert.equal(candidate.read.envelope.status,'ready');
+ assert.equal(candidate.read.envelope.states.read_permission,'allowed');
 });
 test('explicit permission discloses one complete selected judgment; default denies',async()=>{
  const x=fixture(),denied=await observeAsset(x);assert.equal(denied.admission.status,'accepted');assert.equal(denied.read.envelope.states.read_permission,'denied');assert.equal(denied.read.envelope.content,null);

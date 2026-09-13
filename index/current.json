@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "kind": "kdna-current-index",
-  "updated": "2026-09-10T15:55:53.207Z",
+  "updated": "2026-09-13T08:28:54.730Z",
   "repository": "https://github.com/aikdna/kdna-assets",
   "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
   "assets": [
@@ -168,6 +168,79 @@
         "scope": "Actual current exact graph and exact file bytes; local explicit read permission, no transferable authority or remote acknowledgment."
       },
       "publication_status": "existing_reference",
+      "proof_limits": {
+        "creation": "not_evaluated",
+        "identity": "not_evaluated",
+        "action_authorization": "not_evaluated",
+        "legal_clearance": "not_evaluated"
+      }
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/verification-scope",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "OpenAI Codex agent"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/verification-scope/LICENSE",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "0.1.5",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "5c32fff6e1c0846bbcb726935d9f55b7b0b77d26fda6771706483fb543677dd5"
+      },
+      "artifact": {
+        "path": "references/public/verification-scope/verification-scope-0.1.5.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "evidence_claims": [],
+      "files": [
+        {
+          "path": "references/public/verification-scope/LICENSE",
+          "bytes": 13608,
+          "sha256": "1dae4c7f400af505f6d478adeaee87129b3f2585cc93f1dcc441d6d1287f5f47"
+        },
+        {
+          "path": "references/public/verification-scope/README.md",
+          "bytes": 4793,
+          "sha256": "5737e92ee52a8dafab44ac696518c6da00b6846b84eaec8e1c318576ccd19e8d"
+        },
+        {
+          "path": "references/public/verification-scope/verification-scope-0.1.5.kdna",
+          "bytes": 13864,
+          "sha256": "5c32fff6e1c0846bbcb726935d9f55b7b0b77d26fda6771706483fb543677dd5"
+        },
+        {
+          "path": "references/public/verification-scope/verification-scope-0.1.5.kdna.sha256",
+          "bytes": 96,
+          "sha256": "34a403330efb2ba9f77ccad05c488061ba6867b5b4381908c2454ebb740f3734"
+        }
+      ],
+      "observation": {
+        "checked_at": "2026-09-13T08:28:54.608Z",
+        "method": "public_node_adapter",
+        "core": {
+          "status": "accepted",
+          "reason": null
+        },
+        "read": {
+          "channel": "read_envelope",
+          "status": "ready",
+          "diagnostics": [],
+          "read_permission": "allowed",
+          "delivery": "delivered"
+        },
+        "scope": "Actual current exact graph and exact file bytes; local explicit read permission, no transferable authority or remote acknowledgment."
+      },
+      "publication_status": "unpublished_candidate",
       "proof_limits": {
         "creation": "not_evaluated",
         "identity": "not_evaluated",

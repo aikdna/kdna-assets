@@ -8,6 +8,12 @@
 它们用于展示来源记录、结构化判断、边界、打包、验证、LoadPlan 和 Runtime
 Capsule 互操作，不是官方哲学解释、真人背书、行为价值证明或使用推荐。
 
+本文说明这两个参考资产；它们由较旧的工具链重建，且被当前候选图以
+`READ_CORE_INVALID` 拒收。仓库另有一条**当前契约**条目
+`@aikdna/verification-scope@0.1.5`（`unpublished_candidate`，经当前正式创建
+流程产生并由当前 Core 接受），其坐标、创建方式与不主张的内容见
+[`../references/public/verification-scope/README.md`](../references/public/verification-scope/README.md)。
+
 ## 来源与作者边界
 
 两个资产由 AI 创作流程产生，`human_review=false`。创建者不是老子或爱比克泰德
