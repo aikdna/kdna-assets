@@ -74,7 +74,12 @@ Every entry records:
 - local artifact or manifest path;
 - a complete file inventory, explicit publication status and proof limits;
 - the actual current Core/Read observation and verification time;
-- optional evidence claims only when a public URL supports the exact claim.
+- `evidence_claims: []`, as required by the current schema's empty-array bound.
+
+Do not add claims to the current index array. Any separately documented claim
+belongs in the entry's documentation with its exact evidence and scope; it does
+not change the index schema, technical observation or proof limits. Historical
+claims retain their original scope.
 
 Historical Release coordinates and receipts remain in their original reference
 documents. An `unpublished_candidate` entry does not require or imply a new
