@@ -20,7 +20,7 @@ whether content is correct, valuable, tasteful, expert, or worthy of existence.
 
 | Dimension | Question | Does not prove |
 |---|---|---|
-| Structure/runtime | Does the file validate, plan, load when authorized, and produce the required Capsule or plan? | Content quality or truth |
+| Structure/Read | What does the exact bound Core admit, and what public Read result is observed under explicit permission? | Content quality or truth |
 | Provenance | Are creator and publisher recorded? | Expertise or endorsement |
 | Authorization/license | Is distribution and use authorized under the entry's own license? | Runtime validity or value |
 | Evidence | Is a bounded optional claim linked to evidence? | Universal usefulness |
@@ -56,22 +56,30 @@ clusters/<cluster-slug>/
   README.md
 ```
 
-A Cluster manifest is not `.kdna`. Validate and plan it with Cluster commands,
-never single-asset loading commands.
+A Cluster manifest is not `.kdna`. The retained Cluster layout and checks belong
+to their historical toolchain. The current Read index requires an empty cluster
+list; it does not provide a current Cluster planning or loading workflow.
 
 ## Required metadata
 
 Add one entry to `index/current.json` following
-`schemas/current-index.schema.json`. Every entry records:
+the current schema 2 contract in `schemas/public-read-index.schema.json`.
+`src/catalog.mjs` validates this schema and the current toolchain binding.
+Every entry records:
 
 - stable identity and version;
 - publisher and creator;
 - access mode and entry-local license;
 - SHA-256 digest;
 - local artifact or manifest path;
-- pinned GitHub Release download and checksum URLs;
-- technical status and verification time;
+- a complete file inventory, explicit publication status and proof limits;
+- the actual current Core/Read observation and verification time;
 - optional evidence claims only when a public URL supports the exact claim.
+
+Historical Release coordinates and receipts remain in their original reference
+documents. An `unpublished_candidate` entry does not require or imply a new
+Release; do not invent a download coordinate or change its publication status
+from a successful local audit.
 
 Do not use listing language that implies endorsement, official status,
 correctness, quality ranking, expert certification, or protocol truth.
@@ -81,9 +89,11 @@ correctness, quality ranking, expert certification, or protocol truth.
 1. Create the entry directory, artifact or manifest, checksum, license, and
    public usage guide.
 2. Run the applicable official toolchain checks.
-3. Create a pinned GitHub Release containing the exact artifact and sidecar.
-4. Add the matching entry to `index/current.json`.
-5. Run `npm test`, `npm run audit`, and `npm run check:releases`.
+3. Record the actual publication status and preserve existing Release evidence.
+   A repository entry or test run is not permission to publish a new Release.
+4. Add the matching schema 2 entry and file inventory to `index/current.json`.
+5. Run `npm test`, `npm run validate:indexes`, `npm run audit`, and
+   `npm run audit:read` with the exact current installed graph.
 6. Open a signed-off pull request for review.
 
 Repository tests never publish, replace, or delete Releases.
@@ -91,14 +101,17 @@ Repository tests never publish, replace, or delete Releases.
 ## Technical gates
 
 ```bash
-node scripts/check-current-assets.mjs
-node scripts/check-clusters.mjs
+npm run validate:indexes
 npm run audit
+npm run audit:read
 ```
 
-The checks reject path, digest, license, lifecycle, Runtime Capsule, Cluster
-manifest, and Release inconsistencies. Technical success does not create an
-adoption, external-assessment, or field-outcome claim.
+The current checks reject inconsistent schema, paths, digests, file inventories,
+licenses, dependency bytes and Core/Read observations. A faithfully recorded
+Core rejection is an observation, not current readability. Old Capsule, Cluster
+and Release checkers retain their historical scope; they do not replace these
+current entry points. Technical success does not create an adoption,
+external-assessment, or field-outcome claim.
 
 ## Sign-off
 
