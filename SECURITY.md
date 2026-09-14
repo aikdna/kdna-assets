@@ -6,7 +6,7 @@ Please **do not** report security vulnerabilities through public GitHub issues.
 
 Instead, use one of these private channels:
 
-- **GitHub Private Vulnerability Reporting**: Go to the [Security Advisories](https://github.com/aikdna/kdna/security/advisories/new) page. Reports are directed to the parent kdna repo because the primary risk surface is kdna-cli's load logic, not asset content.
+- **GitHub Private Vulnerability Reporting**: Go to the [Security Advisories](https://github.com/aikdna/kdna/security/advisories/new) page. Reports are directed to the parent kdna repo for the shared Core, Read and CLI security boundary.
 - **Email**: security@aikdna.com
 
 We aim to respond within 72 hours and provide a timeline for resolution within 1 week.
@@ -27,14 +27,19 @@ Older versions may receive critical security patches on a case-by-case basis.
 
 ## Security Model
 
-The KDNA Protocol is content-neutral: assets distributed here
-are `.kdna` runtime containers whose content is a judgment
-framework. A `.kdna` asset has no network capability, no
-filesystem capability, and no code-execution capability beyond
-what its declared `load_contract` permits. The risk surface
-of consuming a `.kdna` asset is bounded by the kdna-cli's
-load contract; vulnerabilities in kdna-cli's load logic are
-the primary concern, not the content of any individual asset.
+The KDNA Protocol is content-neutral. This repository observes exact `.kdna`
+asset bytes through its bound public Core, Read and CLI graph, recorded in
+`public-contract-binding.json`. Core owns container admission and component
+interpretation; Read owns disclosure. The adapter checks asset paths, digests
+and dependency bytes before using those public entry points. It does not parse
+payloads or execute asset content.
+
+Asset content must be treated as untrusted input. Technical readability and
+index membership do not establish content quality, human confirmation or
+permission to act. Local read permission applies only to the checked bytes and
+current request; it is not a transferable credential or action authorization.
+The embedding application remains responsible for its own trusted policy and
+any downstream network, filesystem or execution capabilities.
 
 For questions about the security model that are not answered
 here, open a GitHub issue (not for vulnerabilities) or email
