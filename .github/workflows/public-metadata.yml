@@ -21,21 +21,6 @@ on:
       - 'package-lock.json'
   pull_request:
     branches: [main]
-    paths:
-      - '.github/workflows/**'
-      - 'index/**'
-      - 'references/**'
-      - 'clusters/**'
-      - 'schemas/**'
-      - 'README.md'
-      - 'CONTRIBUTING.md'
-      - 'LICENSE-POLICY.md'
-      - 'scripts/**'
-      - 'tests/**'
-      - 'package.json'
-      - 'package-lock.json'
-      - '.github/workflows/public-metadata.yml'
-      - '.github/pull_request_template.md'
 
 jobs:
   public-metadata:
