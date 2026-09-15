@@ -1,6 +1,6 @@
 # KDNA Assets
 
-This private source workspace provides an index and adapter for the current public KDNA Core and Read contracts. An index entry records a concrete observation of exact asset bytes. It does not certify content quality, expertise, human confirmation, or permission to act.
+This public source workspace provides an index and adapter for the current public KDNA Core and Read contracts. Repository visibility and npm publication are different facts: the package is marked `private: true` only so it is **not published as an npm package**, and no release is configured. An index entry records a concrete observation of exact asset bytes. It does not certify content quality, expertise, human confirmation, or permission to act.
 
 ## Current status
 
@@ -10,7 +10,7 @@ The two existing public reference assets retain their original bytes and license
 
 The schema 2 index now also records one **current-contract candidate**, `@aikdna/verification-scope@0.1.5`, whose exact bytes this graph admits and whose catalog and selected judgments the current Read discloses under explicit local read permission. It is an Agent-authored and Agent-adopted asset with no human review, and it is registered as `unpublished_candidate` because no Release coordinate exists for it. The two historical references above stay exactly as they were; the candidate is added beside them, never in place of them. See [`references/public/verification-scope/README.md`](references/public/verification-scope/README.md) for its coordinates and for what it does not claim.
 
-This source bundle contains those two public references, the current-contract candidate and a synthetic technical test fixture. The separately held official 100-asset collection is not distributed here. Finite taxonomy, candidate-set and discriminator-set interpretation comes exclusively from the accepted public Core definition `3087cd19542e72322aec19b3015c916d2cfb074fa42e3fd76b3756bb4f097de3`. This adapter does not interpret containers or component content itself. Technical readability does not establish the completeness of judgment content.
+This source bundle contains those two public references, the current-contract candidate and a synthetic technical test fixture. The separately held official 100-asset collection is not distributed here: that private material, its sources and its authoring records are kept outside this public repository and supplied separately, then read through the same public adapter. See [`docs/collection-workspace.md`](docs/collection-workspace.md) for that layout. Finite taxonomy, candidate-set and discriminator-set interpretation comes exclusively from the accepted public Core definition `3087cd19542e72322aec19b3015c916d2cfb074fa42e3fd76b3756bb4f097de3`. This adapter does not interpret containers or component content itself. Technical readability does not establish the completeness of judgment content.
 
 ## Offline setup
 
@@ -24,7 +24,7 @@ npm run audit
 npm run audit:read
 ```
 
-Optional native packages are omitted; no install hooks are required. Run these commands from the extracted source workspace. This is an offline workspace distribution, not an assertion that installing this private package as another package's dependency supplies its development graph. No registry publication is configured.
+Optional native packages are omitted; no install hooks are required. Run these commands from the extracted source workspace. This is an offline workspace distribution, not an assertion that installing this package as another package's dependency supplies its development graph. No registry publication is configured.
 
 The adapter verifies the exact dependency bytes before loading them. Extra, changed, missing, or unexpected symbolic-link dependency files fail closed. Packages the committed lock resolves with `optional: true` are the single exemption: which native platform package an installer materialises is a property of the runner rather than of this repository, so a declared optional package may appear or be absent, and its own members are not compared because no recorded shape of them exists. Every required package and every required file stays byte-exact, and an undeclared directory is rejected wherever it appears, including beside an optional package inside that package's scope. Asset paths, digests, per-asset file manifests, and license attachments are checked before calling the official Node Core and Read entry points. The adapter does not unpack `.kdna` containers or define a second payload parser.
 
@@ -32,7 +32,7 @@ The adapter verifies the exact dependency bytes before loading them. Extra, chan
 
 A direct declaration is either an exact SemVer or an integrity-locked `file:` coordinate. Placement follows what the documented entry needs: the vendored `@aikdna/*` pins belong in `devDependencies`, because here every documented command (`npm test`, `npm run audit`, `npm run audit:read`, `npm run read`) is a validation or inspection path for this workspace rather than a runtime surface of a publishable package, and `npm ci --omit=dev` intentionally leaves the workspace without an adapter graph. The peer that a vendored member declares is bound to this repository's own coordinate through `overrides`, so an unreadable vendor archive fails locally instead of sending npm to the registry.
 
-If a release is ever published from this repository, every `file:` coordinate must first be replaced by the **exact registry version** (the `@aikdna/kdna-cli` pin included), because a consumer that installs the packed artifact from a registry has no `vendor/` directory next to it. `npm run check:publish-coordinates` reports the coordinates that are still local; it is green here because the package is `private` and no publication is configured.
+If a release is ever published from this repository, every `file:` coordinate must first be replaced by the **exact registry version** (the `@aikdna/kdna-cli` pin included), because a consumer that installs the packed artifact from a registry has no `vendor/` directory next to it. `npm run check:publish-coordinates` reports the coordinates that are still local; it is green here because the npm package sets `private: true` and no publication is configured.
 
 ## Gate entry points
 
