@@ -1,6 +1,16 @@
 # Public reference asset entries
 
-Each current public reference asset owns one directory:
+**This directory currently holds no public reference asset and the index lists
+none.** The first public asset published from here will be the KDNA white
+paper. Until then nothing in this repository offers a downloadable asset.
+
+The three earlier entries — `laozi-wuwei/`,
+`epictetus-control-and-character/` and `verification-scope/` — were withdrawn
+together with their index entries, directory downloads and the release assets
+that carried them. Their bytes are preserved outside the public surface for
+recovery, and this directory's earlier revision remains in Git history.
+
+Each public reference asset owns one directory:
 
 ```text
 references/public/<asset-slug>/
@@ -10,24 +20,10 @@ references/public/<asset-slug>/
   README.md
 ```
 
-Current public references:
-
-- [`laozi-wuwei/`](laozi-wuwei/)
-- [`epictetus-control-and-character/`](epictetus-control-and-character/)
-- [`verification-scope/`](verification-scope/) — current-contract candidate,
-  `unpublished_candidate`, admitted by the bound Core
-
-Each directory supplies the exact `.kdna`, checksum, entry-scoped license, and
-usage guide. The two historical reference files passed the current validate,
-LoadPlan, compact Runtime Capsule, Capsule verification, isolated install, and
-reproducible-build gates. Those are technical claims only; no listing is a
-truth, expertise, adoption, external-assessment, outcome, or
-protocol-endorsement claim. The current-contract candidate states its own,
-narrower observation in its own directory and in `index/current.json`: admitted
-by the bound Core and disclosed by the bound Read under explicit local
-permission, not published, and not human-reviewed. The isolated install check
-covers a published legacy Store surface; it is not the canonical file-first
-user model.
+Each listed directory supplies the exact `.kdna`, checksum, entry-scoped
+license, and usage guide. A listing is a technical observation only: no listing
+is a truth, expertise, adoption, external-assessment, outcome, or
+protocol-endorsement claim.
 
 Future entries must be independently authored and released through the current
 toolchain.

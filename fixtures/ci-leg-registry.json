@@ -4,24 +4,12 @@
   "note": "A leg may only report not_run when it is registered here AND the recomputed unavailability codes it names still hold on the committed graph. The set of codes is compared both ways: a code the gate computes but does not register, or a registered code that is no longer true, makes the leg run instead. review_by is an expiry: scripts/verify-ci-leg-receipts.mjs fails once it has passed.",
   "entries": [
     {
-      "leg": "current-assets",
-      "class": "not_run",
-      "reason": "committed_core_rejects_indexed_assets",
-      "condition": "admission_codes > 0",
-      "unavailable_codes": ["installed_core_rejects_indexed_assets"],
-      "trigger": "the committed public Core admits every asset in the committed index (then the leg runs check-current-assets.mjs)",
-      "owner": "kdna-open",
-      "review_by": "2027-03-31"
-    },
-    {
       "leg": "index-metadata",
       "class": "not_run",
       "reason": "retired_index_metadata_schema",
       "condition": "missing_requirements > 0",
       "unavailable_codes": [
-        "index_schema_version",
-        "entries_without_technical_status",
-        "entries_without_download_url"
+        "index_schema_version"
       ],
       "trigger": "an index published in the retired 1.0.0 metadata schema (technical_status + download) is committed for the leg to audit; the @aikdna/kdna-cli pin is only required to be a checkable coordinate (exact SemVer or integrity-locked file: pin), so it no longer holds this leg at not_run",
       "owner": "kdna-open",
@@ -33,11 +21,19 @@
       "reason": "retired_index_metadata_schema",
       "condition": "missing_requirements > 0",
       "unavailable_codes": [
-        "index_schema_version",
-        "entries_without_technical_status",
-        "entries_without_download_url"
+        "index_schema_version"
       ],
       "trigger": "an index published in the retired 1.0.0 metadata schema (technical_status + download) is committed for the leg to compare against the online releases; the @aikdna/kdna-cli pin is only required to be a checkable coordinate, so it no longer holds this leg at not_run",
+      "owner": "kdna-open",
+      "review_by": "2027-03-31"
+    },
+    {
+      "leg": "current-assets",
+      "class": "run",
+      "reason": "no_indexed_public_asset",
+      "condition": "index assets == 0",
+      "unavailable_codes": [],
+      "trigger": "the leg runs whenever it is registered; with an empty public index it audits zero entries and reports no unavailability, and it cannot report not_run again until a public asset is indexed",
       "owner": "kdna-open",
       "review_by": "2027-03-31"
     }

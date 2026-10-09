@@ -56,11 +56,9 @@ test('the committed graph has no unavailability code for the CLI pin', () => {
     { KDNA_ASSETS_METADATA_INDEX: 'index/current.json', KDNA_ASSETS_METADATA_PACKAGE: 'package.json' },
     root,
   );
-  assert.deepEqual(committed.codes, [
-    'index_schema_version',
-    'entries_without_technical_status',
-    'entries_without_download_url',
-  ]);
+  // The public index carries no published asset, so the two retired-metadata
+  // codes no longer hold; only the schema-version code remains.
+  assert.deepEqual(committed.codes, ['index_schema_version']);
   assert.ok(!committed.codes.includes('exact_semver_kdna_cli_pin'));
 });
 
