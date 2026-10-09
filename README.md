@@ -76,3 +76,9 @@ Existing source checkouts retain older scripts, synthetic Creation fixtures, and
 The repository license is Apache-2.0. Each reference's own license governs that asset; see `LICENSE-POLICY.md` and the per-entry files. The synthetic fixture has its own Apache-2.0 notice and is only a technical test, with no claim of real human adoption.
 
 KDNA creation and distribution do not require a listing in this reference repository. Listing, structural compatibility, provenance, license, adoption, and evidence of useful outcomes are separate claims.
+
+## Source channel and container boundary
+
+Distribution is the complete Git source workspace, its public reference attachments, candidate records, `vendor/` and committed lockfile. The adapter is not an npm release. Every required dependency is bundled, so the documented offline install can use a fresh empty dedicated cache. Keep private external collections outside this checkout.
+
+The supported current-contract candidate remains `@aikdna/verification-scope@0.1.5` with explicit read permission; historical references retain their accurately recorded Core rejection outcomes. This graph remains container/payload `0.2`, Core contract `0.3` and Read contract `0.2`, bound to Core `0.24.0-rc.component-semantics.2`, Read `0.3.0-rc.component-semantics.2` and the recorded CLI `0.38.0-rc.component-semantics.1`. Studio container `0.5` and native container `0.6` are not admitted by this workspace. Exact archive/version bindings establish technical input identity, not content quality, human review or cross-CLI reuse.
