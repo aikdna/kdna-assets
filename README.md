@@ -6,11 +6,40 @@ This public source workspace provides an index and adapter for the current publi
 
 This candidate binds Core `0.24.0-rc.component-semantics.2`, Read `0.3.0-rc.component-semantics.2`, and CLI `0.38.0-rc.component-semantics.1` through exact archive and installed-file digests. The Read protocol coordinate is `kdna.read/0.2.0`; package versions and protocol versions are different coordinates. See `public-contract-binding.json` for the complete tuple and `toolchain-files.json` for all 945 dependency files.
 
-The two existing public reference assets retain their original bytes and licenses. Both are **rejected with `READ_CORE_INVALID` by this current graph**. Their historical acceptance belongs to its recorded older toolchain; it does not establish current compatibility. The schema 2 index records this rejection explicitly. `index/legacy-current.json` preserves the former index as history.
+**The index currently lists no public reference asset.** The first public asset
+published from here will be the KDNA white paper. Three earlier entries —
+`@aikdna/laozi-wuwei`, `@aikdna/epictetus-control-and-character` and
+`@aikdna/verification-scope` — have been **removed from the current public
+surface**: they are gone from the schema 2 index, from `index/legacy-current.json`
+and from this repository's downloads.
 
-The schema 2 index now also records one **current-contract candidate**, `@aikdna/verification-scope@0.1.5`, whose exact bytes this graph admits and whose catalog and selected judgments the current Read discloses under explicit local read permission. It is an Agent-authored and Agent-adopted asset with no human review, and it is registered as `unpublished_candidate` because no Release coordinate exists for it. The two historical references above stay exactly as they were; the candidate is added beside them, never in place of them. See [`references/public/verification-scope/README.md`](references/public/verification-scope/README.md) for its coordinates and for what it does not claim.
+Say this precisely, because "removed" is not "never published":
 
-This source bundle contains those two public references, the current-contract candidate and a synthetic technical test fixture. The separately held official 100-asset collection is not distributed here: that private material, its sources and its authoring records are kept outside this public repository and supplied separately, then read through the same public adapter. See [`docs/collection-workspace.md`](docs/collection-workspace.md) for that layout. Finite taxonomy, candidate-set and discriminator-set interpretation comes exclusively from the accepted public Core definition `3087cd19542e72322aec19b3015c916d2cfb074fa42e3fd76b3756bb4f097de3`. This adapter does not interpret containers or component content itself. Technical readability does not establish the completeness of judgment content.
+- the bytes remain readable from this repository's own Git history
+  (`git show 1423769:references/public/<slug>/<file>`);
+- the releases that carried them were published and **still host the `.kdna`
+  assets and checksums** until the Owner approves withdrawing those releases;
+- the removed bytes are also preserved outside the public surface, with a
+  SHA-256 and size manifest, before removal.
+
+The withdrawn historical references had been rejected with `READ_CORE_INVALID`
+by the older graph they were recorded against; that rejection remains their
+accurate recorded outcome and is not evidence of current compatibility. The
+withdrawn `@aikdna/verification-scope@0.1.5` observed the opposite - this
+repository's then-current graph admitted it and disclosed its catalog under
+explicit local read permission - and it was recorded as `unpublished_candidate`
+because no Release coordinate existed for it. Neither outcome is a listing now.
+
+This source bundle contains a synthetic technical test fixture and the offline
+adapter. The separately held official 100-asset collection is not distributed
+here: that private material, its sources and its authoring records are kept
+outside this public repository and supplied separately, then read through the
+same public adapter. See [`docs/collection-workspace.md`](docs/collection-workspace.md)
+for that layout. Finite taxonomy, candidate-set and discriminator-set
+interpretation comes exclusively from the accepted public Core definition
+`3087cd19542e72322aec19b3015c916d2cfb074fa42e3fd76b3756bb4f097de3`. This
+adapter does not interpret containers or component content itself. Technical
+readability does not establish the completeness of judgment content.
 
 ## Offline setup
 
@@ -56,10 +85,13 @@ An exit status of 0 is not evidence on its own; the success line is.
 `npm run audit` checks the recorded Core outcomes with local read permission denied by default. `npm run audit:read` additionally gives explicit permission for that call and compares the current Read outcome with the indexed observation. A successful audit means the observation matches, including an accurately recorded rejection. When Core successfully admits an asset, the indexed `version` must exactly match its observed `asset_version`; a mismatch raises `ASSETS_ENTRY_VERSION_MISMATCH` before Read. Assets rejected by Core retain their original rejection and its public `states`, `diagnostics` and `component_failure` unchanged; their version is not guessed from rejected bytes. A Core-valid asset with blocked interpretation remains rejected, distinct from structurally invalid bytes. The adapter does not infer a more permissive state.
 
 ```sh
-npm run read -- --id @aikdna/laozi-wuwei --allow-read --mode catalog
+npm run read -- --root /path/to/collection --index /path/to/index.json --id catalog-id --allow-read --mode catalog
 ```
 
-The preserved reference above is currently rejected, so this command returns its rejection and exits with code 1. For an authorized schema 2 collection, supply `--root /path/to/collection --index /path/to/index.json --id catalog-id`. The module API exports `observeAsset` and the catalog entry point exports `validateIndex` and `auditIndex`.
+The committed index lists no asset, so there is no packaged example id to read
+from it; point the command at an authorized schema 2 collection. The module API
+exports `observeAsset` and the catalog entry point exports `validateIndex` and
+`auditIndex`.
 
 Supported modes are `catalog`, `whole_asset`, and `exact_selection`. Selection additionally requires `--judgment-id` with the actual judgment ID returned in the catalog. In this public contract, `whole_asset` returns asset declarations and the catalog; its judgment closure is empty. `exact_selection` supplies the selected judgment's mandatory closure. `--budget` sets a nonnegative byte budget; insufficient budget may produce an explicit no-body control result.
 
@@ -79,6 +111,6 @@ KDNA creation and distribution do not require a listing in this reference reposi
 
 ## Source channel and container boundary
 
-Distribution is the complete Git source workspace, its public reference attachments, candidate records, `vendor/` and committed lockfile. The adapter is not an npm release. Every required dependency is bundled, so the documented offline install can use a fresh empty dedicated cache. Keep private external collections outside this checkout.
+Distribution is the complete Git source workspace, its synthetic test fixture, `vendor/` and committed lockfile. The adapter is not an npm release. Every required dependency is bundled, so the documented offline install can use a fresh empty dedicated cache. Keep private external collections outside this checkout.
 
-The supported current-contract candidate remains `@aikdna/verification-scope@0.1.5` with explicit read permission; historical references retain their accurately recorded Core rejection outcomes. This graph remains container/payload `0.2`, Core contract `0.3` and Read contract `0.2`, bound to Core `0.24.0-rc.component-semantics.2`, Read `0.3.0-rc.component-semantics.2` and the recorded CLI `0.38.0-rc.component-semantics.1`. Studio container `0.5` and native container `0.6` are not admitted by this workspace. Exact archive/version bindings establish technical input identity, not content quality, human review or cross-CLI reuse.
+No public reference asset is offered from this revision. This graph remains container/payload `0.2`, Core contract `0.3` and Read contract `0.2`, bound to Core `0.24.0-rc.component-semantics.2`, Read `0.3.0-rc.component-semantics.2` and the recorded CLI `0.38.0-rc.component-semantics.1`. Studio container `0.5` and native container `0.6` are not admitted by this workspace. Exact archive/version bindings establish technical input identity, not content quality, human review or cross-CLI reuse.

@@ -1,6 +1,11 @@
 # 老子与爱比克泰德参考 KDNA 的创建说明
 
-本仓库提供两个公开参考资产：
+> **状态：本文是保留的创建记录。** 下面两件资产已从当前公开面移除（连同
+> `@aikdna/verification-scope@0.1.5`），当前索引不再登记任何公开资产；首份公开
+> 资产将是 KDNA 白皮书。它们的字节仍可从本仓 Git 历史取出，承载它们的
+> release 也仍在公开托管，直到 Owner 批准撤下。详见 [`../README.md`](../README.md)。
+
+本仓库此前提供两个公开参考资产：
 
 - `@aikdna/laozi-wuwei@0.1.1`
 - `@aikdna/epictetus-control-and-character@0.1.1`
@@ -8,11 +13,11 @@
 它们用于展示来源记录、结构化判断、边界、打包、验证、LoadPlan 和 Runtime
 Capsule 互操作，不是官方哲学解释、真人背书、行为价值证明或使用推荐。
 
-本文说明这两个参考资产；它们由较旧的工具链重建，且被当前候选图以
-`READ_CORE_INVALID` 拒收。仓库另有一条**当前契约**条目
+本文说明这两个参考资产；它们由较旧的工具链重建，且被当时约定的候选图以
+`READ_CORE_INVALID` 拒收。仓库此前另有**当前契约**条目
 `@aikdna/verification-scope@0.1.5`（`unpublished_candidate`，经当前正式创建
-流程产生并由当前 Core 接受），其坐标、创建方式与不主张的内容见
-[`../references/public/verification-scope/README.md`](../references/public/verification-scope/README.md)。
+流程产生并由当时绑定的 Core 接受）；该条目同样已随本轮一并撤下，其目录级
+README 不再位于工作树中，只能从 Git 历史读取。
 
 ## 来源与作者边界
 
