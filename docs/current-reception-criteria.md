@@ -23,14 +23,23 @@ synthetic fixture or a technical receipt does not substitute for any of them.
 
 ## Current blocker
 
-The two registered public reference assets,
-`@aikdna/laozi-wuwei@0.1.1` and
-`@aikdna/epictetus-control-and-character@0.1.1`, **retain their original bytes
-and licenses and are rejected with `READ_CORE_INVALID` by the current candidate
-graph** (`checked_at` 2026-09-10, method `public_node_adapter`, recorded in
-`index/current.json`). Their historical acceptance belongs to the older
-toolchain recorded alongside them; it is not current compatibility, and this
-adapter implements no legacy decoder or conversion.
+**No public reference asset is registered.** Three earlier entries -
+`@aikdna/laozi-wuwei@0.1.1`,
+`@aikdna/epictetus-control-and-character@0.1.1` and
+`@aikdna/verification-scope@0.1.5` - have been removed from the current public
+surface together with their index entries and downloads, because the first
+public asset published from this repository will be the KDNA white paper.
+
+Their bytes remain readable from this repository's Git history
+(`git show 1423769:references/public/<slug>/<file>`), and the releases that
+carried them were emptied as well: the five assets of `0.1.1` and the four of
+`sage-reference-assets-v0.1.0` are withdrawn, so both releases now host no
+download. The accurate statement is "removed from the current public surface",
+not "never published". The two historical
+references were rejected with `READ_CORE_INVALID` by the candidate graph they
+were checked against (`checked_at` 2026-09-10, method `public_node_adapter`);
+that rejection was their accurate recorded outcome and is not current
+compatibility. This adapter implements no legacy decoder or conversion.
 
 Consequence: the repository currently holds **no example that completes the
 loop on the current contract**. A reader who downloads the present examples and
@@ -43,12 +52,12 @@ The consequence sentence above is **superseded**, and the two rejection
 statements above it are **not**. The two registered historical references
 still retain their bytes and are still rejected with `READ_CORE_INVALID`.
 
-One current-contract candidate is now registered beside them:
-`@aikdna/verification-scope@0.1.5`, recorded in `index/current.json` as
-`unpublished_candidate`. Its bytes were produced by one complete creation
-through the public Studio terminal Host, are admitted by the bound Core
-`0.24.0-rc.component-semantics.2`, and are disclosed by the bound Read under
-explicit local read permission. That covers steps 1-3 of the loop below.
+The withdrawn `@aikdna/verification-scope@0.1.5` had been recorded as
+`unpublished_candidate`: its bytes came from one complete creation through the
+public Studio terminal Host, were admitted by the bound Core
+`0.24.0-rc.component-semantics.2`, and were disclosed by the bound Read under
+explicit local read permission. That covered steps 1-3 of the loop below and is
+recorded here as the prior observation, not as a current listing.
 
 Steps 4 and 5 are still incomplete for this entry and are not claimed: no
 human previewed it, and it has no Release coordinate, so it is not published.
@@ -95,10 +104,11 @@ to relabel a fixture, and not to let a listing imply endorsement is unchanged.
 5. Publish an entry only after the loop above completed, and report the rest as
    pending.
 
-Step 1 has one instance (`@aikdna/verification-scope`, created through the
-current public creation flow rather than rebuilt from a legacy asset), and
-steps 2 and 3 were carried out for it. Steps 4 and 5 remain pending, and step 4
-is the reason it is listed as an `unpublished_candidate`.
+Step 1 previously had one instance (`@aikdna/verification-scope`, created
+through the current public creation flow rather than rebuilt from a legacy
+asset) for which steps 2 and 3 were carried out; it has since been withdrawn
+from the public surface. Steps 4 and 5 were pending for it, and step 4 is why it
+was listed as an `unpublished_candidate` rather than a released asset.
 
 ## Related
 
@@ -106,4 +116,5 @@ is the reason it is listed as an `unpublished_candidate`.
 - [`docs/collection-workspace.md`](./collection-workspace.md) - offline layout
   for a separately supplied collection.
 - [`docs/creating-laozi-and-epictetus-kdna.md`](./creating-laozi-and-epictetus-kdna.md)
-  - how the two registered references were created and what they do not claim.
+  - the retained creation record for the two withdrawn references, and what they
+  did not claim.

@@ -5,6 +5,7 @@
 - Forward rejected Core states and component_failure unchanged so blocked interpretation and structural invalidity remain distinguishable.
 - Retain previous reference observations as history and document separately supplied private collection layout.
 - Current integration observations and new source archive require separate independent acceptance; no publication.
+- Withdraw every public reference asset from the current public surface: `laozi-wuwei`, `epictetus-control-and-character` and `verification-scope` leave `index/current.json`, `index/legacy-current.json` and this repository's downloads, because the first public asset published from here will be the KDNA white paper. The removed bytes are preserved outside the public surface with a SHA-256 and size manifest before removal. Removal is not deletion: the bytes stay readable from this repository's Git history (`git show 1423769:references/public/<slug>/<file>`). The releases that carried them were also emptied: the five assets of `0.1.1` and the four of `sage-reference-assets-v0.1.0` are withdrawn, and both releases now host no download. The receipts under `evidence/` are kept as history and say so. The CI-leg registry follows the new state; `index/history/public-read-original-observation.json` is retained as a frozen observation of the earlier state.
 
 # 0.2.0-rc.public-read.1 — 2026-09-10
 

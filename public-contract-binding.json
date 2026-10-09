@@ -69,10 +69,10 @@
     },
     {
       "name": "fast-uri",
-      "version": "3.1.7",
-      "archive": "vendor/fast-uri-3.1.7.tgz",
-      "bytes": 43515,
-      "sha256": "75d114fa009a342a4f964e099012cfc9660cab130d8df367184e01f0d0198777",
+      "version": "3.1.8",
+      "archive": "vendor/fast-uri-3.1.8.tgz",
+      "bytes": 44269,
+      "sha256": "86be033b406a7737c0521edc8fe3e15c7ac0cb6b5e509478cc9539a2efaa086c",
       "members": 44
     },
     {
@@ -116,7 +116,7 @@
       "members": 7
     }
   ],
-  "toolchain_files_sha256": "1186dba0123b9289ea5df3ca07d7cab35cc8ca4921f61ab5a5887cda81497b25",
+  "toolchain_files_sha256": "72164a5dc00b405b5245985429c182694aac2cbe4ee4388c87f8f3f47fde5154",
   "authority_limit": "Exact technical dependency coordinates. Admission, authorship, confirmation, reading permission, actions, content quality and per-file licenses remain separate.",
   "component_semantics_digest": "sha256:3087cd19542e72322aec19b3015c916d2cfb074fa42e3fd76b3756bb4f097de3"
 }

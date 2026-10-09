@@ -37,6 +37,9 @@ function sandboxTree() {
   cpSync(join(root, REGISTRY_PATH), join(sandbox, REGISTRY_PATH));
   cpSync(join(root, 'package.json'), join(sandbox, 'package.json'));
   cpSync(join(root, 'package-lock.json'), join(sandbox, 'package-lock.json'));
+  // `current-assets` runs in this sandbox now that the public index carries no
+  // asset, and its admission probe reads the committed binding.
+  cpSync(join(root, 'public-contract-binding.json'), join(sandbox, 'public-contract-binding.json'));
   // The admission probe needs the installed vendored Core; reuse this
   // repository's node_modules instead of reinstalling it per case.
   symlinkSync(join(root, 'node_modules'), join(sandbox, 'node_modules'));

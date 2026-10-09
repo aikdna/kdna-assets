@@ -42,24 +42,47 @@ function simulatePlatformOptionalPackage(root){
  const dir=join(root,'node_modules/@cbor-extract/cbor-extract-linux-x64');mkdirSync(dir,{recursive:true});
  writeFileSync(join(dir,'package.json'),'{"name":"@cbor-extract/cbor-extract-linux-x64","version":"2.2.2"}\n');
 }
-function fixture(){
+// The committed index lists no public asset, so a test that needs one builds it
+// from the synthetic technical fixture rather than cloning an indexed entry that
+// no longer exists. The shape, digest rules, file checks and observation
+// cross-checks are the same ones the validator applies to a real entry, so the
+// assertions keep their strength; only the entry's origin changed.
+function syntheticEntry(id='synthetic-read-observation'){
  const root=mkdtempSync(join(tmpdir(),'kdna-assets-synthetic-'));mkdirSync(join(root,'synthetic'));
  for(const f of ['asset.kdna','LICENSE'])copyFileSync(join(packageRoot,'tests/current-fixtures/synthetic',f),join(root,'synthetic',f));
  const files=['asset.kdna','LICENSE'].map(n=>{const path='synthetic/'+n,b=readFileSync(join(root,path));return{path,bytes:b.length,sha256:sha256(b)}});
- const entry=structuredClone(original.assets[0]);entry.id='synthetic-read-observation';entry.version='1.0.0';entry.artifact.path=files[0].path;entry.files=files;entry.digest.value=files[0].sha256;entry.license.path=files[1].path;entry.license.id='Apache-2.0';
+ const entry={kind:'kdna-asset',id,publisher:{name:'AIKDNA',url:'https://aikdna.com'},creator:{name:'OpenAI Codex agent'},access:'public',
+  license:{id:'Apache-2.0',path:files[1].path,scope:'asset-content-and-distribution',repository_license_applies:false},version:'1.0.0',
+  digest:{algorithm:'sha256',value:files[0].sha256},artifact:{path:files[0].path,media_type:'application/vnd.kdna.asset'},evidence_claims:[],files,
+  observation:{checked_at:'2026-10-09T00:00:00.000Z',method:'public_node_adapter',core:{status:'accepted',reason:null},
+   read:{channel:'read_envelope',status:'ready',diagnostics:[],read_permission:'allowed',delivery:'delivered'},
+   scope:'Synthetic technical fixture only; local explicit read permission, no transferable authority or remote acknowledgment.'},
+  publication_status:'unpublished_candidate',
+  proof_limits:{creation:'not_evaluated',identity:'not_evaluated',action_authorization:'not_evaluated',legal_clearance:'not_evaluated'}};
  return{root,entry};
 }
+// Same shape, bytes the bound Core rejects.
+function rejectedEntry(id='synthetic-rejected-observation'){
+ const x=syntheticEntry(id),asset=join(x.root,'synthetic/asset.kdna'),bytes=readFileSync(asset);
+ bytes[Math.floor(bytes.length/2)]^=0xff;writeFileSync(asset,bytes);
+ const files=['asset.kdna','LICENSE'].map(n=>{const path='synthetic/'+n,b=readFileSync(join(x.root,path));return{path,bytes:b.length,sha256:sha256(b)}});
+ x.entry.files=files;x.entry.digest.value=files[0].sha256;
+ x.entry.observation.core={status:'rejected',reason:'READ_CORE_INVALID'};
+ x.entry.observation.read={channel:'read_envelope',status:'rejected',diagnostics:['READ_CORE_INVALID'],read_permission:'not_evaluated',delivery:'not_delivered'};
+ return x;
+}
+function fixture(){return syntheticEntry();}
 test('public inventory keeps the historical reference rejections and records the accepted candidate',async()=>{
  // The historical references must keep their original bytes and their exact
  // recorded rejection whenever the inventory grows. A current-contract
  // candidate is added beside them, never in place of them.
- const historical=original.assets.filter(entry=>entry.publication_status==='existing_reference');
- assert.deepEqual(historical.map(entry=>entry.id).sort(),[...HISTORICAL_REFERENCES].sort());
- // The inventory is allowed to grow (the current-contract candidate is added
- // beside the historical references), so the gate is per entry rather than a
- // fixed total: every indexed entry must pass the real audit on its own and
- // must keep its own recorded outcome.
- for(const entry of original.assets)assert.equal(validateIndex({...original,assets:[entry]}).assets,1);
+ // The three earlier entries were withdrawn from the current public surface, so
+ // the committed inventory must list no public asset - and it must not quietly
+ // reintroduce any of the withdrawn identifiers.
+ assert.equal(original.assets.length,0,'the committed index must list no public asset');
+ for(const id of HISTORICAL_REFERENCES)assert.equal(original.assets.some(entry=>entry.id===id),false,`withdrawn entry must stay withdrawn: ${id}`);
+ assert.equal(original.assets.some(entry=>entry.id==='@aikdna/verification-scope'),false,'the withdrawn candidate must stay withdrawn');
+ assert.equal(validateIndex(original).assets,0);
  const r=await auditIndex(original,{allowRead:true});assert.equal(r.results.length,original.assets.length);
  for(const entry of original.assets){
   const result=r.results.find(candidate=>candidate.id===entry.id);
@@ -68,11 +91,21 @@ test('public inventory keeps the historical reference rejections and records the
   assert.equal(result.admission.reason??null,entry.observation.core.reason??null);
   assert.equal(result.read.envelope.status,entry.observation.read.status);
  }
- for(const x of r.results.filter(result=>HISTORICAL_REFERENCES.includes(result.id))){assert.equal(x.admission.status,'rejected');assert.equal(x.admission.reason,'READ_CORE_INVALID');assert.equal(x.read.envelope.status,'rejected');}
- const candidate=r.results.find(result=>result.id==='@aikdna/verification-scope');
- assert.equal(candidate.admission.status,'accepted');
- assert.equal(candidate.read.envelope.status,'ready');
- assert.equal(candidate.read.envelope.states.read_permission,'allowed');
+ // The audit path itself is still exercised end to end, against a synthetic
+ // acceptance and a synthetic rejection, so the empty-index loop above is not
+ // the only thing that ran.
+ const ok=syntheticEntry(),okIndex={...original,assets:[ok.entry]};
+ assert.equal(validateIndex(okIndex,{checkFiles:false}).assets,1);
+ const okAudit=await auditIndex(okIndex,{root:ok.root,allowRead:true});
+ assert.equal(okAudit.results[0].admission.status,'accepted');
+ assert.equal(okAudit.results[0].read.envelope.status,'ready');
+ assert.equal(okAudit.results[0].read.envelope.states.read_permission,'allowed');
+ const bad=rejectedEntry(),badIndex={...original,assets:[bad.entry]};
+ assert.equal(validateIndex(badIndex,{checkFiles:false}).assets,1);
+ const badAudit=await auditIndex(badIndex,{root:bad.root,allowRead:true});
+ assert.equal(badAudit.results[0].admission.status,'rejected');
+ assert.equal(badAudit.results[0].admission.reason,'READ_CORE_INVALID');
+ assert.equal(badAudit.results[0].read.envelope.status,'rejected');
 });
 test('explicit permission discloses one complete selected judgment; default denies',async()=>{
  const x=fixture(),denied=await observeAsset(x);assert.equal(denied.admission.status,'accepted');assert.equal(denied.read.envelope.states.read_permission,'denied');assert.equal(denied.read.envelope.content,null);
@@ -90,8 +123,9 @@ test('artifact, license, path and inventory claims are checked before reading',(
  writeFileSync(join(x.root,'synthetic/LICENSE'),'changed');assert.throws(()=>verifyEntryFiles(x.root,x.entry),/ASSETS_FILE_CHANGED/);
  for(const p of ['../asset.kdna','/asset.kdna','synthetic/../asset.kdna','synthetic//asset.kdna','synthetic\\asset.kdna'])assert.throws(()=>resolveEntryFile(x.root,p),/ASSETS_PATH_INVALID/);
  symlinkSync('asset.kdna',join(x.root,'synthetic/link'));assert.throws(()=>resolveEntryFile(x.root,'synthetic/link'),/ASSETS_PATH_SYMLINK/);
- const duplicates=structuredClone(original);duplicates.assets.push(duplicates.assets[0]);assert.throws(()=>validateIndex(duplicates,{checkFiles:false}),/ASSETS_DUPLICATE_ENTRY/);
- const invalid=structuredClone(original);invalid.assets[0].observation.read.status='ready';assert.throws(()=>validateIndex(invalid,{checkFiles:false}),/ASSETS_OBSERVATION_CONFLICT/);
+ const base=syntheticEntry();
+ const duplicates={...structuredClone(original),assets:[structuredClone(base.entry),structuredClone(base.entry)]};assert.throws(()=>validateIndex(duplicates,{checkFiles:false}),/ASSETS_DUPLICATE_ENTRY/);
+ const invalid={...structuredClone(original),assets:[structuredClone(base.entry)]};invalid.assets[0].observation.core={status:'rejected',reason:'READ_CORE_INVALID'};assert.throws(()=>validateIndex(invalid,{checkFiles:false}),/ASSETS_OBSERVATION_CONFLICT/);
  const stale=structuredClone(original);stale.toolchain_binding_sha256='0'.repeat(64);assert.throws(()=>validateIndex(stale,{checkFiles:false}),/ASSETS_INDEX_TOOLCHAIN_MISMATCH/);
 });
 test('the platform-optional allow-set is exactly the optional packages the committed lock declares',()=>{
@@ -180,21 +214,21 @@ test('an accepted asset must match the exact indexed version before any Read res
  }
 });
 test('version mismatch does not replace the original Core rejection',async()=>{
- const entry=structuredClone(original.assets[0]),changed=structuredClone(entry);changed.version='9.9.9';
+ const rejected=rejectedEntry(),entry=rejected.entry,changed=structuredClone(entry);changed.version='9.9.9';
  for(const allowRead of [false,true]){
-  const expected=await observeAsset({entry,allowRead});
-  const actual=await observeAsset({entry:changed,allowRead});
+  const expected=await observeAsset({root:rejected.root,entry,allowRead});
+  const actual=await observeAsset({root:rejected.root,entry:changed,allowRead});
   assert.deepEqual(actual.admission,expected.admission);
   assert.equal(actual.admission.status,'rejected');assert.equal(actual.admission.reason,'READ_CORE_INVALID');
   assert.deepEqual(summarizeRead(actual.read),summarizeRead(expected.read));
  }
- const index=structuredClone(original);index.assets[0].version='9.9.9';
- assert.equal((await auditIndex(index,{allowRead:true})).results[0].admission.reason,'READ_CORE_INVALID');
+ const index={...structuredClone(original),assets:[changed]};
+ assert.equal((await auditIndex(index,{root:rejected.root,allowRead:true})).results[0].admission.reason,'READ_CORE_INVALID');
 });
 
 
 test('rejected admission preserves public Core phase and component failure without interpretation',async()=>{
  const x=fixture();const bytes=readFileSync(join(packageRoot,'tests/current-fixtures/component-cycle/asset.kdna'));writeFileSync(join(x.root,'synthetic/asset.kdna'),bytes);x.entry.files[0]={path:'synthetic/asset.kdna',bytes:bytes.length,sha256:sha256(bytes)};x.entry.digest.value=sha256(bytes);
  const cycle=await observeAsset({...x,allowRead:true});assert.deepEqual(cycle.admission.states,{core:'valid',interpretation:'blocked'});assert.equal(cycle.admission.reason,'READ_COMPONENT_GRAPH_CYCLE');assert.deepEqual(cycle.admission.component_failure,{judgment_ref:'judgment-engineering',component_ref:'taxonomy-process',status:'invalid',body:null,code:'READ_COMPONENT_GRAPH_CYCLE'});assert.equal(cycle.read.envelope.content,null);assert.equal(cycle.read.envelope.status,'rejected');
- const invalid=await observeAsset({entry:original.assets[0],allowRead:true});assert.deepEqual(invalid.admission.states,{core:'invalid',interpretation:'not_evaluated'});assert.equal(invalid.admission.component_failure,null);assert.equal(invalid.read.envelope.content,null);
+ const rejectedX=rejectedEntry();const invalid=await observeAsset({root:rejectedX.root,entry:rejectedX.entry,allowRead:true});assert.deepEqual(invalid.admission.states,{core:'invalid',interpretation:'not_evaluated'});assert.equal(invalid.admission.component_failure,null);assert.equal(invalid.read.envelope.content,null);
 });

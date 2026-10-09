@@ -56,10 +56,14 @@ const ALLOWLIST_FILES = new Set([
   'docs/audits/2026-06-16-rfc-0013-audit-note.md', // explicit public audit record
   'evidence/rebuild-receipt-2026-07-17.json', // accepted public rebuild receipt
   'evidence/rebuild-receipt-2026-07-18.json', // accepted public rebuild receipt
+  'evidence/README.md', // explains that the receipts above are history, not a listing or a download path
 ]);
 const PUBLIC_EVIDENCE_FILES = new Set([
   'evidence/rebuild-receipt-2026-07-17.json',
   'evidence/rebuild-receipt-2026-07-18.json',
+  // An exact path, not a directory or wildcard: adding anything else under
+  // evidence/ must still be reviewed against this allowlist.
+  'evidence/README.md',
 ]);
 
 const PUBLIC_REPO_NAMES = new Set([
