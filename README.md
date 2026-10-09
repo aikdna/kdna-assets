@@ -17,8 +17,9 @@ Say this precisely, because "removed" is not "never published":
 
 - the bytes remain readable from this repository's own Git history
   (`git show 1423769:references/public/<slug>/<file>`);
-- the releases that carried them were published and **still host the `.kdna`
-  assets and checksums** until the Owner approves withdrawing those releases;
+- the releases that carried them were published; their downloads have now been
+  withdrawn as well - the five assets of `0.1.1` and the four of
+  `sage-reference-assets-v0.1.0` are gone and both releases host no download;
 - the removed bytes are also preserved outside the public surface, with a
   SHA-256 and size manifest, before removal.
 

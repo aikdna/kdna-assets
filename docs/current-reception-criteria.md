@@ -31,10 +31,11 @@ surface together with their index entries and downloads, because the first
 public asset published from this repository will be the KDNA white paper.
 
 Their bytes remain readable from this repository's Git history
-(`git show 1423769:references/public/<slug>/<file>`) and the releases that
-carried them still host the `.kdna` assets and checksums until the Owner
-approves withdrawing those releases, so the accurate statement is "removed from
-the current public surface", not "never published". The two historical
+(`git show 1423769:references/public/<slug>/<file>`), and the releases that
+carried them were emptied as well: the five assets of `0.1.1` and the four of
+`sage-reference-assets-v0.1.0` are withdrawn, so both releases now host no
+download. The accurate statement is "removed from the current public surface",
+not "never published". The two historical
 references were rejected with `READ_CORE_INVALID` by the candidate graph they
 were checked against (`checked_at` 2026-09-10, method `public_node_adapter`);
 that rejection was their accurate recorded outcome and is not current
