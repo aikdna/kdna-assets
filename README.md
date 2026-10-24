@@ -7,7 +7,7 @@ This public source workspace provides an index and adapter for the current publi
 This candidate binds Core `0.24.0-rc.component-semantics.2`, Read `0.3.0-rc.component-semantics.2`, and CLI `0.38.0-rc.component-semantics.1` through exact archive and installed-file digests. The Read protocol coordinate is `kdna.read/0.2.0`; package versions and protocol versions are different coordinates. See `public-contract-binding.json` for the complete tuple and `toolchain-files.json` for all 945 dependency files.
 
 **The index currently lists no public reference asset.** The first public asset
-published from here will be the KDNA white paper. Three earlier entries —
+published from here will be the KDNA white paper. Asset publication here is selective and Owner-approved; no sample or reference asset is scheduled for the current introduction window. Three earlier entries —
 `@aikdna/laozi-wuwei`, `@aikdna/epictetus-control-and-character` and
 `@aikdna/verification-scope` — have been **removed from the current public
 surface**: they are gone from the schema 2 index, from `index/legacy-current.json`
