@@ -9,7 +9,7 @@ through exact archive and installed-file digests. It admits native container
 `0.6.0` with payload profile `kdna.payload.judgment` version `0.5.1` and uses
 the `kdna.read/0.7.0-candidate` contract. Package versions and protocol
 coordinates are different facts. See `public-contract-binding.json` for the
-complete tuple and `toolchain-files.json` for all 1,445 required dependency
+complete tuple and `toolchain-files.json` for all 1,448 required dependency
 files across 12 package archives.
 
 **The index currently lists no public reference asset.** The first public asset

@@ -93,6 +93,12 @@ committed public index still lists no reference asset. A successful local read
 of separately supplied bytes covers steps 2 and 3 only; steps 1, 4 and 5
 remain separate and must be evidenced independently.
 
+The vendored `fast-uri` coordinate advanced from `3.1.8` to `3.1.9` on
+2026-10-27 to address four published security advisories fixed in `3.1.9`.
+The exact archive and installed-file manifests now cover 1,448 files. This
+dependency update does not publish an asset, change the native container/Read
+tuple, or turn the synthetic fixture into a public example.
+
 ## What must not be done to unblock it
 
 - Do not edit the registered bytes. The two `.kdna` files, their per-asset

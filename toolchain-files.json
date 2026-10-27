@@ -67,11 +67,11 @@
     },
     {
       "name": "fast-uri",
-      "version": "3.1.8",
-      "archive": "vendor/fast-uri-3.1.8.tgz",
-      "bytes": 44269,
-      "sha256": "86be033b406a7737c0521edc8fe3e15c7ac0cb6b5e509478cc9539a2efaa086c",
-      "members": 44
+      "version": "3.1.9",
+      "archive": "vendor/fast-uri-3.1.9.tgz",
+      "bytes": 50086,
+      "sha256": "4f5a67f7b61110aae7b3ad38e806627f5712f4c150bd38eb804a562e69a9ee5e",
+      "members": 47
     },
     {
       "name": "json-schema-traverse",
@@ -8245,16 +8245,10 @@
       "sha256": "7b086b40b64203092ce43638296c235ceba118d7b942fac7398ff476167876de"
     },
     {
-      "path": "fast-uri/LICENSE",
-      "bytes": 1813,
+      "path": "fast-uri/.github/workflows/release.yml",
+      "bytes": 941,
       "mode": 420,
-      "sha256": "b010b0dfdfdb23d7396e03b82cd4621fc9bb8f95d6b0aea70b9c24e12074c786"
-    },
-    {
-      "path": "fast-uri/README.md",
-      "bytes": 11726,
-      "mode": 420,
-      "sha256": "55449f95eb4b7b69f7a97eca943de1e30d7ebcad2e323753e44cf44669133c5f"
+      "sha256": "4a5d4ec22a019815e0e9841f741ffacca7c13cbb98318f7c5398e6b3f35cfece"
     },
     {
       "path": "fast-uri/benchmark/benchmark.mjs",
@@ -8300,9 +8294,9 @@
     },
     {
       "path": "fast-uri/index.js",
-      "bytes": 22264,
+      "bytes": 25881,
       "mode": 420,
-      "sha256": "62876e5094b43ba2ba90374613dab4576fd337063dad20b4b07cc5e3a7e2303b"
+      "sha256": "528ad63bf9d97d888d716ea0c7fff01b5d7054980bb671f0353065b7a7e093f4"
     },
     {
       "path": "fast-uri/lib/schemes.js",
@@ -8312,15 +8306,27 @@
     },
     {
       "path": "fast-uri/lib/utils.js",
-      "bytes": 20835,
+      "bytes": 22505,
       "mode": 420,
-      "sha256": "610a6cfa7b1c9d5689443b3a3d14af4c24afed51ef5852495ae1489ae455a9f4"
+      "sha256": "f97791a6c193027083b654d7428e0101aa2aaf5c2ab07a813cb8c1bf71d4ceb6"
+    },
+    {
+      "path": "fast-uri/LICENSE",
+      "bytes": 1813,
+      "mode": 420,
+      "sha256": "b010b0dfdfdb23d7396e03b82cd4621fc9bb8f95d6b0aea70b9c24e12074c786"
     },
     {
       "path": "fast-uri/package.json",
       "bytes": 1983,
       "mode": 420,
-      "sha256": "30cad05aad3d3596513706451dbfc7e0422f9c1d00f2903ecc34580327d54bc7"
+      "sha256": "06728ad83c4df979c6895d089452622441e34afe9b1c24584e2acac8d94a2876"
+    },
+    {
+      "path": "fast-uri/README.md",
+      "bytes": 13706,
+      "mode": 420,
+      "sha256": "a052a34b62b2de9e53052b1e8beac27de10826ea4098b533b6de5b744e61409d"
     },
     {
       "path": "fast-uri/test/ajv.test.js",
@@ -8351,6 +8357,12 @@
       "bytes": 1688,
       "mode": 420,
       "sha256": "c10203102fee328d6c8aedbd03319b8eeb364417c3b1137d714537fcd3102d69"
+    },
+    {
+      "path": "fast-uri/test/host-delimiter-security.test.js",
+      "bytes": 3535,
+      "mode": 420,
+      "sha256": "3a3f18fef846fa6511a3a0d9b3f43012c79798f5981c3f9575661c78225af6a3"
     },
     {
       "path": "fast-uri/test/ipv6-canonical.test.js",
@@ -8389,10 +8401,16 @@
       "sha256": "18051e881d06450b5e33009e92c7582cc020b4dc39d636103370e0e8dd3ea0a6"
     },
     {
-      "path": "fast-uri/test/reserved-path-normalization.test.js",
-      "bytes": 3661,
+      "path": "fast-uri/test/relative-normalization-security.test.js",
+      "bytes": 5686,
       "mode": 420,
-      "sha256": "984c6d447e4e0474b8b11c75cf2a5f54ffd855206dc588c8d5c47fd819fe7212"
+      "sha256": "3555771517284c6e7ee5bd8d3d72be4dd570544c699bb20125a684f507e4ad44"
+    },
+    {
+      "path": "fast-uri/test/reserved-path-normalization.test.js",
+      "bytes": 5039,
+      "mode": 420,
+      "sha256": "a31767879b0d98cee31093457cd5373c84b1adae75d397931a45c8440fcc929e"
     },
     {
       "path": "fast-uri/test/resolve.test.js",
@@ -8408,9 +8426,9 @@
     },
     {
       "path": "fast-uri/test/scheme-validation.test.js",
-      "bytes": 3687,
+      "bytes": 5196,
       "mode": 420,
-      "sha256": "eeb22864d23236f723fe00f8fccace70911b95ef9a3f74f116921e5cb18cce32"
+      "sha256": "fdf1a23b352f9e6cb7508af38065ac7654c0b406f9547d65dac6461d7d75e421"
     },
     {
       "path": "fast-uri/test/security-normalization.test.js",
