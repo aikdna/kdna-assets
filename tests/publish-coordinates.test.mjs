@@ -33,7 +33,7 @@ test('dropping the private flag turns the same dev graph into findings', () => {
 
 test('a non-private package on exact registry coordinates is not a finding', () => {
   assert.deepEqual(
-    findingsFor({ name: '@aikdna/probe', devDependencies: { '@aikdna/kdna-core': '0.24.0-rc.component-semantics.2' } }),
+    findingsFor({ name: '@aikdna/probe', devDependencies: { '@aikdna/kdna-core': '0.37.9' } }),
     [],
   );
 });

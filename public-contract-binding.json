@@ -1,39 +1,103 @@
 {
-  "format": "kdna.assets-public-read-binding/1",
+  "format": "kdna.assets-public-read-binding/2",
   "implementation": {
     "name": "@aikdna/kdna-assets",
-    "version": "0.3.0-rc.component-semantics.1"
+    "version": "0.4.0-rc.native-sections.1"
   },
   "tuple": {
-    "container": "0.2.0",
-    "core": "kdna.core/0.3.0",
-    "host": "kdna.agent-host/0.2.0",
-    "ir": "kdna.canonical-ir/0.2.0",
+    "container": "0.6.0",
     "payload_profile": "kdna.payload.judgment",
-    "payload_version": "0.2.0",
-    "plan": "kdna.consumption-plan/0.2.0",
-    "read": "kdna.read/0.2.0",
-    "runtime": "kdna.runtime-capsule/0.2.0",
-    "trace": "kdna.judgment-trace/0.2.0"
+    "payload_version": "0.5.1",
+    "core": "kdna.core/0.8.2",
+    "ir": "kdna.canonical-ir/0.6.1",
+    "runtime": "kdna.runtime-capsule/0.3.1",
+    "plan": "kdna.consumption-plan/0.3.1",
+    "host": "kdna.agent-host/0.3.1",
+    "trace": "kdna.judgment-trace/0.3.1",
+    "read": "kdna.read/0.7.0-candidate"
   },
-  "semantic_source_sha256": "862cea95bdb3a634356ad729b95e0882cb0b75fdb80f103a11f4037783899110",
-  "generated_contract_sha256": "ec8a2616a768f5523e8852487e757f6f9560d1933ea3a9ee90ead69fe1120f4d",
+  "accepted_cli": {
+    "name": "@aikdna/kdna-cli",
+    "version": "0.43.2"
+  },
+  "accepted_core": {
+    "version": "0.37.9",
+    "tar_sha256": "084afc94fb808a4327995d6d47be8262d53e339e415db2879ff334d5d742362b"
+  },
+  "accepted_read": {
+    "version": "0.13.3",
+    "tar_sha256": "52f5b05f4565e623af6e7a381d90ae2c75ef04edc82e2db2b88f7aa8d6ac0f50"
+  },
+  "route_contracts": [
+    {
+      "file": "sections/contract.json",
+      "bytes": 570835,
+      "sha256": "1c31eec617080c9fd460dbb0d4a4c430f1eb3d0e22f34e2b5f1b545ac5a094d3"
+    },
+    {
+      "file": "sectionbytes/contract.json",
+      "bytes": 31759,
+      "sha256": "61a46ac0642655497e8896f49d0a9e13a164c355895c91a4824cf61b50b30c6d"
+    },
+    {
+      "file": "retained/contract.json",
+      "bytes": 291233,
+      "sha256": "3d965e9502a741d75e5742d9528de5ebd1db92ce82a1f04c7a0ccc77d049d52b"
+    },
+    {
+      "file": "creation06/contract.json",
+      "bytes": 71166,
+      "sha256": "89317373dc0f322392669b82647c04ef9bd750cc471b648e6d9a9ecde14eac0c"
+    },
+    {
+      "file": "source06/contract.json",
+      "bytes": 76676,
+      "sha256": "05a855e4ed9d16c5581f6518a9424beaa08297889899ac4b3cb8cf5eadea18dd"
+    },
+    {
+      "file": "migration06/contract.json",
+      "bytes": 46892,
+      "sha256": "13657c017dc430942bb1bff7069629766e5c5dd0f0bbf3d46ee0f7102c1a84b8"
+    }
+  ],
+  "component_semantics": {
+    "contract_id": "kdna.component-semantics/2",
+    "contract_version": "2.0.0",
+    "definition_digest": "sha256:37e857cc4e43f7283a51ee6abe1f6e8401803902e8dc47f6d14d712aa7d7b089"
+  },
+  "generated_contract_sha256": "d8ef313a26b53299c1c2b232fcf0dcb73180e24b7ca82b9926629853e9281336",
   "packages": [
     {
+      "name": "@aikdna/kdna-cli",
+      "version": "0.43.2",
+      "archive": "vendor/aikdna-kdna-cli-0.43.2.tgz",
+      "bytes": 50512,
+      "sha256": "51a126b877c5effc7a1bc44a78984e5a115c8fff2bba6418c7a391c8bdd314c9",
+      "members": 18
+    },
+    {
       "name": "@aikdna/kdna-core",
-      "version": "0.24.0-rc.component-semantics.2",
-      "archive": "vendor/aikdna-kdna-core-0.24.0-rc.component-semantics.2.tgz",
-      "bytes": 235986,
-      "sha256": "a9cb3f08735b00657e4848766f0ac517abdcb256121a841f01e662525a0858ea",
-      "members": 39
+      "version": "0.37.9",
+      "archive": "vendor/aikdna-kdna-core-0.37.9.tgz",
+      "bytes": 8319313,
+      "sha256": "084afc94fb808a4327995d6d47be8262d53e339e415db2879ff334d5d742362b",
+      "members": 465
     },
     {
       "name": "@aikdna/kdna-read",
-      "version": "0.3.0-rc.component-semantics.2",
-      "archive": "vendor/aikdna-kdna-read-0.3.0-rc.component-semantics.2.tgz",
-      "bytes": 100934,
-      "sha256": "43d0f12a1a63a88d26570bfff821919a5cd478fdbd0568bd9c819bc56078b0f0",
-      "members": 36
+      "version": "0.13.3",
+      "archive": "vendor/aikdna-kdna-read-0.13.3.tgz",
+      "bytes": 3217262,
+      "sha256": "52f5b05f4565e623af6e7a381d90ae2c75ef04edc82e2db2b88f7aa8d6ac0f50",
+      "members": 99
+    },
+    {
+      "name": "@noble/hashes",
+      "version": "1.8.0",
+      "archive": "vendor/noble-hashes-1.8.0.tgz",
+      "bytes": 154380,
+      "sha256": "2f8ce985a97936715bab16a7b3025bd73cc317831ec4d7ccaa4d136a6b04bfb5",
+      "members": 247
     },
     {
       "name": "ajv",
@@ -84,14 +148,6 @@
       "members": 12
     },
     {
-      "name": "@noble/hashes",
-      "version": "1.8.0",
-      "archive": "vendor/noble-hashes-1.8.0.tgz",
-      "bytes": 154380,
-      "sha256": "2f8ce985a97936715bab16a7b3025bd73cc317831ec4d7ccaa4d136a6b04bfb5",
-      "members": 247
-    },
-    {
       "name": "pako",
       "version": "2.1.0",
       "archive": "vendor/pako-2.1.0.tgz",
@@ -106,17 +162,9 @@
       "bytes": 1795,
       "sha256": "daf9e97bbcd592f3af8ae259359536d1b9d81a697253f22fe2aeb8fcbe1c33ba",
       "members": 4
-    },
-    {
-      "name": "@aikdna/kdna-cli",
-      "version": "0.38.0-rc.component-semantics.1",
-      "archive": "vendor/aikdna-kdna-cli-0.38.0-rc.component-semantics.1.tgz",
-      "bytes": 12015,
-      "sha256": "3e2fbdbc7dcaf07b6a8dbc17b8df7f365e4837c61d391d8d6416d951abcac3be",
-      "members": 7
     }
   ],
-  "toolchain_files_sha256": "72164a5dc00b405b5245985429c182694aac2cbe4ee4388c87f8f3f47fde5154",
-  "authority_limit": "Exact technical dependency coordinates. Admission, authorship, confirmation, reading permission, actions, content quality and per-file licenses remain separate.",
-  "component_semantics_digest": "sha256:3087cd19542e72322aec19b3015c916d2cfb074fa42e3fd76b3756bb4f097de3"
+  "toolchain_files_sha256": "ab13ba13bc2dfc503ea2067c0685d7a1715ac4ab8c0bae279b20e4895ad69633",
+  "authority_limit": "Exact technical dependency coordinates. Whole admission, authorship, confirmation, reading permission, catalog-only versus body disclosure, actions, content quality and per-file licenses remain separate.",
+  "component_semantics_digest": "sha256:37e857cc4e43f7283a51ee6abe1f6e8401803902e8dc47f6d14d712aa7d7b089"
 }

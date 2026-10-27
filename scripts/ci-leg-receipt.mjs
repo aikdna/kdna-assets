@@ -20,7 +20,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { environmentFor, INPUT_NAMES, LEGS, REGISTRY_PATH } from './ci-leg-definitions.mjs';
 import { isEntryPoint } from './lib.mjs';
@@ -65,23 +65,38 @@ function registrationFor(leg) {
   return (legRegistry().entries ?? []).find((entry) => entry.leg === leg);
 }
 
-// The installed Core is asked to admit every indexed asset; the codes it
-// rejects with are the leg's unavailability codes.
+// The installed Core is asked to admit every indexed asset through its native
+// byte route; the codes it rejects with are the leg's unavailability codes.
 export async function admissionCodes(environment, target = root) {
   const current = readJson(resolve(target, environment.KDNA_ASSETS_METADATA_INDEX));
-  let admitNode;
+  let sections;
+  let sectionBytes;
   try {
-    ({ admitNode } = require('@aikdna/kdna-core/node'));
+    sections = require('@aikdna/kdna-core/sections-node');
+    sectionBytes = require('@aikdna/kdna-core/sections-bytes-node');
   } catch (error) {
     return { codes: [`installed_core_admission_entry_unavailable:${error.code ?? 'UNKNOWN'}`], rejected: 0 };
   }
+  const binding = readJson(resolve(target, 'public-contract-binding.json'));
   const rejected = [];
   for (const entry of [...(current.assets ?? []), ...(current.clusters ?? [])]) {
     const artifactPath = entry.artifact?.path ?? entry.manifest?.path;
     if (!artifactPath) continue;
-    const admitted = await admitNode(readFileSync(resolve(target, artifactPath)));
+    const request = sections.admitSectionRequest({
+      request_id: `assets-ci-admit:${randomUUID()}`,
+      tuple: binding.tuple,
+      budget_bytes: 1000000,
+      mode: 'whole_asset',
+      selection: null,
+      handle: null,
+    });
+    const admitted = await sectionBytes.admitSectionBytesNode(
+      readFileSync(resolve(target, artifactPath)),
+      request,
+      sectionBytes.createNativeSectionByteReadAuthority(() => true),
+    );
     if (admitted.status !== 'accepted') {
-      rejected.push(`${entry.id}:${admitted.reason}`);
+      rejected.push(`${entry.id}:${admitted.reason ?? admitted.diagnostic?.code ?? admitted.status}`);
     }
   }
   if (rejected.length === 0) return { codes: [], rejected: 0 };

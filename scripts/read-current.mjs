@@ -18,4 +18,4 @@ const index=JSON.parse(readFileSync(indexPath??resolve(root,'index/current.json'
 const entry=index.assets.find(x=>x.id===id);if(!entry)throw new Error('ASSETS_ENTRY_NOT_FOUND');
 const result=await observeAsset({root,entry,allowRead,mode,judgmentId,budgetBytes});
 console.log(JSON.stringify(result,null,2));
-if(result.read.channel!=='read_envelope'||result.read.envelope.status!=='ready')process.exitCode=1;
+if(result.read.channel!=='read_envelope'||!['ready','catalog_only'].includes(result.read.envelope.status))process.exitCode=1;

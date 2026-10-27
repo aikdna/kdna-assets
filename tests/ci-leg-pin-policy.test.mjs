@@ -14,13 +14,13 @@ import { registryOf } from '../scripts/verify-ci-leg-receipts.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const ENVIRONMENT = { KDNA_ASSETS_METADATA_INDEX: 'index.json', KDNA_ASSETS_METADATA_PACKAGE: 'package.json' };
-const COMMITTED_PIN = 'file:vendor/aikdna-kdna-cli-0.38.0-rc.component-semantics.1.tgz';
+const COMMITTED_PIN = 'file:vendor/aikdna-kdna-cli-0.43.2.tgz';
 const INTEGRITY = 'sha512-' + 'A'.repeat(86) + '==';
 
 function sandbox({ pin = COMMITTED_PIN, index, lock } = {}) {
   const dir = mkdtempSync(join(tmpdir(), 'assets-pin-policy-'));
   mkdirSync(join(dir, 'vendor'), { recursive: true });
-  cpSync(join(root, 'vendor', 'aikdna-kdna-cli-0.38.0-rc.component-semantics.1.tgz'), join(dir, 'vendor', 'aikdna-kdna-cli-0.38.0-rc.component-semantics.1.tgz'));
+  cpSync(join(root, 'vendor', 'aikdna-kdna-cli-0.43.2.tgz'), join(dir, 'vendor', 'aikdna-kdna-cli-0.43.2.tgz'));
   writeFileSync(
     join(dir, 'index.json'),
     `${JSON.stringify(index ?? { schema_version: '2.0.0', assets: [{ id: 'a' }], clusters: [] }, null, 2)}\n`,
@@ -63,13 +63,13 @@ test('the committed graph has no unavailability code for the CLI pin', () => {
 });
 
 test('a checkable pin - exact SemVer or integrity-locked file: - produces no code', () => {
-  assert.deepEqual(codesFor({ pin: '0.38.0', index: SATISFIED_INDEX }), []);
+  assert.deepEqual(codesFor({ pin: '0.43.2', index: SATISFIED_INDEX }), []);
   assert.deepEqual(codesFor({ index: SATISFIED_INDEX }), []);
   assert.deepEqual(codesFor({ pin: null, index: SATISFIED_INDEX }), []);
 });
 
 test('an uncheckable pin produces the coordinate code instead of a spelling code', () => {
-  for (const pin of ['^0.38.0', '~0.38.0', '*', 'latest', '0.38.x', '']) {
+  for (const pin of ['^0.43.2', '~0.43.2', '*', 'latest', '0.43.x', '']) {
     assert.deepEqual(
       codesFor({ pin, index: SATISFIED_INDEX }),
       ['kdna_cli_pin_not_checkable'],

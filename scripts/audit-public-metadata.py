@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Run the public current-asset and Cluster metadata checks.
 
-This audit never unpacks or directly decodes a KDNA container. Assets are
-exercised only through the official CLI.
+This audit never unpacks or directly decodes a KDNA container. Current assets
+are exercised through the bound public adapter and its official Core/Read
+entry points.
 """
 
 from __future__ import annotations

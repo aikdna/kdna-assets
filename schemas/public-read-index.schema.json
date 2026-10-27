@@ -192,7 +192,8 @@
                   "status": {
                     "enum": [
                       "accepted",
-                      "rejected"
+                      "rejected",
+                      "unsupported"
                     ]
                   },
                   "reason": {
@@ -215,6 +216,7 @@
                     "enum": [
                       "read_envelope",
                       "admission_rejection",
+                      "retained_failure",
                       "no_body_control",
                       "transport_failure"
                     ]
@@ -222,7 +224,9 @@
                   "status": {
                     "enum": [
                       "ready",
+                      "catalog_only",
                       "rejected",
+                      "unsupported",
                       "no_body",
                       "failed"
                     ]
@@ -246,6 +250,10 @@
                       "delivered",
                       "not_delivered"
                     ]
+                  },
+                  "detail": {
+                    "type": "string",
+                    "minLength": 1
                   }
                 },
                 "required": [
