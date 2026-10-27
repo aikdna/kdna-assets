@@ -218,12 +218,12 @@ function checkNotRunIsFalsifiable(root, leg, definition, registration, findings)
           id: 'falsification-probe',
           technical_status: 'published',
           download: { url: 'https://example.invalid/falsification-probe.kdna' },
-          artifact: { path: 'tests/current-fixtures/synthetic/asset.kdna' },
+          artifact: { path: 'tests/current-fixtures/native-0.6/asset.kdna' },
         },
       ],
       clusters: [],
     };
-    for (const relative of ['package.json', 'tests/current-fixtures/synthetic/asset.kdna']) {
+    for (const relative of ['package.json', 'tests/current-fixtures/native-0.6/asset.kdna']) {
       mkdirSync(dirname(join(sandbox, relative)), { recursive: true });
       copyFileSync(resolve(root, relative), join(sandbox, relative));
     }
@@ -240,17 +240,32 @@ function checkNotRunIsFalsifiable(root, leg, definition, registration, findings)
     writeFileSync(join(sandbox, 'scripts', 'check-current-assets.mjs'), 'process.exit(0);\n');
     writeFileSync(join(sandbox, 'scripts', 'check-release-consistency.mjs'), 'process.exit(0);\n');
     writeFileSync(join(sandbox, 'scripts', 'audit-public-metadata.py'), 'import sys\nsys.exit(0)\n');
-    // The installed Core admits the synthetic fixture, so the admission code is
-    // gone as well. A minimal stand-in for `@aikdna/kdna-core/node` keeps the
-    // check about the gate's decision instead of about module resolution.
+    // The installed Core admits the native fixture, so the admission code is
+    // gone as well. Minimal stand-ins for the two native entries keep the check
+    // about the gate's decision instead of about module resolution.
     mkdirSync(join(sandbox, 'node_modules', '@aikdna', 'kdna-core'), { recursive: true });
     writeFileSync(
       join(sandbox, 'node_modules', '@aikdna', 'kdna-core', 'package.json'),
-      `${JSON.stringify({ name: '@aikdna/kdna-core', version: '0.0.0-falsification', exports: { './node': './node.js' } }, null, 2)}\n`,
+      `${JSON.stringify(
+        {
+          name: '@aikdna/kdna-core',
+          version: '0.0.0-falsification',
+          exports: {
+            './sections-node': './sections-node.js',
+            './sections-bytes-node': './sections-bytes-node.js',
+          },
+        },
+        null,
+        2,
+      )}\n`,
     );
     writeFileSync(
-      join(sandbox, 'node_modules', '@aikdna', 'kdna-core', 'node.js'),
-      "'use strict';\nmodule.exports = { admitNode: async () => ({ status: 'accepted' }) };\n",
+      join(sandbox, 'node_modules', '@aikdna', 'kdna-core', 'sections-node.js'),
+      "'use strict';\nmodule.exports = { admitSectionRequest: (request) => request };\n",
+    );
+    writeFileSync(
+      join(sandbox, 'node_modules', '@aikdna', 'kdna-core', 'sections-bytes-node.js'),
+      "'use strict';\nmodule.exports = { createNativeSectionByteReadAuthority: () => ({}), admitSectionBytesNode: async () => ({ status: 'accepted' }) };\n",
     );
     const environment = environmentWith({
       KDNA_ASSETS_METADATA_INDEX: 'index-satisfied.json',

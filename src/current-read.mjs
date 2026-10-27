@@ -2,6 +2,7 @@ import { readFileSync, lstatSync } from 'node:fs';
 import { resolve, relative, isAbsolute, join, dirname } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { createRequire } from 'node:module';
+import { isDeepStrictEqual } from 'node:util';
 import { packageRoot, verifyToolchain, sha256 } from './toolchain.mjs';
 const require=createRequire(import.meta.url);
 export function resolveEntryFile(root,rel){
@@ -31,7 +32,18 @@ export function verifyEntryFiles(root,entry){
 }
 export function summarizeRead(r){
   if(r.channel==='read_envelope')return {channel:r.channel,status:r.envelope.status,diagnostics:r.envelope.diagnostics.map(d=>d.code),read_permission:r.envelope.states.read_permission,delivery:r.envelope.receipt.delivery};
-  if(r.channel==='admission_rejection')return {channel:r.channel,status:'rejected',diagnostics:[r.admission_rejection.code],read_permission:'not_evaluated',delivery:'not_delivered'};
+  if(r.channel==='admission_rejection'){
+    const failure=r.admission_rejection;
+    const status=failure?.status==='unsupported'?'unsupported':'rejected';
+    const diagnostics=[failure?.reason??failure?.diagnostic?.code].filter(value=>typeof value==='string'&&value);
+    return {channel:r.channel,status,diagnostics,read_permission:'not_evaluated',delivery:'not_delivered'};
+  }
+  if(r.channel==='retained_failure'){
+    const failure=r.retained_failure;
+    const summary={channel:r.channel,status:'rejected',diagnostics:[failure?.diagnostic?.code??'READ_CORE_CAPABILITY_UNAVAILABLE'],read_permission:failure?.detail==='authority_denied'?'denied':'not_evaluated',delivery:'not_delivered'};
+    if(typeof failure?.detail==='string'&&failure.detail)summary.detail=failure.detail;
+    return summary;
+  }
   if(r.channel==='no_body_control')return {channel:r.channel,status:'no_body',diagnostics:[r.control.code],read_permission:'not_evaluated',delivery:'not_delivered'};
   if(r.channel==='transport_failure')return {channel:r.channel,status:'failed',diagnostics:[r.transport_failure.code],read_permission:'not_evaluated',delivery:'not_delivered'};
   throw new Error('ASSETS_UNKNOWN_READ_CHANNEL');
@@ -44,22 +56,49 @@ export async function observeAsset({root=packageRoot,entry,allowRead=false,mode=
   const input=verifyEntryFiles(root,entry);
   if(input.bytes.length>64*1024*1024)throw new Error('ASSETS_FILE_TOO_LARGE');
   // Execute only the exact installed public graph, after its full byte check.
-  const {admitNode}=require('@aikdna/kdna-core/node');
-  const {inspectSnapshot}=require('@aikdna/kdna-core/read-boundary');
-  const {readNode}=require('@aikdna/kdna-read/node');
-  const {createTrustedReadControlProvider,createTrustedHostReadProvider}=require('@aikdna/kdna-read/embedding');
-  const admitted=await admitNode(input.bytes);
-  const view=admitted.status==='accepted'?inspectSnapshot(admitted.snapshot):null;
-  if(admitted.status==='accepted'&&!view)throw new Error('ASSETS_CORE_VIEW_UNAVAILABLE');
-  if(view&&entry.version!==view.asset.asset_version)throw new Error('ASSETS_ENTRY_VERSION_MISMATCH');
-  const admission=view?{status:'accepted',reason:null,asset:view.asset,digests:view.digests,judgment_count:view.ir.catalog.length,diagnostics:[]}:{status:'rejected',reason:admitted.reason,states:admitted.states,component_failure:admitted.component_failure,diagnostics:admitted.diagnostics};
-  const request={request_id:'assets:'+randomUUID(),tuple:binding.tuple,budget_bytes:budgetBytes,mode,selection:mode==='exact_selection'?{asset_id:view?.asset.asset_id??entry.id,asset_version:view?.asset.asset_version??entry.version,judgment_id:judgmentId}:null,handle:null};
-  const control=createTrustedReadControlProvider(()=>({admission_response_limit_bytes:4096}));
-  const host=createTrustedHostReadProvider({observe({request,snapshot}){
-    const current=inspectSnapshot(snapshot);const time=Date.now();
-    return {host_id:'kdna-assets:local',host_epoch:'process:'+process.pid,decision_id:'decision:'+request.request_id,request_id:request.request_id,snapshot_id:current.snapshot_id,A:current.digests.A.observed,C:current.digests.C.observed,scope:current.ir.nodes.map(n=>n.id),issued_at:time,expires_at:time+60000,decision:allowRead?'allow':'deny',policy_id:'kdna-assets:explicit-local-read',current_ms:time};
-  }});
+  const {admitSectionRequest,inspectWholeSectionSnapshot}=require('@aikdna/kdna-core/sections-node');
+  const {createNativeSectionByteReadAuthority,admitSectionBytesNode}=require('@aikdna/kdna-core/sections-bytes-node');
+  const {admitRetainedSectionRequest,createRetainedSectionReadAuthority,prepareRetainedSectionRead}=require('@aikdna/kdna-core/retained-sections-node');
+  const {createTrustedHostReadProvider,readRetainedSection}=require('@aikdna/kdna-read/retained-sections-node');
+  const admissionRequest=admitSectionRequest({request_id:'assets-admit:'+randomUUID(),tuple:binding.tuple,budget_bytes:budgetBytes,mode:'whole_asset',selection:null,handle:null});
+  const admitted=await admitSectionBytesNode(input.bytes,admissionRequest,createNativeSectionByteReadAuthority(()=>true));
+  if(admitted.status!=='accepted'){
+    const admission={status:admitted.status,reason:admitted.reason,stage:admitted.stage,diagnostic:admitted.diagnostic,io:admitted.io};
+    const read={channel:'admission_rejection',admission_rejection:admission,envelope:null,control:null,transport_failure:null};
+    return {checked_at:new Date().toISOString(),artifact:{path:entry.artifact.path,bytes:input.bytes.length,sha256:input.sha256},admission,read,context:{policy:'kdna-assets:explicit-local-read',allow_read:allowRead,permission_scope:'this_call_and_exact_bytes',delivery_boundary:'in_process_return',action_authorization:'not_evaluated'}};
+  }
+  const view=inspectWholeSectionSnapshot(admitted.snapshot);
+  if(!view)throw new Error('ASSETS_CORE_VIEW_UNAVAILABLE');
+  if(!isDeepStrictEqual(view.tuple,binding.tuple))throw new Error('ASSETS_TUPLE_MISMATCH');
+  if(entry.version!==view.asset.asset_version)throw new Error('ASSETS_ENTRY_VERSION_MISMATCH');
+  const admission={status:'accepted',reason:null,asset:view.asset,digests:view.digests,judgment_count:view.ir.catalog.length,diagnostics:[]};
+  const retainedRequest=admitRetainedSectionRequest({
+    request_id:'assets-read:'+randomUUID(),tuple:binding.tuple,budget_bytes:budgetBytes,mode,
+    selection:mode==='exact_selection'?{asset_id:view.asset.asset_id,asset_version:view.asset.asset_version,judgment_ids:[judgmentId]}:null,
+    handle:null,
+  });
+  if(retainedRequest.status!=='admitted_request'){
+    const read={channel:'retained_failure',retained_failure:retainedRequest,envelope:null,admission_rejection:null,control:null,transport_failure:null};
+    return {checked_at:new Date().toISOString(),artifact:{path:entry.artifact.path,bytes:input.bytes.length,sha256:input.sha256},admission,read,context:{policy:'kdna-assets:explicit-local-read',allow_read:allowRead,permission_scope:'this_call_and_exact_bytes',delivery_boundary:'in_process_return',action_authorization:'not_evaluated'}};
+  }
+  const authority=createRetainedSectionReadAuthority(()=>allowRead);
+  const preparation=await prepareRetainedSectionRead(admitted.snapshot,retainedRequest.request,authority);
+  if(preparation.status!=='prepared'){
+    const read={channel:'retained_failure',retained_failure:preparation,envelope:null,admission_rejection:null,control:null,transport_failure:null};
+    return {checked_at:new Date().toISOString(),artifact:{path:entry.artifact.path,bytes:input.bytes.length,sha256:input.sha256},admission,read,context:{policy:'kdna-assets:explicit-local-read',allow_read:allowRead,permission_scope:'this_call_and_exact_bytes',delivery_boundary:'in_process_return',action_authorization:'not_evaluated'}};
+  }
+  const host=createTrustedHostReadProvider({
+    observe({request,preparation}){
+      const observedAt=Date.now();
+      return {host_id:'kdna-assets:local',host_epoch:'process:'+process.pid,decision_id:'decision:'+request.request_id,
+        operation_id:preparation.intent.operation_id,request_id:request.request_id,request_digest:preparation.request_digest,
+        origin:preparation.origin,intent_digest:preparation.intent_digest,asset:preparation.asset,tuple:preparation.tuple,
+        scope:view.ir.nodes.map(node=>node.id),issued_at:observedAt,expires_at:observedAt+60000,
+        decision:allowRead?'allow':'deny',policy_id:'kdna-assets:explicit-local-read',current_ms:observedAt};
+    },
+    deliver(){return true;},
+  });
   // Read the already checked bytes: no second path open or container parser.
-  const read=await readNode(input.bytes,request,control,host);
+  const read=await readRetainedSection(preparation.prepared,host);
   return {checked_at:new Date().toISOString(),artifact:{path:entry.artifact.path,bytes:input.bytes.length,sha256:input.sha256},admission,read,context:{policy:'kdna-assets:explicit-local-read',allow_read:allowRead,permission_scope:'this_call_and_exact_bytes',delivery_boundary:'in_process_return',action_authorization:'not_evaluated'}};
 }

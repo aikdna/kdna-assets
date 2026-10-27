@@ -4,7 +4,13 @@ This public source workspace provides an index and adapter for the current publi
 
 ## Current status
 
-This candidate binds Core `0.24.0-rc.component-semantics.2`, Read `0.3.0-rc.component-semantics.2`, and CLI `0.38.0-rc.component-semantics.1` through exact archive and installed-file digests. The Read protocol coordinate is `kdna.read/0.2.0`; package versions and protocol versions are different coordinates. See `public-contract-binding.json` for the complete tuple and `toolchain-files.json` for all 945 dependency files.
+This candidate binds stable Core `0.37.9`, Read `0.13.3`, and CLI `0.43.2`
+through exact archive and installed-file digests. It admits native container
+`0.6.0` with payload profile `kdna.payload.judgment` version `0.5.1` and uses
+the `kdna.read/0.7.0-candidate` contract. Package versions and protocol
+coordinates are different facts. See `public-contract-binding.json` for the
+complete tuple and `toolchain-files.json` for all 1,445 required dependency
+files across 12 package archives.
 
 **The index currently lists no public reference asset.** The first public asset
 published from here will be the KDNA white paper. Asset publication here is selective and Owner-approved; no sample or reference asset is scheduled for the current introduction window. Three earlier entries —
@@ -31,20 +37,23 @@ repository's then-current graph admitted it and disclosed its catalog under
 explicit local read permission - and it was recorded as `unpublished_candidate`
 because no Release coordinate existed for it. Neither outcome is a listing now.
 
-This source bundle contains a synthetic technical test fixture and the offline
-adapter. The separately held official 100-asset collection is not distributed
-here: that private material, its sources and its authoring records are kept
-outside this public repository and supplied separately, then read through the
-same public adapter. See [`docs/collection-workspace.md`](docs/collection-workspace.md)
-for that layout. Finite taxonomy, candidate-set and discriminator-set
-interpretation comes exclusively from the accepted public Core definition
-`3087cd19542e72322aec19b3015c916d2cfb074fa42e3fd76b3756bb4f097de3`. This
-adapter does not interpret containers or component content itself. Technical
-readability does not establish the completeness of judgment content.
+This source bundle contains a native container `0.6` synthetic technical test
+fixture and the offline adapter. The separately held official 100-asset
+collection is not distributed here: that private material, its sources and its
+authoring records are kept outside this public repository and supplied
+separately, then read through the same public adapter. See
+[`docs/collection-workspace.md`](docs/collection-workspace.md) for that layout.
+Finite taxonomy, candidate-set and discriminator-set interpretation comes
+exclusively from the accepted public Core component definition
+`sha256:37e857cc4e43f7283a51ee6abe1f6e8401803902e8dc47f6d14d712aa7d7b089`.
+This adapter does not interpret containers or component content itself.
+Technical readability does not establish the completeness of judgment content.
 
 ## Offline setup
 
-Use Node.js 22 or newer. The exact graph has been exercised on macOS arm64 with Node.js 26.5.0. All required package archives are included under `vendor/`:
+Use Node.js 22 or newer. This graph has been exercised on macOS arm64 with
+Node.js `22.22.3` and npm `10.9.8`. All required package archives are included
+under `vendor/`:
 
 ```sh
 npm ci --offline --ignore-scripts --omit=optional --no-audit --no-fund
@@ -83,7 +92,19 @@ An exit status of 0 is not evidence on its own; the success line is.
 
 ## Reading and observations
 
-`npm run audit` checks the recorded Core outcomes with local read permission denied by default. `npm run audit:read` additionally gives explicit permission for that call and compares the current Read outcome with the indexed observation. A successful audit means the observation matches, including an accurately recorded rejection. When Core successfully admits an asset, the indexed `version` must exactly match its observed `asset_version`; a mismatch raises `ASSETS_ENTRY_VERSION_MISMATCH` before Read. Assets rejected by Core retain their original rejection and its public `states`, `diagnostics` and `component_failure` unchanged; their version is not guessed from rejected bytes. A Core-valid asset with blocked interpretation remains rejected, distinct from structurally invalid bytes. The adapter does not infer a more permissive state.
+`npm run audit` checks the recorded Core outcomes with local read permission
+denied by default. On an admitted native `0.6` asset, that denial is returned
+as a `retained_failure` observation with `detail: "authority_denied"`, not as
+silent disclosure or transport success. `npm run audit:read` additionally
+gives explicit permission for that call and compares the current Read outcome
+with the indexed observation. A successful audit means the observation
+matches, including an accurately recorded rejection. When Core successfully
+admits an asset, the indexed `version` must exactly match its observed
+`asset_version`; a mismatch raises `ASSETS_ENTRY_VERSION_MISMATCH` before
+Read. Assets rejected by Core retain the public rejection reason and diagnostic
+unchanged; their version is not guessed from rejected bytes. A Core-valid
+asset with blocked interpretation remains rejected, distinct from structurally
+invalid bytes. The adapter does not infer a more permissive state.
 
 ```sh
 npm run read -- --root /path/to/collection --index /path/to/index.json --id catalog-id --allow-read --mode catalog
@@ -94,9 +115,19 @@ from it; point the command at an authorized schema 2 collection. The module API
 exports `observeAsset` and the catalog entry point exports `validateIndex` and
 `auditIndex`.
 
-Supported modes are `catalog`, `whole_asset`, and `exact_selection`. Selection additionally requires `--judgment-id` with the actual judgment ID returned in the catalog. In this public contract, `whole_asset` returns asset declarations and the catalog; its judgment closure is empty. `exact_selection` supplies the selected judgment's mandatory closure. `--budget` sets a nonnegative byte budget; insufficient budget may produce an explicit no-body control result.
+Supported modes are `catalog`, `whole_asset`, and `exact_selection`. `catalog`
+returns the judgment catalog without judgment bodies. `whole_asset` returns
+the asset catalog, declarations and non-judgment closure while omitting
+judgment bodies as `not_requested`. `exact_selection` additionally requires
+`--judgment-id` with an actual catalog judgment ID and supplies that
+judgment's mandatory closure. `--budget` sets a nonnegative byte budget;
+insufficient budget may produce an explicit no-body control result.
 
-Read permission applies to the current process call, request, snapshot, and checked asset bytes. It is not a transferable credential, human confirmation, identity proof, remote delivery acknowledgment, or action authorization. All Read result channels and unavailable states remain explicit. The adapter does not provide handle expansion.
+Read permission applies to the current process call, request, snapshot, and checked asset bytes. It is not a transferable credential, human confirmation, identity proof, remote delivery acknowledgment, or action authorization. All Read result channels and unavailable states remain explicit:
+`read_envelope`, `admission_rejection`, `retained_failure`,
+`no_body_control`, and `transport_failure`. A successful catalog-only
+disclosure is reported as `read_envelope` with status `catalog_only`. The
+adapter does not provide handle expansion.
 
 ## Separately supplied collections
 
@@ -114,4 +145,10 @@ KDNA creation and distribution do not require a listing in this reference reposi
 
 Distribution is the complete Git source workspace, its synthetic test fixture, `vendor/` and committed lockfile. The adapter is not an npm release. Every required dependency is bundled, so the documented offline install can use a fresh empty dedicated cache. Keep private external collections outside this checkout.
 
-No public reference asset is offered from this revision. This graph remains container/payload `0.2`, Core contract `0.3` and Read contract `0.2`, bound to Core `0.24.0-rc.component-semantics.2`, Read `0.3.0-rc.component-semantics.2` and the recorded CLI `0.38.0-rc.component-semantics.1`. Studio container `0.5` and native container `0.6` are not admitted by this workspace. Exact archive/version bindings establish technical input identity, not content quality, human review or cross-CLI reuse.
+No public reference asset is offered from this revision. This graph admits
+container `0.6.0`, payload `kdna.payload.judgment` `0.5.1`, Core contract
+`kdna.core/0.8.2`, Canonical IR `kdna.canonical-ir/0.6.1`, and Read contract
+`kdna.read/0.7.0-candidate`, bound to Core `0.37.9`, Read `0.13.3` and CLI
+`0.43.2`. Studio container `0.5` is not admitted by this graph. Exact
+archive/version bindings establish technical input identity, not content
+quality, human review, publication, or cross-CLI reuse.

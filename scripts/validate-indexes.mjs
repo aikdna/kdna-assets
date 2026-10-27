@@ -2,12 +2,14 @@
 
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
+import { dirname, join } from 'node:path';
 import { argValue, failWith, readJson } from './lib.mjs';
 
 const args = process.argv.slice(2);
 const currentPath = argValue(args, '--current', 'index/current.json');
 const currentSchemaPath = argValue(args, '--current-schema', 'schemas/current-index.schema.json');
 const packagePath = argValue(args, '--package', 'package.json');
+const bindingPath = argValue(args, '--binding', join(dirname(packagePath), 'public-contract-binding.json'));
 const errors = [];
 
 const ajv = new Ajv2020({ allErrors: true, strict: true });
@@ -17,8 +19,17 @@ validateFile('current index', currentPath, currentSchemaPath);
 
 const current = readJson(currentPath);
 const packageManifest = readJson(packagePath);
-const cliVersion = packageManifest.devDependencies?.['@aikdna/kdna-cli'];
-if (!/^\d+\.\d+\.\d+$/.test(cliVersion || '')) {
+const binding = readJson(bindingPath);
+const cliCoordinate = packageManifest.devDependencies?.['@aikdna/kdna-cli'];
+const boundCli = (binding.packages ?? []).find((entry) => entry.name === '@aikdna/kdna-cli');
+const cliVersion = (() => {
+  if (/^\d+\.\d+\.\d+$/.test(cliCoordinate || '')) return cliCoordinate;
+  if (typeof cliCoordinate === 'string' && cliCoordinate.startsWith('file:')) {
+    return cliCoordinate.slice('file:'.length) === boundCli?.archive ? boundCli.version : null;
+  }
+  return null;
+})();
+if (!cliVersion) {
   errors.push('package.json must pin one exact @aikdna/kdna-cli version');
 }
 const expectedToolchain = `@aikdna/kdna-cli@${cliVersion}`;

@@ -1,10 +1,10 @@
 {
   "schema_version": "2.0.0",
   "kind": "kdna-current-index",
-  "updated": "2026-10-09T06:20:00.000Z",
+  "updated": "2026-10-27T14:04:36Z",
   "repository": "https://github.com/aikdna/kdna-assets",
   "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
   "assets": [],
   "clusters": [],
-  "toolchain_binding_sha256": "683f49898c54abd91d862ab11ee7c2c14fcc93eb885c448b3af43567b52f0f6d"
+  "toolchain_binding_sha256": "b7f2277181025f8cce847621c27e15e57206e72d954645741a726c3ee2868d79"
 }

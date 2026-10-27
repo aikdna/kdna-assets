@@ -1,3 +1,27 @@
+## 0.4.0-rc.native-sections.1 — 2026-10-27
+
+- Replace the retired Core `0.24.0-rc.component-semantics.2`, Read
+  `0.3.0-rc.component-semantics.2` and CLI
+  `0.38.0-rc.component-semantics.1` graph with exact public archives for Core
+  `0.37.9`, Read `0.13.3` and CLI `0.43.2`.
+- Admit native container `0.6.0`, payload `kdna.payload.judgment` `0.5.1`,
+  Core `kdna.core/0.8.2`, Canonical IR `kdna.canonical-ir/0.6.1` and Read
+  `kdna.read/0.7.0-candidate`; bind the tuple, route contracts and component
+  semantics to the exact installed graph.
+- Move the public adapter to Core byte admission plus retained Read. The bytes
+  checked against the index are passed directly to Core; the adapter adds no
+  container parser or filesystem reread.
+- Preserve explicit local read permission. Catalog-only disclosure is a
+  delivered `read_envelope`; denied retained preparation is a
+  `retained_failure` with `authority_denied`; admission rejection remains a
+  separate channel.
+- Add a synthetic native `0.6` technical fixture covering catalog-only,
+  exact-selection, whole-asset and explicit-deny behavior.
+- Update the CI admission probe, pin-policy tests, installed-file manifest,
+  schemas and documentation for the current package APIs.
+- No public sample is added or published, and no content quality, human
+  confirmation, action authorization or cross-CLI reuse is claimed.
+
 ## 0.3.0-rc.component-semantics.1
 
 - Bind exact accepted public Core/Read/CLI component graph and current tuple/definition.

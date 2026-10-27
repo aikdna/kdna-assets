@@ -1,6 +1,6 @@
 {
   "name": "@aikdna/kdna-assets",
-  "version": "0.3.0-rc.component-semantics.1",
+  "version": "0.4.0-rc.native-sections.1",
   "private": true,
   "type": "module",
   "license": "Apache-2.0",
@@ -18,8 +18,8 @@
     "prepublishOnly": "node -e \"throw new Error('This workspace is private; publication is not configured')\""
   },
   "devDependencies": {
-    "@aikdna/kdna-core": "file:vendor/aikdna-kdna-core-0.24.0-rc.component-semantics.2.tgz",
-    "@aikdna/kdna-read": "file:vendor/aikdna-kdna-read-0.3.0-rc.component-semantics.2.tgz",
+    "@aikdna/kdna-core": "file:vendor/aikdna-kdna-core-0.37.9.tgz",
+    "@aikdna/kdna-read": "file:vendor/aikdna-kdna-read-0.13.3.tgz",
     "ajv": "file:vendor/ajv-8.20.0.tgz",
     "ajv-formats": "file:vendor/ajv-formats-3.0.1.tgz",
     "cbor-x": "file:vendor/cbor-x-1.6.5.tgz",
@@ -29,7 +29,7 @@
     "@noble/hashes": "file:vendor/noble-hashes-1.8.0.tgz",
     "pako": "file:vendor/pako-2.1.0.tgz",
     "require-from-string": "file:vendor/require-from-string-2.0.2.tgz",
-    "@aikdna/kdna-cli": "file:vendor/aikdna-kdna-cli-0.38.0-rc.component-semantics.1.tgz"
+    "@aikdna/kdna-cli": "file:vendor/aikdna-kdna-cli-0.43.2.tgz"
   },
   "engines": {
     "node": ">=22"

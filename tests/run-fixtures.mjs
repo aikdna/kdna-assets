@@ -15,11 +15,13 @@ import { basename, dirname, join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 import { canonicalReleaseUrl } from '../scripts/lib.mjs';
+import { observeAsset, summarizeRead } from '../src/current-read.mjs';
 
 const repo = resolve(import.meta.dirname, '..');
 const fixtures = join(repo, 'tests/fixtures');
 const temp = mkdtempSync(join(tmpdir(), 'kdna-assets-fixtures-'));
-const cliToolchain = `@aikdna/kdna-cli@${JSON.parse(readFileSync(join(repo, 'package.json'), 'utf8')).devDependencies['@aikdna/kdna-cli']}`;
+const binding = JSON.parse(readFileSync(join(repo, 'public-contract-binding.json'), 'utf8'));
+const cliToolchain = `@aikdna/kdna-cli@${binding.accepted_cli.version}`;
 const results = [];
 
 try {
@@ -27,7 +29,7 @@ try {
   testReleaseDownloadAuthority();
   testIndexes();
   testDigests();
-  testCurrentAssets();
+  await testCurrentAssets();
   testClusters();
   testLicenses();
   testReleases();
@@ -43,10 +45,10 @@ function testLocalCliAuthority() {
   if (/spawnSync\(['"]npx['"]/u.test(source)) {
     throw new Error('current asset checks must not delegate CLI authority to npx');
   }
-  if (!source.includes('spawnSync(process.execPath, [cliEntry')) {
-    throw new Error('current asset checks must execute the exact installed CLI with current Node');
+  if (!source.includes("import { auditIndex } from '../src/catalog.mjs';")) {
+    throw new Error('current asset checks must use the bound public adapter');
   }
-  results.push('current asset CLI authority');
+  results.push('current asset adapter authority');
 }
 
 function testReleaseDownloadAuthority() {
@@ -71,10 +73,10 @@ function testReleaseDownloadAuthority() {
       throw new Error(`${workflow} must not expose a credential to public Release downloads`);
     }
     if (
-      workflow === 'public-metadata.yml' &&
-      !workflowSource.includes('python3 scripts/audit-public-metadata.py --online-releases')
+      workflow === 'release-verification.yml' &&
+      !workflowSource.includes('node scripts/ci-leg-receipt.mjs online-release-consistency')
     ) {
-      throw new Error('public metadata CI must execute the online canonical Release audit');
+      throw new Error('release verification CI must execute the online canonical Release audit');
     }
   }
   results.push('release download authority');
@@ -114,31 +116,79 @@ function testDigests() {
   expectFail('digest negative', 'scripts/verify-digests.mjs', ['--root', negative]);
 }
 
-function testCurrentAssets() {
+async function testCurrentAssets() {
   const positive = join(temp, 'asset-positive');
-  mkdirSync(join(positive, 'references/public/current-demo'), { recursive: true });
-  mkdirSync(join(positive, 'index'), { recursive: true });
-  mkdirSync(join(positive, 'source'), { recursive: true });
-  runExternal('kdna', ['demo', 'judgment', join(positive, 'source')]);
-  const artifactRel = 'references/public/current-demo/current-demo-1.0.0.kdna';
-  const artifact = join(positive, artifactRel);
-  runExternal('kdna', ['pack', join(positive, 'source'), artifact]);
-  writeFileSync(`${artifact}.sha256`, `${sha256(artifact)}  ${basename(artifact)}\n`);
-  writeFileSync(join(dirname(artifact), 'LICENSE'), 'Fixture-only license.\n');
-  writeJson(join(positive, 'index/current.json'), currentIndex({
-    assets: [assetEntry(artifactRel, sha256(artifact))],
-  }));
+  await prepareCurrentReadRoot(positive, false);
   expectPass('current asset positive', 'scripts/check-current-assets.mjs', ['--root', positive]);
 
   const negative = join(temp, 'asset-negative');
-  mkdirSync(join(negative, 'references/public/broken'), { recursive: true });
-  mkdirSync(join(negative, 'index'), { recursive: true });
-  const brokenRel = 'references/public/broken/broken-1.0.0.kdna';
-  copyFileSync(join(fixtures, 'assets/negative.kdna'), join(negative, brokenRel));
-  writeJson(join(negative, 'index/current.json'), currentIndex({
-    assets: [assetEntry(brokenRel, sha256(join(negative, brokenRel)))],
-  }));
+  await prepareCurrentReadRoot(negative, true);
   expectFail('current asset negative', 'scripts/check-current-assets.mjs', ['--root', negative]);
+}
+
+async function prepareCurrentReadRoot(root, corrupt) {
+  const artifactPath = 'sample/asset.kdna';
+  const licensePath = 'sample/LICENSE';
+  mkdirSync(join(root, 'sample'), { recursive: true });
+  copyFileSync(join(repo, 'tests/current-fixtures/native-0.6/asset.kdna'), join(root, artifactPath));
+  copyFileSync(join(repo, 'tests/current-fixtures/native-0.6/LICENSE'), join(root, licensePath));
+  if (corrupt) {
+    const bytes = readFileSync(join(root, artifactPath));
+    bytes[Math.floor(bytes.length / 2)] ^= 0xff;
+    writeFileSync(join(root, artifactPath), bytes);
+  }
+  const files = [artifactPath, licensePath].map((path) => ({
+    path,
+    bytes: readFileSync(join(root, path)).length,
+    sha256: sha256(join(root, path)),
+  }));
+  const entry = {
+    kind: 'kdna-asset',
+    id: 'fixture/native-current-read',
+    publisher: { name: 'Fixture Publisher', url: 'https://example.com/publisher' },
+    creator: { name: 'Fixture Creator' },
+    access: 'public',
+    license: {
+      id: 'Apache-2.0',
+      path: licensePath,
+      scope: 'asset-content-and-distribution',
+      repository_license_applies: false,
+    },
+    version: '1.0.0',
+    digest: { algorithm: 'sha256', value: files[0].sha256 },
+    artifact: { path: artifactPath, media_type: 'application/vnd.kdna.asset' },
+    evidence_claims: [],
+    files,
+    observation: {
+      checked_at: new Date().toISOString(),
+      method: 'public_node_adapter',
+      core: { status: 'accepted', reason: null },
+      read: { channel: 'read_envelope', status: 'catalog_only', diagnostics: [], read_permission: 'allowed', delivery: 'delivered' },
+      scope: 'Synthetic native container 0.6 fixture only.',
+    },
+    publication_status: 'unpublished_candidate',
+    proof_limits: {
+      creation: 'not_evaluated',
+      identity: 'not_evaluated',
+      action_authorization: 'not_evaluated',
+      legal_clearance: 'not_evaluated',
+    },
+  };
+  const observed = await observeAsset({ root, entry, allowRead: true });
+  entry.observation.core = corrupt
+    ? { status: 'accepted', reason: null }
+    : { status: observed.admission.status, reason: observed.admission.reason };
+  entry.observation.read = summarizeRead(observed.read);
+  writeJson(join(root, 'index/current.json'), {
+    schema_version: '2.0.0',
+    kind: 'kdna-current-index',
+    updated: new Date().toISOString(),
+    repository: 'https://github.com/aikdna/kdna-assets',
+    listing_policy: 'Fixture only; no endorsement, correctness, quality, expertise, approval, or truth is implied.',
+    assets: [entry],
+    clusters: [],
+    toolchain_binding_sha256: sha256(join(repo, 'public-contract-binding.json')),
+  });
 }
 
 function testClusters() {
@@ -408,11 +458,6 @@ function runScriptWithEnv(script, args, environment) {
     encoding: 'utf8',
     env: { ...process.env, ...environment },
   });
-}
-
-function runExternal(command, args) {
-  const result = spawnSync(command, args, { cwd: repo, encoding: 'utf8' });
-  if (result.status !== 0) throw new Error(`${command} ${args.join(' ')} failed:\n${result.stdout}\n${result.stderr}`);
 }
 
 function sha256(path) {

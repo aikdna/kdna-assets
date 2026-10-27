@@ -16,8 +16,10 @@ export function validateIndex(index,{root=packageRoot,checkFiles=true}={}){
   for(const e of index.assets){
     if(ids.has(e.id)||paths.has(e.artifact.path))throw new Error('ASSETS_DUPLICATE_ENTRY');ids.add(e.id);paths.add(e.artifact.path);
     const o=e.observation;
-    if(o.read.status==='ready'&&(o.core.status!=='accepted'||o.read.channel!=='read_envelope'||o.read.read_permission!=='allowed'||o.read.delivery!=='delivered'))throw new Error('ASSETS_OBSERVATION_CONFLICT');
-    if(o.core.status==='rejected'&&(o.core.reason===null||o.read.status==='ready'))throw new Error('ASSETS_OBSERVATION_CONFLICT');
+    const deliveredRead=['ready','catalog_only'].includes(o.read.status);
+    if(deliveredRead&&(o.core.status!=='accepted'||o.read.channel!=='read_envelope'||o.read.read_permission!=='allowed'||o.read.delivery!=='delivered'))throw new Error('ASSETS_OBSERVATION_CONFLICT');
+    if(o.core.status!=='accepted'&&(o.core.reason===null||deliveredRead))throw new Error('ASSETS_OBSERVATION_CONFLICT');
+    if(o.read.channel==='retained_failure'&&(o.read.status!=='rejected'||o.read.delivery!=='not_delivered'))throw new Error('ASSETS_OBSERVATION_CONFLICT');
     if(checkFiles)verifyEntryFiles(root,e);
   }
   return {assets:index.assets.length,toolchain_files:toolchain.files};
