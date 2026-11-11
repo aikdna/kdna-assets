@@ -1,160 +1,83 @@
-# KDNA Assets
+# `kdna-assets` — Public KDNA Reference Works
 
-This public source workspace provides an index and adapter for the current public KDNA Core and Read contracts. Repository visibility and npm publication are different facts: the package is marked `private: true` only so it is **not published as an npm package**, and no release is configured. An index entry records a concrete observation of exact asset bytes. It does not certify content quality, expertise, human confirmation, or permission to act.
+[Website](https://aikdna.com) · [Read in KDNA Reader](https://aikdna.com/reader/?sample=kdna-whitepaper) · [Protocol (`aikdna/kdna`)](https://github.com/aikdna/kdna) · [CLI (`aikdna/kdna-cli`)](https://github.com/aikdna/kdna-cli)
 
-## Current status
+Public repository for openly licensed `.kdna` judgment works, reproducible provenance records, and current container/read conformance checks.
 
-This candidate binds stable Core `0.37.9`, Read `0.13.3`, and CLI `0.43.2`
-through exact archive and installed-file digests. It admits native container
-`0.6.0` with payload profile `kdna.payload.judgment` version `0.5.1` and uses
-the `kdna.read/0.7.0-candidate` contract. Package versions and protocol
-coordinates are different facts. See `public-contract-binding.json` for the
-complete tuple and `toolchain-files.json` for all 1,448 required dependency
-files across 12 package archives.
+---
 
-**The index registers `@aikdna/kdna-whitepaper` (`1.0.0`) as its first public
-reference asset:** `《KDNA白皮书》` (KDNA White Paper), authored by 张零
-(Zhang Ling / `zhangling`), licensed under `CC-BY-4.0`
-(`references/public/kdna-whitepaper/`), and compiled as a native container
-`0.6.0` judgment asset admitted by the bound public Core and Read graph. Asset
-publication here is selective and Owner-approved. Three earlier entries —
-`@aikdna/laozi-wuwei`, `@aikdna/epictetus-control-and-character` and
-`@aikdna/verification-scope` — remain **removed from the current public
-surface**: they are gone from the schema 2 index, from `index/legacy-current.json`
-and from this repository's downloads.
+## Featured Public Judgment Work
 
-Say this precisely, because "removed" is not "never published":
+### 1. *KDNA Whitepaper* (`《KDNA白皮书》`) `v1.0.0`
 
-- the bytes remain readable from this repository's own Git history
-  (`git show 1423769:references/public/<slug>/<file>`);
-- the releases that carried them were published; their downloads have now been
-  withdrawn as well - the five assets of `0.1.1` and the four of
-  `sage-reference-assets-v0.1.0` are gone and both releases host no download;
-- the removed bytes are also preserved outside the public surface, with a
-  SHA-256 and size manifest, before removal.
+Our first official public `.kdna` judgment work, authored by KDNA originator **Zhang Ling (张零)**. Across **45 connected judgments** organized into 9 thematic sections, it sets out why human thinking, judgment, and taste deserve an independent file format in the AI era, how a `.kdna` work is structured and protected locally, and where technical verification stops and human judgment begins.
 
-The withdrawn historical references had been rejected with `READ_CORE_INVALID`
-by the older graph they were recorded against; that rejection remains their
-accurate recorded outcome and is not evidence of current compatibility. The
-withdrawn `@aikdna/verification-scope@0.1.5` observed the opposite - this
-repository's then-current graph admitted it and disclosed its catalog under
-explicit local read permission - and it was recorded as `unpublished_candidate`
-because no Release coordinate existed for it. Neither outcome is a listing now.
+| Field | Value |
+| --- | --- |
+| **Catalog & Asset ID** | `@aikdna/kdna-whitepaper` (`asset:kdna-whitepaper`) · `1.0.0` |
+| **Container Format** | Native KDNA `0.6.0` |
+| **Author** | 张零 (`Zhang Ling` · `actor:zhangling`) |
+| **Content License** | [`CC-BY-4.0`](https://creativecommons.org/licenses/by/4.0/) |
+| **Language** | `zh-CN` (readable with English/Chinese UI switch and optional local AI reading translation in KDNA Reader) |
+| **Judgments** | `45` structured judgments + system kernel & directed relationship graph |
+| **Artifact Path** | [`references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna`](./references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna) |
+| **Release Notes & Provenance** | [`references/public/kdna-whitepaper/README.md`](./references/public/kdna-whitepaper/README.md) |
+| **Size** | `2,570,249` bytes |
+| **SHA-256** | `c299a7b95cdcf1eb0f063d0ec1dd98f7efefee5cc13d53ca1f05983e1f2a88e0` |
 
-This source bundle contains a native container `0.6` synthetic technical test
-fixture and the offline adapter. The separately held official 100-asset
-collection is not distributed here: that private material, its sources and its
-authoring records are kept outside this public repository and supplied
-separately, then read through the same public adapter. See
-[`docs/collection-workspace.md`](docs/collection-workspace.md) for that layout.
-Finite taxonomy, candidate-set and discriminator-set interpretation comes
-exclusively from the accepted public Core component definition
-`sha256:37e857cc4e43f7283a51ee6abe1f6e8401803902e8dc47f6d14d712aa7d7b089`.
-This adapter does not interpret containers or component content itself.
-Technical readability does not establish the completeness of judgment content.
+#### Read Immediately in KDNA Reader (Permanently Account-Free)
 
-## Offline setup
+- **Web Reader (1-click open):** [https://aikdna.com/reader/?sample=kdna-whitepaper](https://aikdna.com/reader/?sample=kdna-whitepaper)
+- **macOS Desktop App (Apple Silicon, Apple Notarized):** [https://aikdna.com/en/downloads](https://aikdna.com/en/downloads)
 
-Use Node.js 22 or newer. This graph has been exercised on macOS arm64 with
-Node.js `22.22.3` and npm `10.9.8`. All required package archives are included
-under `vendor/`:
+#### Inspect & Read via `@aikdna/kdna-cli`
+
+```sh
+# 1. Verify container structure and cryptographic digests
+npx -y @aikdna/kdna-cli@0.43.4 validate \
+  references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna
+
+# 2. Inspect the 45-question catalog in plain text
+npx -y @aikdna/kdna-cli@0.43.4 read \
+  references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna \
+  --mode catalog --allow-read --format human
+
+# 3. Read a specific judgment with its required supporting & qualifying context
+npx -y @aikdna/kdna-cli@0.43.4 read \
+  references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna \
+  --mode exact_selection \
+  --judgment-id judgment:work-itself \
+  --allow-read --format human
+```
+
+---
+
+## Repository Layout & Verification Boundaries
+
+- [`references/public/`](./references/public) — Openly licensed `.kdna` works distributed in this repository, each accompanied by its provenance notes, license declaration, and SHA-256 digest.
+- [`index/`](./index), [`src/`](./src) & [`tests/`](./tests) — Automated admission, `catalog` / `exact_selection` / `whole_asset` read checks, vendored dependency-pinning checks (`@aikdna/kdna-core@0.37.9`, `@aikdna/kdna-read@0.13.3`, `@aikdna/kdna-cli@0.43.2`), and public-surface hygiene gates.
+- [`evidence/`](./evidence) — Allowlisted historical rebuild receipts retained for auditability and verified by `scripts/check-public-surface.mjs`.
+
+**Trust & Scope Reminder:**
+
+- Passing technical validation (`kdna validate` and `npm test`) proves that the `.kdna` artifact bytes match their declared container specification, digests, and Read closure rules. Evaluating the substantive claims inside any work remains a human reader's responsibility.
+- Public, local, and password-protected (`0.6.0`) `.kdna` verification and reading are permanently account-free.
+
+---
+
+## Run All Verification Checks Locally
+
+Requires **Node.js `>=22`** (all required dependencies are vendored under `vendor/` for offline installation):
 
 ```sh
 npm ci --offline --ignore-scripts --omit=optional --no-audit --no-fund
-npm test
+node scripts/check-public-surface.mjs --strict
 npm run validate:indexes
 npm run audit
 npm run audit:read
+npm test
 ```
 
-Optional native packages are omitted; no install hooks are required. Run these commands from the extracted source workspace. This is an offline workspace distribution, not an assertion that installing this package as another package's dependency supplies its development graph. No registry publication is configured.
+## License
 
-The adapter verifies the exact dependency bytes before loading them. Extra, changed, missing, or unexpected symbolic-link dependency files fail closed. Packages the committed lock resolves with `optional: true` are the single exemption: which native platform package an installer materialises is a property of the runner rather than of this repository, so a declared optional package may appear or be absent, and its own members are not compared because no recorded shape of them exists. Every required package and every required file stays byte-exact, and an undeclared directory is rejected wherever it appears, including beside an optional package inside that package's scope. Asset paths, digests, per-asset file manifests, and license attachments are checked before calling the official Node Core and Read entry points. The adapter does not unpack `.kdna` containers or define a second payload parser.
-
-## Dependency coordinates and publication
-
-A direct declaration is either an exact SemVer or an integrity-locked `file:` coordinate. Placement follows what the documented entry needs: the vendored `@aikdna/*` pins belong in `devDependencies`, because here every documented command (`npm test`, `npm run audit`, `npm run audit:read`, `npm run read`) is a validation or inspection path for this workspace rather than a runtime surface of a publishable package, and `npm ci --omit=dev` intentionally leaves the workspace without an adapter graph. The peer that a vendored member declares is bound to this repository's own coordinate through `overrides`, so an unreadable vendor archive fails locally instead of sending npm to the registry.
-
-If a release is ever published from this repository, every `file:` coordinate must first be replaced by the **exact registry version** (the `@aikdna/kdna-cli` pin included), because a consumer that installs the packed artifact from a registry has no `vendor/` directory next to it. `npm run check:publish-coordinates` reports the coordinates that are still local; it is green here because the npm package sets `private: true` and no publication is configured.
-
-## Gate entry points
-
-A script that is a gate entry point starts its work behind `isEntryPoint()` from
-`scripts/lib.mjs`, which compares realpaths instead of path strings. A literal
-`process.argv[1] === import.meta.filename` comparison is false whenever the
-caller reaches the file through a symlink (on macOS `/tmp` and `/var` are
-symlinks into `/private`), and the module then exits 0 without printing
-anything: a silent no-op that reads exactly like a passing gate.
-
-Every gate entry point carries the same pair of checks before it is merged, and
-`npm test` enforces the pair in `tests/entry-point-guard.test.mjs`:
-
-1. invoking it through a symlinked path must still run it, and
-2. a clean copy of this repository must really run it and print its success line.
-
-An exit status of 0 is not evidence on its own; the success line is.
-
-## Reading and observations
-
-`npm run audit` checks the recorded Core outcomes with local read permission
-denied by default. On an admitted native `0.6` asset, that denial is returned
-as a `retained_failure` observation with `detail: "authority_denied"`, not as
-silent disclosure or transport success. `npm run audit:read` additionally
-gives explicit permission for that call and compares the current Read outcome
-with the indexed observation. A successful audit means the observation
-matches, including an accurately recorded rejection. When Core successfully
-admits an asset, the indexed `version` must exactly match its observed
-`asset_version`; a mismatch raises `ASSETS_ENTRY_VERSION_MISMATCH` before
-Read. Assets rejected by Core retain the public rejection reason and diagnostic
-unchanged; their version is not guessed from rejected bytes. A Core-valid
-asset with blocked interpretation remains rejected, distinct from structurally
-invalid bytes. The adapter does not infer a more permissive state.
-
-```sh
-npm run read -- --id @aikdna/kdna-whitepaper --allow-read --mode catalog
-npm run read -- --root /path/to/collection --index /path/to/index.json --id catalog-id --allow-read --mode catalog
-```
-
-The committed index lists `@aikdna/kdna-whitepaper` (`1.0.0`); pass `--root` and
-`--index` to point the command at another authorized schema 2 collection. The module API
-exports `observeAsset` and the catalog entry point exports `validateIndex` and
-`auditIndex`.
-
-Supported modes are `catalog`, `whole_asset`, and `exact_selection`. `catalog`
-returns the judgment catalog without judgment bodies. `whole_asset` returns
-the asset catalog, declarations and non-judgment closure while omitting
-judgment bodies as `not_requested`. `exact_selection` additionally requires
-`--judgment-id` with an actual catalog judgment ID and supplies that
-judgment's mandatory closure. `--budget` sets a nonnegative byte budget;
-insufficient budget may produce an explicit no-body control result.
-
-Read permission applies to the current process call, request, snapshot, and checked asset bytes. It is not a transferable credential, human confirmation, identity proof, remote delivery acknowledgment, or action authorization. All Read result channels and unavailable states remain explicit:
-`read_envelope`, `admission_rejection`, `retained_failure`,
-`no_body_control`, and `transport_failure`. A successful catalog-only
-disclosure is reported as `read_envelope` with status `catalog_only`. The
-adapter does not provide handle expansion.
-
-## Separately supplied collections
-
-See [External collection workspace](docs/collection-workspace.md) for an actual offline layout and commands. A private collection remains outside this source archive; its catalog and explicit revision map do not enlarge the adapter's authority.
-
-## History and licenses
-
-Existing source checkouts retain older scripts, synthetic Creation fixtures, and historical evidence. They are not the default current command path. Old LoadPlan and Runtime Capsule instructions belong to the corresponding historical graph, not to this adapter. No historical receipt is upgraded into current acceptance.
-
-The repository license is Apache-2.0. Each reference's own license governs that asset; see `LICENSE-POLICY.md` and the per-entry files. The synthetic fixture has its own Apache-2.0 notice and is only a technical test, with no claim of real human adoption.
-
-KDNA creation and distribution do not require a listing in this reference repository. Listing, structural compatibility, provenance, license, adoption, and evidence of useful outcomes are separate claims.
-
-## Source channel and container boundary
-
-Distribution is the complete Git source workspace, its synthetic test fixture, `vendor/` and committed lockfile. The adapter is not an npm release. Every required dependency is bundled, so the documented offline install can use a fresh empty dedicated cache. Keep private external collections outside this checkout.
-
-The committed public reference asset is `@aikdna/kdna-whitepaper` (`1.0.0`,
-`CC-BY-4.0`, `references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna`). This graph admits
-container `0.6.0`, payload `kdna.payload.judgment` `0.5.1`, Core contract
-`kdna.core/0.8.2`, Canonical IR `kdna.canonical-ir/0.6.1`, and Read contract
-`kdna.read/0.7.0-candidate`, bound to Core `0.37.9`, Read `0.13.3` and CLI
-`0.43.2`. Studio container `0.5` is not admitted by this graph. Exact
-archive/version bindings establish technical input identity, not content
-quality, human review, publication, or cross-CLI reuse.
+Repository code and test tooling are licensed under [Apache-2.0](./LICENSE). Individual `.kdna` works under `references/public/` carry their own explicit content licenses (such as `CC-BY-4.0`) documented alongside each artifact.
