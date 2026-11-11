@@ -83,11 +83,26 @@ function rejectedEntry(id='synthetic-rejected-observation'){
 function fixture(){return syntheticEntry();}
 
 test('public inventory keeps the historical reference rejections and records the accepted native candidate',async()=>{
-  assert.equal(original.assets.length,0,'the committed index must list no public asset');
+  assert.equal(original.assets.length,1,'the committed index must register @aikdna/kdna-whitepaper');
+  const wp=original.assets[0];
+  assert.equal(wp.id,'@aikdna/kdna-whitepaper');
+  assert.equal(wp.version,'1.0.0');
+  assert.equal(wp.license.id,'CC-BY-4.0');
+  assert.equal(wp.license.repository_license_applies,false);
+  assert.equal(wp.creator.name,'张零 (Zhang Ling / zhangling)');
   for(const id of HISTORICAL_REFERENCES)assert.equal(original.assets.some(entry=>entry.id===id),false,`withdrawn entry must stay withdrawn: ${id}`);
   assert.equal(original.assets.some(entry=>entry.id==='@aikdna/verification-scope'),false,'the withdrawn candidate must stay withdrawn');
-  assert.equal(validateIndex(original).assets,0);
-  const emptyAudit=await auditIndex(original,{allowRead:true});assert.equal(emptyAudit.results.length,0);
+  assert.equal(validateIndex(original).assets,1);
+  const deniedAudit=await auditIndex(original,{allowRead:false});assert.equal(deniedAudit.results.length,1);
+  assert.equal(deniedAudit.results[0].admission.status,'accepted');
+  assert.equal(deniedAudit.results[0].read.channel,'retained_failure');
+  const wpAudit=await auditIndex(original,{allowRead:true});assert.equal(wpAudit.results.length,1);
+  assert.equal(wpAudit.results[0].admission.status,'accepted');
+  assert.equal(wpAudit.results[0].read.envelope.status,'catalog_only');
+  assert.equal(wpAudit.results[0].read.envelope.content.catalog.length,45);
+  const firstId=wpAudit.results[0].read.envelope.content.catalog[0].judgment_id;
+  const wpSelected=await observeAsset({entry:wp,allowRead:true,mode:'exact_selection',judgmentId:firstId});
+  assert.equal(wpSelected.read.envelope.status,'ready');
 
   const ok=fixture();
   const okRead=await observeAsset({...ok,allowRead:true});

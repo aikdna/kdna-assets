@@ -72,6 +72,29 @@ test('public surface rejects a symlink using an allowlisted evidence name', () =
   }
 });
 
+test('public surface allows 40-hex Canonical IR node IDs inside .kdna binaries while still catching path leaks', () => {
+  const root = mkdtempSync(join(tmpdir(), 'kdna-assets-public-surface-'));
+  try {
+    mkdirSync(join(root, 'references/public/sample'), { recursive: true });
+    writeFileSync(
+      join(root, 'references/public/sample/sample-1.0.0.kdna'),
+      'judgment:202af55182581042b6638ba1633802a491e6b7e6\n',
+    );
+    const ok = runScanner(root);
+    assert.equal(ok.status, 0, ok.stderr || ok.stdout);
+
+    writeFileSync(
+      join(root, 'references/public/sample/sample-1.0.0.kdna'),
+      'judgment:202af55182581042b6638ba1633802a491e6b7e6 /private/tmp/kdna-leak\n',
+    );
+    const bad = runScanner(root);
+    assert.equal(bad.status, 1);
+    assert.match(bad.stdout, /local-filesystem-path/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 function runScanner(cwd) {
   return spawnSync(process.execPath, [scanner], {
     cwd,

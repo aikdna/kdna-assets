@@ -1,11 +1,16 @@
 # Public reference asset entries
 
-**This directory currently holds no public reference asset and the index lists
-none.** The first public asset published from here will be the KDNA white
-paper. Until then nothing in this repository offers a downloadable asset.
+**This directory hosts `@aikdna/kdna-whitepaper` (`v1.0.0`), the official KDNA
+White Paper (`《KDNA白皮书》`) authored by 张零 (Zhang Ling / `zhangling`) under
+`CC-BY-4.0`.** Asset publication here is selective and Owner-approved.
+
+- [`kdna-whitepaper/`](./kdna-whitepaper/) — `@aikdna/kdna-whitepaper` `1.0.0`
+  (`kdna-whitepaper-1.0.0.kdna`, `.sha256`, `LICENSE`, `README.md`), native
+  container `0.6.0` / payload `0.5.1`, licensed under `CC-BY-4.0`
+  (`Copyright (c) 2026 张零 (Zhang Ling / zhangling)`).
 
 The three earlier entries — `laozi-wuwei/`,
-`epictetus-control-and-character/` and `verification-scope/` — were withdrawn
+`epictetus-control-and-character/` and `verification-scope/` — remain withdrawn
 together with their index entries, directory downloads and the release assets
 that carried them. Their bytes are preserved outside the public surface for
 recovery, and this directory's earlier revision remains in Git history.

@@ -1,10 +1,11 @@
 # Receiving new example assets under the current contract
 
-> Last verified: 2026-10-27. This page records the criteria and the current
-> blocker. It does not accept, create or register any asset by itself.
-> See [Status update](#status-update-2026-09-13) for what changed after the
-> blocker below was written; the blocker paragraph is kept as the record of
-> the state it described.
+> Last verified: 2026-11-11. This page records the criteria and the historical
+> blocker sequence up to the reception of `@aikdna/kdna-whitepaper` (`1.0.0`).
+> It does not accept, create or register any asset by itself.
+> See [Status update (2026-11-11)](#status-update-2026-11-11) for the first
+> completed reception on the current native `0.6` contract; earlier blocker
+> paragraphs are kept as the record of the states they described.
 
 ## What "received" means here
 
@@ -98,6 +99,26 @@ The vendored `fast-uri` coordinate advanced from `3.1.8` to `3.1.9` on
 The exact archive and installed-file manifests now cover 1,448 files. This
 dependency update does not publish an asset, change the native container/Read
 tuple, or turn the synthetic fixture into a public example.
+
+### Status update (2026-11-11)
+
+`@aikdna/kdna-whitepaper` (`1.0.0`) — `《KDNA白皮书》` (KDNA White Paper),
+authored by 张零 (Zhang Ling / `zhangling`) under `CC-BY-4.0`
+(`Copyright (c) 2026 张零 (Zhang Ling / zhangling)`,
+`repository_license_applies: false`) — completes all five reception steps on the
+bound native container `0.6.0` / payload `0.5.1` graph:
+
+1. exported as native `0.6.0` bytes (`references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna`) with `version: "1.0.0"` and `judgment_version: "1.0.0"`,
+2. admitted by the bound public Core `0.37.9` (`status: accepted`, `reason: null`),
+3. disclosed by the bound public Read `0.13.3` under explicit local permission (`read_envelope` / `catalog_only` on catalog audit; `ready` on `exact_selection` and `whole_asset`),
+4. human-reviewed and previewed in KDNA Reader across desktop and web surfaces, and
+5. registered in `index/current.json` with exact file digests, `.sha256` sidecar, per-entry `CC-BY-4.0` `LICENSE`, and explicit `not_evaluated` `proof_limits`.
+
+The three withdrawn historical entries (`@aikdna/laozi-wuwei`,
+`@aikdna/epictetus-control-and-character`, and `@aikdna/verification-scope`)
+remain withdrawn from the public surface. Listing `@aikdna/kdna-whitepaper`
+records a concrete technical observation and license boundary; `proof_limits`
+remain `not_evaluated` at the protocol adapter layer.
 
 ## What must not be done to unblock it
 

@@ -12,10 +12,14 @@ coordinates are different facts. See `public-contract-binding.json` for the
 complete tuple and `toolchain-files.json` for all 1,448 required dependency
 files across 12 package archives.
 
-**The index currently lists no public reference asset.** The first public asset
-published from here will be the KDNA white paper. Asset publication here is selective and Owner-approved; no sample or reference asset is scheduled for the current introduction window. Three earlier entries —
+**The index registers `@aikdna/kdna-whitepaper` (`1.0.0`) as its first public
+reference asset:** `《KDNA白皮书》` (KDNA White Paper), authored by 张零
+(Zhang Ling / `zhangling`), licensed under `CC-BY-4.0`
+(`references/public/kdna-whitepaper/`), and compiled as a native container
+`0.6.0` judgment asset admitted by the bound public Core and Read graph. Asset
+publication here is selective and Owner-approved. Three earlier entries —
 `@aikdna/laozi-wuwei`, `@aikdna/epictetus-control-and-character` and
-`@aikdna/verification-scope` — have been **removed from the current public
+`@aikdna/verification-scope` — remain **removed from the current public
 surface**: they are gone from the schema 2 index, from `index/legacy-current.json`
 and from this repository's downloads.
 
@@ -107,11 +111,12 @@ asset with blocked interpretation remains rejected, distinct from structurally
 invalid bytes. The adapter does not infer a more permissive state.
 
 ```sh
+npm run read -- --id @aikdna/kdna-whitepaper --allow-read --mode catalog
 npm run read -- --root /path/to/collection --index /path/to/index.json --id catalog-id --allow-read --mode catalog
 ```
 
-The committed index lists no asset, so there is no packaged example id to read
-from it; point the command at an authorized schema 2 collection. The module API
+The committed index lists `@aikdna/kdna-whitepaper` (`1.0.0`); pass `--root` and
+`--index` to point the command at another authorized schema 2 collection. The module API
 exports `observeAsset` and the catalog entry point exports `validateIndex` and
 `auditIndex`.
 
@@ -145,7 +150,8 @@ KDNA creation and distribution do not require a listing in this reference reposi
 
 Distribution is the complete Git source workspace, its synthetic test fixture, `vendor/` and committed lockfile. The adapter is not an npm release. Every required dependency is bundled, so the documented offline install can use a fresh empty dedicated cache. Keep private external collections outside this checkout.
 
-No public reference asset is offered from this revision. This graph admits
+The committed public reference asset is `@aikdna/kdna-whitepaper` (`1.0.0`,
+`CC-BY-4.0`, `references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna`). This graph admits
 container `0.6.0`, payload `kdna.payload.judgment` `0.5.1`, Core contract
 `kdna.core/0.8.2`, Canonical IR `kdna.canonical-ir/0.6.1`, and Read contract
 `kdna.read/0.7.0-candidate`, bound to Core `0.37.9`, Read `0.13.3` and CLI

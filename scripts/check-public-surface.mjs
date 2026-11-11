@@ -115,10 +115,12 @@ const RULES = [
     name: 'full-commit-hash',
     pattern: /(?<![a-f0-9])[a-f0-9]{40}(?![a-f0-9])/g,
     hint: 'Replace full 40-char commit hash with short ref or "see acceptance note".',
-    // 40-char SHA1s are legitimate provenance pins in:
+    // 40-char hex strings are legitimate in:
     //   - .github/workflows/ — pinning a public release commit
     //   - ecosystem-manifest.json conformance_commit field
+    //   - .kdna binary containers — native 0.6 Canonical IR node IDs (<kind>:<40-hex>)
     excludePaths: ['.github/workflows/', 'ecosystem-manifest.json'],
+    excludeExtensions: ['.kdna'],
   },
   {
     name: 'internal-code-name',
@@ -162,6 +164,7 @@ function isAllowlisted(rel) {
 }
 
 function isRuleExcluded(rel, rule) {
+  if (rule.excludeExtensions?.some((ext) => rel.endsWith(ext))) return true;
   if (!rule.excludePaths) return false;
   return rule.excludePaths.some((p) => rel === p || rel.startsWith(p));
 }
