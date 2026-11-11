@@ -10,7 +10,7 @@ Public repository for openly licensed `.kdna` judgment works, reproducible prove
 
 ### 1. *KDNA Whitepaper* (`《KDNA白皮书》`) `v1.0.0`
 
-Our first official public `.kdna` judgment work, authored by KDNA originator **Zhang Ling (张零)**. Across **45 connected judgments** organized into 9 thematic sections, it sets out why human thinking, judgment, and taste deserve an independent file format in the AI era, how a `.kdna` work is structured and protected locally, and where technical verification stops and human judgment begins.
+Our first official public `.kdna` judgment work, authored by KDNA originator **Zhang Ling (张零)**. Across **45 connected judgments** organized into 5 thematic sections, it sets out why human thinking, judgment, and taste deserve an independent file format in the AI era, how a `.kdna` work is structured and protected locally, and where technical verification stops and human judgment begins.
 
 | Field | Value |
 | --- | --- |
