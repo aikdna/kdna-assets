@@ -83,26 +83,35 @@ function rejectedEntry(id='synthetic-rejected-observation'){
 function fixture(){return syntheticEntry();}
 
 test('public inventory keeps the historical reference rejections and records the accepted native candidate',async()=>{
-  assert.equal(original.assets.length,1,'the committed index must register @aikdna/kdna-whitepaper');
-  const wp=original.assets[0];
+  assert.equal(original.assets.length,2,'the committed index must register @aikdna/kdna-whitepaper and @aikdna/kdna-whitepaper-en');
+  const [wp,wpEn]=original.assets;
   assert.equal(wp.id,'@aikdna/kdna-whitepaper');
-  assert.equal(wp.version,'1.0.0');
+  assert.equal(wp.version,'1.0.1');
   assert.equal(wp.license.id,'CC-BY-4.0');
   assert.equal(wp.license.repository_license_applies,false);
-  assert.equal(wp.creator.name,'张零 (Zhang Ling / zhangling)');
+  assert.equal(wp.creator.name,'张零');
+  assert.equal(wpEn.id,'@aikdna/kdna-whitepaper-en');
+  assert.equal(wpEn.version,'1.0.1');
+  assert.equal(wpEn.license.id,'CC-BY-4.0');
+  assert.equal(wpEn.license.repository_license_applies,false);
+  assert.equal(wpEn.creator.name,'Zhang Ling');
   for(const id of HISTORICAL_REFERENCES)assert.equal(original.assets.some(entry=>entry.id===id),false,`withdrawn entry must stay withdrawn: ${id}`);
   assert.equal(original.assets.some(entry=>entry.id==='@aikdna/verification-scope'),false,'the withdrawn candidate must stay withdrawn');
-  assert.equal(validateIndex(original).assets,1);
-  const deniedAudit=await auditIndex(original,{allowRead:false});assert.equal(deniedAudit.results.length,1);
-  assert.equal(deniedAudit.results[0].admission.status,'accepted');
-  assert.equal(deniedAudit.results[0].read.channel,'retained_failure');
-  const wpAudit=await auditIndex(original,{allowRead:true});assert.equal(wpAudit.results.length,1);
-  assert.equal(wpAudit.results[0].admission.status,'accepted');
-  assert.equal(wpAudit.results[0].read.envelope.status,'catalog_only');
-  assert.equal(wpAudit.results[0].read.envelope.content.catalog.length,45);
-  const firstId=wpAudit.results[0].read.envelope.content.catalog[0].judgment_id;
-  const wpSelected=await observeAsset({entry:wp,allowRead:true,mode:'exact_selection',judgmentId:firstId});
-  assert.equal(wpSelected.read.envelope.status,'ready');
+  assert.equal(validateIndex(original).assets,2);
+  const deniedAudit=await auditIndex(original,{allowRead:false});assert.equal(deniedAudit.results.length,2);
+  for(const res of deniedAudit.results){
+    assert.equal(res.admission.status,'accepted');
+    assert.equal(res.read.channel,'retained_failure');
+  }
+  const wpAudit=await auditIndex(original,{allowRead:true});assert.equal(wpAudit.results.length,2);
+  for(const [entry,res] of [[wp,wpAudit.results[0]],[wpEn,wpAudit.results[1]]]){
+    assert.equal(res.admission.status,'accepted');
+    assert.equal(res.read.envelope.status,'catalog_only');
+    assert.equal(res.read.envelope.content.catalog.length,45);
+    const firstId=res.read.envelope.content.catalog[0].judgment_id;
+    const selected=await observeAsset({entry,allowRead:true,mode:'exact_selection',judgmentId:firstId});
+    assert.equal(selected.read.envelope.status,'ready');
+  }
 
   const ok=fixture();
   const okRead=await observeAsset({...ok,allowRead:true});
