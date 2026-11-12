@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "kind": "kdna-current-index",
-  "updated": "2026-11-11T06:10:55.338Z",
+  "updated": "2026-11-12T10:55:00.000Z",
   "repository": "https://github.com/aikdna/kdna-assets",
   "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
   "assets": [
@@ -13,7 +13,7 @@
         "url": "https://aikdna.com"
       },
       "creator": {
-        "name": "张零 (Zhang Ling / zhangling)",
+        "name": "张零",
         "url": "https://aikdna.com"
       },
       "access": "public",
@@ -24,40 +24,115 @@
         "scope": "asset-content-and-distribution",
         "repository_license_applies": false
       },
-      "version": "1.0.0",
+      "version": "1.0.1",
       "digest": {
         "algorithm": "sha256",
-        "value": "c299a7b95cdcf1eb0f063d0ec1dd98f7efefee5cc13d53ca1f05983e1f2a88e0"
+        "value": "9f01c10bc06771c6d28c0543cda9aa64118ae470d75a0178ea023b73b812a92b"
       },
       "artifact": {
-        "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna",
+        "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.zh-CN.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "evidence_claims": [],
       "files": [
         {
           "path": "references/public/kdna-whitepaper/LICENSE",
-          "bytes": 13864,
-          "sha256": "8cdb872520acddb45f3d9045ebe25d9190742a2a1430b3cb04bbc03cf6a3eaaa"
+          "bytes": 13921,
+          "sha256": "3c5bb7d0a28ecf79aae894b5a31f2335dfcb3842492eebe7c51211bd1fbb34cf"
         },
         {
           "path": "references/public/kdna-whitepaper/README.md",
-          "bytes": 5045,
-          "sha256": "05b4b0b8abef5ba26743b9898a7d174a49f669fe35656a509c2d9e8773a8dcc7"
+          "bytes": 9517,
+          "sha256": "8dfff2ff856e843c05d036c344fa6e86067e25aa3c5280f95c37fba93e1c0f33"
         },
         {
-          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna",
-          "bytes": 2570249,
-          "sha256": "c299a7b95cdcf1eb0f063d0ec1dd98f7efefee5cc13d53ca1f05983e1f2a88e0"
+          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.zh-CN.kdna",
+          "bytes": 2595031,
+          "sha256": "9f01c10bc06771c6d28c0543cda9aa64118ae470d75a0178ea023b73b812a92b"
         },
         {
-          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna.sha256",
-          "bytes": 93,
-          "sha256": "3faa9b9e36545df5d24cac075f96aa9bfe4ab460c821737b5ee3004688e57619"
+          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.zh-CN.kdna.sha256",
+          "bytes": 99,
+          "sha256": "c13511c952e52f789e33340d7242b619ebd94850b85dc48910785286508fd947"
         }
       ],
       "observation": {
-        "checked_at": "2026-11-11T06:10:55.338Z",
+        "checked_at": "2026-11-12T10:55:00.000Z",
+        "method": "public_node_adapter",
+        "core": {
+          "status": "accepted",
+          "reason": null
+        },
+        "read": {
+          "channel": "read_envelope",
+          "status": "catalog_only",
+          "diagnostics": [],
+          "read_permission": "allowed",
+          "delivery": "delivered"
+        },
+        "scope": "Actual current exact graph and exact file bytes; local explicit read permission, no transferable authority or remote acknowledgment."
+      },
+      "publication_status": "existing_reference",
+      "proof_limits": {
+        "creation": "not_evaluated",
+        "identity": "not_evaluated",
+        "action_authorization": "not_evaluated",
+        "legal_clearance": "not_evaluated"
+      }
+    },
+    {
+      "kind": "kdna-asset",
+      "id": "@aikdna/kdna-whitepaper-en",
+      "publisher": {
+        "name": "AIKDNA",
+        "url": "https://aikdna.com"
+      },
+      "creator": {
+        "name": "Zhang Ling",
+        "url": "https://aikdna.com"
+      },
+      "access": "public",
+      "license": {
+        "id": "CC-BY-4.0",
+        "path": "references/public/kdna-whitepaper/LICENSE",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "scope": "asset-content-and-distribution",
+        "repository_license_applies": false
+      },
+      "version": "1.0.1",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "9db199060f5d957b9aaeee38546dfed68b56d9a3a6f479eb2cc93181fba3580e"
+      },
+      "artifact": {
+        "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna",
+        "media_type": "application/vnd.kdna.asset"
+      },
+      "evidence_claims": [],
+      "files": [
+        {
+          "path": "references/public/kdna-whitepaper/LICENSE",
+          "bytes": 13921,
+          "sha256": "3c5bb7d0a28ecf79aae894b5a31f2335dfcb3842492eebe7c51211bd1fbb34cf"
+        },
+        {
+          "path": "references/public/kdna-whitepaper/README.md",
+          "bytes": 9517,
+          "sha256": "8dfff2ff856e843c05d036c344fa6e86067e25aa3c5280f95c37fba93e1c0f33"
+        },
+        {
+          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna",
+          "bytes": 2711958,
+          "sha256": "9db199060f5d957b9aaeee38546dfed68b56d9a3a6f479eb2cc93181fba3580e"
+        },
+        {
+          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna.sha256",
+          "bytes": 96,
+          "sha256": "5053ff2f1bead1d069b7296bf5537fc0cfbc5de4c1559b3c694118217637592a"
+        }
+      ],
+      "observation": {
+        "checked_at": "2026-11-12T10:55:00.000Z",
         "method": "public_node_adapter",
         "core": {
           "status": "accepted",

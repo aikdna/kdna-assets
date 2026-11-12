@@ -1,3 +1,9 @@
+## KDNA Whitepaper `1.0.1` (`@aikdna/kdna-whitepaper` & `@aikdna/kdna-whitepaper-en`) — 2026-11-12
+
+- Publish formally signed-off **《KDNA白皮书》 `v1.0.1`** (`kdna-whitepaper-1.0.1.zh-CN.kdna`, `2,595,031` bytes, `sha256:9f01c10bc06771c6d28c0543cda9aa64118ae470d75a0178ea023b73b812a92b`, creator `张零`) and its native equivalent English `.kdna` edition **_KDNA Whitepaper_ `v1.0.1`** (`kdna-whitepaper-1.0.1.en.kdna`, `2,711,958` bytes, `sha256:9db199060f5d957b9aaeee38546dfed68b56d9a3a6f479eb2cc93181fba3580e`, creator `Zhang Ling`) under `CC-BY-4.0`, indexing both in `index/current.json`.
+- Preserve `kdna-whitepaper-1.0.0.kdna` (`2,570,249` bytes, `sha256:c299a7b95cdcf1eb0f063d0ec1dd98f7efefee5cc13d53ca1f05983e1f2a88e0`) and its `.sha256` sidecar in-place under `references/public/kdna-whitepaper/` for non-silent version comparison (`kdna diff --format human`) and version-pinned consumers.
+- Substantive `1.0.1` updates across the 45-judgment system: self-contained KDNA origin narrative without external book dependencies; issue organization around judgments to preserve (question-first or working backward from conclusions/rules); sole human creator attribution (`张零` / `Zhang Ling`) with AI Agents recorded as authorized tools rather than co-creators; four-cause diagnosis of output divergence in Issue #35; and explicit separation of file holding, intellectual source, adoption, public readability, offline password encryption, and content licensing.
+
 ## 0.4.0-rc.native-sections.1 — 2026-10-27
 
 - Replace the retired Core `0.24.0-rc.component-semantics.2`, Read

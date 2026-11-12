@@ -1,60 +1,68 @@
 # `kdna-assets` — Public KDNA Reference Works
 
-[Website](https://aikdna.com) · [Read in KDNA Reader](https://aikdna.com/reader/?sample=kdna-whitepaper) · [Protocol (`aikdna/kdna`)](https://github.com/aikdna/kdna) · [CLI (`aikdna/kdna-cli`)](https://github.com/aikdna/kdna-cli)
+[Website](https://aikdna.com) · [Read in KDNA Reader (ZH)](https://aikdna.com/reader/?sample=kdna-whitepaper) · [Read in KDNA Reader (EN)](https://aikdna.com/reader/?sample=kdna-whitepaper-en) · [Protocol (`aikdna/kdna`)](https://github.com/aikdna/kdna) · [CLI (`aikdna/kdna-cli`)](https://github.com/aikdna/kdna-cli)
 
-Public repository for openly licensed `.kdna` judgment works, reproducible provenance records, and current container/read conformance checks.
+Public repository for openly licensed `.kdna` judgment works, reproducible provenance records, non-silent version evolution archives, and current container/read conformance checks.
 
 ---
 
 ## Featured Public Judgment Work
 
-### 1. *KDNA Whitepaper* (`《KDNA白皮书》`) `v1.0.0`
+### 1. *KDNA Whitepaper* (`《KDNA白皮书》`) `v1.0.1` — Native Chinese & Equivalent English Editions
 
-Our first official public `.kdna` judgment work, authored by KDNA originator **Zhang Ling (张零)**. Across **45 connected judgments** organized into 5 thematic sections, it sets out why human thinking, judgment, and taste deserve an independent file format in the AI era, how a `.kdna` work is structured and protected locally, and where technical verification stops and human judgment begins.
+Our first official public `.kdna` judgment work, authored by KDNA originator **Zhang Ling (张零)**. Across **45 connected judgments** organized into 5 thematic sections (with 40 directed relationships), it sets out why human thinking, judgment, and taste deserve an independent file format in the AI era, how issues organize around the judgments that need to be preserved, how `.kdna` works are consumed selectively (`catalog` → `exact_selection`), protected locally without an online account, and evolved via explicit diffs rather than silent overwrites.
 
-| Field | Value |
-| --- | --- |
-| **Catalog & Asset ID** | `@aikdna/kdna-whitepaper` (`asset:kdna-whitepaper`) · `1.0.0` |
-| **Container Format** | Native KDNA `0.6.0` |
-| **Author** | 张零 (`Zhang Ling` · `actor:zhangling`) |
-| **Content License** | [`CC-BY-4.0`](https://creativecommons.org/licenses/by/4.0/) |
-| **Language** | `zh-CN` (readable with English/Chinese UI switch and optional local AI reading translation in KDNA Reader) |
-| **Judgments** | `45` structured judgments + system kernel & directed relationship graph |
-| **Artifact Path** | [`references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna`](./references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna) |
-| **Release Notes & Provenance** | [`references/public/kdna-whitepaper/README.md`](./references/public/kdna-whitepaper/README.md) |
-| **Size** | `2,570,249` bytes |
-| **SHA-256** | `c299a7b95cdcf1eb0f063d0ec1dd98f7efefee5cc13d53ca1f05983e1f2a88e0` |
+| Field | Chinese Edition (`zh-CN`) | Native Equivalent English Edition (`en`) |
+| --- | --- | --- |
+| **Catalog & Asset ID** | `@aikdna/kdna-whitepaper` (`asset:kdna-whitepaper`) · `1.0.1` | `@aikdna/kdna-whitepaper-en` (`asset:kdna-whitepaper`) · `1.0.1` |
+| **Container Format** | Native KDNA `0.6.0` | Native KDNA `0.6.0` |
+| **Creator** | `张零` (`actor:zhangling`) | `Zhang Ling` (`actor:zhangling`) |
+| **Content License** | [`CC-BY-4.0`](https://creativecommons.org/licenses/by/4.0/) | [`CC-BY-4.0`](https://creativecommons.org/licenses/by/4.0/) |
+| **Judgments** | `45` structured judgments + system kernel & `40` directed relations | `45` structured judgments + system kernel & `40` directed relations |
+| **Artifact Path** | [`references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.zh-CN.kdna`](./references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.zh-CN.kdna) | [`references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna`](./references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna) |
+| **Size** | `2,595,031` bytes | `2,711,958` bytes |
+| **SHA-256** | `9f01c10bc06771c6d28c0543cda9aa64118ae470d75a0178ea023b73b812a92b` | `9db199060f5d957b9aaeee38546dfed68b56d9a3a6f479eb2cc93181fba3580e` |
+
+- **Release Notes, Provenance & `1.0.0` → `1.0.1` Diff Summary:** [`references/public/kdna-whitepaper/README.md`](./references/public/kdna-whitepaper/README.md) (the inaugural `kdna-whitepaper-1.0.0.kdna`, `2,570,249` bytes, `sha256:c299a7b95cdcf1eb0f063d0ec1dd98f7efefee5cc13d53ca1f05983e1f2a88e0`, is preserved in-place so consumers never experience silent version replacement).
 
 #### Read Immediately in KDNA Reader (Permanently Account-Free)
 
-- **Web Reader (1-click open):** [https://aikdna.com/reader/?sample=kdna-whitepaper](https://aikdna.com/reader/?sample=kdna-whitepaper)
-- **macOS Desktop App (Apple Silicon, Apple Notarized):** [https://aikdna.com/en/downloads](https://aikdna.com/en/downloads)
+- **Web Reader — Chinese `v1.0.1`:** [https://aikdna.com/reader/?sample=kdna-whitepaper](https://aikdna.com/reader/?sample=kdna-whitepaper) · [https://aikdna.cn/reader/?sample=kdna-whitepaper](https://aikdna.cn/reader/?sample=kdna-whitepaper)
+- **Web Reader — English `v1.0.1`:** [https://aikdna.com/reader/?sample=kdna-whitepaper-en](https://aikdna.com/reader/?sample=kdna-whitepaper-en)
+- **macOS Desktop App (Apple Silicon, Apple Notarized):** [https://aikdna.com/en/downloads](https://aikdna.com/en/downloads) · [https://aikdna.com/zh/downloads](https://aikdna.com/zh/downloads)
 
-#### Inspect & Read via `@aikdna/kdna-cli`
+#### Inspect, Read & Diff via `@aikdna/kdna-cli@0.43.4`
 
 ```sh
-# 1. Verify container structure and cryptographic digests
+# 1. Verify container structure, digests, and system checks
 npx -y @aikdna/kdna-cli@0.43.4 validate \
-  references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna
+  references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna \
+  --system --format human
 
-# 2. Inspect the 45-question catalog in plain text
+# 2. Browse the 45-question catalog in plain text (~1,100 tokens)
 npx -y @aikdna/kdna-cli@0.43.4 read \
-  references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna \
+  references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna \
   --mode catalog --allow-read --format human
 
-# 3. Read a specific judgment with its required supporting & qualifying context
+# 3. Read selected judgments with mandatory supporting & qualifying closure
 npx -y @aikdna/kdna-cli@0.43.4 read \
-  references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna \
+  references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna \
   --mode exact_selection \
-  --judgment-id judgment:work-itself \
+  --judgment-id judgment:origins,judgment:work-itself \
   --allow-read --format human
+
+# 4. Compare 1.0.0 -> 1.0.1 before upgrading an adopted workflow
+npx -y @aikdna/kdna-cli@0.43.4 diff \
+  references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna \
+  references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.zh-CN.kdna \
+  --format human
 ```
 
 ---
 
 ## Repository Layout & Verification Boundaries
 
-- [`references/public/`](./references/public) — Openly licensed `.kdna` works distributed in this repository, each accompanied by its provenance notes, license declaration, and SHA-256 digest.
+- [`references/public/`](./references/public) — Openly licensed `.kdna` works distributed in this repository, each accompanied by its provenance notes, license declaration, retained version archive, and SHA-256 digest.
 - [`index/`](./index), [`src/`](./src) & [`tests/`](./tests) — Automated admission, `catalog` / `exact_selection` / `whole_asset` read checks, vendored dependency-pinning checks (`@aikdna/kdna-core@0.37.9`, `@aikdna/kdna-read@0.13.3`, `@aikdna/kdna-cli@0.43.2`), and public-surface hygiene gates.
 - [`evidence/`](./evidence) — Allowlisted historical rebuild receipts retained for auditability and verified by `scripts/check-public-surface.mjs`.
 
