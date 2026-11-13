@@ -1,3 +1,8 @@
+## KDNA Whitepaper `1.0.1` Release & Surface Alignment — 2026-11-13
+
+- Withdraw the superseded Chinese-only `kdna-whitepaper-1.0.0.kdna` (`2,570,249` bytes, `sha256:c299a7b95cdcf1eb0f063d0ec1dd98f7efefee5cc13d53ca1f05983e1f2a88e0`) and its `.sha256` sidecar from the active public directory and GitHub Release downloads so public distributions carry only the self-contained bilingual `v1.0.1` `.kdna` editions (`zh-CN` & `en`).
+- Align `README.md` and `references/public/kdna-whitepaper/README.md` with `@aikdna/kdna-cli@0.43.5` (`--budget` defaults `1,000,000` B on `catalog` / `exact_selection` and `4,000,000` B on `whole_asset`), macOS desktop `KDNA Reader` (`https://aikdna.com/en/downloads` & `https://aikdna.com/zh/downloads`), and direct `.kdna` downloads.
+
 ## KDNA Whitepaper `1.0.1` (`@aikdna/kdna-whitepaper` & `@aikdna/kdna-whitepaper-en`) — 2026-11-12
 
 - Publish formally signed-off **《KDNA白皮书》 `v1.0.1`** (`kdna-whitepaper-1.0.1.zh-CN.kdna`, `2,595,031` bytes, `sha256:9f01c10bc06771c6d28c0543cda9aa64118ae470d75a0178ea023b73b812a92b`, creator `张零`) and its native equivalent English `.kdna` edition **_KDNA Whitepaper_ `v1.0.1`** (`kdna-whitepaper-1.0.1.en.kdna`, `2,711,958` bytes, `sha256:9db199060f5d957b9aaeee38546dfed68b56d9a3a6f479eb2cc93181fba3580e`, creator `Zhang Ling`) under `CC-BY-4.0`, indexing both in `index/current.json`.

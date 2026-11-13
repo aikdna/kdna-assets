@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "kind": "kdna-current-index",
-  "updated": "2026-11-12T10:55:00.000Z",
+  "updated": "2026-11-13T03:38:00.000Z",
   "repository": "https://github.com/aikdna/kdna-assets",
   "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
   "assets": [
@@ -37,13 +37,13 @@
       "files": [
         {
           "path": "references/public/kdna-whitepaper/LICENSE",
-          "bytes": 13921,
-          "sha256": "3c5bb7d0a28ecf79aae894b5a31f2335dfcb3842492eebe7c51211bd1fbb34cf"
+          "bytes": 13893,
+          "sha256": "dbcd8462e19870bc58dc25a5b4eec6f94efefcca66846c691fe4ccda5afe72e2"
         },
         {
           "path": "references/public/kdna-whitepaper/README.md",
-          "bytes": 9517,
-          "sha256": "8dfff2ff856e843c05d036c344fa6e86067e25aa3c5280f95c37fba93e1c0f33"
+          "bytes": 9669,
+          "sha256": "737d9f39219b1386f65aa62bcd64d5a9db1f639bb80e7bf6cc974273b9c7e69d"
         },
         {
           "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.zh-CN.kdna",
@@ -57,7 +57,7 @@
         }
       ],
       "observation": {
-        "checked_at": "2026-11-12T10:55:00.000Z",
+        "checked_at": "2026-11-13T03:38:00.000Z",
         "method": "public_node_adapter",
         "core": {
           "status": "accepted",
@@ -112,13 +112,13 @@
       "files": [
         {
           "path": "references/public/kdna-whitepaper/LICENSE",
-          "bytes": 13921,
-          "sha256": "3c5bb7d0a28ecf79aae894b5a31f2335dfcb3842492eebe7c51211bd1fbb34cf"
+          "bytes": 13893,
+          "sha256": "dbcd8462e19870bc58dc25a5b4eec6f94efefcca66846c691fe4ccda5afe72e2"
         },
         {
           "path": "references/public/kdna-whitepaper/README.md",
-          "bytes": 9517,
-          "sha256": "8dfff2ff856e843c05d036c344fa6e86067e25aa3c5280f95c37fba93e1c0f33"
+          "bytes": 9669,
+          "sha256": "737d9f39219b1386f65aa62bcd64d5a9db1f639bb80e7bf6cc974273b9c7e69d"
         },
         {
           "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna",
@@ -132,7 +132,7 @@
         }
       ],
       "observation": {
-        "checked_at": "2026-11-12T10:55:00.000Z",
+        "checked_at": "2026-11-13T03:38:00.000Z",
         "method": "public_node_adapter",
         "core": {
           "status": "accepted",
