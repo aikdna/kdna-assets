@@ -25,9 +25,10 @@ Our first official public `.kdna` judgment work, authored by KDNA originator **Z
 
 - **Release Notes, Provenance & `1.0.0` → `1.0.1` Evolution Summary:** [`references/public/kdna-whitepaper/README.md`](./references/public/kdna-whitepaper/README.md) (supersedes the initial `1.0.0` Chinese-only release, which has been withdrawn from active downloads).
 
-#### Read & Download Locally (Permanently Account-Free)
+#### Read & Download Locally
 
-- **KDNA Reader for macOS (Apple Silicon, Apple Notarized, `中文 / English` & `Light / Dark` UI):** [https://aikdna.com/en/downloads](https://aikdna.com/en/downloads) · [https://aikdna.com/zh/downloads](https://aikdna.com/zh/downloads)
+- **Open `.kdna` Format & CLI:** Permanently account-free offline verification and selective reading (`@aikdna/kdna-cli`).
+- **KDNA Reader for macOS (Apple Silicon, Apple Notarized, `中文 / English` & `Light / Dark` UI):** [https://aikdna.com/en/downloads](https://aikdna.com/en/downloads) · [https://aikdna.com/zh/downloads](https://aikdna.com/zh/downloads) (permanently free without usage limits: sign in with a free `KDNA ID` for bundled bilingual Whitepaper `v1.0.1` and permanent offline Bookshelf, or use account-free single-file Guest Mode anytime)
 - **Direct `.kdna` Downloads:**
   - Chinese `v1.0.1` (`zh-CN`): [https://aikdna.com/downloads/whitepaper/v1.0.1/kdna-whitepaper-1.0.1.zh-CN.kdna](https://aikdna.com/downloads/whitepaper/v1.0.1/kdna-whitepaper-1.0.1.zh-CN.kdna)
   - English `v1.0.1` (`en`): [https://aikdna.com/downloads/whitepaper/v1.0.1/kdna-whitepaper-1.0.1.en.kdna](https://aikdna.com/downloads/whitepaper/v1.0.1/kdna-whitepaper-1.0.1.en.kdna)
