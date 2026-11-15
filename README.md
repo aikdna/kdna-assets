@@ -15,7 +15,6 @@ Our first official public `.kdna` judgment work, authored by KDNA originator **Z
 | Field | Chinese Edition (`zh-CN`) | Native Equivalent English Edition (`en`) |
 | --- | --- | --- |
 | **Catalog & Asset ID** | `@aikdna/kdna-whitepaper` (`asset:kdna-whitepaper`) · `1.0.1` | `@aikdna/kdna-whitepaper-en` (`asset:kdna-whitepaper`) · `1.0.1` |
-| **Container Format** | Native KDNA `0.6.0` | Native KDNA `0.6.0` |
 | **Creator** | `张零` (`actor:zhangling`) | `Zhang Ling` (`actor:zhangling`) |
 | **Content License** | [`CC-BY-4.0`](https://creativecommons.org/licenses/by/4.0/) | [`CC-BY-4.0`](https://creativecommons.org/licenses/by/4.0/) |
 | **Judgments** | `45` structured judgments + system kernel & `40` directed relations | `45` structured judgments + system kernel & `40` directed relations |
@@ -28,7 +27,7 @@ Our first official public `.kdna` judgment work, authored by KDNA originator **Z
 #### Read & Download Locally
 
 - **Open `.kdna` Format & CLI:** Permanently account-free offline verification and selective reading (`@aikdna/kdna-cli`).
-- **KDNA Reader for macOS (Apple Silicon, Apple Notarized, `中文 / English` & `Light / Dark` UI):** [https://aikdna.com/en/downloads](https://aikdna.com/en/downloads) · [https://aikdna.com/zh/downloads](https://aikdna.com/zh/downloads) (permanently free without usage limits: sign in with a free `KDNA ID` for bundled bilingual Whitepaper `v1.0.1` and permanent offline Bookshelf, or use account-free single-file Guest Mode anytime)
+- **KDNA Reader for macOS (Apple Silicon, Apple Notarized, `中文 / English` & `Light / Dark` UI):** [https://aikdna.com/en/downloads](https://aikdna.com/en/downloads) · [https://aikdna.com/zh/downloads](https://aikdna.com/zh/downloads) (permanently free without usage limits: sign in with a free `KDNA ID` for bundled bilingual Whitepaper and offline Judgment Asset Library, or use account-free single-file Guest Mode anytime)
 - **Direct `.kdna` Downloads:**
   - Chinese `v1.0.1` (`zh-CN`): [https://aikdna.com/downloads/whitepaper/v1.0.1/kdna-whitepaper-1.0.1.zh-CN.kdna](https://aikdna.com/downloads/whitepaper/v1.0.1/kdna-whitepaper-1.0.1.zh-CN.kdna)
   - English `v1.0.1` (`en`): [https://aikdna.com/downloads/whitepaper/v1.0.1/kdna-whitepaper-1.0.1.en.kdna](https://aikdna.com/downloads/whitepaper/v1.0.1/kdna-whitepaper-1.0.1.en.kdna)
@@ -73,7 +72,7 @@ npx -y @aikdna/kdna-cli@0.43.5 read \
 **Trust & Scope Reminder:**
 
 - Passing technical validation (`kdna validate` and `npm test`) proves that the `.kdna` artifact bytes match their declared container specification, digests, and Read closure rules. Evaluating the substantive claims inside any work remains a human reader's responsibility.
-- Public, local, and password-protected (`0.6.0`) `.kdna` verification and reading are permanently account-free.
+- Public, local, and password-protected `.kdna` verification and reading are permanently account-free.
 
 ---
 
