@@ -86,12 +86,12 @@ test('public inventory keeps the historical reference rejections and records the
   assert.equal(original.assets.length,2,'the committed index must register @aikdna/kdna-whitepaper and @aikdna/kdna-whitepaper-en');
   const [wp,wpEn]=original.assets;
   assert.equal(wp.id,'@aikdna/kdna-whitepaper');
-  assert.equal(wp.version,'1.0.1');
+  assert.equal(wp.version,'1.0.2');
   assert.equal(wp.license.id,'CC-BY-4.0');
   assert.equal(wp.license.repository_license_applies,false);
   assert.equal(wp.creator.name,'张零');
   assert.equal(wpEn.id,'@aikdna/kdna-whitepaper-en');
-  assert.equal(wpEn.version,'1.0.1');
+  assert.equal(wpEn.version,'1.0.2');
   assert.equal(wpEn.license.id,'CC-BY-4.0');
   assert.equal(wpEn.license.repository_license_applies,false);
   assert.equal(wpEn.creator.name,'Zhang Ling');
@@ -308,9 +308,9 @@ test('public binding and archive receipts describe the exact stable native graph
     read:'kdna.read/0.7.0-candidate',
   });
   for(const [name,version] of [
-    ['@aikdna/kdna-core','0.37.9'],
-    ['@aikdna/kdna-read','0.13.3'],
-    ['@aikdna/kdna-cli','0.43.2'],
+    ['@aikdna/kdna-core','0.37.11'],
+    ['@aikdna/kdna-read','0.13.5'],
+    ['@aikdna/kdna-cli','0.44.0'],
   ]){
     const row=binding.packages.find(entry=>entry.name===name);
     assert.ok(row);

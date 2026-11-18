@@ -1,3 +1,9 @@
+## KDNA Whitepaper `1.0.2` (`@aikdna/kdna-whitepaper` & `@aikdna/kdna-whitepaper-en`) — 2026-11-18
+
+- Publish **《KDNA白皮书》 `v1.0.2`** (`kdna-whitepaper-1.0.2.zh-CN.kdna`, `2,725,359` bytes, `sha256:e344944a53f8d4bb2ca40a8d42bcd3c104e3067bfa92dce99e327cbc5aed40aa`, creator `张零`) and **_KDNA Whitepaper_ `v1.0.2`** (`kdna-whitepaper-1.0.2.en.kdna`, `2,843,386` bytes, `sha256:6da515820eed210508d72a4ddbf68f7052cb180afe592c64e85e9a3fbb60c49e`, creator `Zhang Ling`) under `CC-BY-4.0`, indexing both in `index/current.json` while retaining `1.0.1` `.kdna` and `.sha256` files in-place for explicit `kdna diff` verification and version-pinned links.
+- Recompile with language-neutral ASCII `method_roles` (`0` Chinese characters anywhere in `kdna-whitepaper-1.0.2.en.kdna`), populate bilingual human-readable `name` display titles across all `17` structural entities (`11` `materials`, `2` `shared_declarations`, `4` `sources`), encode the `5` thematic reading sections in non-critical `kdna.reading-sections/1` metadata without semantic inheritance (`parent_ref: null`), embed verified `checksums.json` (`kdna.checksums.document/2`), and complete pure editorial/typographic polish with zero substantive claim change.
+- Upgrade the offline vendored toolchain and exact manifest graph to `@aikdna/kdna-core@0.37.11`, `@aikdna/kdna-read@0.13.5`, and `@aikdna/kdna-cli@0.44.0`, and tighten `scripts/check-public-surface.mjs` public repository allowlisting.
+
 ## KDNA Whitepaper `1.0.1` Release & Surface Alignment — 2026-11-13
 
 - Withdraw the superseded Chinese-only `kdna-whitepaper-1.0.0.kdna` (`2,570,249` bytes, `sha256:c299a7b95cdcf1eb0f063d0ec1dd98f7efefee5cc13d53ca1f05983e1f2a88e0`) and its `.sha256` sidecar from the active public directory and GitHub Release downloads so public distributions carry only the self-contained bilingual `v1.0.1` `.kdna` editions (`zh-CN` & `en`).
