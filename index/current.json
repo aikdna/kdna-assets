@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "kind": "kdna-current-index",
-  "updated": "2026-11-13T03:38:00.000Z",
+  "updated": "2026-11-18T04:00:00.000Z",
   "repository": "https://github.com/aikdna/kdna-assets",
   "listing_policy": "AIKDNA reference display only. Listing does not imply endorsement, correctness, quality, expertise, protocol approval, or official truth.",
   "assets": [
@@ -24,13 +24,13 @@
         "scope": "asset-content-and-distribution",
         "repository_license_applies": false
       },
-      "version": "1.0.1",
+      "version": "1.0.2",
       "digest": {
         "algorithm": "sha256",
-        "value": "9f01c10bc06771c6d28c0543cda9aa64118ae470d75a0178ea023b73b812a92b"
+        "value": "e344944a53f8d4bb2ca40a8d42bcd3c104e3067bfa92dce99e327cbc5aed40aa"
       },
       "artifact": {
-        "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.zh-CN.kdna",
+        "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.zh-CN.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "evidence_claims": [],
@@ -42,22 +42,22 @@
         },
         {
           "path": "references/public/kdna-whitepaper/README.md",
-          "bytes": 9840,
-          "sha256": "f4a99d06edd5698549d469d585c0d6adaaf1389d54294ab59a8420bc47176d0e"
+          "bytes": 11494,
+          "sha256": "c155678579f96b11201486d82e7d040441bf44e4b991a96f0652b1ace725deae"
         },
         {
-          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.zh-CN.kdna",
-          "bytes": 2595031,
-          "sha256": "9f01c10bc06771c6d28c0543cda9aa64118ae470d75a0178ea023b73b812a92b"
+          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.zh-CN.kdna",
+          "bytes": 2725359,
+          "sha256": "e344944a53f8d4bb2ca40a8d42bcd3c104e3067bfa92dce99e327cbc5aed40aa"
         },
         {
-          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.zh-CN.kdna.sha256",
+          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.zh-CN.kdna.sha256",
           "bytes": 99,
-          "sha256": "c13511c952e52f789e33340d7242b619ebd94850b85dc48910785286508fd947"
+          "sha256": "942976b32728184b11480b252b9fc0f00484c8e8d4a21ebcedbd9049557b9977"
         }
       ],
       "observation": {
-        "checked_at": "2026-11-13T03:38:00.000Z",
+        "checked_at": "2026-11-18T04:00:00.000Z",
         "method": "public_node_adapter",
         "core": {
           "status": "accepted",
@@ -99,13 +99,13 @@
         "scope": "asset-content-and-distribution",
         "repository_license_applies": false
       },
-      "version": "1.0.1",
+      "version": "1.0.2",
       "digest": {
         "algorithm": "sha256",
-        "value": "9db199060f5d957b9aaeee38546dfed68b56d9a3a6f479eb2cc93181fba3580e"
+        "value": "6da515820eed210508d72a4ddbf68f7052cb180afe592c64e85e9a3fbb60c49e"
       },
       "artifact": {
-        "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna",
+        "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna",
         "media_type": "application/vnd.kdna.asset"
       },
       "evidence_claims": [],
@@ -117,22 +117,22 @@
         },
         {
           "path": "references/public/kdna-whitepaper/README.md",
-          "bytes": 9840,
-          "sha256": "f4a99d06edd5698549d469d585c0d6adaaf1389d54294ab59a8420bc47176d0e"
+          "bytes": 11494,
+          "sha256": "c155678579f96b11201486d82e7d040441bf44e4b991a96f0652b1ace725deae"
         },
         {
-          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna",
-          "bytes": 2711958,
-          "sha256": "9db199060f5d957b9aaeee38546dfed68b56d9a3a6f479eb2cc93181fba3580e"
+          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna",
+          "bytes": 2843386,
+          "sha256": "6da515820eed210508d72a4ddbf68f7052cb180afe592c64e85e9a3fbb60c49e"
         },
         {
-          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna.sha256",
+          "path": "references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna.sha256",
           "bytes": 96,
-          "sha256": "5053ff2f1bead1d069b7296bf5537fc0cfbc5de4c1559b3c694118217637592a"
+          "sha256": "1b4df0bbd2d28b7673500357baadbbb9e5e4962f66d0a6d202dcb9e8e53fca2f"
         }
       ],
       "observation": {
-        "checked_at": "2026-11-13T03:38:00.000Z",
+        "checked_at": "2026-11-18T04:00:00.000Z",
         "method": "public_node_adapter",
         "core": {
           "status": "accepted",
@@ -157,5 +157,5 @@
     }
   ],
   "clusters": [],
-  "toolchain_binding_sha256": "c48a4721942f1161ba4bf124152c8966a31553492b9737e867da07bb3ece7a0b"
+  "toolchain_binding_sha256": "9e9a0743a826c926bb08c8fd1d5e37c64e25a7329494d37dadda33e9e55053d1"
 }

@@ -14,13 +14,13 @@ import { registryOf } from '../scripts/verify-ci-leg-receipts.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const ENVIRONMENT = { KDNA_ASSETS_METADATA_INDEX: 'index.json', KDNA_ASSETS_METADATA_PACKAGE: 'package.json' };
-const COMMITTED_PIN = 'file:vendor/aikdna-kdna-cli-0.43.2.tgz';
+const COMMITTED_PIN = 'file:vendor/aikdna-kdna-cli-0.44.0.tgz';
 const INTEGRITY = 'sha512-' + 'A'.repeat(86) + '==';
 
 function sandbox({ pin = COMMITTED_PIN, index, lock } = {}) {
   const dir = mkdtempSync(join(tmpdir(), 'assets-pin-policy-'));
   mkdirSync(join(dir, 'vendor'), { recursive: true });
-  cpSync(join(root, 'vendor', 'aikdna-kdna-cli-0.43.2.tgz'), join(dir, 'vendor', 'aikdna-kdna-cli-0.43.2.tgz'));
+  cpSync(join(root, 'vendor', 'aikdna-kdna-cli-0.44.0.tgz'), join(dir, 'vendor', 'aikdna-kdna-cli-0.44.0.tgz'));
   writeFileSync(
     join(dir, 'index.json'),
     `${JSON.stringify(index ?? { schema_version: '2.0.0', assets: [{ id: 'a' }], clusters: [] }, null, 2)}\n`,

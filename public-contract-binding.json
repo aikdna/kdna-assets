@@ -18,46 +18,46 @@
   },
   "accepted_cli": {
     "name": "@aikdna/kdna-cli",
-    "version": "0.43.2"
+    "version": "0.44.0"
   },
   "accepted_core": {
-    "version": "0.37.9",
-    "tar_sha256": "084afc94fb808a4327995d6d47be8262d53e339e415db2879ff334d5d742362b"
+    "version": "0.37.11",
+    "tar_sha256": "48626d4e26cb0bc47ce89a6694647b696c6dd241a0f3e3e84d4b7bdada8d83f4"
   },
   "accepted_read": {
-    "version": "0.13.3",
-    "tar_sha256": "52f5b05f4565e623af6e7a381d90ae2c75ef04edc82e2db2b88f7aa8d6ac0f50"
+    "version": "0.13.5",
+    "tar_sha256": "8444d65417188a225903c2357bcd144a557d646f438db1d356d4073506c3fc58"
   },
   "route_contracts": [
     {
       "file": "sections/contract.json",
-      "bytes": 570835,
-      "sha256": "1c31eec617080c9fd460dbb0d4a4c430f1eb3d0e22f34e2b5f1b545ac5a094d3"
+      "bytes": 573246,
+      "sha256": "3e407c8f2efbbbaff72a03322f57a302ac85b5100a99aea979a17a61b3fa4dd7"
     },
     {
       "file": "sectionbytes/contract.json",
       "bytes": 31759,
-      "sha256": "61a46ac0642655497e8896f49d0a9e13a164c355895c91a4824cf61b50b30c6d"
+      "sha256": "1c0c0ed48f34fe67292c82ac627b112a821d11463d25b82551c2af70db1c26c3"
     },
     {
       "file": "retained/contract.json",
-      "bytes": 291233,
-      "sha256": "3d965e9502a741d75e5742d9528de5ebd1db92ce82a1f04c7a0ccc77d049d52b"
+      "bytes": 293273,
+      "sha256": "634df4f728c7045dbbb6ef5379a0457391a2aa70d5b92915ad22895dfa12bf82"
     },
     {
       "file": "creation06/contract.json",
-      "bytes": 71166,
-      "sha256": "89317373dc0f322392669b82647c04ef9bd750cc471b648e6d9a9ecde14eac0c"
+      "bytes": 71537,
+      "sha256": "15f5182f88ec3115a22fc324724cf0cafb11c1358509c62b9378a496565689e9"
     },
     {
       "file": "source06/contract.json",
       "bytes": 76676,
-      "sha256": "05a855e4ed9d16c5581f6518a9424beaa08297889899ac4b3cb8cf5eadea18dd"
+      "sha256": "41e42d944b6cc3413a7ef7dde1d7aff4b77322e08d406fc4c4937aff1a54c063"
     },
     {
       "file": "migration06/contract.json",
       "bytes": 46892,
-      "sha256": "13657c017dc430942bb1bff7069629766e5c5dd0f0bbf3d46ee0f7102c1a84b8"
+      "sha256": "2a5bd16a151a7501c3a6b863232d32e6fcb3ed24a9a53dff88ae1247abca6ca0"
     }
   ],
   "component_semantics": {
@@ -65,30 +65,30 @@
     "contract_version": "2.0.0",
     "definition_digest": "sha256:37e857cc4e43f7283a51ee6abe1f6e8401803902e8dc47f6d14d712aa7d7b089"
   },
-  "generated_contract_sha256": "d8ef313a26b53299c1c2b232fcf0dcb73180e24b7ca82b9926629853e9281336",
+  "generated_contract_sha256": "5e88f2862e11231555edc16a5e0268f548845b2a7b8fe707ec9a26c1ac23399b",
   "packages": [
     {
       "name": "@aikdna/kdna-cli",
-      "version": "0.43.2",
-      "archive": "vendor/aikdna-kdna-cli-0.43.2.tgz",
-      "bytes": 50512,
-      "sha256": "51a126b877c5effc7a1bc44a78984e5a115c8fff2bba6418c7a391c8bdd314c9",
-      "members": 18
+      "version": "0.44.0",
+      "archive": "vendor/aikdna-kdna-cli-0.44.0.tgz",
+      "bytes": 95843,
+      "sha256": "d5df53fd9545d8d0ac70ac2d740415bed4c80e1832bfb6032f6d2070c7405167",
+      "members": 22
     },
     {
       "name": "@aikdna/kdna-core",
-      "version": "0.37.9",
-      "archive": "vendor/aikdna-kdna-core-0.37.9.tgz",
-      "bytes": 8319313,
-      "sha256": "084afc94fb808a4327995d6d47be8262d53e339e415db2879ff334d5d742362b",
+      "version": "0.37.11",
+      "archive": "vendor/aikdna-kdna-core-0.37.11.tgz",
+      "bytes": 8495819,
+      "sha256": "48626d4e26cb0bc47ce89a6694647b696c6dd241a0f3e3e84d4b7bdada8d83f4",
       "members": 465
     },
     {
       "name": "@aikdna/kdna-read",
-      "version": "0.13.3",
-      "archive": "vendor/aikdna-kdna-read-0.13.3.tgz",
-      "bytes": 3217262,
-      "sha256": "52f5b05f4565e623af6e7a381d90ae2c75ef04edc82e2db2b88f7aa8d6ac0f50",
+      "version": "0.13.5",
+      "archive": "vendor/aikdna-kdna-read-0.13.5.tgz",
+      "bytes": 3238681,
+      "sha256": "8444d65417188a225903c2357bcd144a557d646f438db1d356d4073506c3fc58",
       "members": 99
     },
     {
@@ -164,7 +164,7 @@
       "members": 4
     }
   ],
-  "toolchain_files_sha256": "8cfd596abcf8281a9fad7facbffa5e03e31452188e54d7a80977a5ed6e2f4892",
+  "toolchain_files_sha256": "345a3ba8071ac08f938cd56532d763e2d7b2440898f4458f9b81d3ab18e5b9cb",
   "authority_limit": "Exact technical dependency coordinates. Whole admission, authorship, confirmation, reading permission, catalog-only versus body disclosure, actions, content quality and per-file licenses remain separate.",
   "component_semantics_digest": "sha256:37e857cc4e43f7283a51ee6abe1f6e8401803902e8dc47f6d14d712aa7d7b089"
 }
