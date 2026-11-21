@@ -33,33 +33,41 @@ Our first official public demonstration `.kdna` judgment work, authored by KDNA 
   - English `v1.0.2` (`en`): [https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.en.kdna](https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.en.kdna)
 - **GitHub Release (`kdna-whitepaper-1.0.2`):** [https://github.com/aikdna/kdna-assets/releases/tag/kdna-whitepaper-1.0.2](https://github.com/aikdna/kdna-assets/releases/tag/kdna-whitepaper-1.0.2)
 
-#### Inspect & Selectively Read via `@aikdna/kdna-cli@0.44.0` (macOS / Windows / Linux)
+#### Inspect & Selectively Read via `@aikdna/kdna-cli@0.45.2` (macOS / Windows / Linux)
 
 ```sh
 # 1. Verify container structure, digests, checksums.json, and system checks
-npx -y @aikdna/kdna-cli@0.44.0 validate \
+npx -y @aikdna/kdna-cli@0.45.2 validate \
   references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna \
   --system --format human
 
 # 2. Browse the 45-question catalog in plain text (< 1.0s)
-npx -y @aikdna/kdna-cli@0.44.0 read \
+npx -y @aikdna/kdna-cli@0.45.2 read \
   references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna \
   --mode catalog --allow-read --format human
 
 # 3. Read selected judgments in English human text with mandatory closure intact
-npx -y @aikdna/kdna-cli@0.44.0 read \
+npx -y @aikdna/kdna-cli@0.45.2 read \
   references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna \
   --mode exact_selection \
   --judgment-id judgment:work-itself,judgment:creation-restraint,judgment:safe-consumption \
   --allow-read --format human
 
 # 4. Emit closure-preserving compact JSON for AI Agent context windows
-npx -y @aikdna/kdna-cli@0.44.0 read \
+npx -y @aikdna/kdna-cli@0.45.2 read \
   references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna \
   --mode exact_selection \
   --judgment-id judgment:origins,judgment:work-itself \
   --allow-read --compact
 ```
+
+### 2. Companion Domain Exemplar Judgment Systems (`Apache-2.0`)
+
+Alongside the foundational *KDNA Whitepaper* `v1.0.2` stored in this repository, two end-to-end domain exemplar judgment systems—complete with authored JSON sources, `.kdna` binaries, SHA-256 sidecars, benchmark suites, and empirical evaluation papers—are published openly on `aikdna.com`:
+
+- **Overview & Complete Artifact Table:** [English](https://aikdna.com/en/explore/systems) · [中文](https://aikdna.com/zh/explore/systems)
+- **The "Human-Sounding Writing" Judgment System (`v1.0.1`, 22 judgments, `zh-CN` & `en`):** [Empirical Paper (EN)](https://aikdna.com/en/explore/human-writing) · [实证论文（中文）](https://aikdna.com/zh/explore/human-writing)
+- **The "Code Review" Judgment System (`v1.0.2`, 22 judgments, `zh-CN` & `en`):** [Empirical Paper (EN)](https://aikdna.com/en/explore/code-review) · [实证论文（中文）](https://aikdna.com/zh/explore/code-review)
 
 ---
 
