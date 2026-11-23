@@ -90,14 +90,46 @@ test('public surface allows 40-hex Canonical IR node IDs inside .kdna binaries w
     const bad = runScanner(root);
     assert.equal(bad.status, 1);
     assert.match(bad.stdout, /local-filesystem-path/);
+    writeFileSync(
+      join(root, 'references/public/sample/sample-1.0.0.kdna'),
+      'judgment:202af55182581042b6638ba1633802a491e6b7e6 /Users/alice/dev/repo\n',
+    );
+    const badUser = runScanner(root);
+    assert.equal(badUser.status, 1);
+    assert.match(badUser.stdout, /local-filesystem-path/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
 });
 
-function runScanner(cwd) {
-  return spawnSync(process.execPath, [scanner], {
-    cwd,
+test('public surface defaults to repository root via import.meta.url even from an external cwd', () => {
+  const external = mkdtempSync(join(tmpdir(), 'kdna-assets-external-cwd-'));
+  try {
+    const result = spawnSync(process.execPath, [scanner], {
+      cwd: external,
+      encoding: 'utf8',
+    });
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+    assert.match(result.stdout, /scanned [1-9]\d* files/);
+  } finally {
+    rmSync(external, { recursive: true, force: true });
+  }
+});
+
+test('public surface fails closed when scanned file count is zero', () => {
+  const empty = mkdtempSync(join(tmpdir(), 'kdna-assets-empty-root-'));
+  try {
+    const result = runScanner(empty);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /0 files scanned/);
+  } finally {
+    rmSync(empty, { recursive: true, force: true });
+  }
+});
+
+function runScanner(root) {
+  return spawnSync(process.execPath, [scanner, '--root', root], {
+    cwd: root,
     encoding: 'utf8',
   });
 }
