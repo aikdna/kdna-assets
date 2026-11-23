@@ -11,7 +11,7 @@
  *   - Private repo URLs (any aikdna/* repo not on the allowlist)
  *   - Private repo path references (any private aikdna/* subdirectory)
  *   - Local filesystem paths leaking the developer's machine
- *     (/Users/AI/K/OPEN/, /private/tmp/)
+ *     (/Users/<user>/..., /private/tmp/)
  *   - Full (40-char) git commit hashes in audit/spec docs
  *   - Internal code names ("M3 self-eval", "A-agent-meta")
  *
@@ -26,9 +26,15 @@
  */
 
 import { lstatSync, readdirSync, readFileSync, statSync } from 'fs';
-import { join, relative, sep } from 'path';
+import { dirname, join, relative, resolve, sep } from 'path';
+import { fileURLToPath } from 'url';
 
-const ROOT = process.cwd();
+const DEFAULT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const rootFlagIndex = process.argv.indexOf('--root');
+const ROOT =
+  rootFlagIndex !== -1 && process.argv[rootFlagIndex + 1]
+    ? resolve(process.argv[rootFlagIndex + 1])
+    : DEFAULT_ROOT;
 const STRICT = process.argv.includes('--strict');
 
 const PUBLIC_DIRS = [
@@ -102,8 +108,8 @@ const RULES = [
   },
   {
     name: 'local-filesystem-path',
-    pattern: /(\/Users\/AI\/K\/OPEN|\/private\/tmp\/kdna)/g,
-    hint: 'Replace /Users/AI/K/OPEN/<x> with <workdir>/<x>; /private/tmp/kdna-* with /tmp/kdna-*.',
+    pattern: /(\/Users\/[A-Za-z0-9._-]+\/|\/private\/tmp\/kdna)/g,
+    hint: 'Replace /Users/<user>/... with <workdir>/<x>; /private/tmp/kdna-* with /tmp/kdna-*.',
   },
   {
     name: 'full-commit-hash',
@@ -191,9 +197,11 @@ for (const f of PUBLIC_FILES) {
   }
 }
 
+let scanned = 0;
 for (const full of files) {
   const rel = relative(ROOT, full);
   if (!isPublicPath(rel)) continue;
+  scanned += 1;
   if (isAllowlisted(rel)) continue;
   const text = readFileSync(full, 'utf8');
   const lines = text.split('\n');
@@ -222,9 +230,14 @@ for (const full of files) {
   }
 }
 
+if (scanned === 0 && findings.length === 0) {
+  console.error(`❌ public-surface check failed closed: 0 files scanned under ${ROOT}`);
+  process.exit(1);
+}
+
 if (findings.length === 0) {
   console.log('✅ public-surface check: 0 findings');
-  console.log(`   scanned ${files.length} files across ${PUBLIC_DIRS.join(', ')}`);
+  console.log(`   scanned ${scanned} files across ${PUBLIC_DIRS.join(', ')}`);
   process.exit(0);
 }
 
