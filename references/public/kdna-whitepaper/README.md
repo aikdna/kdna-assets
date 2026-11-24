@@ -2,7 +2,7 @@
 
 `@aikdna/kdna-whitepaper` (`zh-CN`) and `@aikdna/kdna-whitepaper-en` (`en`) are the official public `.kdna` editions of **KDNA Whitepaper (`《KDNA白皮书》`)** at **`v1.0.2`**, authored by **张零 (Zhang Ling / `actor:zhangling`)** and published under **Creative Commons Attribution 4.0 International (`CC-BY-4.0`)**.
 
-`《KDNA白皮书》`（`v1.0.2`，同步提供原生中文版 `kdna-whitepaper-1.0.2.zh-CN.kdna` 与独立原生等义英文版 `kdna-whitepaper-1.0.2.en.kdna`）是由 **张零（`Zhang Ling` · `actor:zhangling`）** 独立署名并以 **`CC-BY-4.0`** 协议公开发布的首部官方示范 KDNA 判断作品（共 45 题、5 个核心篇章）。作品从保存与使用上游判断系统的现实需求及“你的思考、判断与品味本身就是‘作品’”出发，系统阐述判断系统的定义、围绕需要保存的判断组织议题、三条创建路径与归属边界、与 Markdown/提示词/Skill/MCP 的分工配合、按需精确选读（`catalog` → `exact_selection`，防“判断污染”）、永久免账号的离线本地口令加密与许可边界、桌面端 `KDNA Reader` 离线精读（永久免费无限制，支持免费 `KDNA ID` 判断资产库激活与免登录单文件游客模式）、成果偏差四因排查，以及拒绝静默覆盖的版本差异确认机制。
+`《KDNA白皮书》`（`v1.0.2`，同步提供原生中文版 `kdna-whitepaper-1.0.2.zh-CN.kdna` 与独立原生等义英文版 `kdna-whitepaper-1.0.2.en.kdna`）是由 **张零（`Zhang Ling` · `actor:zhangling`）** 独立署名并以 **`CC-BY-4.0`** 协议公开发布的首部官方示范 KDNA 判断作品（共 45 题、5 个核心篇章）。作品从保存与使用上游判断系统的现实需求及“你的思考、判断与品味本身就是‘作品’”出发，系统阐述判断系统的定义、围绕需要保存的判断组织议题、三条创建路径与归属边界、与 Markdown/提示词/Skill/MCP 的分工配合、按需精确选读（`catalog` → `exact_selection`，防“判断污染”）、永久免账号的离线本地口令加密与许可边界、桌面端 `KDNA Reader` 离线精读（永久免费，打开即可免登录离线阅读内置双语白皮书与任意本地 `.kdna` 文件，可选免费登录 `KDNA ID` 开启多标签对照）、成果偏差四因排查，以及拒绝静默覆盖的版本差异确认机制。
 
 ---
 
@@ -31,13 +31,13 @@
 
 ### 1. KDNA Reader for macOS & Direct `.kdna` Downloads
 
-- **macOS Desktop App (`KDNA Reader`, Apple Silicon, Apple Notarized / 苹果公证桌面版):** [https://aikdna.com/en/downloads](https://aikdna.com/en/downloads) · [https://aikdna.com/zh/downloads](https://aikdna.com/zh/downloads)
+- **macOS Desktop App (`KDNA Reader 0.3.4 build 30`, Apple Silicon, Apple Notarized / 苹果公证桌面版):** [https://aikdna.com/en/downloads](https://aikdna.com/en/downloads) · [https://aikdna.com/zh/downloads](https://aikdna.com/zh/downloads) · GitHub Releases mirror & SHA-256: [`aikdna/kdna-reader-releases`](https://github.com/aikdna/kdna-reader-releases)
 - **Direct `.kdna` Binary Downloads (Permanently Account-Free Open `.kdna` Files):**
   - Chinese `v1.0.2` (`zh-CN`): [https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.zh-CN.kdna](https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.zh-CN.kdna)
   - Native English `v1.0.2` (`en`): [https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.en.kdna](https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.en.kdna)
 - **GitHub Release (`kdna-whitepaper-1.0.2`):** [https://github.com/aikdna/kdna-assets/releases/tag/kdna-whitepaper-1.0.2](https://github.com/aikdna/kdna-assets/releases/tag/kdna-whitepaper-1.0.2)
 
-`KDNA Reader` is permanently free without usage limits (`中文 / English` UI, `Light / Dark` mode, local password unlock, and lossless `.kdna` export): sign in with a free `KDNA ID` to unlock both bundled Whitepaper editions and the offline Judgment Asset Library, or open any downloaded `.kdna` file directly in account-free Guest Mode.
+`KDNA Reader` (`0.3.4 build 30`) is permanently free without usage limits (`中文 / English` UI, `Light / Dark` mode, local password unlock, and lossless `.kdna` export): both built-in bilingual *KDNA Whitepaper* editions and any local public or password-protected `.kdna` file open offline completely without signing in. Optional free `KDNA ID` sign-in unlocks multi-tab side-by-side comparison only.
 
 ### 2. Official CLI (`@aikdna/kdna-cli@0.45.2` · macOS / Windows / Linux)
 

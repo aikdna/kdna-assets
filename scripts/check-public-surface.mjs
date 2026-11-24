@@ -79,6 +79,7 @@ const PUBLIC_REPO_NAMES = new Set([
   'kdna-studio-core',
   'kdna-skills',
   'kdna-assets',
+  'kdna-reader-releases',
   'kdna-core-swift',
   'kdna-studio-swift',
   'kdna-app-shared',

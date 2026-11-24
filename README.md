@@ -1,6 +1,6 @@
 # `kdna-assets` — Public KDNA Reference Works
 
-[Website](https://aikdna.com) · [Download KDNA Reader (EN)](https://aikdna.com/en/downloads) · [下载 KDNA Reader (中文)](https://aikdna.com/zh/downloads) · [Protocol (`aikdna/kdna`)](https://github.com/aikdna/kdna) · [CLI (`aikdna/kdna-cli`)](https://github.com/aikdna/kdna-cli) · [Skills (`aikdna/kdna-skills`)](https://github.com/aikdna/kdna-skills)
+[Website](https://aikdna.com) · [Download KDNA Reader (EN)](https://aikdna.com/en/downloads) · [下载 KDNA Reader (中文)](https://aikdna.com/zh/downloads) · [Reader Releases (`aikdna/kdna-reader-releases`)](https://github.com/aikdna/kdna-reader-releases) · [Protocol (`aikdna/kdna`)](https://github.com/aikdna/kdna) · [CLI (`aikdna/kdna-cli`)](https://github.com/aikdna/kdna-cli) · [Skills (`aikdna/kdna-skills`)](https://github.com/aikdna/kdna-skills)
 
 Public repository for openly licensed `.kdna` judgment works, reproducible provenance records, version evolution notes, and current container/Read conformance checks.
 
@@ -27,7 +27,7 @@ Our first official public demonstration `.kdna` judgment work, authored by KDNA 
 #### Read & Download Locally
 
 - **Open `.kdna` Format & CLI:** Permanently account-free offline verification and selective reading (`@aikdna/kdna-cli`).
-- **KDNA Reader for macOS (Apple Silicon, Apple Notarized, `中文 / English` & `Light / Dark` UI):** [https://aikdna.com/en/downloads](https://aikdna.com/en/downloads) · [https://aikdna.com/zh/downloads](https://aikdna.com/zh/downloads) (permanently free without usage limits: sign in with a free `KDNA ID` for bundled bilingual Whitepaper and offline Judgment Asset Library, or use account-free single-file Guest Mode anytime)
+- **KDNA Reader for macOS (`0.3.4 build 30`, Apple Silicon, Apple Notarized, `中文 / English` & `Light / Dark` UI):** [https://aikdna.com/en/downloads](https://aikdna.com/en/downloads) · [https://aikdna.com/zh/downloads](https://aikdna.com/zh/downloads) · GitHub Releases mirror & SHA-256: [`aikdna/kdna-reader-releases`](https://github.com/aikdna/kdna-reader-releases) (permanently free: opens the built-in bilingual *KDNA Whitepaper* and any local public or password-protected `.kdna` file offline without signing in; optional free `KDNA ID` unlocks multi-tab side-by-side comparison only)
 - **Direct `.kdna` Downloads:**
   - Chinese `v1.0.2` (`zh-CN`): [https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.zh-CN.kdna](https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.zh-CN.kdna)
   - English `v1.0.2` (`en`): [https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.en.kdna](https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.en.kdna)
@@ -63,18 +63,18 @@ npx -y @aikdna/kdna-cli@0.45.2 read \
 
 ### 2. Companion Domain Exemplar Judgment Systems (`Apache-2.0`)
 
-Alongside the foundational *KDNA Whitepaper* `v1.0.2` stored in this repository, two end-to-end domain exemplar judgment systems—complete with authored JSON sources, `.kdna` binaries, SHA-256 sidecars, benchmark suites, and empirical evaluation papers—are published openly on `aikdna.com`:
+Alongside the foundational *KDNA Whitepaper* `v1.0.2` stored in this repository, two end-to-end bilingual domain exemplar judgment systems—complete with authored JSON sources, `.kdna` binaries, SHA-256 sidecars, benchmark suites, and full Before/After case studies—are published openly on `aikdna.com` and mirrored as GitHub Releases in this repository (account-free):
 
 - **Overview & Complete Artifact Table:** [English](https://aikdna.com/en/explore/systems) · [中文](https://aikdna.com/zh/explore/systems)
-- **The "Human-Sounding Writing" Judgment System (`v1.0.1`, 22 judgments, `zh-CN` & `en`):** [Empirical Paper (EN)](https://aikdna.com/en/explore/human-writing) · [实证论文（中文）](https://aikdna.com/zh/explore/human-writing)
-- **The "Code Review" Judgment System (`v1.0.2`, 22 judgments, `zh-CN` & `en`):** [Empirical Paper (EN)](https://aikdna.com/en/explore/code-review) · [实证论文（中文）](https://aikdna.com/zh/explore/code-review)
+- **The "Human-Sounding Writing" Judgment System (`v1.0.1`, 22 judgments, `zh-CN` & `en`):** [Case Study & Benchmark (EN)](https://aikdna.com/en/explore/human-writing) · [对比案例与实测数据（中文）](https://aikdna.com/zh/explore/human-writing) · [GitHub Release (`kdna-human-writing-system-1.0.1`)](https://github.com/aikdna/kdna-assets/releases/tag/kdna-human-writing-system-1.0.1)
+- **The "Code Review" Judgment System (`v1.0.2`, 22 judgments, `zh-CN` & `en`):** [Case Study & Benchmark (EN)](https://aikdna.com/en/explore/code-review) · [对比案例与实测数据（中文）](https://aikdna.com/zh/explore/code-review) · [GitHub Release (`kdna-code-review-system-1.0.2`)](https://github.com/aikdna/kdna-assets/releases/tag/kdna-code-review-system-1.0.2)
 
 ---
 
 ## Repository Layout & Verification Boundaries
 
 - [`references/public/`](./references/public) — Openly licensed `.kdna` works distributed in this repository, each accompanied by its provenance notes, license declaration, and SHA-256 digest.
-- [`index/`](./index), [`src/`](./src) & [`tests/`](./tests) — Automated admission, `catalog` / `exact_selection` / `whole_asset` read checks, public-surface hygiene gates, and offline vendored dependency-pinning checks (`@aikdna/kdna-core@0.37.11`, `@aikdna/kdna-read@0.13.5`, and `@aikdna/kdna-cli@0.44.0`).
+- [`index/`](./index), [`src/`](./src) & [`tests/`](./tests) — Automated admission, `catalog` / `exact_selection` / `whole_asset` read checks, public-surface hygiene gates, and offline vendored dependency-pinning checks (for day-to-day CLI use run live `@aikdna/kdna-cli@0.45.2`; the repository's self-contained offline CI harness intentionally pins vendored `@aikdna/kdna-core@0.37.11`, `@aikdna/kdna-read@0.13.5`, and `@aikdna/kdna-cli@0.44.0`).
 - [`evidence/`](./evidence) — Allowlisted historical rebuild receipts retained for auditability and verified by `scripts/check-public-surface.mjs`.
 
 **Trust & Scope Reminder:**
