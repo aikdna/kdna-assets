@@ -5,7 +5,7 @@
 - [`kdna-whitepaper/`](./kdna-whitepaper/) —
   - `@aikdna/kdna-whitepaper` `1.0.2` (`kdna-whitepaper-1.0.2.zh-CN.kdna`, `2,725,359` bytes, SHA-256 `e344944a53f8d4bb2ca40a8d42bcd3c104e3067bfa92dce99e327cbc5aed40aa`, `.sha256`, creator `张零`),
   - `@aikdna/kdna-whitepaper-en` `1.0.2` (`kdna-whitepaper-1.0.2.en.kdna`, `2,843,386` bytes, SHA-256 `6da515820eed210508d72a4ddbf68f7052cb180afe592c64e85e9a3fbb60c49e`, `.sha256`, creator `Zhang Ling`),
-  - preserved `1.0.1` editions (`kdna-whitepaper-1.0.1.zh-CN.kdna`, `2,595,031` bytes; `kdna-whitepaper-1.0.1.en.kdna`, `2,711,958` bytes) retained alongside `1.0.2` for explicit `kdna diff` verification (`@aikdna/kdna-cli@0.45.2`),
+  - preserved `1.0.1` editions (`kdna-whitepaper-1.0.1.zh-CN.kdna`, `2,595,031` bytes; `kdna-whitepaper-1.0.1.en.kdna`, `2,711,958` bytes) retained alongside `1.0.2` for explicit `kdna diff` verification (`@aikdna/kdna-cli@0.46.0`),
   - shared `LICENSE` (`CC-BY-4.0`, `Copyright (c) 2026 张零 (Zhang Ling / zhangling)`) and `README.md`, native container `0.6.0` / payload `0.5.1` (superseding the withdrawn `1.0.0` Chinese-only release).
 
 The three earlier entries — `laozi-wuwei/`,

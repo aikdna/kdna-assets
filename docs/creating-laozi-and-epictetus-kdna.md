@@ -1,9 +1,7 @@
 # 老子与爱比克泰德参考 KDNA 的创建说明
 
-> **状态：本文是保留的创建记录。** 下面两件资产已从当前公开面移除（连同
-> `@aikdna/verification-scope@0.1.5`），当前索引不再登记任何公开资产；首份公开
-> 资产将是 KDNA 白皮书。它们的字节仍可从本仓 Git 历史取出，承载它们的
-> release 也仍在公开托管，直到 Owner 批准撤下。详见 [`../README.md`](../README.md)。
+> **历史归档记录（Archived Pre-`0.6.0` Record）：** 下面两件早期示范资产（`@aikdna/laozi-wuwei@0.1.1`、`@aikdna/epictetus-control-and-character@0.1.1`）及 `@aikdna/verification-scope@0.1.5` 均已从公开面撤下，其历史字节仅保留在仓库 Git 历史中，不再属于现行公开索引或下载面。
+> 当前已正式发布的官方公开作品为中英双语 **《KDNA 白皮书》`v1.0.2`**（及配套中英双语示范体系 `human-writing-system v1.0.1`、`code-review-system v1.0.2`），详见 [`../README.md`](../README.md) 与 [`../references/public/kdna-whitepaper/README.md`](../references/public/kdna-whitepaper/README.md)。下文“技术构建”中的 `kdna plan-load` / `kdna load` 为已退役的早期 `0.1.0` 命令，仅作历史备忘。
 
 本仓库此前提供两个公开参考资产：
 

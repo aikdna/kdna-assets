@@ -23,7 +23,7 @@
 | Protocol coordinate / 协议坐标 | Native container `0.6.0`; payload `kdna.payload.judgment` `0.5.1`; Core `kdna.core/0.8.2`; Canonical IR `kdna.canonical-ir/0.6.1`; Read `kdna.read/0.7.0-candidate` | Same exact `0.6.0` protocol tuple (`100%` structural isomorphism, `0` non-English protocol keys) |
 | Access & License / 访问与许可 | `public` (permanently account-free) · `CC-BY-4.0` (`repository_license_applies: false`) | `public` (permanently account-free) · `CC-BY-4.0` (`repository_license_applies: false`) |
 
-- **Tooling & offline graph / 公开 CLI 与仓库离线校验链:** Public CLI `@aikdna/kdna-cli@0.45.2` (`--budget` defaults to `1,000,000` bytes on `catalog` & `exact_selection`, and `4,000,000` bytes on `whole_asset`); repository offline test harness vendors `@aikdna/kdna-core@0.37.11`, `@aikdna/kdna-read@0.13.5`, and `@aikdna/kdna-cli@0.44.0`.
+- **Tooling & offline graph / 公开 CLI 与仓库离线校验链:** Public CLI `@aikdna/kdna-cli@0.46.0` (`--budget` defaults to `1,000,000` bytes on `catalog` & `exact_selection`, and `4,000,000` bytes on `whole_asset`); repository offline test harness vendors `@aikdna/kdna-core@0.37.11`, `@aikdna/kdna-read@0.13.5`, and `@aikdna/kdna-cli@0.44.0`.
 
 ---
 
@@ -39,27 +39,27 @@
 
 `KDNA Reader` (`0.3.4 build 30`) is permanently free without usage limits (`中文 / English` UI, `Light / Dark` mode, local password unlock, and lossless `.kdna` export): both built-in bilingual *KDNA Whitepaper* editions and any local public or password-protected `.kdna` file open offline completely without signing in. Optional free `KDNA ID` sign-in unlocks multi-tab side-by-side comparison only.
 
-### 2. Official CLI (`@aikdna/kdna-cli@0.45.2` · macOS / Windows / Linux)
+### 2. Official CLI (`@aikdna/kdna-cli@0.46.0` · macOS / Windows / Linux)
 
 Always start with `--mode catalog --format human`, then read only the judgment IDs relevant to your question with `--format human` or `--compact` (never use `--mode whole_asset` to fetch judgment prose):
 
 ```sh
 # Validate container integrity, checksums.json, and system checks (Chinese & English v1.0.2)
-npx -y @aikdna/kdna-cli@0.45.2 validate references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.zh-CN.kdna --system --format human
-npx -y @aikdna/kdna-cli@0.45.2 validate references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna --system --format human
+npx -y @aikdna/kdna-cli@0.46.0 validate references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.zh-CN.kdna --system --format human
+npx -y @aikdna/kdna-cli@0.46.0 validate references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna --system --format human
 
 # Step 1: Browse the 45-issue catalog (< 1.0s)
-npx -y @aikdna/kdna-cli@0.45.2 read references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.zh-CN.kdna --mode catalog --allow-read --format human
-npx -y @aikdna/kdna-cli@0.45.2 read references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna --mode catalog --allow-read --format human
+npx -y @aikdna/kdna-cli@0.46.0 read references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.zh-CN.kdna --mode catalog --allow-read --format human
+npx -y @aikdna/kdna-cli@0.46.0 read references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna --mode catalog --allow-read --format human
 
 # Step 2: Selectively read specific judgments with mandatory closure intact
-npx -y @aikdna/kdna-cli@0.45.2 read references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.zh-CN.kdna \
+npx -y @aikdna/kdna-cli@0.46.0 read references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.zh-CN.kdna \
   --mode exact_selection --judgment-id judgment:origins,judgment:work-itself --allow-read --format human
-npx -y @aikdna/kdna-cli@0.45.2 read references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna \
+npx -y @aikdna/kdna-cli@0.46.0 read references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna \
   --mode exact_selection --judgment-id judgment:origins,judgment:work-itself --allow-read --format human
 
 # Compare 1.0.1 -> 1.0.2 explicitly before switching
-npx -y @aikdna/kdna-cli@0.45.2 diff \
+npx -y @aikdna/kdna-cli@0.46.0 diff \
   references/public/kdna-whitepaper/kdna-whitepaper-1.0.1.en.kdna \
   references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna \
   --format human

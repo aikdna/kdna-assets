@@ -1,175 +1,56 @@
-# Receiving new example assets under the current contract
+# Receiving Public Reference Assets (Container `0.6.0`)
 
-> Last verified: 2026-11-11. This page records the criteria and the historical
-> blocker sequence up to the reception of `@aikdna/kdna-whitepaper` (`1.0.0`).
-> It does not accept, create or register any asset by itself.
-> See [Status update (2026-11-11)](#status-update-2026-11-11) for the first
-> completed reception on the current native `0.6` contract; earlier blocker
-> paragraphs are kept as the record of the states they described.
+This page defines the technical reception criteria and current status for openly licensed `.kdna` works indexed in `aikdna/kdna-assets`. It describes verification boundaries only; listing an asset in `index/current.json` records a concrete technical and licensing observation and never implies endorsement, truth, or legal clearance.
 
-## What "received" means here
+## 1. Five-Step Reception Criteria
 
-An example is received only when one exact graph has completed the whole loop,
-in order:
+A public reference work is received into `index/current.json` only after one identified toolchain graph completes all five steps in order:
 
-1. the bytes were created and exported by an identified toolchain,
-2. public Core admitted them,
-3. public Read disclosed the intended selection under explicit local
-   permission,
-4. a human actually previewed the result, and
-5. the entry records identity, source, license and the applicable version.
+1. **Creation & Export** — Bytes are authored and exported by an identified Container `0.6.0` toolchain (`@aikdna/kdna-cli@0.46.0` or its exact recorded release version).
+2. **Core Admission** — Public `@aikdna/kdna-core` admits the exact bytes (`status: "accepted"`, `reason: null`, verified container checksums when present).
+3. **Selective Read Disclosure** — Public `@aikdna/kdna-read` discloses `catalog` and `exact_selection` under explicit per-call local permission (`--allow-read`).
+4. **Human Preview** — A human reviewer opens and inspects the work in desktop **KDNA Reader** (macOS Apple Silicon; hosted Web Reader is permanently closed) or via plain-text `kdna review` / `kdna read --format human`.
+5. **Indexed Provenance & License** — The entry records exact byte count, SHA-256 sidecar, creator attribution, per-work content license (`repository_license_applies: false`), and explicit `not_evaluated` `proof_limits`.
 
-Steps 2, 3 and 4 are separate observations. A passing `validate`, a listing, a
-synthetic fixture or a technical receipt does not substitute for any of them.
+Steps 2, 3, and 4 are independent observations. Passing `kdna validate` or running a synthetic fixture never substitutes for human review or licensing review.
 
-## Current graph (2026-10-27)
+## 2. Current Active Status (`2026-11-26`)
 
-The public adapter now binds the stable package graph Core `0.37.9`, Read
-`0.13.3` and CLI `0.43.2`. Its current tuple is container `0.6.0`, payload
-`kdna.payload.judgment` `0.5.1`, Core `kdna.core/0.8.2`, Canonical IR
-`kdna.canonical-ir/0.6.1`, Runtime Capsule `kdna.runtime-capsule/0.3.1`,
-Consumption Plan `kdna.consumption-plan/0.3.1`, Agent Host
-`kdna.agent-host/0.3.1`, Judgment Trace `kdna.judgment-trace/0.3.1` and Read
-`kdna.read/0.7.0-candidate`.
+- **Indexed Repository Reference Works (`index/current.json`):**
+  - `@aikdna/kdna-whitepaper` (`zh-CN`, `v1.0.2`, `2,725,359` bytes, `CC-BY-4.0`, 45 judgments) — [`references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.zh-CN.kdna`](../references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.zh-CN.kdna)
+  - `@aikdna/kdna-whitepaper-en` (`en`, `v1.0.2`, `2,843,386` bytes, `CC-BY-4.0`, 45 judgments) — [`references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna`](../references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna)
+  - Both `v1.0.1` editions remain preserved alongside `v1.0.2` for explicit `kdna diff` verification and version-pinned links.
+- **Companion Domain Exemplars (Account-Free via `aikdna.com/en/explore/systems` & GitHub Releases):**
+  - `human-writing-system` `v1.0.1` (`Apache-2.0`, bilingual `zh-CN` & `en`, 22 judgments)
+  - `code-review-system` `v1.0.2` (`Apache-2.0`, bilingual `zh-CN` & `en`, 22 judgments)
+- **Active Toolchain vs. Offline CI Harness:**
+  - Live public CLI: `@aikdna/kdna-cli@0.46.0` (Container `0.6.0`, Payload `kdna.payload.judgment/0.5.1`, Core `kdna.core/0.8.2`, Canonical IR `kdna.canonical-ir/0.6.1`, Read `kdna.read/0.7.0-candidate`).
+  - Self-contained offline CI harness in this repository (`vendor/`): pins `@aikdna/kdna-core@0.37.11`, `@aikdna/kdna-read@0.13.5`, `@aikdna/kdna-cli@0.44.0`, and `fast-uri@3.1.9` for deterministic offline auditing (`npm run audit`, `npm run audit:read`, `npm test`).
+- **Desktop Distribution Boundary:** Desktop **KDNA Reader** (`v0.3.4 build 30`, macOS Apple Silicon) ships with only the built-in bilingual *KDNA Whitepaper* (`v1.0.2`) and opens any local public or password-protected `.kdna` file completely offline without signing in. Hosted Web Reader is permanently closed; non-Mac users consume `.kdna` works via `@aikdna/kdna-cli@0.46.0`, `@aikdna/kdna-mcp-server@0.8.4`, or `/explore/*` pages.
+- **Withdrawn Historical Entries:** Early pre-`0.6.0` references (`@aikdna/laozi-wuwei@0.1.1`, `@aikdna/epictetus-control-and-character@0.1.1`, `@aikdna/verification-scope@0.1.5`) remain withdrawn from the public surface and index; their historical rebuild notes remain in [`docs/creating-laozi-and-epictetus-kdna.md`](./creating-laozi-and-epictetus-kdna.md) and [`evidence/README.md`](../evidence/README.md).
 
-Core admits the exact checked bytes through its native byte-entry route. Read
-uses the prepared retained-section route under explicit per-call permission.
-The adapter has no second container parser. A catalog-only success is recorded
-as `read_envelope` / `catalog_only`; a denied default-deny call is recorded as
-`retained_failure` with `authority_denied`; an admission failure is recorded
-as `admission_rejection`. None of these observations establishes human
-preview, publication or action authorization.
+## 3. Non-Negotiable Integrity Rules
 
-## Current blocker
+- **Never mutate registered bytes.** Updating a work always produces a new semantic version (`1.0.1` → `1.0.2`) inspectable via `kdna diff`, never a silent in-place overwrite.
+- **Never relabel synthetic test fixtures as user-facing works.** Fixtures under `tests/` and `fixtures/` exist strictly for conformance testing.
+- **Never imply external endorsement.** Every entry declares explicit creator attribution, independent per-asset license, and `not_evaluated` `proof_limits`.
 
-**No public reference asset is registered.** Three earlier entries -
-`@aikdna/laozi-wuwei@0.1.1`,
-`@aikdna/epictetus-control-and-character@0.1.1` and
-`@aikdna/verification-scope@0.1.5` - have been removed from the current public
-surface together with their index entries and downloads, because the first
-public asset published from this repository will be the KDNA white paper.
+## 4. Reception Checklist for Future Works
 
-Their bytes remain readable from this repository's Git history
-(`git show 1423769:references/public/<slug>/<file>`), and the releases that
-carried them were emptied as well: the five assets of `0.1.1` and the four of
-`sage-reference-assets-v0.1.0` are withdrawn, so both releases now host no
-download. The accurate statement is "removed from the current public surface",
-not "never published". The two historical
-references were rejected with `READ_CORE_INVALID` by the historical candidate
-graph they were checked against (`checked_at` 2026-09-10, method
-`public_node_adapter`); that rejection remains their accurate recorded
-outcome. It is not evidence of compatibility with the current graph. This
-adapter implements no legacy decoder or conversion.
-
-Consequence: the repository currently holds **no example that completes the
-loop on the current contract**. A reader who downloads the present examples and
-uses the current candidates will see an explicit rejection. That is the honest
-current state, not a defect to be papered over.
-
-### Status update (2026-09-13)
-
-The consequence sentence above is **superseded**, and the two rejection
-statements above it are **not**. The two registered historical references
-still retain their bytes and are still rejected with `READ_CORE_INVALID`.
-
-The withdrawn `@aikdna/verification-scope@0.1.5` had been recorded as
-`unpublished_candidate`: its bytes came from one complete creation through the
-public Studio terminal Host, were admitted by the bound Core
-`0.24.0-rc.component-semantics.2`, and were disclosed by the bound Read under
-explicit local read permission. That covered steps 1-3 of the loop below and is
-recorded here as the prior observation, not as a current listing.
-
-Steps 4 and 5 are still incomplete for this entry and are not claimed: no
-human previewed it, and it has no Release coordinate, so it is not published.
-The loop is therefore closed for admission and disclosure, and open for human
-preview and publication. The obligation not to edit the registered bytes, not
-to relabel a fixture, and not to let a listing imply endorsement is unchanged.
-
-### Status update (2026-10-27)
-
-The historical `0.24.0-rc.component-semantics.2` admission and disclosure
-statement above is preserved as history. It is not upgraded into current
-acceptance. The current public adapter admits native container `0.6`, but the
-committed public index still lists no reference asset. A successful local read
-of separately supplied bytes covers steps 2 and 3 only; steps 1, 4 and 5
-remain separate and must be evidenced independently.
-
-The vendored `fast-uri` coordinate advanced from `3.1.8` to `3.1.9` on
-2026-10-27 to address four published security advisories fixed in `3.1.9`.
-The exact archive and installed-file manifests now cover 1,448 files. This
-dependency update does not publish an asset, change the native container/Read
-tuple, or turn the synthetic fixture into a public example.
-
-### Status update (2026-11-11)
-
-`@aikdna/kdna-whitepaper` (`1.0.0`) — `《KDNA白皮书》` (KDNA White Paper),
-authored by 张零 (Zhang Ling / `zhangling`) under `CC-BY-4.0`
-(`Copyright (c) 2026 张零 (Zhang Ling / zhangling)`,
-`repository_license_applies: false`) — completes all five reception steps on the
-bound native container `0.6.0` / payload `0.5.1` graph:
-
-1. exported as native `0.6.0` bytes (`references/public/kdna-whitepaper/kdna-whitepaper-1.0.0.kdna`) with `version: "1.0.0"` and `judgment_version: "1.0.0"`,
-2. admitted by the bound public Core `0.37.9` (`status: accepted`, `reason: null`),
-3. disclosed by the bound public Read `0.13.3` under explicit local permission (`read_envelope` / `catalog_only` on catalog audit; `ready` on `exact_selection` and `whole_asset`),
-4. human-reviewed and previewed in KDNA Reader across desktop and web surfaces, and
-5. registered in `index/current.json` with exact file digests, `.sha256` sidecar, per-entry `CC-BY-4.0` `LICENSE`, and explicit `not_evaluated` `proof_limits`.
-
-The three withdrawn historical entries (`@aikdna/laozi-wuwei`,
-`@aikdna/epictetus-control-and-character`, and `@aikdna/verification-scope`)
-remain withdrawn from the public surface. Listing `@aikdna/kdna-whitepaper`
-records a concrete technical observation and license boundary; `proof_limits`
-remain `not_evaluated` at the protocol adapter layer.
-
-## What must not be done to unblock it
-
-- Do not edit the registered bytes. The two `.kdna` files, their per-asset
-  files, `index/current.json` and `index/legacy-current.json` are registered
-  observations of exact bytes. Rewriting them to satisfy a newer graph would
-  destroy the evidence and would not constitute an acceptance.
-- Do not relabel an existing synthetic technical fixture as a user-facing
-  example. Test material is not a user work.
-- Do not present an asset by a philosopher's name as that philosopher's
-  authorized or endorsed material. The existing entries are AI-created modern
-  interpretations with `human_review=false` and keep that boundary.
-- Do not let a listing imply endorsement, correctness, expertise, protocol
-  approval or official truth.
-
-## Reception checklist for a new sample
-
-| Step | What the entry must record | What fails it |
-|---|---|---|
-| Creation | Exporting tool and its exact version, plus the exact Core/Read graph used | "Created with the latest" or an unversioned tool |
-| Bytes | Path, media type, byte count, SHA-256 | A digest copied from another asset or from a version label |
-| Core admission | Observed status; on rejection the public `states`, `diagnostics` and `component_failure` unchanged | Treating a version string as admission evidence |
-| Read | Mode (`catalog`, `whole_asset`, `exact_selection`), the source of local read permission, the channel and status (`read_envelope` / `catalog_only`, `retained_failure`, `admission_rejection`, `no_body_control`, or `transport_failure`), and the budget | Claiming disclosure from a transport success alone |
-| Human preview | Which platform and engine rendered it, and the observed range | Treating a preview as identity proof or quality proof |
-| Source and license | Creator identity claim, referenced public sources, per-asset license and its scope | Repository license assumed to cover the asset content |
-| Applicable version | Asset version, container/payload tuple and judgment version | Merging the asset version with the protocol version |
-| Proof limits | Explicit `not_evaluated` fields for creation, identity, action authorization and legal clearance | Leaving them implicit |
-
-## Next steps (needs its own authorization)
-
-1. Create a small set of **new** samples under the current design, with new
-   identities; leave the two registered references untouched.
-2. Run the offline audit for each sample and keep the raw observation.
-3. Add new entries to the schema-2 index instead of replacing existing ones, so
-   history and current state stay separable.
-4. Record which platform actually rendered each sample; do not generalize from
-   one machine.
-5. Publish an entry only after the loop above completed, and report the rest as
-   pending.
-
-Step 1 previously had one instance (`@aikdna/verification-scope`, created
-through the current public creation flow rather than rebuilt from a legacy
-asset) for which steps 2 and 3 were carried out; it has since been withdrawn
-from the public surface. Steps 4 and 5 were pending for it, and step 4 is why it
-was listed as an `unpublished_candidate` rather than a released asset.
+| Step | What the Entry Must Record | What Fails Reception |
+| --- | --- | --- |
+| Creation | Exporting CLI/tool exact version and Core/Read graph | Unversioned or "latest" claim |
+| Bytes | Artifact path, media type, exact byte length, SHA-256 sidecar | Reused or unverified digest |
+| Core admission | Observed `status: "accepted"` and checksum verification state | Treating version strings as admission proof |
+| Selective Read | Verified `catalog` and `exact_selection` observations under `--allow-read` and declared budget | Claiming disclosure from container validation alone |
+| Human preview | Desktop KDNA Reader or `kdna review` human inspection scope | Treating preview as truth or identity proof |
+| Source & license | Creator attribution, referenced public sources, explicit per-asset `LICENSE` (`repository_license_applies: false`) | Assuming repo `Apache-2.0` covers content |
+| Protocol tuple | Asset version, Container `0.6.0` / Payload `0.5.1` tuple, `judgment_version` | Conflating asset version with protocol version |
+| Proof limits | Explicit `not_evaluated` boundaries for creation truth, identity, and action authority | Implicit or omitted boundaries |
 
 ## Related
 
-- [`README.md`](../README.md) - current status and the exact bound graph.
-- [`docs/collection-workspace.md`](./collection-workspace.md) - offline layout
-  for a separately supplied collection.
-- [`docs/creating-laozi-and-epictetus-kdna.md`](./creating-laozi-and-epictetus-kdna.md)
-  - the retained creation record for the two withdrawn references, and what they
-  did not claim.
+- [`README.md`](../README.md) — Current featured works, companion exemplars, and offline verification commands.
+- [`references/public/kdna-whitepaper/README.md`](../references/public/kdna-whitepaper/README.md) — *KDNA Whitepaper* `v1.0.2` coordinates and `1.0.0` → `1.0.1` → `1.0.2` evolution notes.
+- [`docs/collection-workspace.md`](./collection-workspace.md) — Offline adapter layout for separately supplied collections.
+- [`docs/creating-laozi-and-epictetus-kdna.md`](./creating-laozi-and-epictetus-kdna.md) — Retained historical archive note for withdrawn early references.
