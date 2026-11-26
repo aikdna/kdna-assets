@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="170 165 665 665" fill="none" role="img" aria-label="KDNA">
+  <style>
+    path{stroke:#17191c}circle{stroke:#dc6628}
+    @media(prefers-color-scheme:dark){path{stroke:#f1f2f4}circle{stroke:#ff9a61}}
+  </style>
+  <path d="M278.80767 357.89095L240 235M477.15125 425.28195L765 240M481.02753 608.40636L740 760" stroke-width="78" stroke-linecap="round"/>
+  <circle cx="330" cy="520" r="61.5" stroke-width="37"/>
+</svg>
