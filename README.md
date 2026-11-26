@@ -33,28 +33,28 @@ Our first official public demonstration `.kdna` judgment work, authored by KDNA 
   - English `v1.0.2` (`en`): [https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.en.kdna](https://aikdna.com/downloads/whitepaper/v1.0.2/kdna-whitepaper-1.0.2.en.kdna)
 - **GitHub Release (`kdna-whitepaper-1.0.2`):** [https://github.com/aikdna/kdna-assets/releases/tag/kdna-whitepaper-1.0.2](https://github.com/aikdna/kdna-assets/releases/tag/kdna-whitepaper-1.0.2)
 
-#### Inspect & Selectively Read via `@aikdna/kdna-cli@0.45.2` (macOS / Windows / Linux)
+#### Inspect & Selectively Read via `@aikdna/kdna-cli@0.46.0` (macOS / Windows / Linux)
 
 ```sh
 # 1. Verify container structure, digests, checksums.json, and system checks
-npx -y @aikdna/kdna-cli@0.45.2 validate \
+npx -y @aikdna/kdna-cli@0.46.0 validate \
   references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna \
   --system --format human
 
 # 2. Browse the 45-question catalog in plain text (< 1.0s)
-npx -y @aikdna/kdna-cli@0.45.2 read \
+npx -y @aikdna/kdna-cli@0.46.0 read \
   references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna \
   --mode catalog --allow-read --format human
 
 # 3. Read selected judgments in English human text with mandatory closure intact
-npx -y @aikdna/kdna-cli@0.45.2 read \
+npx -y @aikdna/kdna-cli@0.46.0 read \
   references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna \
   --mode exact_selection \
   --judgment-id judgment:work-itself,judgment:creation-restraint,judgment:safe-consumption \
   --allow-read --format human
 
 # 4. Emit closure-preserving compact JSON for AI Agent context windows
-npx -y @aikdna/kdna-cli@0.45.2 read \
+npx -y @aikdna/kdna-cli@0.46.0 read \
   references/public/kdna-whitepaper/kdna-whitepaper-1.0.2.en.kdna \
   --mode exact_selection \
   --judgment-id judgment:origins,judgment:work-itself \
@@ -74,7 +74,7 @@ Alongside the foundational *KDNA Whitepaper* `v1.0.2` stored in this repository,
 ## Repository Layout & Verification Boundaries
 
 - [`references/public/`](./references/public) — Openly licensed `.kdna` works distributed in this repository, each accompanied by its provenance notes, license declaration, and SHA-256 digest.
-- [`index/`](./index), [`src/`](./src) & [`tests/`](./tests) — Automated admission, `catalog` / `exact_selection` / `whole_asset` read checks, public-surface hygiene gates, and offline vendored dependency-pinning checks (for day-to-day CLI use run live `@aikdna/kdna-cli@0.45.2`; the repository's self-contained offline CI harness intentionally pins vendored `@aikdna/kdna-core@0.37.11`, `@aikdna/kdna-read@0.13.5`, and `@aikdna/kdna-cli@0.44.0`).
+- [`index/`](./index), [`src/`](./src) & [`tests/`](./tests) — Automated admission, `catalog` / `exact_selection` / `whole_asset` read checks, public-surface hygiene gates, and offline vendored dependency-pinning checks (for day-to-day CLI use run live `@aikdna/kdna-cli@0.46.0`; the repository's self-contained offline CI harness intentionally pins vendored `@aikdna/kdna-core@0.37.11`, `@aikdna/kdna-read@0.13.5`, and `@aikdna/kdna-cli@0.44.0`).
 - [`evidence/`](./evidence) — Allowlisted historical rebuild receipts retained for auditability and verified by `scripts/check-public-surface.mjs`.
 
 **Trust & Scope Reminder:**
