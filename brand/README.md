@@ -31,6 +31,33 @@ While KDNA specifications and reference toolchains are licensed under `Apache-2.
 
 ## 2. Canonical Brand Files · 官方标识文件清单
 
+<table>
+  <thead>
+    <tr>
+      <th align="center">Master Mark (≥ 48px)</th>
+      <th align="center">Micro / Optical Mark (16–32px)</th>
+      <th align="center">Square Avatar (1024 × 1024)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="./kdna-mark-master-dark.svg">
+          <source media="(prefers-color-scheme: light)" srcset="./kdna-mark-master.svg">
+          <img alt="KDNA Master Mark" src="./kdna-mark-master.svg" width="96" height="96">
+        </picture>
+      </td>
+      <td align="center">
+        <img alt="KDNA Micro Optical Mark" src="./kdna-mark-micro.svg" width="32" height="32">
+      </td>
+      <td align="center">
+        <img alt="KDNA Square Avatar 1024x1024" src="./kdna-avatar-1024.png" width="96" height="96">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 | File | Optical Grade | Intended Sizes | Background / Theme |
 | :--- | :--- | :--- | :--- |
 | [`kdna-mark-master.svg`](./kdna-mark-master.svg) | **Master Mark** | `≥ 48px` (headers, hero, docs, slides, print) | Light surfaces (`#ffffff` / light neutral) |
