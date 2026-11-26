@@ -76,6 +76,7 @@ Alongside the foundational *KDNA Whitepaper* `v1.0.2` stored in this repository,
 - [`references/public/`](./references/public) — Openly licensed `.kdna` works distributed in this repository, each accompanied by its provenance notes, license declaration, and SHA-256 digest.
 - [`index/`](./index), [`src/`](./src) & [`tests/`](./tests) — Automated admission, `catalog` / `exact_selection` / `whole_asset` read checks, public-surface hygiene gates, and offline vendored dependency-pinning checks (for day-to-day CLI use run live `@aikdna/kdna-cli@0.46.0`; the repository's self-contained offline CI harness intentionally pins vendored `@aikdna/kdna-core@0.37.11`, `@aikdna/kdna-read@0.13.5`, and `@aikdna/kdna-cli@0.44.0`).
 - [`evidence/`](./evidence) — Allowlisted historical rebuild receipts retained for auditability and verified by `scripts/check-public-surface.mjs`.
+- [`brand/`](./brand) — Canonical KDNA Master/Micro optical SVG marks, `1024×1024` square avatar, and bilingual brand & trademark usage guidelines (Trademark Reserved; see [`brand/README.md`](./brand/README.md)).
 
 **Trust & Scope Reminder:**
 
@@ -99,4 +100,4 @@ npm test
 
 ## License
 
-Repository code and test tooling are licensed under [Apache-2.0](./LICENSE). Individual `.kdna` works under `references/public/` carry their own explicit content licenses (such as `CC-BY-4.0`) documented alongside each artifact.
+Repository code and test tooling are licensed under [Apache-2.0](./LICENSE). Individual `.kdna` works under `references/public/` carry their own explicit content licenses (such as `CC-BY-4.0`) documented alongside each artifact. KDNA / AIKDNA names and marks in [`brand/`](./brand) are Trademark Reserved (All Rights Reserved) and are not licensed under `Apache-2.0`.
